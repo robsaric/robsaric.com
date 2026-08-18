@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { COPY } from '../data/copy';
+---
+
+<BaseLayout
+  title={COPY.pages.methodology.title}
+  description={COPY.pages.methodology.body}
+  noindex
+>
+  <div class="page">
+    <h1>{COPY.pages.methodology.title}</h1>
+    <p>{COPY.pages.methodology.body}</p>
+  </div>
+</BaseLayout>
+
+<style>
+  .page {
+    width: 100%;
+    max-width: var(--max-page);
+    margin: 0 auto;
+    padding: 96px var(--gutter-desktop);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  h1 { margin: 0; font-size: 48px; line-height: 1.1; letter-spacing: -0.028em; }
+  p { max-width: 68ch; margin: 0; font-size: 18px; line-height: var(--lh-body); }
+
+  @media (max-width: 767.98px) {
+    .page { padding: 44px var(--gutter-mobile); }
+    h1 { font-size: 34px; }
+    p { font-size: 17px; }
+  }
+</style>

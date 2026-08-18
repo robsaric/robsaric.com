@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FieldNotes from '../../components/FieldNotes.astro';
+import { getPublishedNotes } from '../../lib/notes';
+import { COPY } from '../../data/copy';
+
+const notes = await getPublishedNotes();
+---
+
+<BaseLayout
+  title={COPY.pages.fieldNotes.title}
+  description={COPY.pages.fieldNotes.description}
+>
+  <header class="page-header">
+    <h1>{COPY.pages.fieldNotes.title}</h1>
+    <p>{COPY.fieldNotes.body}</p>
+  </header>
+  <FieldNotes notes={notes} />
+</BaseLayout>
+
+<style>
+  .page-header {
+    width: 100%;
+    max-width: var(--max-page);
+    margin: 0 auto;
+    padding: 96px var(--gutter-desktop);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  h1 { margin: 0; font-size: 48px; line-height: 1.1; letter-spacing: -0.028em; }
+  p { max-width: 58ch; margin: 0; font-size: 18px; line-height: var(--lh-body); }
+
+  @media (max-width: 767.98px) {
+    .page-header { padding: 44px var(--gutter-mobile); }
+    h1 { font-size: 34px; }
+    p { font-size: 17px; }
+  }
+</style>

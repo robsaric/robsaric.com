@@ -1,0 +1,94 @@
+---
+import {
+  getCollection,
+  type CollectionEntry,
+} from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { COPY } from '../../data/copy';
+import { UI } from '../../data/ui';
+
+type ArchiveEntry = CollectionEntry<'archive'>;
+
+const entries = (await getCollection('archive'))
+  .filter((entry) => import.meta.env.DEV || !entry.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const groups = new Map<number, ArchiveEntry[]>();
+
+entries.forEach((entry) => {
+  const year = entry.data.date.getUTCFullYear();
+  groups.set(year, [...(groups.get(year) ?? []), entry]);
+});
+
+const groupedEntries = [...groups.entries()]
+  .sort(([yearA], [yearB]) => yearB - yearA);
+
+const dateFormatter = new Intl.DateTimeFormat('en-CA', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+  timeZone: 'UTC',
+});
+---
+
+<BaseLayout
+  title={COPY.pages.archive.title}
+  description={COPY.pages.archive.description}
+>
+  <div class="archive">
+    <header>
+      <h1>{COPY.pages.archive.title}</h1>
+      <p>{COPY.pages.archive.intro}</p>
+    </header>
+
+    {groupedEntries.length > 0 ? (
+      <div class="archive__groups">
+        {groupedEntries.map(([year, yearEntries]) => (
+          <section aria-labelledby={`archive-year-${year}`}>
+            <h2 id={`archive-year-${year}`}>{year}</h2>
+            <ol>
+              {yearEntries.map((entry) => (
+                <li>
+                  <a href={`/archive/${entry.id}/`}>{entry.data.title}</a>
+                  <time datetime={entry.data.date.toISOString()}>
+                    {dateFormatter.format(entry.data.date)}
+                  </time>
+                </li>
+              ))}
+            </ol>
+          </section>
+        ))}
+      </div>
+    ) : (
+      <p class="archive__empty">{UI.archive.empty}</p>
+    )}
+  </div>
+</BaseLayout>
+
+<style>
+  .archive {
+    width: 100%;
+    max-width: var(--max-page);
+    margin: 0 auto;
+    padding: 96px var(--gutter-desktop);
+  }
+
+  header { max-width: 68ch; display: flex; flex-direction: column; gap: 16px; }
+  h1 { margin: 0; font-size: 48px; line-height: 1.1; letter-spacing: -0.028em; text-wrap: pretty; }
+  header p { margin: 0; font-size: 18px; line-height: var(--lh-body); }
+  .archive__groups { max-width: 68ch; margin-top: 56px; display: flex; flex-direction: column; gap: 44px; }
+  h2 { margin: 0 0 16px; font-size: 26px; }
+  ol { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--rule); }
+  li { padding: 16px 0; display: flex; justify-content: space-between; gap: 24px; border-bottom: 1px solid var(--rule); }
+  li a { font-size: 17px; font-weight: 600; }
+  time { flex: 0 0 auto; color: var(--ink-muted); font-family: var(--font-mono); font-size: 13px; }
+  .archive__empty { margin: 40px 0 0; color: var(--ink-muted); font-size: 17px; }
+
+  @media (max-width: 767.98px) {
+    .archive { padding: 44px var(--gutter-mobile); }
+    h1 { font-size: 34px; }
+    header p { font-size: 17px; }
+    .archive__groups { margin-top: 40px; gap: 36px; }
+    li { flex-direction: column; gap: 6px; }
+  }
+</style>

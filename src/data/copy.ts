@@ -97,4 +97,40 @@ export const COPY = {
       after: '.',
     },
   },
+  pages: {
+    fieldNotes: {
+      title: 'Field notes',
+      description: 'Field notes from Rob Saric on clinic revenue, ownership, and building Caretrics. Kept in public, in order.',
+    },
+    principles: {
+      title: 'Five principles for reviewing clinic operations',
+      intro: 'Written down so a clinic owner can hold me to them. If one does not match what you see at your front desk, write to me.',
+      description: 'Five principles Rob Saric uses when reviewing clinic operations: recover before you acquire, a signal needs an owner, AI must show its work, identified is not collected, billing problems start upstream.',
+    },
+    about: {
+      title: 'About',
+      description: 'Rob Saric, founder of Caretrics in Ottawa. Twenty years building software, 50+ clinics firsthand, and one standard: if it adds work to care, it has failed.',
+    },
+    archive: {
+      title: 'Earlier writing, 2009 to 2019',
+      intro: 'Thirty-eight posts from the first blog, kept as they were written. Systems, flow, leadership, and a few detours.',
+      description: "Rob Saric's earlier writing on systems, flow, and leadership, 2009 to 2019, kept as it was written.",
+    },
+    archivePost: {
+      eyebrow: (year: number) => `From the archive · ${year}`,
+      notice: (year: number) => `Written in ${year}. Kept as it was.`,
+    },
+    methodology: {
+      title: 'What the number means',
+      body: 'This page will explain how the $127,000 figure was identified, what it does and does not count, and where it came from. It is not published until that is written.',
+    },
+    contact: {
+      title: 'Write to me',
+      body: 'You run the clinic. You see things I cannot. If a principle does not match what you see at your front desk, or you know where money slips that I have not mentioned, write to me. I read and answer everything myself.',
+    },
+    notFound: {
+      title: 'Nothing here.',
+      body: 'The page moved or never existed. Try the field notes or the archive.',
+    },
+  },
 } as const;

@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Principles from '../components/Principles.astro';
+import { PRINCIPLES } from '../data/principles';
+import { COPY } from '../data/copy';
+---
+
+<BaseLayout
+  title={COPY.pages.principles.title}
+  description={COPY.pages.principles.description}
+>
+  <header class="page-header">
+    <h1>{COPY.pages.principles.title}</h1>
+    <p>{COPY.pages.principles.intro}</p>
+  </header>
+  <Principles items={PRINCIPLES} showAll />
+</BaseLayout>
+
+<style>
+  .page-header {
+    width: 100%;
+    max-width: var(--max-page);
+    margin: 0 auto;
+    padding: 96px var(--gutter-desktop);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  h1 { max-width: 20ch; margin: 0; font-size: 48px; line-height: 1.1; letter-spacing: -0.028em; text-wrap: pretty; }
+  p { max-width: 58ch; margin: 0; font-size: 18px; line-height: var(--lh-body); text-wrap: pretty; }
+
+  @media (max-width: 767.98px) {
+    .page-header { padding: 44px var(--gutter-mobile); }
+    h1 { font-size: 34px; }
+    p { font-size: 17px; }
+  }
+</style>

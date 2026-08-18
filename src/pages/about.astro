@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import About from '../components/About.astro';
+import { COPY } from '../data/copy';
+import { SITE } from '../data/site';
+import { UI } from '../data/ui';
+
+const sameAs = [
+  SITE.links.linkedin,
+  SITE.links.x,
+  SITE.links.github,
+].filter(Boolean);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: SITE.author.name,
+  url: SITE.url,
+  jobTitle: SITE.author.jobTitle,
+  description: COPY.about.extendedCredential,
+  sameAs,
+  worksFor: {
+    '@type': 'Organization',
+    name: UI.nav.caretrics,
+    url: SITE.caretricsUrl,
+  },
+};
+---
+
+<BaseLayout
+  title={COPY.pages.about.title}
+  description={COPY.pages.about.description}
+  jsonLd={jsonLd}
+>
+  <header class="page-header">
+    <h1>{COPY.pages.about.title}</h1>
+  </header>
+  <About extended />
+</BaseLayout>
+
+<style>
+  .page-header {
+    width: 100%;
+    max-width: var(--max-page);
+    margin: 0 auto;
+    padding: 96px var(--gutter-desktop);
+  }
+
+  h1 { margin: 0; font-size: 48px; line-height: 1.1; letter-spacing: -0.028em; }
+
+  @media (max-width: 767.98px) {
+    .page-header { padding: 44px var(--gutter-mobile); }
+    h1 { font-size: 34px; }
+  }
+</style>

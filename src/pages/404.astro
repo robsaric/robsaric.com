@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { COPY } from '../data/copy';
+import { UI } from '../data/ui';
+---
+
+<BaseLayout
+  title={COPY.pages.notFound.title}
+  description={COPY.pages.notFound.body}
+  noindex
+>
+  <div class="page">
+    <h1>{COPY.pages.notFound.title}</h1>
+    <p>{COPY.pages.notFound.body}</p>
+    <div class="page__links">
+      <a href="/field-notes/">{UI.nav.fieldNotes}</a>
+      <a href="/archive/">{UI.pages.archive}</a>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .page {
+    width: 100%;
+    max-width: var(--max-page);
+    margin: 0 auto;
+    padding: 96px var(--gutter-desktop);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  h1 { margin: 0; font-size: 48px; line-height: 1.1; letter-spacing: -0.028em; }
+  p { max-width: 68ch; margin: 0; font-size: 18px; line-height: var(--lh-body); }
+  .page__links { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+  .page__links a { min-height: var(--tap-min); display: inline-flex; align-items: center; font-weight: 600; }
+
+  @media (max-width: 767.98px) {
+    .page { padding: 44px var(--gutter-mobile); }
+    h1 { font-size: 34px; }
+    p { font-size: 17px; }
+  }
+</style>

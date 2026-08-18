@@ -33,6 +33,16 @@ export const UI = {
     invalidEmail: 'That does not look like an email address.',
     fallback: 'Email me and I will add you.',
   },
+  article: {
+    backToFieldNotes: 'Back to field notes',
+    backToArchive: 'Back to archive',
+  },
+  archive: {
+    empty: 'Nothing imported yet.',
+  },
+  pages: {
+    archive: 'Archive',
+  },
   footer: {
     navigationLabel: 'Footer navigation',
     linkedin: 'LinkedIn',

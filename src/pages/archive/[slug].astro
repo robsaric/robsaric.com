@@ -1,0 +1,58 @@
+---
+import {
+  getCollection,
+  render,
+  type CollectionEntry,
+} from 'astro:content';
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { COPY } from '../../data/copy';
+import { SITE } from '../../data/site';
+import { UI } from '../../data/ui';
+
+interface Props {
+  entry: CollectionEntry<'archive'>;
+}
+
+export async function getStaticPaths() {
+  const entries = (await getCollection('archive'))
+    .filter((entry) => import.meta.env.DEV || !entry.data.draft);
+
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const year = entry.data.date.getUTCFullYear();
+const description = entry.data.excerpt ?? COPY.pages.archive.description;
+const pageUrl = new URL(`/archive/${entry.id}/`, Astro.site ?? SITE.url).href;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: entry.data.title,
+  description,
+  datePublished: entry.data.date.toISOString(),
+  url: pageUrl,
+  author: {
+    '@type': 'Person',
+    name: SITE.author.name,
+    url: SITE.url,
+  },
+};
+---
+
+<ArticleLayout
+  title={entry.data.title}
+  description={description}
+  eyebrow={COPY.pages.archivePost.eyebrow(year)}
+  date={entry.data.date}
+  notice={COPY.pages.archivePost.notice(year)}
+  backHref="/archive/"
+  backLabel={UI.article.backToArchive}
+  jsonLd={jsonLd}
+>
+  <Content />
+</ArticleLayout>
