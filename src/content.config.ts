@@ -34,7 +34,7 @@ const archive = defineCollection({
   schema: z.object({
     title: z.string(),
     date: z.coerce.date(),
-    originalUrl: z.string().url(),
+    originalUrl: z.url(),
     excerpt: z.string().optional(),
     categories: z.array(z.string()).default([]),
     draft: z.boolean().default(false),

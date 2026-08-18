@@ -32,6 +32,12 @@ Why `/archive/` and not the same root slugs: keeping 38 root-level slugs alongsi
 
 After importing, run `pnpm build` and spot-check three posts against the live site (headings, lists, images, links).
 
+### Import log (2026-08-18)
+
+- `pnpm import:legacy` pulled all 38 posts; 9 images under `robsaric.com/wp-content/uploads` were localized to `public/archive/<slug>/`.
+- 23 image references and 2 links pointed at `robertsaric.com` (an older domain that no longer resolves; the files are not in the current media library either, so they were already broken on the live site). They were removed from the imported Markdown by a one-time cleanup: dead images dropped, dead links unwrapped to their text. Affected posts: 7-lessons-learned-while-building-a-startup, 7-of-the-most-extraordinary-people (14 portraits), continually-disrupt-and-reinvent-yourself, dont-be-an-organizational-houdini, entering-beast-mode, thank-you-steve-jobs, the-humble-rainmaker, treat-contractors-well, why-entrepreneurs-should-have-a-bit-of-an-ego, 9-steps-to-creating-your-sales-battlecard, alignment.
+- A `--force` re-import would bring the dead references back; if you ever re-import, re-apply the same cleanup (or extend the script to drop `robertsaric.com` references).
+
 Old posts are kept as written and are exempt from `pnpm lint:copy` by path (`src/content/archive`). Do not edit their prose. If a post is truly not worth keeping, remove it from the collection but keep its redirect pointing at `/archive/`.
 
 ## Cutover checklist

@@ -13,6 +13,7 @@ import { readFile, writeFile } from 'node:fs/promises';
  * forms. No-op if the adapter ever emits a slash-tolerant source itself.
  * Verified against @vercel/routing-utils matching in scripts/check-redirects.mjs.
  */
+/** @returns {import('astro').AstroIntegration} */
 function vercelSlashTolerantRedirects() {
   return {
     name: 'robsaric:vercel-slash-tolerant-redirects',
