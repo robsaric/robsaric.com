@@ -185,4 +185,4 @@ Change from the artboard: "2011 to 2019" became "2009 to 2019" (the oldest post 
 | V9 | Now items and six seed notes | Now strip, 04 | DRAFT (hidden in prod) |
 | V10 | Portrait 400×400 is below the 2x target for a 400×460 slot | hero | replace with ≥1200px |
 | V11 | Togetheren description | 02 | VERIFY |
-| V12 | Social URLs, GitHub activity, repo URL for "View source", contact email | footer, contact | set in `src/data/site.ts` |
+| V12 | Social URLs, repo URL for "View source", contact email | footer, contact | SET 2026-08-18 (email rob@caretrics.com, LinkedIn, GitHub, source repo). X left off until decided. |

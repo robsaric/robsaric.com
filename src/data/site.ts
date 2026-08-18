@@ -17,15 +17,14 @@ export const SITE = {
   },
   caretricsUrl: 'https://caretrics.com',
   togetherenUrl: 'https://togetheren.com',
-  /** TODO(V12): set before launch. Empty string hides the link. */
-  email: '',
+  email: 'rob@caretrics.com',
   links: {
-    /** TODO(V12): confirm handles. Empty string hides the link. */
-    linkedin: '',
+    linkedin: 'https://www.linkedin.com/in/robertsaric/',
+    /** Undecided whether to keep X. Empty string hides the link. */
     x: '',
-    github: '',
-    /** Public repo for "View source". Empty string hides the link. */
-    source: '',
+    github: 'https://github.com/robsaric',
+    /** Public repo for "View source". */
+    source: 'https://github.com/robsaric/robsaric.com',
   },
 } as const;
 
