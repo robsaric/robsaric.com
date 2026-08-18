@@ -1,0 +1,133 @@
+---
+interface Props {
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
+  size?: 'lg' | 'xl';
+  icon?: 'arrow-right' | 'arrow-up-right';
+  full?: boolean;
+  variant?: 'dark' | 'outline' | 'lime';
+  external?: boolean;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const {
+  href,
+  type = 'button',
+  size = 'lg',
+  icon,
+  full = false,
+  variant = 'dark',
+  external = false,
+  class: className,
+  ...rest
+} = Astro.props;
+
+const classes = [
+  'button',
+  `button--${variant}`,
+  full && 'button--full',
+  className,
+].filter(Boolean).join(' ');
+---
+
+{href ? (
+  <a
+    {...rest}
+    href={href}
+    class={classes}
+    data-size={size}
+    target={external ? '_blank' : undefined}
+    rel={external ? 'noopener' : undefined}
+  >
+    <slot />
+    {icon && (
+      <svg class="button__icon" viewBox="0 0 16 16" aria-hidden="true">
+        {icon === 'arrow-right'
+          ? <path d="M2.5 8h10.25M8.75 4l4 4-4 4" />
+          : <path d="M4 12 12 4M6 4h6v6" />}
+      </svg>
+    )}
+  </a>
+) : (
+  <button {...rest} type={type} class={classes} data-size={size}>
+    <slot />
+    {icon && (
+      <svg class="button__icon" viewBox="0 0 16 16" aria-hidden="true">
+        {icon === 'arrow-right'
+          ? <path d="M2.5 8h10.25M8.75 4l4 4-4 4" />
+          : <path d="M4 12 12 4M6 4h6v6" />}
+      </svg>
+    )}
+  </button>
+)}
+
+<style>
+  .button {
+    min-width: 0;
+    padding: 0 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    border: 1px solid transparent;
+    font-size: var(--text-ui-s);
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out);
+  }
+
+  .button:hover { text-decoration: none; }
+  .button[data-size='lg'] { min-height: var(--btn-h-sm); }
+  .button[data-size='xl'] { min-height: var(--btn-h); }
+  .button--full { width: 100%; }
+
+  .button--dark {
+    color: var(--white);
+    background: var(--forest-500);
+    border-color: var(--forest-500);
+    border-radius: var(--radius-lg);
+  }
+
+  .button--dark:hover {
+    background: var(--forest-700);
+    border-color: var(--forest-700);
+  }
+
+  .button--outline {
+    padding-inline: 22px;
+    color: var(--ink);
+    background: transparent;
+    border-width: 1.5px;
+    border-color: var(--forest-500);
+    border-radius: var(--radius-md);
+    font-size: var(--text-ui);
+  }
+
+  .button--outline:hover { background: var(--wash); }
+
+  .button--lime {
+    color: var(--forest-500);
+    background: var(--lime-500);
+    border-color: var(--lime-500);
+    border-radius: var(--radius-md);
+  }
+
+  .button--lime:hover {
+    background: color-mix(in srgb, var(--lime-500) 82%, var(--white));
+  }
+
+  .button__icon {
+    width: 14px;
+    height: 14px;
+    flex: 0 0 14px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.75;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+</style>

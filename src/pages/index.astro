@@ -1,17 +1,41 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import NowStrip from '../components/NowStrip.astro';
+import Evidence from '../components/Evidence.astro';
+import Stages from '../components/Stages.astro';
+import Principles from '../components/Principles.astro';
+import { SITE } from '../data/site';
+import { UI } from '../data/ui';
 
+const sameAs = [
+  SITE.links.linkedin,
+  SITE.links.x,
+  SITE.links.github,
+].filter(Boolean);
+
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: SITE.author.name,
+  url: SITE.url,
+  jobTitle: SITE.author.jobTitle,
+  sameAs,
+  worksFor: {
+    '@type': 'Organization',
+    name: UI.nav.caretrics,
+    url: SITE.caretricsUrl,
+  },
+};
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout jsonLd={personJsonLd}>
+  <Hero />
+  <NowStrip />
+  <Evidence />
+  <Stages />
+  <Principles />
+  <!-- FieldNotes mounts here in Round 3. -->
+  <!-- About mounts here in Round 3. -->
+  <!-- WriteToMe mounts here in Round 3. -->
+</BaseLayout>

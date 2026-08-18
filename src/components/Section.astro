@@ -1,0 +1,84 @@
+---
+import Eyebrow from './Eyebrow.astro';
+import { UI } from '../data/ui';
+
+interface Props {
+  number: string;
+  label: string;
+  id: string;
+  tone?: 'cream' | 'dark' | 'lime' | 'cream-rule';
+  class?: string;
+  [key: string]: unknown;
+}
+
+const {
+  number,
+  label,
+  id,
+  tone = 'cream',
+  class: className,
+  ...rest
+} = Astro.props;
+---
+
+<section
+  {...rest}
+  id={id}
+  class:list={['section', `section--${tone}`, className]}
+>
+  <div class="section__frame">
+    <div class="section__label">
+      <Eyebrow onDark={tone === 'dark'}>
+        {number}{UI.section.separator}{label}
+      </Eyebrow>
+    </div>
+    <div class="section__content">
+      <slot />
+    </div>
+  </div>
+</section>
+
+<style>
+  .section {
+    width: 100%;
+    scroll-margin-top: var(--nav-h-desktop);
+  }
+
+  .section--cream,
+  .section--cream-rule { background: var(--cream); }
+  .section--cream-rule { border-top: 1px solid var(--rule); }
+  .section--dark { background: var(--forest-500); }
+  .section--lime { background: var(--lime-100); }
+
+  .section__frame {
+    width: 100%;
+    max-width: var(--max-page);
+    margin: 0 auto;
+    padding: var(--section-pad-desktop) var(--gutter-desktop);
+    display: grid;
+    grid-template-columns: var(--label-col) minmax(0, 1fr);
+    gap: var(--label-gap);
+  }
+
+  .section--lime .section__frame { padding-block: 88px; }
+  .section__label { padding-top: 10px; }
+  .section__content { min-width: 0; }
+
+  .section--dark :global(:focus-visible) {
+    outline-color: var(--focus-ring-on-dark);
+  }
+
+  @media (max-width: 767.98px) {
+    .section { scroll-margin-top: var(--nav-h-mobile); }
+
+    .section__frame,
+    .section--lime .section__frame {
+      padding: var(--section-pad-mobile) var(--gutter-mobile);
+      grid-template-columns: minmax(0, 1fr);
+      gap: 16px;
+    }
+
+    .section--dark .section__frame { gap: 20px; }
+    .section__label { padding-top: 0; }
+  }
+</style>

@@ -1,0 +1,90 @@
+---
+import { Font } from 'astro:assets';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { SITE } from '../data/site';
+import { UI } from '../data/ui';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const {
+  title,
+  description = SITE.description,
+  noindex = false,
+  jsonLd,
+} = Astro.props;
+
+const siteUrl = Astro.site ?? new URL(SITE.url);
+const documentTitle = title
+  ? `${title}${UI.meta.titleSeparator}${SITE.name}`
+  : SITE.title;
+const canonical = new URL(Astro.url.pathname, siteUrl);
+const ogImage = new URL('/og-default.png', siteUrl);
+const serializedJsonLd = jsonLd
+  ? JSON.stringify(jsonLd).replaceAll('<', '\\u003c')
+  : '';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{documentTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical.href} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content={SITE.locale} />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={documentTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical.href} />
+    <meta property="og:image" content={ogImage.href} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={documentTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage.href} />
+    <Font cssVariable="--font-inter" preload />
+    <Font cssVariable="--font-serif" />
+    {jsonLd && (
+      <script type="application/ld+json" set:html={serializedJsonLd}></script>
+    )}
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{UI.skipLink}</a>
+    <Nav />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  .skip-link {
+    position: fixed;
+    z-index: 100;
+    top: 8px;
+    left: 8px;
+    padding: 10px 14px;
+    color: var(--on-dark);
+    background: var(--forest-500);
+    border-radius: var(--radius-md);
+    transform: translateY(calc(-100% - 16px));
+  }
+
+  .skip-link:focus {
+    color: var(--on-dark);
+    outline-color: var(--lime-500);
+    transform: translateY(0);
+  }
+</style>

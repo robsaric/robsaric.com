@@ -1,0 +1,122 @@
+---
+import { COPY } from '../data/copy';
+import { SITE } from '../data/site';
+import { UI } from '../data/ui';
+
+interface FooterLink {
+  href: string;
+  label: string;
+  mobileLabel?: string;
+  mobileHidden?: boolean;
+  strong?: boolean;
+  muted?: boolean;
+}
+
+const links: FooterLink[] = [
+  ...(SITE.links.linkedin ? [{ href: SITE.links.linkedin, label: UI.footer.linkedin }] : []),
+  ...(SITE.links.x ? [{ href: SITE.links.x, label: UI.footer.x, mobileHidden: true }] : []),
+  ...(SITE.links.github ? [{ href: SITE.links.github, label: UI.footer.github }] : []),
+  ...(SITE.links.source ? [{ href: SITE.links.source, label: UI.footer.source }] : []),
+  { href: SITE.caretricsUrl, label: UI.footer.caretrics, strong: true },
+  {
+    href: SITE.togetherenUrl,
+    label: UI.footer.togetherenDesktop,
+    mobileLabel: UI.footer.togetherenMobile,
+    muted: true,
+  },
+];
+---
+
+<footer class="footer">
+  <div class="footer__inner">
+    <p class="footer__line">{COPY.footer.line}</p>
+    <p class="footer__byline">{COPY.footer.byline}</p>
+
+    <nav class="footer__links" aria-label={UI.footer.navigationLabel}>
+      {links.map((link) => (
+        <a
+          href={link.href}
+          target="_blank"
+          rel="noopener"
+          class:list={[
+            'footer__link',
+            {
+              'footer__link--hidden-mobile': link.mobileHidden,
+              'footer__link--strong': link.strong,
+              'footer__link--muted': link.muted,
+            },
+          ]}
+        >
+          <span class:list={{ 'footer__label--desktop': link.mobileLabel }}>
+            {link.label}
+          </span>
+          {link.mobileLabel && (
+            <span class="footer__label--mobile">{link.mobileLabel}</span>
+          )}
+        </a>
+      ))}
+    </nav>
+
+    <p class="footer__archive">
+      {COPY.footer.archive.before}{' '}
+      <a href="/archive/">{UI.footer.archive}</a>{COPY.footer.archive.after}
+    </p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    color: var(--on-dark);
+    background: var(--forest-700);
+  }
+
+  .footer__inner {
+    width: 100%;
+    max-width: var(--max-page);
+    margin: 0 auto;
+    padding: 56px var(--gutter-desktop);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .footer p { margin: 0; }
+  .footer__line { max-width: 44ch; font-size: 20px; line-height: 1.4; }
+  .footer__byline { color: var(--on-dark-78); font-size: 16px; line-height: 1.5; }
+
+  .footer__links {
+    padding-top: 16px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0 28px;
+    border-top: 1px solid var(--on-dark-28);
+  }
+
+  .footer__link {
+    min-height: var(--tap-min);
+    display: inline-flex;
+    align-items: center;
+    color: var(--on-dark);
+    font-size: 16px;
+  }
+
+  .footer__link--strong { font-weight: 700; }
+  .footer__link--muted { color: var(--on-dark-78); }
+  .footer__link:focus-visible,
+  .footer__archive a:focus-visible { outline-color: var(--lime-500); }
+  .footer__archive { color: var(--on-dark-78); font-size: 15px; line-height: 1.5; }
+  .footer__archive a { color: inherit; }
+  .footer__label--mobile { display: none; }
+
+  @media (max-width: 767.98px) {
+    .footer__inner { padding: 36px var(--gutter-mobile); gap: 14px; }
+    .footer__line { font-size: 18px; }
+    .footer__byline { font-size: 15px; }
+    .footer__links { padding-top: 10px; gap: 0 20px; }
+    .footer__link { font-size: 15px; }
+    .footer__link--hidden-mobile { display: none; }
+    .footer__label--desktop { display: none; }
+    .footer__label--mobile { display: inline; }
+  }
+</style>

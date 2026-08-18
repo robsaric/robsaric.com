@@ -66,10 +66,14 @@ for (const file of files) {
   const rel = relative(ROOT, file).replace(/\\/g, '/');
   if (EXEMPT_PREFIXES.some((p) => rel.startsWith(p))) continue;
   const lines = readFileSync(file, 'utf8').split(/\r?\n/);
+  let inStyle = false; // CSS is not copy: skip word rules inside <style> blocks (em dashes still checked)
   lines.forEach((line, i) => {
     if (line.includes('copy-lint-ignore')) return;
     const where = `${rel}:${i + 1}`;
     if (line.includes('—')) { console.error(`ERROR ${where}: em dash`); errors++; }
+    if (/<style[\s>]/.test(line)) inStyle = true;
+    if (/<\/style>/.test(line)) { inStyle = false; return; }
+    if (inStyle || /^\s*[\w-]+\s*:\s*[^:]+;\s*$/.test(line)) return; // CSS declaration lines
     for (const w of BANNED_WORDS) {
       if (wordRe(w).test(line)) { console.error(`ERROR ${where}: banned word "${w}"`); errors++; }
     }
