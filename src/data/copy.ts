@@ -142,7 +142,7 @@ export const COPY = {
     principles: {
       title: 'Five principles for reviewing clinic operations',
       intro: 'Written down so a clinic owner can hold me to them. If one does not match what you see at your front desk, write to me.',
-      description: 'Five principles Rob Saric uses when reviewing clinic operations: recover before you acquire, a signal needs an owner, AI must show its work, identified is not collected, billing problems start upstream.',
+      description: 'Five principles Rob Saric uses when reviewing clinic operations, from recover before you acquire to billing problems usually start upstream.',
     },
     about: {
       title: 'About',
@@ -163,7 +163,7 @@ export const COPY = {
     },
     contact: {
       title: 'Write to me',
-      body: 'You run the clinic. You see things I cannot. If a principle does not match what you see at your front desk, or you know where money slips that I have not mentioned, write to me. I read and answer everything myself.',
+      body: 'You run the clinic. You see things I cannot. If a principle does not match what you see at your front desk, or you know where money slips, say so. He reads and answers everything himself.',
     },
     notFound: {
       title: 'Nothing here.',

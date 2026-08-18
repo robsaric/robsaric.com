@@ -4,6 +4,7 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import { SITE } from '../data/site';
 import { UI } from '../data/ui';
+import { clampDescription } from '../lib/seo';
 import '../styles/global.css';
 
 interface Props {
@@ -11,6 +12,10 @@ interface Props {
   description?: string;
   noindex?: boolean;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  type?: 'website' | 'article';
+  publishedTime?: Date;
+  modifiedTime?: Date;
+  ogImage?: string;
 }
 
 const {
@@ -18,14 +23,20 @@ const {
   description = SITE.description,
   noindex = false,
   jsonLd,
+  type: pageType = 'website',
+  publishedTime,
+  modifiedTime,
+  ogImage: ogImageSource = '/og-default.png',
 } = Astro.props;
 
 const siteUrl = Astro.site ?? new URL(SITE.url);
 const documentTitle = title
   ? `${title}${UI.meta.titleSeparator}${SITE.name}`
   : SITE.title;
+const metaDescription = clampDescription(description);
 const canonical = new URL(Astro.url.pathname, siteUrl);
-const ogImage = new URL('/og-default.png', siteUrl);
+const ogImageUrl = new URL(ogImageSource, siteUrl);
+const articleAuthorUrl = new URL('/about/', siteUrl);
 const serializedJsonLd = jsonLd
   ? JSON.stringify(jsonLd).replaceAll('<', '\\u003c')
   : '';
@@ -37,22 +48,51 @@ const serializedJsonLd = jsonLd
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{documentTitle}</title>
-    <meta name="description" content={description} />
+    <meta name="description" content={metaDescription} />
     <link rel="canonical" href={canonical.href} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={`${SITE.name}${UI.meta.titleSeparator}${UI.nav.fieldNotes}`}
+      href="/rss.xml"
+    />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content={SITE.locale} />
+    <meta property="og:type" content={pageType} />
+    <meta property="og:locale" content="en_CA" />
     <meta property="og:site_name" content={SITE.name} />
     <meta property="og:title" content={documentTitle} />
-    <meta property="og:description" content={description} />
+    <meta property="og:description" content={metaDescription} />
     <meta property="og:url" content={canonical.href} />
-    <meta property="og:image" content={ogImage.href} />
+    <meta property="og:image" content={ogImageUrl.href} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={UI.meta.ogImageAlt} />
+    {pageType === 'article' && publishedTime && (
+      <meta
+        property="article:published_time"
+        content={publishedTime.toISOString()}
+      />
+    )}
+    {pageType === 'article' && modifiedTime && (
+      <meta
+        property="article:modified_time"
+        content={modifiedTime.toISOString()}
+      />
+    )}
+    {pageType === 'article' && (
+      <meta
+        property="article:author"
+        content={articleAuthorUrl.href}
+      />
+    )}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={documentTitle} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage.href} />
+    <meta name="twitter:description" content={metaDescription} />
+    <meta name="twitter:image" content={ogImageUrl.href} />
     <Font cssVariable="--font-inter" preload />
     <Font cssVariable="--font-instrument-serif" />
     {jsonLd && (

@@ -8,6 +8,8 @@ interface Props {
   description: string;
   eyebrow: string;
   date: Date;
+  publishedTime: Date;
+  modifiedTime?: Date;
   notice?: string;
   backHref: string;
   backLabel: string;
@@ -19,6 +21,8 @@ const {
   description,
   eyebrow,
   date,
+  publishedTime,
+  modifiedTime,
   notice,
   backHref,
   backLabel,
@@ -33,7 +37,14 @@ const formattedDate = new Intl.DateTimeFormat('en-CA', {
 }).format(date);
 ---
 
-<BaseLayout title={title} description={description} jsonLd={jsonLd}>
+<BaseLayout
+  title={title}
+  description={description}
+  jsonLd={jsonLd}
+  type="article"
+  publishedTime={publishedTime}
+  modifiedTime={modifiedTime}
+>
   <div class="article-shell">
     <article class="article">
       <header class="article__header">

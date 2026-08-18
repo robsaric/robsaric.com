@@ -1,0 +1,19 @@
+# robsaric.com
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /subscribed/
+
+# AI discovery crawlers are welcome; the site is meant to be read.
+User-agent: GPTBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+
+Sitemap: https://robsaric.com/sitemap-index.xml

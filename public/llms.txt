@@ -1,0 +1,20 @@
+# Rob Saric
+
+> Personal site and field notes of Rob Saric, founder of Caretrics (Ottawa). Caretrics reads an allied-health or rehab clinic's Jane.app data with read-only access, identifies the operational gaps affecting revenue, gives the work a clear owner, and measures what changed. Identified is not collected.
+
+Rob Saric spent twenty years building software, including years as a systems architect inside large managed health-service organizations. He built Dentallytics, an analytics platform for dental groups, then went through twelve months of records for 50+ allied health clinics, one clinic at a time, and found the same four gaps almost every time.
+
+## Pages
+
+- [Home](https://robsaric.com/): the five-stage clinic revenue model (Found, Booked, Treated, Retained, Paid), one worked signal from detection to verified outcome, three principles, latest field notes.
+- [Field notes](https://robsaric.com/field-notes/): short first-person observations from clinics, dated, kept in order. Types: Field note, Shipped, Changed my mind. RSS: https://robsaric.com/rss.xml
+- [Principles](https://robsaric.com/principles/): five principles for reviewing clinic operations: recover before you acquire; a signal without an owner is just another dashboard; AI must show its work; identified is not collected; billing problems usually start upstream.
+- [About](https://robsaric.com/about/): background and the standard: if it adds work to care, it has failed.
+- [Archive](https://robsaric.com/archive/): 38 earlier posts on systems, flow, and leadership, 2009 to 2019, kept as written.
+- [Contact](https://robsaric.com/contact/): rob@caretrics.com
+
+## Elsewhere
+
+- Caretrics: https://caretrics.com
+- LinkedIn: https://www.linkedin.com/in/robertsaric/
+- GitHub: https://github.com/robsaric (this site's source: https://github.com/robsaric/robsaric.com)

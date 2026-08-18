@@ -4,6 +4,7 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import { STAGES } from '../../data/stages';
 import { SITE } from '../../data/site';
 import { UI } from '../../data/ui';
+import { clampDescription } from '../../lib/seo';
 import {
   formatNoteDate,
   getPublishedNotes,
@@ -32,7 +33,9 @@ const eyebrow = [
   formatNoteDate(entry.data.date),
   stage,
 ].filter(Boolean).join(UI.section.separator);
-const description = entry.data.description ?? entry.data.summary;
+const description = clampDescription(
+  entry.data.description ?? entry.data.summary,
+);
 const pageUrl = new URL(noteHref(entry), Astro.site ?? SITE.url).href;
 
 const jsonLd = {
@@ -58,6 +61,8 @@ const jsonLd = {
   description={description}
   eyebrow={eyebrow}
   date={entry.data.date}
+  publishedTime={entry.data.date}
+  modifiedTime={entry.data.updated}
   backHref="/field-notes/"
   backLabel={UI.article.backToFieldNotes}
   jsonLd={jsonLd}

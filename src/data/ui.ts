@@ -1,6 +1,7 @@
 export const UI = {
   meta: {
     titleSeparator: ' · ',
+    ogImageAlt: 'Rob Saric, founder of Caretrics',
   },
   section: {
     separator: ' · ',

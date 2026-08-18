@@ -8,6 +8,7 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import { COPY } from '../../data/copy';
 import { SITE } from '../../data/site';
 import { UI } from '../../data/ui';
+import { clampDescription } from '../../lib/seo';
 
 interface Props {
   entry: CollectionEntry<'archive'>;
@@ -23,10 +24,26 @@ export async function getStaticPaths() {
   }));
 }
 
+function stripMarkdown(markdown: string): string {
+  return markdown
+    .replace(/```(?:[\w-]+)?\s*([\s\S]*?)```/g, ' $1 ')
+    .replace(/!\[([^\]]*)\]\([^)]+\)/g, ' $1 ')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, ' $1 ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/[`*_>#~|-]/g, ' ')
+    .replace(/\s+/gu, ' ')
+    .trim();
+}
+
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 const year = entry.data.date.getUTCFullYear();
-const description = entry.data.excerpt ?? COPY.pages.archive.description;
+const bodyDescription = stripMarkdown(entry.body ?? '');
+const description = clampDescription(
+  entry.data.excerpt?.trim()
+  || bodyDescription
+  || COPY.pages.archive.description,
+);
 const pageUrl = new URL(`/archive/${entry.id}/`, Astro.site ?? SITE.url).href;
 
 const jsonLd = {
@@ -49,6 +66,7 @@ const jsonLd = {
   description={description}
   eyebrow={COPY.pages.archivePost.eyebrow(year)}
   date={entry.data.date}
+  publishedTime={entry.data.date}
   notice={COPY.pages.archivePost.notice(year)}
   backHref="/archive/"
   backLabel={UI.article.backToArchive}
