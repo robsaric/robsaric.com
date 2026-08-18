@@ -5,8 +5,14 @@ import NowStrip from '../components/NowStrip.astro';
 import Evidence from '../components/Evidence.astro';
 import Stages from '../components/Stages.astro';
 import Principles from '../components/Principles.astro';
+import FieldNotes from '../components/FieldNotes.astro';
+import About from '../components/About.astro';
+import WriteToMe from '../components/WriteToMe.astro';
+import { getPublishedNotes } from '../lib/notes';
 import { SITE } from '../data/site';
 import { UI } from '../data/ui';
+
+const notes = await getPublishedNotes();
 
 const sameAs = [
   SITE.links.linkedin,
@@ -35,7 +41,11 @@ const personJsonLd = {
   <Evidence />
   <Stages />
   <Principles />
-  <!-- FieldNotes mounts here in Round 3. -->
-  <!-- About mounts here in Round 3. -->
-  <!-- WriteToMe mounts here in Round 3. -->
+  <FieldNotes
+    notes={notes}
+    limit={6}
+    showHeaderLink
+  />
+  <About />
+  <WriteToMe />
 </BaseLayout>

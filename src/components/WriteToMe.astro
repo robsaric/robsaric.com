@@ -1,0 +1,240 @@
+---
+import { COPY } from '../data/copy';
+import { UI } from '../data/ui';
+import Section from './Section.astro';
+import Button from './Button.astro';
+
+const newsletterEndpoint =
+  import.meta.env.PUBLIC_NEWSLETTER_ENDPOINT?.trim();
+---
+
+<Section
+  id="write-to-me"
+  number={COPY.writeToMe.number}
+  label={COPY.writeToMe.label}
+  tone="lime"
+>
+  <div class="write-to-me" data-write-to-me>
+    <div class="write-to-me__intro">
+      <h2>{COPY.writeToMe.heading}</h2>
+
+      <p class="write-to-me__body write-to-me__body--desktop">
+        {COPY.writeToMe.bodyDesktop.beforeLink}<a href="/contact/">
+          {COPY.writeToMe.bodyDesktop.link}
+        </a>{COPY.writeToMe.bodyDesktop.afterLink}
+      </p>
+
+      <p class="write-to-me__body write-to-me__body--mobile">
+        {COPY.writeToMe.bodyMobile.beforeLink}<a href="/contact/">
+          {COPY.writeToMe.bodyMobile.link}
+        </a>{COPY.writeToMe.bodyMobile.afterLink}
+      </p>
+    </div>
+
+    <div class="newsletter">
+      <h3>{COPY.writeToMe.cardHeading}</h3>
+      <p class="newsletter__body newsletter__body--desktop">
+        {COPY.writeToMe.cardBodyDesktop}
+      </p>
+      <p class="newsletter__body newsletter__body--mobile">
+        {COPY.writeToMe.cardBodyMobile}
+      </p>
+
+      {newsletterEndpoint ? (
+        <form
+          method="post"
+          action={newsletterEndpoint}
+          novalidate
+          data-newsletter-form
+        >
+          <label for="newsletter-email">{UI.newsletter.emailLabel}</label>
+          <input
+            id="newsletter-email"
+            type="email"
+            name="email"
+            autocomplete="email"
+            inputmode="email"
+            spellcheck="false"
+            placeholder={UI.newsletter.emailPlaceholder}
+            aria-describedby="newsletter-status"
+            required
+            data-newsletter-email
+          />
+          <span
+            id="newsletter-status"
+            class="newsletter__status"
+            aria-live="polite"
+            data-newsletter-status
+          ></span>
+          <Button
+            class="newsletter__submit"
+            type="submit"
+            variant="outline"
+            data-newsletter-submit
+            data-loading-label={UI.newsletter.subscribing}
+          >
+            {UI.newsletter.subscribe}
+          </Button>
+        </form>
+      ) : (
+        <a class="newsletter__fallback" href="/contact/">
+          {UI.newsletter.fallback}
+        </a>
+      )}
+    </div>
+  </div>
+</Section>
+
+<script define:vars={{ invalidEmail: UI.newsletter.invalidEmail }}>
+  const writeRoots =
+    document.querySelectorAll<HTMLElement>('[data-write-to-me]');
+
+  writeRoots.forEach((root) => {
+    if (root.dataset.ready === 'true') return;
+    root.dataset.ready = 'true';
+
+    const form =
+      root.querySelector<HTMLFormElement>('[data-newsletter-form]');
+    const email =
+      root.querySelector<HTMLInputElement>('[data-newsletter-email]');
+    const status =
+      root.querySelector<HTMLElement>('[data-newsletter-status]');
+    const submit =
+      root.querySelector<HTMLButtonElement>('[data-newsletter-submit]');
+
+    if (!form || !email || !status || !submit) return;
+
+    const clearError = () => {
+      if (!email.validity.valid) return;
+      email.removeAttribute('aria-invalid');
+      status.textContent = '';
+    };
+
+    email.addEventListener('input', clearError);
+
+    form.addEventListener('submit', (event) => {
+      if (!email.validity.valid) {
+        event.preventDefault();
+        email.setAttribute('aria-invalid', 'true');
+        status.textContent = invalidEmail;
+        email.focus();
+        return;
+      }
+
+      email.removeAttribute('aria-invalid');
+      status.textContent = '';
+      submit.textContent = submit.dataset.loadingLabel ?? '';
+      submit.disabled = true;
+    });
+  });
+</script>
+
+<style>
+  .write-to-me {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 400px;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .write-to-me__intro {
+    max-width: 52ch;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: var(--text-h2);
+    line-height: var(--lh-heading);
+    letter-spacing: var(--tracking-h2);
+    text-wrap: pretty;
+  }
+
+  .write-to-me__body {
+    margin: 0;
+    font-size: var(--text-body-l);
+    line-height: var(--lh-body);
+    text-wrap: pretty;
+  }
+
+  .write-to-me__body--mobile { display: none; }
+
+  .newsletter {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: var(--cream);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-lg);
+  }
+
+  .newsletter h3 {
+    margin: 0;
+    font-size: 20px;
+    letter-spacing: var(--tracking-h3);
+  }
+
+  .newsletter__body {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.55;
+    text-wrap: pretty;
+  }
+
+  .newsletter__body--mobile { display: none; }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  label { font-size: 16px; font-weight: 500; }
+
+  input {
+    width: 100%;
+    height: var(--btn-h);
+    padding: 12px 14px;
+    color: var(--ink);
+    background: var(--white);
+    border: 1.5px solid var(--forest-500);
+    border-radius: var(--radius-md);
+    font-size: 16px;
+  }
+
+  input[aria-invalid='true'] {
+    border-color: var(--status-critical-text);
+  }
+
+  .newsletter__status {
+    min-height: 20px;
+    color: var(--status-critical-text);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .newsletter__submit { align-self: flex-start; }
+  .newsletter__fallback { min-height: var(--tap-min); display: inline-flex; align-items: center; align-self: flex-start; }
+
+  @media (max-width: 767.98px) {
+    .write-to-me {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 16px;
+    }
+
+    .write-to-me__intro { max-width: none; gap: 16px; }
+    h2 { font-size: 27px; line-height: 1.2; letter-spacing: -0.022em; }
+    .write-to-me__body { font-size: 17px; }
+    .write-to-me__body--desktop { display: none; }
+    .write-to-me__body--mobile { display: block; }
+    .newsletter { padding: 22px; gap: 14px; }
+    .newsletter h3 { font-size: 19px; }
+    .newsletter__body { font-size: 16px; }
+    .newsletter__body--desktop { display: none; }
+    .newsletter__body--mobile { display: block; }
+    .newsletter__submit { width: 100%; }
+  }
+</style>

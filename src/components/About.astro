@@ -1,0 +1,153 @@
+---
+import { Image } from 'astro:assets';
+import familyPhoto from '../assets/images/rob-family.png';
+import { COPY } from '../data/copy';
+import Section from './Section.astro';
+
+interface Props {
+  extended?: boolean;
+}
+
+const { extended = false } = Astro.props;
+---
+
+<Section
+  id="about"
+  number={COPY.about.number}
+  label={COPY.about.label}
+  tone="cream-rule"
+>
+  <div class="about">
+    <Image
+      class="about__photo"
+      src={familyPhoto}
+      alt={COPY.about.photoAlt}
+      width={360}
+      height={400}
+      loading="lazy"
+      decoding="async"
+    />
+
+    <div class="about__copy">
+      <h2>{COPY.about.heading}</h2>
+
+      <p class="about__body about__body--desktop">
+        {COPY.about.bodyDesktop}
+      </p>
+      <p class="about__body about__body--mobile">
+        {COPY.about.bodyMobile}
+      </p>
+
+      {extended && (
+        <div class="about__extended">
+          <p>{COPY.about.extendedCredential}</p>
+          <p>{COPY.about.extendedHistory}</p>
+        </div>
+      )}
+
+      <p class="about__quote">{COPY.about.quote}</p>
+
+      <div class="about__stats">
+        {COPY.about.stats.map((stat) => <span>{stat}</span>)}
+      </div>
+    </div>
+  </div>
+</Section>
+
+<style>
+  .about {
+    display: grid;
+    grid-template-columns: 360px minmax(0, 1fr);
+    gap: 64px;
+    align-items: center;
+  }
+
+  .about__photo {
+    width: 360px;
+    height: 400px;
+    display: block;
+    object-fit: cover;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-xl);
+  }
+
+  .about__copy {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: var(--text-h2);
+    line-height: var(--lh-heading);
+    letter-spacing: var(--tracking-h2);
+    text-wrap: pretty;
+  }
+
+  .about__body,
+  .about__extended p {
+    max-width: 52ch;
+    margin: 0;
+    font-size: var(--text-body-l);
+    line-height: var(--lh-body);
+    text-wrap: pretty;
+  }
+
+  .about__body--mobile { display: none; }
+
+  .about__extended {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .about__quote {
+    max-width: 24ch;
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: var(--text-serif-quote);
+    font-style: italic;
+    line-height: 1.3;
+    text-wrap: pretty;
+  }
+
+  .about__stats {
+    padding-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .about__stats span { font-size: 17px; line-height: 1.5; }
+
+  @media (max-width: 767.98px) {
+    .about {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 16px;
+    }
+
+    .about__copy { display: contents; }
+    h2 { order: 1; font-size: 27px; line-height: 1.2; letter-spacing: -0.022em; }
+    .about__photo { order: 2; width: 100%; height: 280px; }
+    .about__body { order: 3; max-width: none; font-size: 17px; }
+    .about__body--desktop { display: none; }
+    .about__body--mobile { display: block; }
+    .about__extended { order: 4; gap: 14px; }
+    .about__extended p { max-width: none; font-size: 17px; }
+    .about__quote { order: 5; max-width: none; font-size: 24px; line-height: 1.32; }
+
+    .about__stats {
+      order: 6;
+      padding-top: 16px;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .about__stats span { font-size: 16px; }
+  }
+</style>

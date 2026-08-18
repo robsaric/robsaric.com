@@ -1,0 +1,280 @@
+---
+import type { NoteEntry } from '../lib/notes';
+import { NOTE_TAGS } from '../data/filters';
+import { COPY } from '../data/copy';
+import { UI } from '../data/ui';
+import Section from './Section.astro';
+import NoteCard from './NoteCard.astro';
+
+interface Props {
+  notes: NoteEntry[];
+  limit?: number;
+  showHeaderLink?: boolean;
+}
+
+const {
+  notes,
+  limit,
+  showHeaderLink = false,
+} = Astro.props;
+
+const visibleNotes = limit === undefined ? notes : notes.slice(0, limit);
+const filters = [UI.fieldNotes.allFilter, ...NOTE_TAGS];
+---
+
+<Section
+  id="field-notes"
+  number={COPY.fieldNotes.number}
+  label={COPY.fieldNotes.label}
+  tone="cream-rule"
+>
+  <div class="field-notes" data-field-notes>
+    <div class="field-notes__header">
+      <div class="field-notes__intro">
+        <h2>{COPY.fieldNotes.heading}</h2>
+        <p>{COPY.fieldNotes.body}</p>
+      </div>
+
+      {showHeaderLink && (
+        <a class="field-notes__header-link" href="/field-notes/">
+          {COPY.fieldNotes.desktopLink}
+        </a>
+      )}
+    </div>
+
+    <div class="field-notes__filters" aria-controls="field-notes-grid">
+      {filters.map((filter, index) => (
+        <button
+          type="button"
+          class="field-notes__filter"
+          aria-pressed={index === 0 ? 'true' : 'false'}
+          data-filter={filter}
+        >
+          {filter}
+        </button>
+      ))}
+    </div>
+
+    <div
+      class="field-notes__empty"
+      data-field-notes-empty
+      hidden
+    >
+      {UI.fieldNotes.empty}
+    </div>
+
+    <div id="field-notes-grid" class="field-notes__grid">
+      {visibleNotes.map((entry) => (
+        <NoteCard
+          entry={entry}
+          data-note-card
+          data-tags={entry.data.tags.join('|')}
+        />
+      ))}
+    </div>
+
+    {limit !== undefined && (
+      <a class="field-notes__mobile-link" href="/field-notes/">
+        {COPY.fieldNotes.mobileLink}
+      </a>
+    )}
+  </div>
+</Section>
+
+<script>
+  const fieldNoteRoots =
+    document.querySelectorAll<HTMLElement>('[data-field-notes]');
+
+  fieldNoteRoots.forEach((root) => {
+    if (root.dataset.ready === 'true') return;
+    root.dataset.ready = 'true';
+
+    const filters = Array.from(
+      root.querySelectorAll<HTMLButtonElement>('[data-filter]'),
+    );
+    const cards = Array.from(
+      root.querySelectorAll<HTMLElement>('[data-note-card]'),
+    );
+    const empty =
+      root.querySelector<HTMLElement>('[data-field-notes-empty]');
+    const mobileQuery = window.matchMedia('(max-width: 767.98px)');
+    let activeFilter = filters.find(
+      (filter) => filter.getAttribute('aria-pressed') === 'true',
+    )?.dataset.filter ?? '';
+
+    const applyFilter = () => {
+      let visibleCount = 0;
+      let matchingCount = 0;
+
+      cards.forEach((card) => {
+        const tags = card.dataset.tags?.split('|') ?? [];
+        const matches =
+          activeFilter === filters[0]?.dataset.filter
+          || tags.includes(activeFilter);
+
+        if (matches) matchingCount += 1;
+
+        const withinMobileLimit =
+          !mobileQuery.matches || visibleCount < 3;
+
+        card.hidden = !matches || !withinMobileLimit;
+        if (matches) visibleCount += 1;
+      });
+
+      if (empty) empty.hidden = matchingCount > 0;
+    };
+
+    filters.forEach((filter) => {
+      filter.addEventListener('click', () => {
+        activeFilter = filter.dataset.filter ?? '';
+
+        filters.forEach((candidate) => {
+          candidate.setAttribute(
+            'aria-pressed',
+            String(candidate === filter),
+          );
+        });
+
+        applyFilter();
+      });
+    });
+
+    mobileQuery.addEventListener('change', applyFilter);
+    applyFilter();
+  });
+</script>
+
+<style>
+  .field-notes {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .field-notes__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  .field-notes__intro {
+    max-width: 58ch;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: var(--text-h2);
+    line-height: var(--lh-heading);
+    letter-spacing: var(--tracking-h2);
+    text-wrap: pretty;
+  }
+
+  .field-notes__intro p {
+    margin: 0;
+    font-size: var(--text-body-l);
+    line-height: var(--lh-body);
+    text-wrap: pretty;
+  }
+
+  .field-notes__header-link,
+  .field-notes__mobile-link {
+    min-height: var(--tap-min);
+    display: inline-flex;
+    align-items: center;
+    flex: 0 0 auto;
+    font-size: 17px;
+    font-weight: 600;
+  }
+
+  .field-notes__filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .field-notes__filter {
+    min-height: var(--tap-min);
+    padding: 0 18px;
+    color: var(--ink);
+    background: transparent;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-pill);
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: border-color var(--dur-micro) var(--ease-out);
+  }
+
+  .field-notes__filter:hover { border-color: var(--forest-500); }
+
+  .field-notes__filter[aria-pressed='true'] {
+    color: var(--on-dark);
+    background: var(--forest-500);
+    border-color: var(--forest-500);
+    font-weight: 600;
+  }
+
+  .field-notes__empty {
+    padding: 40px;
+    color: var(--ink-muted);
+    border: 1px dashed var(--rule);
+    border-radius: var(--radius-lg);
+    font-size: 17px;
+    text-align: center;
+  }
+
+  .field-notes__empty[hidden] { display: none; }
+
+  .field-notes__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    align-items: start;
+  }
+
+  .field-notes__mobile-link { display: none; }
+
+  @media (max-width: 767.98px) {
+    .field-notes { gap: 16px; }
+
+    .field-notes__header {
+      align-items: stretch;
+      gap: 0;
+    }
+
+    .field-notes__intro { gap: 0; }
+    h2 { font-size: 27px; line-height: 1.2; letter-spacing: -0.022em; }
+    .field-notes__intro p,
+    .field-notes__header-link { display: none; }
+
+    .field-notes__filters {
+      flex-wrap: nowrap;
+      gap: 8px;
+      padding-bottom: 4px;
+      overflow-x: auto;
+    }
+
+    .field-notes__filter {
+      padding-inline: 16px;
+      flex: 0 0 auto;
+      white-space: nowrap;
+    }
+
+    .field-notes__empty { padding: 28px; font-size: 16px; }
+
+    .field-notes__grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 14px;
+    }
+
+    .field-notes__mobile-link {
+      display: inline-flex;
+      align-self: flex-start;
+      font-size: 16px;
+    }
+  }
+</style>

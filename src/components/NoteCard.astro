@@ -1,0 +1,144 @@
+---
+import type { NoteEntry } from '../lib/notes';
+import {
+  formatNoteDate,
+  noteHref,
+  noteMeta,
+  noteTypeColorClass,
+} from '../lib/notes';
+
+interface Props {
+  entry: NoteEntry;
+  size?: 'desktop';
+  class?: string;
+  [key: string]: unknown;
+}
+
+const {
+  entry,
+  size = 'desktop',
+  class: className,
+  ...rest
+} = Astro.props;
+
+const {
+  date,
+  stage,
+  summary,
+  type,
+} = entry.data;
+---
+
+<a
+  {...rest}
+  class:list={['note-card', className]}
+  data-size={size}
+  href={noteHref(entry)}
+>
+  <span class="note-card__header">
+    <span class:list={['note-card__type', noteTypeColorClass(type)]}>
+      {type}
+    </span>
+    <time datetime={date.toISOString().slice(0, 10)}>
+      {formatNoteDate(date)}
+    </time>
+  </span>
+
+  <span class="note-card__summary">{summary}</span>
+
+  <span class="note-card__footer">
+    <span class="note-card__rail" aria-hidden="true">
+      {[0, 1, 2, 3, 4].map((index) => (
+        <span class:list={{ 'note-card__dot--active': stage === index }}></span>
+      ))}
+    </span>
+    <span class="note-card__meta">{noteMeta(entry)}</span>
+  </span>
+</a>
+
+<style>
+  .note-card {
+    min-width: 0;
+    padding: 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    color: var(--ink);
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    transition: border-color var(--dur-micro) var(--ease-out), transform var(--dur-micro) var(--ease-out);
+  }
+
+  .note-card[hidden] { display: none; }
+
+  .note-card:hover {
+    border-color: var(--forest-500);
+    text-decoration: none;
+    transform: translateY(-2px);
+  }
+
+  .note-card__header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .note-card__type,
+  time,
+  .note-card__meta {
+    color: var(--ink-muted);
+    font-family: var(--font-mono);
+    font-size: 13px;
+  }
+
+  .note-card__type {
+    font-weight: 500;
+    letter-spacing: var(--tracking-eyebrow);
+    text-transform: uppercase;
+  }
+
+  .note-card__type--changed { color: var(--teal-700); }
+
+  .note-card__summary {
+    color: var(--ink);
+    font-size: 19px;
+    line-height: 1.5;
+    text-wrap: pretty;
+  }
+
+  .note-card__footer {
+    padding-top: 12px;
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .note-card__rail {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .note-card__rail > span {
+    width: 7px;
+    height: 7px;
+    display: block;
+    background: var(--rule);
+    border-radius: var(--radius-pill);
+  }
+
+  .note-card__rail > .note-card__dot--active {
+    background: var(--forest-500);
+  }
+
+  @media (max-width: 767.98px) {
+    .note-card { padding: 20px; gap: 12px; }
+    .note-card__summary { font-size: 17px; line-height: 1.55; }
+    .note-card__footer { padding-top: 10px; gap: 10px; }
+  }
+</style>

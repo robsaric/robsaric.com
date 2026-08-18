@@ -41,6 +41,7 @@
   --border-default: var(--rule);
   --focus-ring: var(--forest-500);
   --focus-ring-on-dark: var(--lime-500);
+  --status-critical-text: #b91c1c;
 
   /* ---- Type ---- */
   /* Font families are injected by Astro's Fonts API as --font-inter / --font-serif
