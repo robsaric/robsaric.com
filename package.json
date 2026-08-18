@@ -9,9 +9,25 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "check": "astro check",
+    "lint:copy": "node scripts/lint-copy.mjs",
+    "gate": "astro check && node scripts/lint-copy.mjs && astro build && node scripts/check-redirects.mjs",
+    "import:legacy": "node scripts/import-legacy.mjs",
+    "check:redirects": "node scripts/check-redirects.mjs"
   },
   "dependencies": {
+    "@astrojs/mdx": "^7.0.6",
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.3",
+    "@astrojs/vercel": "^11.0.6",
     "astro": "^7.2.3"
+  },
+  "description": "robsaric.com: personal site and field notes, built on Astro.",
+  "private": true,
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "turndown": "^7.2.4",
+    "typescript": "^5.9.3"
   }
 }

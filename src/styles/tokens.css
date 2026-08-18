@@ -1,0 +1,112 @@
+/* =============================================================================
+   robsaric.com design tokens
+   Source of truth: docs/design-reference/site-directions-turn8.dc.html (8a/8b)
+   Palette is a subset of the Caretrics Design System
+   (docs/design-reference/caretrics-ds-colors_and_type.css). No new colours.
+   ========================================================================== */
+
+:root {
+  /* ---- Brand palette (Caretrics DS names) ---- */
+  --forest-900: #041814;
+  --forest-700: #082820; /* footer */
+  --forest-500: #0c3b2e; /* primary: dark bands, buttons, active states, focus rings */
+  --teal-700: #0f766e;   /* inline links, "Changed my mind" type colour */
+  --lime-500: #c8f57d;   /* accent on dark only. Never text on light. */
+  --lime-100: #e8f5c8;   /* "Write to me" band */
+  --cream: #f9f9f6;      /* page background */
+  --white: #ffffff;      /* cards, inputs, stage panel */
+
+  /* ---- Site-specific neutrals (values used verbatim in the design) ---- */
+  --ink: #14201b;        /* body + heading text */
+  --ink-muted: #4b5a53;  /* eyebrows, secondary text, meta */
+  --rule: #d9d8d0;       /* borders, hairlines, filter pill borders */
+  --wash: #f1efe8;       /* outline-button hover, active stage tab */
+
+  /* ---- On-dark (used inside forest bands) ---- */
+  --on-dark: #f9f9f6;
+  --on-dark-78: rgba(249, 249, 246, 0.78);
+  --on-dark-28: rgba(249, 249, 246, 0.28);
+  --on-dark-05: rgba(249, 249, 246, 0.05);
+
+  /* ---- Semantic aliases ---- */
+  --bg-page: var(--cream);
+  --bg-card: var(--white);
+  --bg-band-dark: var(--forest-500);
+  --bg-band-footer: var(--forest-700);
+  --bg-band-write: var(--lime-100);
+  --fg-default: var(--ink);
+  --fg-muted: var(--ink-muted);
+  --fg-link: var(--teal-700);
+  --fg-brand: var(--forest-500);
+  --border-default: var(--rule);
+  --focus-ring: var(--forest-500);
+  --focus-ring-on-dark: var(--lime-500);
+
+  /* ---- Type ---- */
+  /* Font families are injected by Astro's Fonts API as --font-inter / --font-serif
+     (see astro.config.mjs). These aliases keep components provider-agnostic. */
+  --font-sans: var(--font-inter, 'Inter'), system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-serif: var(--font-serif, 'Instrument Serif'), 'Iowan Old Style', Georgia, serif;
+  --font-mono: ui-monospace, Menlo, Consolas, 'SF Mono', monospace;
+
+  /* Desktop scale (1440 reference). Mobile overrides live in components. */
+  --text-hero: 58px;        /* mobile 34px */
+  --text-h2: 38px;          /* mobile 27px */
+  --text-h3: 22px;          /* mobile 19-20px */
+  --text-lead: 19px;        /* hero body; mobile 17px */
+  --text-body-l: 18px;      /* section body; mobile 17px */
+  --text-body: 17px;        /* mobile 16px */
+  --text-ui: 16px;
+  --text-ui-s: 15px;
+  --text-meta: 14px;
+  --text-eyebrow: 13px;     /* mono, uppercase, 0.08em tracking */
+  --text-serif-principle: 28px; /* mobile 23px */
+  --text-serif-quote: 30px;     /* mobile 24px */
+  --text-metric: 44px;          /* mobile 34px */
+  --text-signal: 26px;          /* mobile 20px */
+
+  --lh-tight: 1.06;
+  --lh-heading: 1.16;
+  --lh-body: 1.6;
+  --lh-ui: 1.5;
+  --tracking-hero: -0.03em;
+  --tracking-h2: -0.026em;
+  --tracking-h3: -0.015em;
+  --tracking-eyebrow: 0.08em;
+
+  /* ---- Space (page gutters + section rhythm) ---- */
+  --gutter-desktop: 96px;
+  --gutter-mobile: 20px;
+  --section-pad-desktop: 96px;
+  --section-pad-mobile: 44px;
+  --label-col: 160px;      /* desktop section number column ("01 · Evidence") */
+  --label-gap: 48px;
+  --nav-h-desktop: 72px;
+  --nav-h-mobile: 56px;
+  --max-page: 1440px;      /* design reference width; content is fluid below it */
+
+  /* ---- Radius ---- */
+  --radius-sm: 4px;
+  --radius-md: 6px;        /* buttons, inputs */
+  --radius-lg: 8px;        /* cards, panels, DS Button */
+  --radius-xl: 12px;       /* photos */
+  --radius-pill: 9999px;
+
+  /* ---- Controls ---- */
+  --tap-min: 44px;         /* every interactive target */
+  --btn-h: 48px;           /* hero CTAs, inputs */
+  --btn-h-sm: 44px;        /* nav Caretrics button, filters, subscribe */
+
+  /* ---- Motion ---- */
+  --dur-micro: 120ms;
+  --dur-short: 200ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}

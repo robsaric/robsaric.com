@@ -1,0 +1,90 @@
+#!/usr/bin/env node
+/**
+ * Copy lint: the mechanical half of docs/COPY.md "Copy law".
+ * Scans site copy (components, pages, data, content) for:
+ *   1. em dashes (U+2014)
+ *   2. banned hype / empty-verb / jargon words
+ *   3. chatbot-tone openers and exclamation marks in prose
+ *   4. banned credential phrasings
+ * Exit 1 on any hit. Run: pnpm lint:copy
+ *
+ * Suppress a single line with the comment marker `copy-lint-ignore` on that line
+ * (only for code that talks ABOUT the rule, e.g. this file's own tests).
+ */
+import { readdirSync, readFileSync, statSync } from 'node:fs';
+import { join, relative, extname } from 'node:path';
+
+const ROOT = new URL('..', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
+const SCAN_DIRS = ['src/components', 'src/layouts', 'src/pages', 'src/data', 'src/content'];
+const EXTS = new Set(['.astro', '.ts', '.tsx', '.mjs', '.js', '.md', '.mdx', '.json']);
+// The archive is historical writing kept as written; it is exempt from tone rules
+// but not from the em-dash rule? Old posts predate the rule; exempt entirely.
+const EXEMPT_PREFIXES = ['src/content/archive'];
+
+const BANNED_WORDS = [
+  // generic SaaS adjectives (declared, not earned)
+  'seamless', 'intuitive', 'robust', 'best-in-class', 'world-class', 'cutting-edge',
+  'next-gen', 'revolutionary', 'game-changing', 'industry-leading',
+  // empty value verbs
+  'unlock', 'transform', 'supercharge', 'elevate', 'empower',
+  // corporate jargon
+  'leverage', 'synergy', 'optimize', 'optimise',
+  // credential phrasings that are locked out (docs/COPY.md item 6/7)
+  'clinic owners advised', 'advisor to 50', 'ex-dso', 'audited by hand', 'by hand', 'the books',
+  '40+ clinics',
+];
+// Words that are banned only when used as bare declared adjectives are hard to
+// detect mechanically; "simple", "powerful", "easy", "modern", "smart" are
+// flagged as warnings (not failures) so a human looks at them.
+const WARN_WORDS = ['simple', 'powerful', 'easy', 'modern', 'smart', 'insights', 'dashboard'];
+
+const CHATBOT = [
+  /\bgreat question\b/i, /\babsolutely!/i, /\bi love this\b/i, /\bhope this helps\b/i,
+  /\bwhat a fantastic\b/i, /\bi'?m happy to help\b/i, /\btotally makes sense\b/i,
+  /\bexciting milestone\b/i, /\bi just wanted to reach out\b/i,
+];
+
+const files = [];
+function walk(dir) {
+  for (const name of readdirSync(dir)) {
+    const p = join(dir, name);
+    const st = statSync(p);
+    if (st.isDirectory()) walk(p);
+    else if (EXTS.has(extname(name))) files.push(p);
+  }
+}
+for (const d of SCAN_DIRS) {
+  try { walk(join(ROOT, d)); } catch { /* dir may not exist yet */ }
+}
+
+let errors = 0;
+let warnings = 0;
+const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const wordRe = (w) => new RegExp(`(^|[^\\w-])${escapeRe(w)}(?=$|[^\\w-])`, 'i');
+
+for (const file of files) {
+  const rel = relative(ROOT, file).replace(/\\/g, '/');
+  if (EXEMPT_PREFIXES.some((p) => rel.startsWith(p))) continue;
+  const lines = readFileSync(file, 'utf8').split(/\r?\n/);
+  lines.forEach((line, i) => {
+    if (line.includes('copy-lint-ignore')) return;
+    const where = `${rel}:${i + 1}`;
+    if (line.includes('—')) { console.error(`ERROR ${where}: em dash`); errors++; }
+    for (const w of BANNED_WORDS) {
+      if (wordRe(w).test(line)) { console.error(`ERROR ${where}: banned word "${w}"`); errors++; }
+    }
+    for (const re of CHATBOT) {
+      if (re.test(line)) { console.error(`ERROR ${where}: chatbot tone ${re}`); errors++; }
+    }
+    // Exclamation marks in prose strings (not in code punctuation like `!==` or `!important`).
+    if (/[A-Za-z]![\s"'`)]/.test(line) && !/!==|!important|!\[|<!--/.test(line)) {
+      console.error(`ERROR ${where}: exclamation mark in copy`); errors++;
+    }
+    for (const w of WARN_WORDS) {
+      if (wordRe(w).test(line)) { console.warn(`WARN  ${where}: check "${w}" is earned, not declared`); warnings++; }
+    }
+  });
+}
+
+console.log(`copy-lint: ${files.length} files, ${errors} error(s), ${warnings} warning(s)`);
+process.exit(errors ? 1 : 0);

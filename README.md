@@ -1,43 +1,41 @@
-# Astro Starter Kit: Minimal
+# robsaric.com
 
-```sh
-pnpm create astro@latest -- --template minimal
+Rob Saric's personal site and field notes. Astro 7, static output, deployed on Vercel.
+
+- Design: `docs/design-reference/site-directions-turn8.dc.html` (open in a browser; 8a desktop, 8b mobile)
+- Structure: `docs/DESIGN-SPEC.md`
+- Words: `docs/COPY.md` (includes the copy law and the launch verification table)
+- Old site and redirects: `docs/MIGRATION.md`
+- Agent rules: `AGENTS.md`
+
+## Run
+
+```
+pnpm install
+pnpm dev             # http://localhost:4321
+pnpm gate            # astro check + copy lint + build + redirect check
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Draft content (`draft: true`) shows in `pnpm dev` and is hidden in production builds.
 
-## 🚀 Project Structure
+## Write a field note
 
-Inside of your Astro project, you'll see the following folders and files:
+Add `src/content/notes/YYYY-MM-DD-slug.md`:
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```md
+---
+title: "Title for the page"
+summary: "One or two sentences. This is what the card shows."
+type: "Field note"          # Field note | Shipped | Changed my mind
+date: 2026-08-18
+tags: ["Clinic revenue"]    # see src/data/filters.ts
+stage: 4                    # 0 Found .. 4 Paid, or -1
+meta: "Paid · Clinic revenue"
+---
+
+Body in Markdown.
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Environment
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- `PUBLIC_NEWSLETTER_ENDPOINT` (optional): POST target for the subscribe form. Unset hides the form and shows an email link instead.
