@@ -154,6 +154,7 @@ Change from the artboard: "50+ clinic owners advised" became "50+ clinics, first
 - Label: Email address · Placeholder: you@clinic.com · Button: Subscribe · Loading label: Subscribing…
 - Invalid error: That does not look like an email address.
 - No-endpoint fallback link: Email me and I will add you. (`/contact/`)
+- Newsletter backend: Resend contacts (segment + topic) via `POST /api/subscribe/`; see README "Environment".
 
 ## Footer
 
@@ -171,6 +172,12 @@ Change from the artboard: "2011 to 2019" became "2009 to 2019" (the oldest post 
 - `/methodology/` H1: What the number means · body `[TODO before launch, V5]`: three short sections, "What was counted", "What was not counted", "Where it came from". Until written, the page carries a single line: "This page will explain how the $127,000 figure was identified, what it does and does not count, and where it came from. It is not published until that is written." and `noindex`.
 - `/contact/` H1: Write to me · body: the desktop Write-to-me body without the link, then the email (if set) and LinkedIn.
 - 404 H1: Nothing here. · body: The page moved or never existed. Try the field notes or the archive.
+- `/subscribed/` (server-rendered result of the subscribe form; `noindex`; state comes from `?status=`):
+  - ok (default): H1 "You are on the list." · body "Occasional notes, no schedule I cannot keep. Reply to any of them. I read and answer everything myself."
+  - exists: H1 "You were already on the list." · body "Nothing to do. The next note will reach you."
+  - invalid: H1 "That does not look like an email address." · body "Go back and try again, or email me and I will add you myself." ("email me" links to `/contact/`)
+  - error: H1 "That did not go through." · body "Something failed on my side, not yours. Email me and I will add you myself." ("email me" links to `/contact/`)
+  - all states: link "Back to the field notes →" (`/field-notes/`)
 
 ## Verification table (carry into the launch checklist)
 

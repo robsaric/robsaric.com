@@ -89,6 +89,43 @@ export const COPY = {
     cardBodyDesktop: 'Occasional notes on what I saw in a clinic and what I would check in yours. No schedule I cannot keep.',
     cardBodyMobile: 'Occasional notes on what I saw in a clinic and what I would check in yours.',
   },
+  subscribed: {
+    states: {
+      ok: {
+        heading: 'You are on the list.',
+        body: {
+          beforeLink: 'Occasional notes, no schedule I cannot keep. Reply to any of them. I read and answer everything myself.',
+          link: '',
+          afterLink: '',
+        },
+      },
+      exists: {
+        heading: 'You were already on the list.',
+        body: {
+          beforeLink: 'Nothing to do. The next note will reach you.',
+          link: '',
+          afterLink: '',
+        },
+      },
+      invalid: {
+        heading: 'That does not look like an email address.',
+        body: {
+          beforeLink: 'Go back and try again, or ',
+          link: 'email me',
+          afterLink: ' and I will add you myself.',
+        },
+      },
+      error: {
+        heading: 'That did not go through.',
+        body: {
+          beforeLink: 'Something failed on my side, not yours. ',
+          link: 'Email me',
+          afterLink: ' and I will add you myself.',
+        },
+      },
+    },
+    backLink: 'Back to the field notes →',
+  },
   footer: {
     line: 'I look for people building things that help others live better lives.',
     byline: 'Rob Saric · Founder of Caretrics · Ottawa.',

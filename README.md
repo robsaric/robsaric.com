@@ -1,6 +1,6 @@
 # robsaric.com
 
-Rob Saric's personal site and field notes. Astro 7, static output, deployed on Vercel.
+Rob Saric's personal site and field notes. Astro 7, static output with on-demand newsletter routes, deployed on Vercel.
 
 - Design: `docs/design-reference/site-directions-turn8.dc.html` (open in a browser; 8a desktop, 8b mobile)
 - Structure: `docs/DESIGN-SPEC.md`
@@ -38,4 +38,19 @@ Body in Markdown.
 
 ## Environment
 
-- `PUBLIC_NEWSLETTER_ENDPOINT` (optional): POST target for the subscribe form. Unset hides the form and shows an email link instead.
+Copy `.env.example` to `.env` for local development. Set the same values in the Vercel project for Preview and Production as needed.
+
+- `PUBLIC_NEWSLETTER_ENDPOINT`: public form action exposed to the browser. Use `/api/subscribe/`.
+- `RESEND_API_KEY`: server-only Resend API key. Create a Full access key named `robsaric.com subscribe`.
+- `RESEND_SEGMENT_ID`: server-only identifier copied from the Resend segment URL.
+- `RESEND_TOPIC_ID`: optional server-only identifier copied from the Resend topic URL.
+
+Only `PUBLIC_NEWSLETTER_ENDPOINT` uses the `PUBLIC_` prefix. The Resend key and identifiers must remain server-only.
+
+When `PUBLIC_NEWSLETTER_ENDPOINT` is unset, the homepage hides the form and shows the contact fallback link.
+
+## Newsletter
+
+The homepage form posts to `/api/subscribe/`. The endpoint validates the address, creates or updates the Resend contact, adds it to the configured segment, opts it into the configured topic when present, then sends the browser to `/subscribed/`.
+
+Field notes are sent through Resend Broadcasts scoped to the configured segment and topic.

@@ -47,6 +47,15 @@ const newsletterEndpoint =
           novalidate
           data-newsletter-form
         >
+          <div class="newsletter__honeypot" aria-hidden="true">
+            <input
+              type="text"
+              name="website"
+              tabindex="-1"
+              autocomplete="off"
+              aria-hidden="true"
+            />
+          </div>
           <label for="newsletter-email">{UI.newsletter.emailLabel}</label>
           <input
             id="newsletter-email"
@@ -190,6 +199,14 @@ const newsletterEndpoint =
     display: flex;
     flex-direction: column;
     gap: 10px;
+  }
+
+  .newsletter__honeypot {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
   }
 
   label { font-size: 16px; font-weight: 500; }

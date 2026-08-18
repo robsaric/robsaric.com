@@ -57,7 +57,9 @@ export default defineConfig({
     vercelSlashTolerantRedirects(),
   ],
   // Self-hosted at build time through the Fonts API (no runtime Google requests).
-  // Consumed in BaseLayout via <Font cssVariable="--font-inter" preload />.
+  // Consumed in BaseLayout via <Font cssVariable="--font-inter" preload /> and
+  // <Font cssVariable="--font-instrument-serif" />; tokens.css aliases them as
+  // --font-sans / --font-serif (distinct names, so the aliases cannot self-reference).
   fonts: [
     {
       provider: fontProviders.google(),
@@ -71,7 +73,7 @@ export default defineConfig({
     {
       provider: fontProviders.google(),
       name: 'Instrument Serif',
-      cssVariable: '--font-serif',
+      cssVariable: '--font-instrument-serif',
       weights: [400],
       styles: ['italic', 'normal'],
       subsets: ['latin'],

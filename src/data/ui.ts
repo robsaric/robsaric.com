@@ -33,6 +33,9 @@ export const UI = {
     invalidEmail: 'That does not look like an email address.',
     fallback: 'Email me and I will add you.',
   },
+  api: {
+    methodNotAllowed: 'Method not allowed.',
+  },
   article: {
     backToFieldNotes: 'Back to field notes',
     backToArchive: 'Back to archive',

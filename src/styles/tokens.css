@@ -44,10 +44,13 @@
   --status-critical-text: #b91c1c;
 
   /* ---- Type ---- */
-  /* Font families are injected by Astro's Fonts API as --font-inter / --font-serif
-     (see astro.config.mjs). These aliases keep components provider-agnostic. */
+  /* Font families are injected by Astro's Fonts API as --font-inter and
+     --font-instrument-serif (see astro.config.mjs). These aliases keep components
+     provider-agnostic. The alias names MUST differ from the injected names: a
+     custom property that references itself is a cycle and computes to nothing
+     (that bug shipped once and rendered the serif lines as slanted Inter). */
   --font-sans: var(--font-inter, 'Inter'), system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-serif: var(--font-serif, 'Instrument Serif'), 'Iowan Old Style', Georgia, serif;
+  --font-serif: var(--font-instrument-serif, 'Instrument Serif'), 'Iowan Old Style', Georgia, serif;
   --font-mono: ui-monospace, Menlo, Consolas, 'SF Mono', monospace;
 
   /* Desktop scale (1440 reference). Mobile overrides live in components. */

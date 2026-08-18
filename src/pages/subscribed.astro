@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { COPY } from '../data/copy';
+
+export const prerender = false;
+
+type SubscribedStatus =
+  keyof typeof COPY.subscribed.states;
+
+const requestedStatus =
+  Astro.url.searchParams.get('status');
+
+const status: SubscribedStatus =
+  requestedStatus
+  && Object.hasOwn(
+    COPY.subscribed.states,
+    requestedStatus,
+  )
+    ? requestedStatus as SubscribedStatus
+    : 'ok';
+
+const state = COPY.subscribed.states[status];
+const description = [
+  state.body.beforeLink,
+  state.body.link,
+  state.body.afterLink,
+].join('');
+---
+
+<BaseLayout
+  title={state.heading}
+  description={description}
+  noindex
+>
+  <div class="subscribed">
+    <h1>{state.heading}</h1>
+
+    <p>
+      {state.body.beforeLink}
+      {state.body.link && (
+        <a href="/contact/">{state.body.link}</a>
+      )}
+      {state.body.afterLink}
+    </p>
+
+    <a class="subscribed__back" href="/field-notes/">
+      {COPY.subscribed.backLink}
+    </a>
+  </div>
+</BaseLayout>
+
+<style>
+  .subscribed {
+    width: 100%;
+    max-width: var(--max-page);
+    margin: 0 auto;
+    padding: var(--section-pad-desktop) var(--gutter-desktop);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  h1 {
+    max-width: 60ch;
+    margin: 0;
+    font-size: 48px;
+    line-height: 1.1;
+    letter-spacing: -0.028em;
+    text-wrap: pretty;
+  }
+
+  p {
+    max-width: 60ch;
+    margin: 0;
+    font-size: 18px;
+    line-height: var(--lh-body);
+    text-wrap: pretty;
+  }
+
+  .subscribed__back {
+    min-height: var(--tap-min);
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  @media (max-width: 767.98px) {
+    .subscribed {
+      padding: var(--section-pad-mobile) var(--gutter-mobile);
+    }
+
+    h1 { font-size: 34px; }
+    p { font-size: 17px; }
+  }
+</style>
