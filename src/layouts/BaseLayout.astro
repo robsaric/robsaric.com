@@ -50,7 +50,8 @@ const serializedJsonLd = jsonLd
     <title>{documentTitle}</title>
     <meta name="description" content={metaDescription} />
     <link rel="canonical" href={canonical.href} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- No SVG icon: the mark is an illustration with no vector source. The
+         "SVG" that shipped with it was a 2.9MB base64 PNG in an SVG wrapper. -->
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

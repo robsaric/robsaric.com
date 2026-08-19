@@ -10,6 +10,8 @@ export const UI = {
   nav: {
     primaryLabel: 'Primary navigation',
     wordmarkLabel: 'Home',
+    /** The mark is decorative: the wordmark beside it already names the site. */
+    markAlt: '',
     fieldNotes: 'Field notes',
     principles: 'Principles',
     about: 'About',
