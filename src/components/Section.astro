@@ -3,7 +3,8 @@ import Eyebrow from './Eyebrow.astro';
 import { UI } from '../data/ui';
 
 interface Props {
-  number: string;
+  /** Homepage bands are numbered 01 to 06. Inner pages pass a label only. */
+  number?: string;
   label: string;
   id: string;
   tone?: 'cream' | 'dark' | 'lime' | 'cream-rule';
@@ -29,7 +30,7 @@ const {
   <div class="section__frame">
     <div class="section__label">
       <Eyebrow onDark={tone === 'dark'}>
-        {number}{UI.section.separator}{label}
+        {number ? `${number}${UI.section.separator}${label}` : label}
       </Eyebrow>
     </div>
     <div class="section__content">

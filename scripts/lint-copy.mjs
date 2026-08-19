@@ -39,8 +39,17 @@ const BANNED_WORDS = [
   'clinic owners advised', 'advisor to 50', 'ex-dso', 'audited by hand', 'by hand', 'the books',
   '40+ clinics',
   // The locked credential (docs/COPY.md item 7) bans these outright, not only in
-  // the phrasings above. "audit" stays legal: "audit trail retained" is approved.
-  'audited', 'advised', 'advisor', 'advisory',
+  // the phrasings above. The verbs are the claim: "I advised clinic owners" and
+  // "I audited fifty clinics" both used to pass, and both re-create the credential
+  // that "50+ clinics, firsthand" deliberately replaced.
+  //
+  // The NOUNS are not banned. "advisor" and "advisory" name roles, and a named
+  // role ("Canadian Digital Adoption Program advisor") is a checkable job title,
+  // not a claim about how many clinics were advised. Banning them was an
+  // over-correction on 2026-08-19; narrowed 2026-08-19.
+  //
+  // "audit" also stays legal: "audit trail retained" is approved copy.
+  'audited', 'advised',
 ];
 // Words that are banned only when used as bare declared adjectives are hard to
 // detect mechanically; "simple", "powerful", "easy", "modern", "smart" are

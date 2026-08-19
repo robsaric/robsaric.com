@@ -1,9 +1,25 @@
 ---
+/**
+ * /about/ page. Its own composition, from docs/ABOUT-PAGE-BRIEF.md and the
+ * claude.ai/design turn 9 artboards (9a desktop 1440, 9b mobile 390).
+ *
+ * It deliberately does NOT reuse `About.astro`. That component is transcribed
+ * from artboards 8a and 8b and belongs to the homepage; this page needs a
+ * different narrative shape. `Section` carries a plain label here rather than a
+ * number, because 01 to 06 are a table of contents for one homepage scroll.
+ */
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import About from '../components/About.astro';
+import Section from '../components/Section.astro';
+import Eyebrow from '../components/Eyebrow.astro';
+import Button from '../components/Button.astro';
+import portrait from '../assets/images/rob-portrait.jpg';
+import signature from '../assets/images/rob-signature.png';
 import { COPY } from '../data/copy';
 import { SITE } from '../data/site';
 import { UI } from '../data/ui';
+
+const A = COPY.aboutPage;
 
 const sameAs = [
   SITE.links.linkedin,
@@ -11,6 +27,10 @@ const sameAs = [
   SITE.links.github,
 ].filter(Boolean);
 
+/**
+ * Third person on purpose: this feeds structured data, never the page. The
+ * visible copy is first person throughout.
+ */
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
@@ -32,24 +52,428 @@ const jsonLd = {
   description={COPY.pages.about.description}
   jsonLd={jsonLd}
 >
-  <header class="page-header">
-    <h1>{COPY.pages.about.title}</h1>
+  <header class="about-header">
+    <div class="about-header__frame">
+      <div class="about-header__label">
+        <Eyebrow>{A.label}</Eyebrow>
+      </div>
+
+      <div class="about-header__content">
+        <div class="about-header__copy">
+          <h1>{A.heading}</h1>
+          {A.intro.map((paragraph) => <p class="about-header__intro">{paragraph}</p>)}
+        </div>
+
+        <div class="about-header__portrait">
+          <span class="about-header__offset" aria-hidden="true"></span>
+          <Image
+            class="about-header__image"
+            src={portrait}
+            alt={A.portraitAlt}
+            width={320}
+            height={384}
+            loading="eager"
+          />
+        </div>
+
+        <dl class="facts">
+          {A.facts.map((fact) => (
+            <div class="facts__item">
+              <dt>{fact.term}</dt>
+              <dd>{fact.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </div>
   </header>
-  <About extended />
+
+  <Section id="background" label={A.background.label} tone="cream-rule">
+    <div class="prose-zone">
+      <h2>{A.background.headingOne}</h2>
+      <div class="prose-zone__body">
+        {A.background.bodyOne.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+
+      <h2 class="prose-zone__heading--spaced">{A.background.headingTwo}</h2>
+      <div class="prose-zone__body">
+        {A.background.bodyTwo.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+    </div>
+  </Section>
+
+  <Section id="caretrics" label={A.caretrics.label} tone="cream-rule">
+    <div class="prose-zone">
+      <h2>{A.caretrics.heading}</h2>
+      <div class="prose-zone__body">
+        {A.caretrics.body.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+
+      <div class="prose-zone__cta">
+        <Button href={SITE.caretricsUrl} variant="dark" size="lg" icon="arrow-up-right" external>
+          {COPY.caretrics.cta}
+        </Button>
+      </div>
+
+      <a class="prose-zone__quiet" href={SITE.togetherenUrl} target="_blank" rel="noopener">
+        {COPY.caretrics.togetherenLink}
+      </a>
+    </div>
+  </Section>
+
+  <Section id="outside" label={A.outside.label} tone="cream-rule">
+    <div class="prose-zone">
+      <h2>{A.outside.heading}</h2>
+      <div class="prose-zone__body">
+        {A.outside.body.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+
+      <figure class="standard">
+        <blockquote>{A.outside.quote}</blockquote>
+        <figcaption>
+          <Image
+            class="standard__signature"
+            src={signature}
+            alt={A.outside.signatureAlt}
+            width={176}
+            height={176}
+            loading="lazy"
+          />
+          <span class="standard__attribution">{A.outside.attribution}</span>
+        </figcaption>
+      </figure>
+
+      <div class="exits">
+        <a href="/contact/">{A.outside.contactLink}</a>
+        <a href="/field-notes/">{A.outside.notesLink}</a>
+      </div>
+    </div>
+  </Section>
 </BaseLayout>
 
 <style>
-  .page-header {
+  /* ---- Header -------------------------------------------------------------
+     Not a <Section>: no number, no top rule (the nav already has one), and
+     asymmetric padding. Mirrors .section__frame in Section.astro; keep the two
+     in step if the frame there changes. */
+  .about-header { background: var(--cream); }
+
+  .about-header__frame {
     width: 100%;
     max-width: var(--max-page);
     margin: 0 auto;
-    padding: 96px var(--gutter-desktop);
+    padding: 96px var(--gutter-desktop) 72px;
+    display: grid;
+    grid-template-columns: var(--label-col) minmax(0, 1fr);
+    gap: var(--label-gap);
   }
 
-  h1 { margin: 0; font-size: 48px; line-height: 1.1; letter-spacing: -0.028em; }
+  .about-header__label { padding-top: 10px; }
 
+  .about-header__content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .about-header__copy {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.028em;
+    max-width: 22ch;
+    text-wrap: pretty;
+  }
+
+  .about-header__intro {
+    margin: 0;
+    max-width: 62ch;
+    font-size: var(--text-body-l);
+    line-height: 1.7;
+    text-wrap: pretty;
+  }
+
+  /* The one ornament on the page: a lime block offset behind the portrait.
+     Decorative and aria-hidden, never carrying text (lime is 1.18:1 on cream). */
+  .about-header__portrait {
+    position: relative;
+    width: 320px;
+    height: 384px;
+  }
+
+  .about-header__offset {
+    position: absolute;
+    left: -14px;
+    bottom: -14px;
+    width: 100%;
+    height: 100%;
+    background: var(--lime-500);
+    border-radius: var(--radius-xl);
+  }
+
+  .about-header__image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    display: block;
+    object-fit: cover;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-xl);
+  }
+
+  /* ---- Facts rail ---------------------------------------------------------
+     A definition list, not a stat display: values stay at body size, there is
+     no metric type, no box, no colour. */
+  .facts {
+    grid-column: 1 / -1;
+    margin: 48px 0 0;
+    padding: 28px 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .facts__item {
+    min-width: 0;
+    padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border-left: 1px solid var(--rule);
+  }
+
+  .facts__item:first-child { padding-left: 0; border-left: 0; }
+  .facts__item:last-child { padding-right: 0; }
+
+  .facts dt {
+    color: var(--ink-muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-eyebrow);
+    font-weight: 500;
+    letter-spacing: var(--tracking-eyebrow);
+    text-transform: uppercase;
+  }
+
+  .facts dd {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.5;
+  }
+
+  /* ---- Shared zone body ---------------------------------------------------
+     62ch measure, flush left. Evidence, Caretrics and Principles all begin at
+     the same x on the homepage; centring here would break that spine. */
+  .prose-zone {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .prose-zone h2 {
+    margin: 0 0 24px;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: var(--tracking-h3);
+  }
+
+  .prose-zone__heading--spaced { margin-top: 48px; }
+
+  .prose-zone__body {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .prose-zone__body p {
+    margin: 0;
+    max-width: 62ch;
+    font-size: var(--text-body-l);
+    line-height: var(--lh-body);
+    text-wrap: pretty;
+  }
+
+  .prose-zone__cta { padding-top: 32px; align-self: flex-start; }
+
+  /* Never beside the button, so the hierarchy is unambiguous. */
+  .prose-zone__quiet {
+    margin-top: 20px;
+    align-self: flex-start;
+    min-height: var(--tap-min);
+    display: inline-flex;
+    align-items: center;
+    color: var(--fg-link);
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .prose-zone__quiet:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+  /* ---- The standard -------------------------------------------------------
+     722px card wrapping a 46ch measure with even 64px padding, box-sizing
+     border-box so the width is the real width. A tighter, taller block gives
+     the card a shape of its own against the full-width paragraphs above it. */
+  .standard {
+    box-sizing: border-box;
+    /**
+     * fit-content, capped at 722px. The 722 wraps a 46ch measure with even
+     * 64px padding, which is right for a long pull quote. The standard as
+     * written is 39 characters, so a fixed 722 would leave half the card empty.
+     * This shrink-wraps to whichever quote ships and caps at the designed width.
+     */
+    width: fit-content;
+    max-width: 722px;
+    margin: 56px 0 0;
+    padding: 56px 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-xl);
+  }
+
+  .standard blockquote {
+    margin: 0;
+    max-width: 46ch;
+    color: var(--ink);
+    font-family: var(--font-serif);
+    font-size: 28px;
+    font-style: italic;
+    line-height: 1.3;
+    text-wrap: pretty;
+  }
+
+  .standard figcaption {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  /* The ink sits 61/800 in from the left of its canvas, so the negative left
+     margin pulls the first stroke onto the text edge. Keep the two in step. */
+  .standard__signature {
+    width: 176px;
+    height: auto;
+    margin: 0 0 -12px -13px;
+    display: block;
+  }
+
+  .standard__attribution {
+    color: var(--ink-muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-eyebrow);
+    font-weight: 500;
+    letter-spacing: var(--tracking-eyebrow);
+    text-transform: uppercase;
+  }
+
+  /* ---- Exits -------------------------------------------------------------- */
+  .exits {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .exits a {
+    min-height: var(--tap-min);
+    display: inline-flex;
+    align-items: center;
+    color: var(--fg-link);
+    font-size: 17px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .exits a:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+  /* ---- 768 to 1150 --------------------------------------------------------
+     Desktop layout, less chrome. Narrowing the portrait column instead of
+     stacking would leave 288px for a 48px H1 at 768. */
+  @media (min-width: 768px) and (max-width: 1149.98px) {
+    .about-header__frame { padding: 64px var(--gutter-desktop) 48px; }
+
+    .about-header__content {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 32px;
+    }
+
+    .about-header__portrait { width: 100%; max-width: 320px; }
+
+    .facts__item { padding: 0 28px; }
+    .standard { padding: 44px 40px; }
+  }
+
+  /* ---- Mobile -------------------------------------------------------------
+     Portrait between H1 and body, mirroring the mobile hero order. The facts
+     rail goes single column, each cell ruled rather than gapped. */
   @media (max-width: 767.98px) {
-    .page-header { padding: 44px var(--gutter-mobile); }
-    h1 { font-size: 34px; }
+    .about-header__frame {
+      padding: 44px var(--gutter-mobile) 32px;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 16px;
+    }
+
+    .about-header__label { padding-top: 0; }
+
+    .about-header__content {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 24px;
+    }
+
+    .about-header__copy { display: contents; }
+
+    h1 { order: 1; font-size: 32px; letter-spacing: -0.024em; max-width: none; }
+    .about-header__portrait { order: 2; width: 100%; height: 280px; }
+    .about-header__intro { order: 3; font-size: var(--text-body); max-width: none; }
+    .facts { order: 4; margin-top: 12px; padding: 20px 0 4px; }
+
+    .about-header__offset { left: -10px; bottom: -10px; }
+
+    .facts {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .facts__item {
+      padding: 16px 0 0;
+      border-left: 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    .facts__item:first-child { padding-top: 0; border-top: 0; }
+    .facts dd { font-size: 16px; }
+
+    .prose-zone h2 { font-size: 24px; }
+    .prose-zone__heading--spaced { margin-top: 36px; }
+    .prose-zone__body { gap: 20px; }
+    .prose-zone__body p { font-size: var(--text-body); max-width: none; }
+
+    .prose-zone__cta { align-self: stretch; }
+
+    .standard {
+      margin-top: 36px;
+      padding: 28px 24px;
+      gap: 24px;
+    }
+
+    .standard blockquote { font-size: 24px; max-width: none; }
+    .standard__signature { width: 150px; margin: 0 0 -10px -11px; }
+
+    .exits { margin-top: 36px; }
   }
 </style>

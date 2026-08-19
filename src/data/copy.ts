@@ -73,6 +73,63 @@ export const COPY = {
     photoAlt: 'Rob Saric outdoors',
     signatureAlt: 'Rob Saric',
   },
+  /**
+   * 07 · /about/ page. Its own composition, not the homepage About band.
+   * Copy approved 2026-08-19 (docs/ABOUT-PAGE-BRIEF.md section 3.1). Where the
+   * claude.ai/design export rewrote a line, the approved line is kept here and
+   * the rewrite is listed in the brief for a ruling. See docs/COPY.md.
+   */
+  aboutPage: {
+    label: 'About',
+    heading: 'I spent twenty years building software. Healthcare is where the work became personal.',
+    intro: [
+      'I grew up in a blue-collar family in Windsor, Ontario. Work meant showing up, helping where help was needed, and not making much noise about it. I carried that with me to Ottawa and into a career building software.',
+      'Along the way I worked at Trend Micro, Pythian and Mitel. Each taught me something about running systems other people depend on.',
+    ],
+    portraitAlt: 'Rob Saric',
+    /** Orientation cues, never a stat display. Values stay at body size. */
+    facts: [
+      { term: 'Based in', value: 'Ottawa, Canada' },
+      { term: 'Building software', value: '20+ years' },
+      { term: 'Clinics seen firsthand', value: '50+' },
+    ],
+    background: {
+      label: 'Background',
+      headingOne: 'Where healthcare came in.',
+      bodyOne: [
+        'My first real view into healthcare operations came through Dentallytics, an analytics platform I built for a dental group.',
+        'Later, as a digital advisor through the Canadian Digital Adoption Program, I worked directly with clinic owners on the gap between software, operations, and care. I also have family members who run clinics, and I have tried more than once to build clinical software companies.',
+        'It is difficult work. The workflows are complicated and trust is earned slowly.',
+        'I went through twelve months of records for more than fifty clinics, one clinic at a time, and kept finding the same four gaps.',
+      ],
+      headingTwo: 'What the failures changed.',
+      bodyTwo: [
+        'I built one startup around helping orthopedic surgeons deliver care protocols. Athlete Builder had a product I believed in and the wrong economic model.',
+        'Those failures cost time and money. They also changed how I build. Stay close to the people doing the work, and test the business before the product.',
+      ],
+    },
+    caretrics: {
+      label: 'Caretrics',
+      heading: 'Why Caretrics.',
+      body: [
+        'Allied-health and rehab clinicians help people live better with pain, injury, and chronic conditions. There are not enough of them, and the clinics around them have to stay open.',
+        'That is what I am building with Caretrics: a way for clinics to see the revenue and follow-up work that gets missed, give it an owner, and keep it moving without adding administration.',
+      ],
+    },
+    outside: {
+      label: 'Outside',
+      heading: 'Outside the work.',
+      body: [
+        'I like athletics, travel, AI experiments, and small projects that teach me something. I am a dad to two kids and have mentored with Big Brothers Big Sisters for over a decade.',
+        'Time is the thing people in care have least of, and it is the thing most software asks for more of. That is the whole reason I care about this work.',
+      ],
+      quote: 'If it adds work to care, it has failed.',
+      signatureAlt: 'Rob Saric',
+      attribution: 'Rob Saric, founder of Caretrics',
+      contactLink: 'Write to me and tell me where I am wrong →',
+      notesLink: 'Read the field notes →',
+    },
+  },
   writeToMe: {
     number: '06',
     label: 'Write to me',

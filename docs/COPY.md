@@ -12,7 +12,7 @@ Human-centred, no AI slop. These are blockers, enforced by `pnpm lint:copy` (see
 4. **Machine-rhythm tells.** At most one "not X, it's Y" contrast per section. Two examples where two carry the point, not three. Do not end two consecutive paragraphs on a punchline. Do not announce the point ("Here's the thing:"). Vary sentence length. Active voice.
 5. **Healthcare register.** "Clinic", never "practice". "Provider" for headcount, "clinician" only when the care relationship is the point. "Jane.app" on first mention on a page, "Jane" after that. Never imply a Jane partnership or endorsement; "reads a clinic's Jane data with read-only access" is the approved shape. Patient examples use "First L." format and never real data.
 6. **Numbers.** Every public number carries a line saying what it counts and where it came from. "Identified is not collected." No clinic counts beyond the credential line. Never say "audited", "advised", "ex-DSO", "by hand", or "the books".
-7. **The credential (locked 2026-08-16).** Short: `50+ clinics, firsthand`. First person: "I went through twelve months of records for more than fifty clinics, one clinic at a time, and kept finding the same four gaps." Third person (About page, JSON-LD): "Rob Saric spent twenty years building software, including years as a systems architect inside large managed health-service organizations. He built Dentallytics, an analytics platform for dental groups, then went through twelve months of records for 50+ allied health clinics, one clinic at a time, and found the same four gaps almost every time." Dentallytics is named without "and sold". Trend Micro, Mitel, Pythian may be named on `/about/` only, text only.
+7. **The credential (locked 2026-08-16; the ban narrowed 2026-08-19).** The banned words are the VERBS: "advised" and "audited". They are the claim. The NOUNS "advisor" and "advisory" are not banned, because a named role is a checkable job title, not a claim about how many clinics were advised. Rob was on the Canadian Digital Adoption Program approved advisor roster, confirmed 2026-08-19, so "digital advisor through the Canadian Digital Adoption Program" is permitted. Short: `50+ clinics, firsthand`. First person: "I went through twelve months of records for more than fifty clinics, one clinic at a time, and kept finding the same four gaps." Third person (About page, JSON-LD): "Rob Saric spent twenty years building software, including years as a systems architect inside large managed health-service organizations. He built Dentallytics, an analytics platform for dental groups, then went through twelve months of records for 50+ allied health clinics, one clinic at a time, and found the same four gaps almost every time." Dentallytics is named without "and sold". Trend Micro, Mitel, Pythian may be named on `/about/` only, text only.
 8. **Do not invent.** Now items, field notes, dates, dollar figures, and biography lines flagged `[VERIFY]` or `[DRAFT]` below stay flagged until Rob confirms them. Draft entries carry `draft: true` and are hidden from production builds.
 9. **Vision line** may be used but never over-explained: "clinics that do good do well." Never the word "simple".
 
@@ -137,6 +137,21 @@ Principles 4 and 5 come from design v4 (7a), where the list had six; "Good syste
 - Signature alt: Rob Saric (`rob-signature.png`, under the quote, signing the standard)
 
 Change from the artboard: "50+ clinic owners advised" became "50+ clinics, firsthand" (locked credential form).
+
+## 07 · /about/ page
+
+Its own composition (`src/pages/about.astro`), not the homepage About band. Built 2026-08-19 from `docs/ABOUT-PAGE-BRIEF.md` and the claude.ai/design turn 9 artboards. Strings live in `COPY.aboutPage`.
+
+- Label: About (plain word in the label column; `Section` `number` is optional as of 2026-08-19, because 01 to 06 are a table of contents for one homepage scroll)
+- H1: I spent twenty years building software. Healthcare is where the work became personal.
+- Facts rail (definition list, values at body size, never a stat display): Based in / Ottawa, Canada · Building software / 20+ years · Clinics seen firsthand / 50+
+- Zones: Background ("Where healthcare came in." and "What the failures changed."), Caretrics ("Why Caretrics."), Outside ("Outside the work.")
+- The standard sits in a card at the end: serif italic 28px (24 mobile), signature, then "Rob Saric, founder of Caretrics". The card is `fit-content` capped at 722px.
+- Exits: "Write to me and tell me where I am wrong →" (`/contact/`) · "Read the field notes →" (`/field-notes/`)
+
+`Clinics seen firsthand / 50+` splits the locked short form `50+ clinics, firsthand` across a term and a value. `[VERIFY V13: item 7 sign-off for the split, or the rail drops to two cells and the credential lives in prose only]`
+
+The claude.ai/design export rewrote copy in both artboards. Those rewrites were NOT applied; they are listed for a ruling in `docs/ABOUT-PAGE-BRIEF.md`. The approved copy is what ships.
 
 - `/about/` H1: About
 - `/about/` body: the About body above, then the third-person credential paragraph (Copy law item 7), then: "Before Caretrics I spent years as a systems architect inside large managed health-service organizations, and earlier at Trend Micro, Mitel and Pythian." `[VERIFY V2/V3]`
