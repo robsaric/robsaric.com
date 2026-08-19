@@ -50,8 +50,8 @@ export default defineConfig({
   adapter: vercel(),
   integrations: [
     sitemap({
-      // /methodology/ is noindex until its copy is written (docs/COPY.md, V5).
-      filter: (page) => !page.includes('/methodology/'),
+      // /how-i-counted/ is noindex until its copy is written (docs/COPY.md, V5).
+      filter: (page) => !page.includes('/how-i-counted/'),
     }),
     mdx(),
     vercelSlashTolerantRedirects(),

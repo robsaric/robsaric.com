@@ -124,6 +124,16 @@ const { extended = false } = Astro.props;
 
   .about__stats span { font-size: 17px; line-height: 1.5; }
 
+  @media (min-width: 768px) and (max-width: 1149.98px) {
+    .about {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 32px;
+      align-items: start;
+    }
+
+    .about__photo { width: 100%; max-width: 360px; }
+  }
+
   @media (max-width: 767.98px) {
     .about {
       display: flex;

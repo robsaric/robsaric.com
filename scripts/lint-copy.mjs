@@ -15,11 +15,17 @@ import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, relative, extname } from 'node:path';
 
 const ROOT = new URL('..', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
-const SCAN_DIRS = ['src/components', 'src/layouts', 'src/pages', 'src/data', 'src/content'];
-const EXTS = new Set(['.astro', '.ts', '.tsx', '.mjs', '.js', '.md', '.mdx', '.json']);
+// `public` is scanned because public/llms.txt restates the locked credential and
+// the site description verbatim, and used to sit outside every check.
+const SCAN_DIRS = [
+  'src/components', 'src/layouts', 'src/pages', 'src/data', 'src/content', 'public',
+];
+const EXTS = new Set([
+  '.astro', '.ts', '.tsx', '.mjs', '.js', '.md', '.mdx', '.json', '.txt',
+]);
 // The archive is historical writing kept as written; it is exempt from tone rules
 // but not from the em-dash rule? Old posts predate the rule; exempt entirely.
-const EXEMPT_PREFIXES = ['src/content/archive'];
+const EXEMPT_PREFIXES = ['src/content/archive', 'public/archive'];
 
 const BANNED_WORDS = [
   // generic SaaS adjectives (declared, not earned)
@@ -32,6 +38,9 @@ const BANNED_WORDS = [
   // credential phrasings that are locked out (docs/COPY.md item 6/7)
   'clinic owners advised', 'advisor to 50', 'ex-dso', 'audited by hand', 'by hand', 'the books',
   '40+ clinics',
+  // The locked credential (docs/COPY.md item 7) bans these outright, not only in
+  // the phrasings above. "audit" stays legal: "audit trail retained" is approved.
+  'audited', 'advised', 'advisor', 'advisory',
 ];
 // Words that are banned only when used as bare declared adjectives are hard to
 // detect mechanically; "simple", "powerful", "easy", "modern", "smart" are

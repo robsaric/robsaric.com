@@ -19,7 +19,18 @@ const {
 } = Astro.props;
 
 const visibleNotes = limit === undefined ? notes : notes.slice(0, limit);
-const filters = [UI.fieldNotes.allFilter, ...NOTE_TAGS];
+
+/**
+ * Pills describe what is actually in this grid, so a pill can never lead to the
+ * empty state. Canonical NOTE_TAGS order is kept. Below two represented tags
+ * there is nothing to filter between, so the row is dropped rather than shown
+ * with dead options.
+ */
+const presentTags = NOTE_TAGS.filter((tag) =>
+  visibleNotes.some((entry) => entry.data.tags.includes(tag)),
+);
+const showFilters = presentTags.length > 1;
+const filters = [UI.fieldNotes.allFilter, ...presentTags];
 ---
 
 <Section
@@ -42,22 +53,31 @@ const filters = [UI.fieldNotes.allFilter, ...NOTE_TAGS];
       )}
     </div>
 
-    <div class="field-notes__filters" aria-controls="field-notes-grid">
-      {filters.map((filter, index) => (
-        <button
-          type="button"
-          class="field-notes__filter"
-          aria-pressed={index === 0 ? 'true' : 'false'}
-          data-filter={filter}
-        >
-          {filter}
-        </button>
-      ))}
-    </div>
+    {showFilters && (
+      <div
+        class="field-notes__filters"
+        role="group"
+        aria-label={UI.fieldNotes.filtersLabel}
+      >
+        {filters.map((filter, index) => (
+          <button
+            type="button"
+            class="field-notes__filter"
+            aria-pressed={index === 0 ? 'true' : 'false'}
+            aria-controls="field-notes-grid"
+            data-filter={filter}
+          >
+            {filter}
+          </button>
+        ))}
+      </div>
+    )}
 
     <div
       class="field-notes__empty"
       data-field-notes-empty
+      role="status"
+      aria-live="polite"
       hidden
     >
       {UI.fieldNotes.empty}
@@ -109,7 +129,8 @@ const filters = [UI.fieldNotes.allFilter, ...NOTE_TAGS];
       cards.forEach((card) => {
         const tags = card.dataset.tags?.split('|') ?? [];
         const matches =
-          activeFilter === filters[0]?.dataset.filter
+          filters.length === 0
+          || activeFilter === filters[0]?.dataset.filter
           || tags.includes(activeFilter);
 
         if (matches) matchingCount += 1;

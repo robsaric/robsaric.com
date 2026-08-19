@@ -157,13 +157,14 @@ export const COPY = {
       eyebrow: (year: number) => `From the archive · ${year}`,
       notice: (year: number) => `Written in ${year}. Kept as it was.`,
     },
-    methodology: {
-      title: 'What the number means',
+    howICounted: {
+      title: 'How I counted it',
       body: 'This page will explain how the $127,000 figure was identified, what it does and does not count, and where it came from. It is not published until that is written.',
     },
     contact: {
       title: 'Write to me',
-      body: 'You run the clinic. You see things I cannot. If a principle does not match what you see at your front desk, or you know where money slips, say so. He reads and answers everything himself.',
+      description: 'Write to Rob Saric about clinic revenue, where money slips, or a principle that does not match your front desk. He reads and answers everything himself.',
+      body: 'You run the clinic. You see things I cannot. If a principle does not match what you see at your front desk, or you know where money slips, message me. I read and answer everything myself, and if I do not know, I will say so.',
     },
     notFound: {
       title: 'Nothing here.',

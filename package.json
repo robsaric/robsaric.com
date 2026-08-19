@@ -12,9 +12,11 @@
     "astro": "astro",
     "check": "astro check",
     "lint:copy": "node scripts/lint-copy.mjs",
-    "gate": "astro check && node scripts/lint-copy.mjs && astro build && node scripts/check-redirects.mjs",
+    "gate": "astro check && node scripts/lint-copy.mjs && astro build && node scripts/check-redirects.mjs && node scripts/check-notes.mjs && node scripts/check-layout.mjs",
     "import:legacy": "node scripts/import-legacy.mjs",
-    "check:redirects": "node scripts/check-redirects.mjs"
+    "check:redirects": "node scripts/check-redirects.mjs",
+    "check:notes": "node scripts/check-notes.mjs",
+    "check:layout": "node scripts/check-layout.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^7.0.6",

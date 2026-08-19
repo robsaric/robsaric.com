@@ -38,17 +38,17 @@ Human-centred, no AI slop. These are blockers, enforced by `pnpm lint:copy` (see
 
 Change from the artboard: "using Jane" became "using Jane.app" (first mention on the page).
 
-## Now strip `[DRAFT, V9]`
+## Now strip
 
 Visually hidden H2: What I am working on now
 
-| Kicker | Title | Blurb (desktop only) | Link |
-|---|---|---|---|
-| Building | The Caretrics revenue diagnostic | What a first read of a clinic's Jane account looks for, and what it deliberately leaves alone. | (field note, TBD) |
-| From the field | What clinic operators keep asking about | The three questions that come up in almost every conversation, and my current answers. | (field note, TBD) |
-| Writing | Ownership is the difference between a report and a result | The latest field note. | (field note, TBD) |
+| Kicker | Title | Blurb (desktop only) | Link | Status |
+|---|---|---|---|---|
+| Writing | Unbooked at the desk, seventy percent never come back | Two years of first visits at one clinic, and the one thing at the front desk that predicted whether a new patient came back. | `/field-notes/2026-08-18-unbooked-at-the-desk/` | live 2026-08-18 |
+| Building | The Caretrics revenue diagnostic | What a first read of a clinic's Jane account looks for, and what it deliberately leaves alone. | (field note, TBD) | `[DRAFT, V9]` |
+| From the field | What clinic operators keep asking about | The three questions that come up in almost every conversation, and my current answers. | (field note, TBD) | `[DRAFT, V9]` |
 
-All three ship as `draft: true` in `src/data/now.ts` until real entries exist.
+Drafts carry `draft: true` in `src/data/now.ts` and are hidden in production. "Ownership is the difference between a report and a result" was the third placeholder; the real Writing item replaced it.
 
 ## 01 · Evidence
 
@@ -56,9 +56,9 @@ All three ship as `draft: true` in `src/data/now.ts` until real entries exist.
 - H2: The dashboard held the evidence. The work still had no owner.
 - Body (desktop): The same pattern turned up in clinic after clinic. The report existed, somebody had read it, and the task it implied still belonged to no one in particular. Here is one anonymized signal, from detection through to a verified outcome.
 - Body (mobile): One anonymized signal, from detection through to a verified outcome.
-- Metric: $127,000 `[VERIFY V5: source, period, definition; methodology page required before launch]`
+- Metric: $127,000 `[VERIFY V5: source, period, definition; `/how-i-counted/` required before launch]`
 - Metric note: Identified across four gaps in one clinic, over one year. Identified is not collected.
-- Metric link: What this number means → (`/methodology/`)
+- Metric link: How I counted this → (`/how-i-counted/`)
 - Signal eyebrow: The signal
 - Signal: 17 insurance items have had no activity in 21 days.
 - Steps (`src/data/evidence-steps.ts`):
@@ -120,10 +120,10 @@ Principles 4 and 5 come from design v4 (7a), where the list had six; "Good syste
 - H2: What I am seeing, shipping, and rethinking.
 - Body: Kept in public, in order. The wrong turns stay in.
 - Header link: All field notes → · Mobile bottom link: See all field notes →
-- Filters: All · Clinic revenue · Billing and insurance · Patient flow · AI and trust · Building Caretrics · Founder notes
+- Filter pills: All, then only the tags carried by notes actually in that grid, in `NOTE_TAGS` order (Clinic revenue · Billing and insurance · Patient flow · AI and trust · Building Caretrics · Founder notes). Below two represented tags the row is not rendered, so a pill never leads to the empty state.
 - Empty state: Nothing filed under this one yet.
 - Card types: Field note · Shipped · Changed my mind
-- Seed notes (`src/content/notes/*.md`, all `draft: true`, `[DRAFT, V9]`): six entries transcribed from the artboard. Each card body is the note's `summary`; each note file needs a real body before `draft` is removed.
+- Notes (`src/content/notes/*.md`). Live: `2026-08-18-unbooked-at-the-desk` (first real note, published 2026-08-18). Still `draft: true` `[DRAFT, V9]`: the six seed entries transcribed from the artboard. Each card body is the note's `summary`; each seed file needs a real body before `draft` is removed.
 - `/field-notes/` H1: Field notes · meta description: Field notes from Rob Saric on clinic revenue, ownership, and building Caretrics. Kept in public, in order.
 
 ## 05 · About
@@ -160,7 +160,7 @@ Change from the artboard: "50+ clinic owners advised" became "50+ clinics, first
 
 - Line: I look for people building things that help others live better lives.
 - Byline: Rob Saric · Founder of Caretrics · Ottawa.
-- Links: LinkedIn · X · GitHub · View source ↗ · Caretrics ↗ · Togetheren, selected work (mobile: Togetheren)
+- Links: Write to me (internal, `/contact/`) · LinkedIn · X · GitHub · View source ↗ · Caretrics ↗ · Togetheren, selected work (mobile: Togetheren)
 - Archive line: Earlier writing on systems and flow, 2009 to 2019, is in the archive. ("the archive" links to `/archive/`)
 
 Change from the artboard: "2011 to 2019" became "2009 to 2019" (the oldest post is July 2009).
@@ -169,8 +169,8 @@ Change from the artboard: "2011 to 2019" became "2009 to 2019" (the oldest post 
 
 - `/archive/` H1: Earlier writing, 2009 to 2019 · intro: Thirty-eight posts from the first blog, kept as they were written. Systems, flow, leadership, and a few detours. · meta description: Rob Saric's earlier writing on systems, flow, and leadership, 2009 to 2019, kept as it was written.
 - Archive post notice: Written in {year}. Kept as it was.
-- `/methodology/` H1: What the number means · body `[TODO before launch, V5]`: three short sections, "What was counted", "What was not counted", "Where it came from". Until written, the page carries a single line: "This page will explain how the $127,000 figure was identified, what it does and does not count, and where it came from. It is not published until that is written." and `noindex`.
-- `/contact/` H1: Write to me · body: the desktop Write-to-me body without the link, then the email (if set) and LinkedIn.
+- `/how-i-counted/` H1: How I counted it · body `[TODO before launch, V5]`: three short sections, "What was counted", "What was not counted", "Where it came from". Until written, the page carries a single line: "This page will explain how the $127,000 figure was identified, what it does and does not count, and where it came from. It is not published until that is written." and `noindex`.
+- `/contact/` H1: Write to me · body: "You run the clinic. You see things I cannot. If a principle does not match what you see at your front desk, or you know where money slips, message me. I read and answer everything myself, and if I do not know, I will say so." then the email (if set) and LinkedIn. First person throughout. The page carries its own meta description, third person to match the other pages: "Write to Rob Saric about clinic revenue, where money slips, or a principle that does not match your front desk. He reads and answers everything himself." (152 chars, under the 155 clamp in `src/lib/seo.ts`)
 - 404 H1: Nothing here. · body: The page moved or never existed. Try the field notes or the archive.
 - `/subscribed/` (server-rendered result of the subscribe form; `noindex`; state comes from `?status=`):
   - ok (default): H1 "You are on the list." · body "Occasional notes, no schedule I cannot keep. Reply to any of them. I read and answer everything myself."
@@ -186,10 +186,10 @@ Change from the artboard: "2011 to 2019" became "2009 to 2019" (the oldest post 
 | V1 | "Founder of Caretrics" (artboard dropped "& CEO") | hero, footer, About | VERIFY |
 | V2 | "20+ years building software" | About stat row | VERIFY |
 | V3 | systems-architect / Trend Micro, Mitel, Pythian line | /about only | VERIFY |
-| V5 | $127,000 identified, four gaps, one clinic, one year | Evidence | VERIFY + methodology page |
+| V5 | $127,000 identified, four gaps, one clinic, one year | Evidence | VERIFY + `/how-i-counted/`. Confirmed 2026-08-19: one clinic, 25 providers, twelve months (June 2025 through May 2026), AR the largest gap. Outstanding: the four gap names and per-gap amounts. Blocks DNS cutover, not the push |
 | V6 | Jane.app wording, no endorsement | hero, 02 | approved shape used |
 | V7 | Big Brothers Big Sisters, "over a decade" | About | VERIFY |
-| V9 | Now items and six seed notes | Now strip, 04 | DRAFT (hidden in prod) |
+| V9 | Now items and six seed notes | Now strip, 04 | Writing item and first note LIVE 2026-08-18; the other two Now items and the six seed notes stay DRAFT (hidden in prod) |
 | V10 | Portrait 400×400 is below the 2x target for a 400×460 slot | hero | replace with ≥1200px |
 | V11 | Togetheren description | 02 | VERIFY |
 | V12 | Social URLs, repo URL for "View source", contact email | footer, contact | SET 2026-08-18 (email rob@caretrics.com, LinkedIn, GitHub, source repo). X left off until decided. |

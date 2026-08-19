@@ -11,8 +11,8 @@ export const EVIDENCE_SIGNAL = '17 insurance items have had no activity in 21 da
 export const EVIDENCE_METRIC = {
   value: '$127,000',
   note: 'Identified across four gaps in one clinic, over one year. Identified is not collected.',
-  linkLabel: 'What this number means →',
-  href: '/methodology/',
+  linkLabel: 'How I counted this →',
+  href: '/how-i-counted/',
 } as const;
 
 export const EVIDENCE_STEPS: EvidenceStep[] = [

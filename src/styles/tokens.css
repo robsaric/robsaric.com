@@ -114,3 +114,20 @@
     scroll-behavior: auto !important;
   }
 }
+
+/**
+ * 768 to 1150: desktop layout, less chrome.
+ *
+ * The artboards are 1440 (8a) and 390 (8b) and the only breakpoint used to be
+ * 767.98px, so every width in between ran the full desktop layout with 96px
+ * gutters and a 160px label column. At 768 that left 368px for section content
+ * and four sections overflowed. Nothing here changes 1440 or 390.
+ */
+@media (min-width: 768px) and (max-width: 1149.98px) {
+  :root {
+    --gutter-desktop: 40px;
+    --label-col: 96px;
+    --label-gap: 32px;
+    --section-pad-desktop: 64px;
+  }
+}

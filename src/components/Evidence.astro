@@ -249,6 +249,9 @@ const totalSteps = EVIDENCE_STEPS.length;
     min-height: var(--tap-min);
     padding: 14px 12px 0 0;
     flex: 1;
+    /* Without this the five steps refuse to shrink below their label text and
+       push the whole page sideways. */
+    min-width: 0;
     display: flex;
     flex-direction: column;
     gap: 6px;
@@ -324,6 +327,13 @@ const totalSteps = EVIDENCE_STEPS.length;
     color: var(--on-dark-78);
     font-family: var(--font-mono);
     font-size: 13px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1149.98px) {
+    .evidence {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 40px;
+    }
   }
 
   @media (max-width: 767.98px) {

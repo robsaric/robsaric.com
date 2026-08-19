@@ -236,6 +236,13 @@ const newsletterEndpoint =
   .newsletter__submit { align-self: flex-start; }
   .newsletter__fallback { min-height: var(--tap-min); display: inline-flex; align-items: center; align-self: flex-start; }
 
+  @media (min-width: 768px) and (max-width: 1149.98px) {
+    .write-to-me {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 32px;
+    }
+  }
+
   @media (max-width: 767.98px) {
     .write-to-me {
       grid-template-columns: minmax(0, 1fr);

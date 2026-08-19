@@ -24,3 +24,6 @@ pnpm-debug.log*
 .idea/
 .vercel
 .vercel/
+
+# editor workspace
+*.code-workspace

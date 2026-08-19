@@ -24,6 +24,7 @@ export const UI = {
   },
   fieldNotes: {
     allFilter: 'All',
+    filtersLabel: 'Filter field notes by tag',
     empty: 'Nothing filed under this one yet.',
   },
   newsletter: {
@@ -49,6 +50,7 @@ export const UI = {
   },
   footer: {
     navigationLabel: 'Footer navigation',
+    contact: 'Write to me',
     linkedin: 'LinkedIn',
     x: 'X',
     github: 'GitHub',

@@ -8,10 +8,9 @@ tags:
 stage: 3
 meta: "Retained · Patient flow"
 description: "In one clinic's records, new patients who left the first visit unbooked never returned 70% of the time, against 15% for those booked at the desk."
-draft: true
 ---
 
-Last week I went through two years of appointment records at one clinic, looking at every new patient's first nine weeks. About 1,500 first visits, each with a full nine weeks of history behind it, so nobody was cut off mid-story.
+I went through two years of appointment records at one clinic, looking at every new patient's first nine weeks. About 1,500 first visits, each with a full nine weeks of history behind it, so nobody was cut off mid-story.
 
 One split explained most of what followed.
 
