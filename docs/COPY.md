@@ -158,10 +158,12 @@ Change from the artboard: "50+ clinic owners advised" became "50+ clinics, first
 
 ## Footer
 
-- Line: I look for people building things that help others live better lives.
+- Line: I build things to help people live better lives.
 - Byline: Rob Saric · Founder of Caretrics · Ottawa.
 - Links: Write to me (internal, `/contact/`) · LinkedIn · X · GitHub · View source ↗ · Caretrics ↗ · Togetheren, selected work (mobile: Togetheren)
 - Archive line: Earlier writing on systems and flow, 2009 to 2019, is in the archive. ("the archive" links to `/archive/`)
+
+Change from the artboard: "I look for people building things that help others live better lives." became "I build things to help people live better lives." (2026-08-19). The artboard line described what Rob looks for in other people, which is a scout's posture on a site written entirely in the first person about what he did. "to help" rather than "that help" is deliberate: it claims the intent, not the outcome, which is the same discipline as "Identified is not collected".
 
 Change from the artboard: "2011 to 2019" became "2009 to 2019" (the oldest post is July 2009).
 

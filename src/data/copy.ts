@@ -129,7 +129,7 @@ export const COPY = {
     backLink: 'Back to the field notes →',
   },
   footer: {
-    line: 'I look for people building things that help others live better lives.',
+    line: 'I build things to help people live better lives.',
     byline: 'Rob Saric · Founder of Caretrics · Ottawa.',
     archive: {
       before: 'Earlier writing on systems and flow, 2009 to 2019, is in',
