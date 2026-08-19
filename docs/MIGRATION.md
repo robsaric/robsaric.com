@@ -14,7 +14,7 @@ The current robsaric.com is WordPress (nginx/PHP, Plesk, Site Kit) with the REST
 | `/links/` | `/` | 301 |
 | `/<post-slug>/` (38) | `/archive/<post-slug>/` | 301, both with and without trailing slash |
 | `/feed/` | `/rss.xml` | 301 |
-| (new) | `/field-notes/`, `/field-notes/<slug>/`, `/principles/`, `/how-i-counted/`, `/rss.xml`, `/sitemap-index.xml` | new |
+| (new) | `/field-notes/`, `/field-notes/<slug>/`, `/principles/`, `/rss.xml`, `/sitemap-index.xml` | new |
 
 Redirect source of truth: `src/data/legacy-redirects.mjs`, consumed by `astro.config.mjs` (`redirects`). With the Vercel adapter these become platform 301s; in a plain static build Astro emits meta-refresh pages with a canonical link, which is a weaker but valid signal.
 
@@ -43,7 +43,7 @@ Old posts are kept as written and are exempt from `pnpm lint:copy` by path (`src
 ## Cutover checklist
 
 1. `pnpm gate` green; all `[VERIFY]` items in `docs/COPY.md` cleared or removed from the page.
-2. `/how-i-counted/` written (V5) or the `$127,000` metric removed from the Evidence band. Confirmed: one clinic, 25 providers, the twelve months of June 2025 through May 2026, AR the largest gap. Still needed before the page can be written: the four gap names and the amount against each. This blocks DNS cutover (step 6), not the push.
+2. ~~`/how-i-counted/` written (V5) or the `$127,000` metric removed from the Evidence band.~~ **Done 2026-08-19: the metric was cut.** Nothing unsupported is on the page and this no longer blocks cutover. To put the number back, the four gap names and the amount against each are what is missing; the rest is confirmed (one clinic, 25 providers, the twelve months of June 2025 through May 2026, AR the largest gap).
 3. Newsletter endpoint set (`PUBLIC_NEWSLETTER_ENDPOINT`) or the card ships in its no-form state.
 4. `src/data/site.ts` links set (LinkedIn, X, GitHub, View source, email).
 5. Deploy to Vercel preview; run the redirect check: `node scripts/check-redirects.mjs https://<preview>` should report 301 for every legacy URL (script to add when the preview exists).

@@ -56,9 +56,7 @@ Drafts carry `draft: true` in `src/data/now.ts` and are hidden in production. "O
 - H2: The dashboard held the evidence. The work still had no owner.
 - Body (desktop): The same pattern turned up in clinic after clinic. The report existed, somebody had read it, and the task it implied still belonged to no one in particular. Here is one anonymized signal, from detection through to a verified outcome.
 - Body (mobile): One anonymized signal, from detection through to a verified outcome.
-- Metric: $127,000 `[VERIFY V5: source, period, definition; `/how-i-counted/` required before launch]`
-- Metric note: Identified across four gaps in one clinic, over one year. Identified is not collected.
-- Metric link: How I counted this → (`/how-i-counted/`)
+- Metric: **cut 2026-08-19.** The band now runs H2, body, then straight to the signal and the stepper. The figure ($127,000, one clinic, 25 providers, the twelve months of June 2025 through May 2026, AR the largest gap) is real, but copy law item 6 requires every public number to carry what it counts and where it came from, and the per-gap breakdown is not written down yet. When it is, this returns with `/how-i-counted/` in the same change: metric `$127,000`, note "Identified across four gaps in one clinic, over one year. Identified is not collected.", link "How I counted this →".
 - Signal eyebrow: The signal
 - Signal: 17 insurance items have had no activity in 21 days.
 - Steps (`src/data/evidence-steps.ts`):
@@ -169,7 +167,7 @@ Change from the artboard: "2011 to 2019" became "2009 to 2019" (the oldest post 
 
 - `/archive/` H1: Earlier writing, 2009 to 2019 · intro: Thirty-eight posts from the first blog, kept as they were written. Systems, flow, leadership, and a few detours. · meta description: Rob Saric's earlier writing on systems, flow, and leadership, 2009 to 2019, kept as it was written.
 - Archive post notice: Written in {year}. Kept as it was.
-- `/how-i-counted/` H1: How I counted it · body `[TODO before launch, V5]`: three short sections, "What was counted", "What was not counted", "Where it came from". Until written, the page carries a single line: "This page will explain how the $127,000 figure was identified, what it does and does not count, and where it came from. It is not published until that is written." and `noindex`.
+- `/how-i-counted/` — **not built.** Removed 2026-08-19 with the metric it existed to explain; an orphaned page describing a number the site no longer shows is worse than no page. When the metric returns, the page returns with it: H1 "How I counted it", three short sections, "What was counted", "What was not counted", "Where it came from". Named for what it does rather than "methodology": it exists to be checked, not to assert rigour.
 - `/contact/` H1: Write to me · body: "You run the clinic. You see things I cannot. If a principle does not match what you see at your front desk, or you know where money slips, message me. I read and answer everything myself, and if I do not know, I will say so." then the email (if set) and LinkedIn. First person throughout. The page carries its own meta description, third person to match the other pages: "Write to Rob Saric about clinic revenue, where money slips, or a principle that does not match your front desk. He reads and answers everything himself." (152 chars, under the 155 clamp in `src/lib/seo.ts`)
 - 404 H1: Nothing here. · body: The page moved or never existed. Try the field notes or the archive.
 - `/subscribed/` (server-rendered result of the subscribe form; `noindex`; state comes from `?status=`):
@@ -186,7 +184,7 @@ Change from the artboard: "2011 to 2019" became "2009 to 2019" (the oldest post 
 | V1 | "Founder of Caretrics" (artboard dropped "& CEO") | hero, footer, About | VERIFY |
 | V2 | "20+ years building software" | About stat row | VERIFY |
 | V3 | systems-architect / Trend Micro, Mitel, Pythian line | /about only | VERIFY |
-| V5 | $127,000 identified, four gaps, one clinic, one year | Evidence | VERIFY + `/how-i-counted/`. Confirmed 2026-08-19: one clinic, 25 providers, twelve months (June 2025 through May 2026), AR the largest gap. Outstanding: the four gap names and per-gap amounts. Blocks DNS cutover, not the push |
+| V5 | $127,000 identified, four gaps, one clinic, one year | Evidence | **CUT 2026-08-19**, so nothing unsupported is on the page. Confirmed: one clinic, 25 providers, twelve months (June 2025 through May 2026), AR the largest gap. Still needed before it returns: the four gap names and the amount against each |
 | V6 | Jane.app wording, no endorsement | hero, 02 | approved shape used |
 | V7 | Big Brothers Big Sisters, "over a decade" | About | VERIFY |
 | V9 | Now items and six seed notes | Now strip, 04 | Writing item and first note LIVE 2026-08-18; the other two Now items and the six seed notes stay DRAFT (hidden in prod) |

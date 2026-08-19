@@ -5,7 +5,6 @@ import Eyebrow from './Eyebrow.astro';
 import { COPY } from '../data/copy';
 import { UI } from '../data/ui';
 import {
-  EVIDENCE_METRIC,
   EVIDENCE_SIGNAL,
   EVIDENCE_STEPS,
 } from '../data/evidence-steps';
@@ -28,21 +27,6 @@ const totalSteps = EVIDENCE_STEPS.length;
       <p class="evidence__body evidence__body--mobile">
         {COPY.evidence.bodyMobile}
       </p>
-
-      <div class="evidence__metric">
-        <span
-          class="evidence__metric-value"
-          aria-describedby="evidence-metric-note"
-        >
-          {EVIDENCE_METRIC.value}
-        </span>
-        <span id="evidence-metric-note" class="evidence__metric-note">
-          {EVIDENCE_METRIC.note}
-        </span>
-        <a class="evidence__metric-link" href={EVIDENCE_METRIC.href}>
-          {EVIDENCE_METRIC.linkLabel}
-        </a>
-      </div>
     </div>
 
     <div class="evidence__panel">
@@ -188,37 +172,6 @@ const totalSteps = EVIDENCE_STEPS.length;
 
   .evidence__body--mobile { display: none; }
 
-  .evidence__metric {
-    padding-top: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    border-top: 1px solid var(--on-dark-28);
-  }
-
-  .evidence__metric-value {
-    color: var(--on-dark);
-    font-size: var(--text-metric);
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: -0.03em;
-    font-variant-numeric: tabular-nums;
-  }
-
-  .evidence__metric-note {
-    color: var(--on-dark);
-    font-size: 17px;
-    line-height: 1.55;
-  }
-
-  .evidence__metric-link {
-    align-self: flex-start;
-    color: var(--lime-500);
-    font-family: var(--font-mono);
-    font-size: 14px;
-    line-height: 1.5;
-  }
-
   .evidence__panel {
     padding: 36px;
     display: flex;
@@ -348,10 +301,6 @@ const totalSteps = EVIDENCE_STEPS.length;
     .evidence__body--desktop { display: none; }
     .evidence__body--mobile { order: 2; display: block; font-size: 17px; }
     .evidence__panel { order: 3; padding: 20px; gap: 18px; background: transparent; }
-    .evidence__metric { order: 4; padding-top: 16px; gap: 8px; }
-    .evidence__metric-value { font-size: 34px; letter-spacing: -0.028em; }
-    .evidence__metric-note { font-size: 16px; }
-    .evidence__metric-link { min-height: var(--tap-min); display: inline-flex; align-items: center; }
     .evidence__signal { gap: 8px; }
     .evidence__signal-line { font-size: 20px; }
     .evidence__rail { gap: 6px; }

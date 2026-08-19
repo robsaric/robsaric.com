@@ -49,7 +49,7 @@ src/
   assets/images/        rob-portrait.jpg rob-family.png rob-sketch.png rob-signature.png
   components/           Nav, Hero, NowStrip, Evidence, Stages, Principles, FieldNotes, NoteCard, About, WriteToMe, Footer, Button, Eyebrow, SectionLabel, Seo
   layouts/              BaseLayout.astro (head, skip link, nav, footer), ArticleLayout.astro
-  pages/                index, field-notes/{index,[slug]}, principles, about, archive/{index,[slug]}, how-i-counted, contact, 404, rss.xml.ts
+  pages/                index, field-notes/{index,[slug]}, principles, about, archive/{index,[slug]}, contact, 404, rss.xml.ts
   content/notes/        field notes (md/mdx)
   content/archive/      imported legacy posts
   data/                 site.ts evidence-steps.ts stages.ts principles.ts filters.ts now.ts legacy-redirects.mjs
