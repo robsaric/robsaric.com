@@ -4,7 +4,9 @@ Words win here; layout wins in `docs/DESIGN-SPEC.md`. Every string on the site c
 
 ## Copy law (applies to every string, every content entry, every meta description)
 
-Human-centred, no AI slop. These are blockers, enforced by `pnpm lint:copy` (see `scripts/lint-copy.mjs`) and by review.
+Human-centred, no AI slop. Enforced partly by `pnpm lint:copy` (see `scripts/lint-copy.mjs`) and mostly by review.
+
+**Errors protect commitments. Warnings are taste.** (Set 2026-08-19.) The lint fails the build only for a broken promise: a locked factual claim, or a house rule Rob has explicitly set. Everything else, including the whole hype and jargon vocabulary, is a warning for a person to judge. The two used to carry equal force, which meant the gate could push copy into unnatural wording just to go green, and that is backwards. **An authentic human voice matters more than mechanical word control.** These rules will change over time; treat them as a memory of decisions already made, not a cage. Before adding a word to the error list, ask whether it protects a promise or a preference. Preferences are warnings. Code comments are not copy and are not linted.
 
 1. **No em dashes** (U+2014) anywhere in site copy or content. Use a comma, colon, period, or a new sentence. Middle dots (·) and arrows (→) are fine, they are design punctuation.
 2. **No chatbot tone.** No "Great question", "Absolutely", "I love this", "Hope this helps", no exclamation marks in body copy, no compliments to the reader as an opener, no hedge stacks.

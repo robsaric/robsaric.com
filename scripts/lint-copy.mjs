@@ -27,15 +27,23 @@ const EXTS = new Set([
 // but not from the em-dash rule? Old posts predate the rule; exempt entirely.
 const EXEMPT_PREFIXES = ['src/content/archive', 'public/archive'];
 
+/**
+ * What this gate blocks, and what it only flags.
+ *
+ * An ERROR is for a broken COMMITMENT: a locked factual claim, or a house rule
+ * Rob has explicitly set. A WARNING is for TASTE. The two used to be the same
+ * severity, which meant the lint could force unnatural wording to get a build
+ * green, and that is backwards. An authentic human voice matters more than
+ * mechanical word control, so taste words are surfaced for a person to judge
+ * rather than blocked outright (Rob, 2026-08-19).
+ *
+ * Before adding anything here, ask: does this protect a promise, or a
+ * preference? Preferences go in WARN_WORDS.
+ */
 const BANNED_WORDS = [
-  // generic SaaS adjectives (declared, not earned)
-  'seamless', 'intuitive', 'robust', 'best-in-class', 'world-class', 'cutting-edge',
-  'next-gen', 'revolutionary', 'game-changing', 'industry-leading',
-  // empty value verbs
-  'unlock', 'transform', 'supercharge', 'elevate', 'empower',
-  // corporate jargon
-  'leverage', 'synergy', 'optimize', 'optimise',
-  // credential phrasings that are locked out (docs/COPY.md item 6/7)
+  // Credential phrasings locked out by docs/COPY.md item 7. These are the only
+  // word bans that protect a fact rather than a taste: they re-create the claim
+  // that "50+ clinics, firsthand" deliberately replaced.
   'clinic owners advised', 'advisor to 50', 'ex-dso', 'audited by hand', 'by hand', 'the books',
   '40+ clinics',
   // The locked credential (docs/COPY.md item 7) bans these outright, not only in
@@ -51,10 +59,22 @@ const BANNED_WORDS = [
   // "audit" also stays legal: "audit trail retained" is approved copy.
   'audited', 'advised',
 ];
-// Words that are banned only when used as bare declared adjectives are hard to
-// detect mechanically; "simple", "powerful", "easy", "modern", "smart" are
-// flagged as warnings (not failures) so a human looks at them.
-const WARN_WORDS = ['simple', 'powerful', 'easy', 'modern', 'smart', 'insights', 'dashboard'];
+/**
+ * Taste, not truth. These get a human's eye, not a failed build. Some have
+ * perfectly good uses ("optimize the images", "transform the data"), and a word
+ * that is wrong in a headline can be right in a sentence.
+ */
+const WARN_WORDS = [
+  // declared rather than earned
+  'simple', 'powerful', 'easy', 'modern', 'smart', 'insights', 'dashboard',
+  // generic SaaS adjectives
+  'seamless', 'intuitive', 'robust', 'best-in-class', 'world-class', 'cutting-edge',
+  'next-gen', 'revolutionary', 'game-changing', 'industry-leading',
+  // empty value verbs
+  'unlock', 'transform', 'supercharge', 'elevate', 'empower',
+  // corporate jargon
+  'leverage', 'synergy', 'optimize', 'optimise',
+];
 
 const CHATBOT = [
   /\bgreat question\b/i, /\babsolutely!/i, /\bi love this\b/i, /\bhope this helps\b/i,
@@ -84,26 +104,46 @@ for (const file of files) {
   const rel = relative(ROOT, file).replace(/\\/g, '/');
   if (EXEMPT_PREFIXES.some((p) => rel.startsWith(p))) continue;
   const lines = readFileSync(file, 'utf8').split(/\r?\n/);
-  let inStyle = false; // CSS is not copy: skip word rules inside <style> blocks (em dashes still checked)
+  let inStyle = false; // CSS is not copy: skip word rules inside <style> blocks
+  // Comment skipping applies to CODE only. Markdown uses `*` for bullets and
+  // emphasis, so running it over .md would silently skip real copy.
+  const isCode = ['.astro', '.ts', '.tsx', '.mjs', '.js'].includes(extname(file));
+  let inComment = false;
   lines.forEach((line, i) => {
     if (line.includes('copy-lint-ignore')) return;
     const where = `${rel}:${i + 1}`;
-    if (line.includes('—')) { console.error(`ERROR ${where}: em dash`); errors++; }
-    if (/<style[\s>]/.test(line)) inStyle = true;
-    if (/<\/style>/.test(line)) { inStyle = false; return; }
-    if (inStyle || /^\s*[\w-]+\s*:\s*[^:]+;\s*$/.test(line)) return; // CSS declaration lines
+
+    // A comment is not copy. Linting them made the gate police the code: a
+    // JSDoc header failed the build for an em dash, and a note saying
+    // "optimize this loop" would too.
+    if (isCode) {
+      if (inComment) {
+        if (/\*\//.test(line)) inComment = false;
+        return;
+      }
+      if (/^\s*\/\*/.test(line) && !/\*\//.test(line)) { inComment = true; return; }
+      if (/^\s*(\/\/|\*|\/\*|<!--)/.test(line)) return;
+    }
+
+    // Strip whole-line block comments and trailing line comments before testing.
+    const code = isCode ? line.replace(/\/\*[\s\S]*?\*\//g, ' ') : line;
+
+    if (code.includes('—')) { console.error(`ERROR ${where}: em dash`); errors++; }
+    if (/<style[\s>]/.test(code)) inStyle = true;
+    if (/<\/style>/.test(code)) { inStyle = false; return; }
+    if (inStyle || /^\s*[\w-]+\s*:\s*[^:]+;\s*$/.test(code)) return; // CSS declaration lines
     for (const w of BANNED_WORDS) {
-      if (wordRe(w).test(line)) { console.error(`ERROR ${where}: banned word "${w}"`); errors++; }
+      if (wordRe(w).test(code)) { console.error(`ERROR ${where}: banned word "${w}"`); errors++; }
     }
     for (const re of CHATBOT) {
-      if (re.test(line)) { console.error(`ERROR ${where}: chatbot tone ${re}`); errors++; }
+      if (re.test(code)) { console.error(`ERROR ${where}: chatbot tone ${re}`); errors++; }
     }
     // Exclamation marks in prose strings (not in code punctuation like `!==` or `!important`).
-    if (/[A-Za-z]![\s"'`)]/.test(line) && !/!==|!important|!\[|<!--/.test(line)) {
+    if (/[A-Za-z]![\s"'`)]/.test(code) && !/!==|!important|!\[|<!--/.test(code)) {
       console.error(`ERROR ${where}: exclamation mark in copy`); errors++;
     }
     for (const w of WARN_WORDS) {
-      if (wordRe(w).test(line)) { console.warn(`WARN  ${where}: check "${w}" is earned, not declared`); warnings++; }
+      if (wordRe(w).test(code)) { console.warn(`WARN  ${where}: check "${w}" is earned, not declared`); warnings++; }
     }
   });
 }
