@@ -5,11 +5,6 @@ import signature from '../assets/images/rob-signature.png';
 import { COPY } from '../data/copy';
 import Section from './Section.astro';
 
-interface Props {
-  extended?: boolean;
-}
-
-const { extended = false } = Astro.props;
 ---
 
 <Section
@@ -38,13 +33,6 @@ const { extended = false } = Astro.props;
       <p class="about__body about__body--mobile">
         {COPY.about.bodyMobile}
       </p>
-
-      {extended && (
-        <div class="about__extended">
-          <p>{COPY.about.extendedCredential}</p>
-          <p>{COPY.about.extendedHistory}</p>
-        </div>
-      )}
 
       <p class="about__quote">{COPY.about.quote}</p>
 
@@ -98,21 +86,8 @@ const { extended = false } = Astro.props;
   }
 
   .about__body,
-  .about__extended p {
-    max-width: 52ch;
-    margin: 0;
-    font-size: var(--text-body-l);
-    line-height: var(--lh-body);
-    text-wrap: pretty;
-  }
 
   .about__body--mobile { display: none; }
-
-  .about__extended {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
 
   .about__quote {
     max-width: 24ch;
@@ -175,8 +150,6 @@ const { extended = false } = Astro.props;
     .about__body { order: 3; max-width: none; font-size: 17px; }
     .about__body--desktop { display: none; }
     .about__body--mobile { display: block; }
-    .about__extended { order: 4; gap: 14px; }
-    .about__extended p { max-width: none; font-size: 17px; }
     .about__quote { order: 5; max-width: none; font-size: 24px; line-height: 1.32; }
     .about__signature { order: 6; width: 150px; margin: 0 0 -10px -11px; }
 

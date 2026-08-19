@@ -62,6 +62,11 @@ export const COPY = {
     heading: 'Where the standard came from.',
     bodyDesktop: 'I have mentored with Big Brothers Big Sisters for over a decade. Time is the thing people in care have least of, and it is the thing most software asks for more of. That is the whole reason I care about this work.',
     bodyMobile: 'I have mentored with Big Brothers Big Sisters for over a decade. Time is the thing people in care have least of, and it is the thing most software asks for more of.',
+    /**
+     * Third person by design: this feeds the JSON-LD Person.description on
+     * /about/ and public/llms.txt, never a rendered page. `extendedHistory` is
+     * currently unrendered; /about/ carries its content in aboutPage.intro.
+     */
     extendedCredential: 'Rob Saric spent twenty years building software, including years as a systems architect inside large managed health-service organizations. He built Dentallytics, an analytics platform for dental groups, then went through twelve months of records for 50+ allied health clinics, one clinic at a time, and found the same four gaps almost every time.',
     extendedHistory: 'Before Caretrics I spent years as a systems architect inside large managed health-service organizations, and earlier at Trend Micro, Mitel and Pythian.',
     quote: '"If it adds work to care, it has failed."',

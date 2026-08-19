@@ -207,6 +207,6 @@ Change from the artboard: "2011 to 2019" became "2009 to 2019" (the oldest post 
 | V6 | Jane.app wording, no endorsement | hero, 02 | approved shape used |
 | V7 | Big Brothers Big Sisters, "over a decade" | About | VERIFY |
 | V9 | Now items and six seed notes | Now strip, 04 | Writing item and first note LIVE 2026-08-18; the other two Now items and the six seed notes stay DRAFT (hidden in prod) |
-| V10 | Portrait 400×400 is below the 2x target for a 400×460 slot | hero | replace with ≥1200px |
+| V10 | Portrait 400×400 is below the 2x target for a 400×460 slot | hero, /about/ | **RESOLVED 2026-08-19.** Source replaced with a 944×1136 portrait, and `densities={[1, 2]}` added to both `<Image>` slots. The larger source alone was not enough: Astro emitted 1x only until the densities prop was set. Now serves 400×460 + 800×920 (hero) and 320×384 + 640×768 (/about/) |
 | V11 | Togetheren description | 02 | VERIFY |
 | V12 | Social URLs, repo URL for "View source", contact email | footer, contact | SET 2026-08-18 (email rob@caretrics.com, LinkedIn, GitHub, source repo). X left off until decided. |
