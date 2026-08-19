@@ -80,8 +80,10 @@ const jsonLd = {
         <dl class="facts">
           {A.facts.map((fact) => (
             <div class="facts__item">
-              <dt>{fact.term}</dt>
-              <dd>{fact.value}</dd>
+              <dt class:list={['facts__value', { 'facts__value--wide': fact.wide }]}>
+                {fact.value}
+              </dt>
+              <dd class="facts__term">{fact.term}</dd>
             </div>
           ))}
         </dl>
@@ -233,12 +235,13 @@ const jsonLd = {
   }
 
   /* ---- Facts rail ---------------------------------------------------------
-     A definition list, not a stat display: values stay at body size, there is
-     no metric type, no box, no colour. */
+     Stat bar from the turn 9 artboards: value at display size, term beneath in
+     mono, hairline dividers between cells. Still no box, no colour, no icons,
+     and the largest glyph on the page is still the h1. */
   .facts {
     grid-column: 1 / -1;
     margin: 48px 0 0;
-    padding: 28px 0;
+    padding: 32px 0;
     border-top: 1px solid var(--rule);
     border-bottom: 1px solid var(--rule);
     display: grid;
@@ -257,19 +260,25 @@ const jsonLd = {
   .facts__item:first-child { padding-left: 0; border-left: 0; }
   .facts__item:last-child { padding-right: 0; }
 
-  .facts dt {
+  .facts__value {
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.028em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Words rather than a figure: steps down so it does not wrap in its cell. */
+  .facts__value--wide { font-size: 30px; letter-spacing: -0.022em; }
+
+  .facts__term {
+    margin: 0;
     color: var(--ink-muted);
     font-family: var(--font-mono);
     font-size: var(--text-eyebrow);
     font-weight: 500;
     letter-spacing: var(--tracking-eyebrow);
     text-transform: uppercase;
-  }
-
-  .facts dd {
-    margin: 0;
-    font-size: 17px;
-    line-height: 1.5;
   }
 
   /* ---- Shared zone body ---------------------------------------------------
@@ -457,7 +466,8 @@ const jsonLd = {
     }
 
     .facts__item:first-child { padding-top: 0; border-top: 0; }
-    .facts dd { font-size: 16px; }
+    .facts__value { font-size: 30px; }
+    .facts__value--wide { font-size: 26px; }
 
     .prose-zone h2 { font-size: 24px; }
     .prose-zone__heading--spaced { margin-top: 36px; }

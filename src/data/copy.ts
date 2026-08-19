@@ -92,12 +92,21 @@ export const COPY = {
       'Along the way I worked at Trend Micro, Pythian and Mitel. Each taught me something about running systems other people depend on.',
     ],
     portraitAlt: 'Rob Saric',
-    /** Orientation cues, never a stat display. Values stay at body size. */
+    /**
+     * Stat bar, per the turn 9 artboards: the value leads at display size, the
+     * term sits under it in mono. `wide` marks a value that is words rather
+     * than a figure, so it steps down a size instead of wrapping.
+     *
+     * The artboard labelled the middle cell "Dissected line-by-line". That is a
+     * rewrite of the locked credential and sits a step from the banned "by
+     * hand", so the locked components are used instead: the value carries
+     * "50+ clinics" and the term carries "Firsthand".
+     */
     facts: [
-      { term: 'Based in', value: 'Ottawa, Canada' },
-      { term: 'Building software', value: '20+ years' },
-      { term: 'Clinics seen firsthand', value: '50+' },
-    ],
+      { value: '20+ years', term: 'Building software' },
+      { value: '50+ clinics', term: 'Firsthand' },
+      { value: 'Ottawa, Canada', term: 'Based in', wide: true },
+    ] as { value: string; term: string; wide?: boolean }[],
     background: {
       label: 'Background',
       headingOne: 'Where healthcare came in.',
@@ -125,9 +134,16 @@ export const COPY = {
     outside: {
       label: 'Outside',
       heading: 'Outside the work.',
+      /**
+       * Rob's approved copy, restored 2026-08-19 in his own three-paragraph
+       * shape. An earlier pass compressed these into one and swapped the closer
+       * for a line lifted from the homepage About band. Both were taste calls
+       * on my part, and taste does not outrank the author's voice.
+       */
       body: [
-        'I like athletics, travel, AI experiments, and small projects that teach me something. I am a dad to two kids and have mentored with Big Brothers Big Sisters for over a decade.',
-        'Time is the thing people in care have least of, and it is the thing most software asks for more of. That is the whole reason I care about this work.',
+        'I will probably always be an entrepreneur. I like athletics, travel, AI experiments, and small projects that teach me something.',
+        'I am a dad to two kids and have mentored with Big Brothers Big Sisters for over a decade. Family and community keep the rest in proportion.',
+        'At the centre of all of it, I try to work hard, treat people well, and build things that earn their place.',
       ],
       quote: 'If it adds work to care, it has failed.',
       signatureAlt: 'Rob Saric',
