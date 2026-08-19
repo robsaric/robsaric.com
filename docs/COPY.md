@@ -145,6 +145,7 @@ Its own composition (`src/pages/about.astro`), not the homepage About band. Buil
 - Label: About (plain word in the label column; `Section` `number` is optional as of 2026-08-19, because 01 to 06 are a table of contents for one homepage scroll)
 - H1: I spent twenty years building software. Healthcare is where the work became personal.
 - Facts rail (definition list, values at body size, never a stat display): Based in / Ottawa, Canada · Building software / 20+ years · Clinics seen firsthand / 50+
+- Background opens on the reason, not the resume: "My father battled illness for ten years. Watching that is what made healthcare personal for me, before it was ever a business." Confirmed true by Rob 2026-08-19. The wording is a rewrite of the claude.ai/design line "After watching my father battle illness for 10 years" into the house register; Rob should own the final words.
 - Zones: Background ("Where healthcare came in." and "What the failures changed."), Caretrics ("Why Caretrics."), Outside ("Outside the work.")
 - The standard sits in a card at the end: serif italic 28px (24 mobile), signature, then "Rob Saric, founder of Caretrics". The card is `fit-content` capped at 722px.
 - Exits: "Write to me and tell me where I am wrong →" (`/contact/`) · "Read the field notes →" (`/field-notes/`)

@@ -102,6 +102,7 @@ export const COPY = {
       label: 'Background',
       headingOne: 'Where healthcare came in.',
       bodyOne: [
+        'My father battled illness for ten years. Watching that is what made healthcare personal for me, before it was ever a business.',
         'My first real view into healthcare operations came through Dentallytics, an analytics platform I built for a dental group.',
         'Later, as a digital advisor through the Canadian Digital Adoption Program, I worked directly with clinic owners on the gap between software, operations, and care. I also have family members who run clinics, and I have tried more than once to build clinical software companies.',
         'It is difficult work. The workflows are complicated and trust is earned slowly.',
