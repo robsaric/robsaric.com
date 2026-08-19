@@ -89,7 +89,7 @@ export const COPY = {
     heading: 'I spent twenty years building software. Healthcare is where the work became personal.',
     intro: [
       'I grew up in a blue-collar family in Windsor, Ontario. Work meant showing up, helping where help was needed, and not making much noise about it. I carried that with me to Ottawa and into a career building software.',
-      'Along the way I worked at Trend Micro, Pythian and Mitel. Each taught me something about running systems other people depend on.',
+      'Along the way I moved into executive leadership at Trend Micro, Pythian, and Mitel. Each taught me something about running systems other people depend on.',
     ],
     portraitAlt: 'Rob Saric',
     /**
@@ -127,6 +127,7 @@ export const COPY = {
       label: 'Caretrics',
       heading: 'Why Caretrics.',
       body: [
+        'Most clinic owners do not know how the business is actually doing this month, because what matters is split between Jane, payroll, and a spreadsheet nobody has time to open. Finding a real margin should not cost a Sunday afternoon and an Excel template.',
         'Allied-health and rehab clinicians help people live better with pain, injury, and chronic conditions. There are not enough of them, and the clinics around them have to stay open.',
         'That is what I am building with Caretrics: a way for clinics to see the revenue and follow-up work that gets missed, give it an owner, and keep it moving without adding administration.',
       ],
