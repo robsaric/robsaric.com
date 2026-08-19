@@ -58,6 +58,7 @@ Drafts carry `draft: true` in `src/data/now.ts` and are hidden in production. "O
 - Body (mobile): One anonymized signal, from detection through to a verified outcome.
 - Metric: **cut 2026-08-19.** The band now runs H2, body, then straight to the signal and the stepper. The figure ($127,000, one clinic, 25 providers, the twelve months of June 2025 through May 2026, AR the largest gap) is real, but copy law item 6 requires every public number to carry what it counts and where it came from, and the per-gap breakdown is not written down yet. When it is, this returns with `/how-i-counted/` in the same change: metric `$127,000`, note "Identified across four gaps in one clinic, over one year. Identified is not collected.", link "How I counted this →".
 - Signal eyebrow: The signal
+- Exit link: More of these, in the field notes → (`/field-notes/`). Added 2026-08-19 so the strongest argument on the page does not dead-end in "Start again".
 - Signal: 17 insurance items have had no activity in 21 days.
 - Steps (`src/data/evidence-steps.ts`):
   1. Detected / kicker "Signal detected" / body "Seventeen insurance items on one clinic's account show no status change in 21 days. Caretrics flags the group, not the individual claim, because the pattern is the finding." / source "read from Jane · read-only · grouped by days since last activity"
@@ -122,7 +123,7 @@ Principles 4 and 5 come from design v4 (7a), where the list had six; "Good syste
 - Empty state: Nothing filed under this one yet.
 - Card types: Field note · Shipped · Changed my mind
 - Notes (`src/content/notes/*.md`). Live: `2026-08-18-unbooked-at-the-desk` (first real note, published 2026-08-18). Still `draft: true` `[DRAFT, V9]`: the six seed entries transcribed from the artboard. Each card body is the note's `summary`; each seed file needs a real body before `draft` is removed.
-- `/field-notes/` H1: Field notes · meta description: Field notes from Rob Saric on clinic revenue, ownership, and building Caretrics. Kept in public, in order.
+- `/field-notes/` H1: Field notes, and nothing else in the page header. The line "Kept in public, in order. The wrong turns stay in." belongs to the section intro and was printing twice on this page until 2026-08-19. · meta description: Field notes from Rob Saric on clinic revenue, ownership, and building Caretrics. Kept in public, in order.
 
 ## 05 · About
 
@@ -133,6 +134,7 @@ Principles 4 and 5 come from design v4 (7a), where the list had six; "Good syste
 - Quote: "If it adds work to care, it has failed."
 - Stat row: 20+ years building software `[VERIFY V2]` · 50+ clinics, firsthand · Founder of Caretrics, Ottawa
 - Photo alt: Rob Saric outdoors
+- Signature alt: Rob Saric (`rob-signature.png`, under the quote, signing the standard)
 
 Change from the artboard: "50+ clinic owners advised" became "50+ clinics, firsthand" (locked credential form).
 

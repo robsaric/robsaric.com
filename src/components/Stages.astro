@@ -294,6 +294,10 @@ const idPrefix = 'caretrics-stage';
 
   .stage__panel[hidden] { display: none; }
 
+  .stage__panel:not([hidden]) .stage__panel-inner {
+    animation: rs-panel-enter var(--dur-short) var(--ease-out);
+  }
+
   .stage__panel-inner {
     min-height: 180px;
     padding: 36px 40px;

@@ -104,7 +104,8 @@ const links: FooterLink[] = [
     font-size: 16px;
   }
 
-  .footer__link--strong { font-weight: 700; }
+  /* 12.6:1 on --forest-700. Lime is accent-on-dark only; never on cream. */
+  .footer__link--strong { color: var(--lime-500); font-weight: 700; }
   .footer__link--muted { color: var(--on-dark-78); }
   .footer__link:focus-visible,
   .footer__archive a:focus-visible { outline-color: var(--lime-500); }

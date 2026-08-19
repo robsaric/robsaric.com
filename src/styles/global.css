@@ -64,3 +64,18 @@ a:hover {
   white-space: nowrap !important;
   border: 0 !important;
 }
+
+/**
+ * Panel entrance. Used where a region swaps its text in place inside a fixed
+ * min-height (Evidence step contents, Stages panels), so the swap registers as
+ * an event rather than the words silently differing under the reader's eyes.
+ *
+ * The resting state is opacity 1 and the keyframe supplies `from`, so the
+ * `animation: none !important` in the prefers-reduced-motion block in
+ * tokens.css leaves the content visible. Never move `opacity: 0` onto the
+ * element itself: that hides it permanently for reduced-motion users.
+ */
+@keyframes rs-panel-enter {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: none; }
+}

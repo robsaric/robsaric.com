@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import familyPhoto from '../assets/images/rob-family.png';
+import signature from '../assets/images/rob-signature.png';
 import { COPY } from '../data/copy';
 import Section from './Section.astro';
 
@@ -46,6 +47,16 @@ const { extended = false } = Astro.props;
       )}
 
       <p class="about__quote">{COPY.about.quote}</p>
+
+      <Image
+        class="about__signature"
+        src={signature}
+        alt={COPY.about.signatureAlt}
+        width={160}
+        height={160}
+        loading="lazy"
+        decoding="async"
+      />
 
       <div class="about__stats">
         {COPY.about.stats.map((stat) => <span>{stat}</span>)}
@@ -113,6 +124,22 @@ const { extended = false } = Astro.props;
     text-wrap: pretty;
   }
 
+  /**
+   * Signs the standard directly above it. The PNG is genuinely transparent
+   * (alpha 0 outside the strokes), so it needs no blend mode, but the ink is
+   * near-black: this never goes on a forest band.
+   *
+   * The ink sits 61/800 in from the left of its canvas, so the negative left
+   * margin pulls the first stroke onto the text edge instead of leaving the
+   * signature looking indented. Keep the two in step if the width changes.
+   */
+  .about__signature {
+    width: 176px;
+    height: auto;
+    margin: 0 0 -14px -13px;
+    display: block;
+  }
+
   .about__stats {
     padding-top: 20px;
     display: flex;
@@ -151,9 +178,10 @@ const { extended = false } = Astro.props;
     .about__extended { order: 4; gap: 14px; }
     .about__extended p { max-width: none; font-size: 17px; }
     .about__quote { order: 5; max-width: none; font-size: 24px; line-height: 1.32; }
+    .about__signature { order: 6; width: 150px; margin: 0 0 -10px -11px; }
 
     .about__stats {
-      order: 6;
+      order: 7;
       padding-top: 16px;
       flex-direction: column;
       gap: 10px;

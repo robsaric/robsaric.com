@@ -19,6 +19,7 @@ export const COPY = {
     bodyDesktop: 'The same pattern turned up in clinic after clinic. The report existed, somebody had read it, and the task it implied still belonged to no one in particular. Here is one anonymized signal, from detection through to a verified outcome.',
     bodyMobile: 'One anonymized signal, from detection through to a verified outcome.',
     signalEyebrow: 'The signal',
+    exitLink: 'More of these, in the field notes →',
   },
   caretrics: {
     number: '02',
@@ -70,6 +71,7 @@ export const COPY = {
       'Founder of Caretrics, Ottawa',
     ],
     photoAlt: 'Rob Saric outdoors',
+    signatureAlt: 'Rob Saric',
   },
   writeToMe: {
     number: '06',
