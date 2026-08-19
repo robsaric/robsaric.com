@@ -101,7 +101,11 @@ const links = [
     z-index: 20;
     top: 0;
     height: var(--nav-h-desktop);
-    background: var(--cream);
+    /* A tonal step off --cream so the bar separates from the page it sits on.
+       --wash is the only light token that is not the page ground. Safe here:
+       it is also the outline-button hover fill, and the nav carries no outline
+       button (Caretrics is the dark variant, the toggle is transparent). */
+    background: var(--wash);
     border-bottom: 1px solid var(--rule);
   }
 
@@ -203,7 +207,7 @@ const links = [
       left: 0;
       width: 100%;
       padding-inline: var(--gutter-mobile);
-      background: var(--cream);
+      background: var(--wash);
       border-bottom: 1px solid var(--rule);
     }
 
