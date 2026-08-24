@@ -10,6 +10,12 @@ const links = [
   { label: UI.nav.about, href: '/about/' },
   { label: UI.nav.writeToMe, href: '/contact/' },
 ];
+
+/* Section-level wayfinding: a link is current on its own page and anywhere
+   inside its section (/field-notes/ covers every note). Nothing matches on
+   the homepage, which is correct: home is the wordmark. */
+const path = Astro.url.pathname;
+const isCurrent = (href: string) => path === href || path.startsWith(href);
 ---
 
 <header class="site-nav">
@@ -29,7 +35,11 @@ const links = [
 
     <nav class="site-nav__desktop" aria-label={UI.nav.primaryLabel}>
       {links.map((link) => (
-        <a class="site-nav__link" href={link.href}>{link.label}</a>
+        <a
+          class="site-nav__link"
+          href={link.href}
+          aria-current={isCurrent(link.href) ? 'page' : undefined}
+        >{link.label}</a>
       ))}
       <Button href={SITE.caretricsUrl} icon="arrow-up-right" external>
         {UI.nav.caretrics}
@@ -47,12 +57,18 @@ const links = [
           data-close-label={UI.nav.closeMenu}
         >
           <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M4 7h16M4 12h16M4 17h16" />
+            <path class="site-nav__menu-line site-nav__menu-line--top" d="M4 7h16" />
+            <path class="site-nav__menu-line site-nav__menu-line--mid" d="M4 12h16" />
+            <path class="site-nav__menu-line site-nav__menu-line--low" d="M4 17h16" />
           </svg>
         </summary>
         <nav id="mobile-menu" class="site-nav__panel" aria-label={UI.nav.primaryLabel}>
           {links.map((link) => (
-            <a class="site-nav__link" href={link.href}>{link.label}</a>
+            <a
+              class="site-nav__link"
+              href={link.href}
+              aria-current={isCurrent(link.href) ? 'page' : undefined}
+            >{link.label}</a>
           ))}
         </nav>
       </details>
@@ -162,7 +178,31 @@ const links = [
     text-underline-offset: 4px;
   }
 
+  .site-nav__link[aria-current='page'] {
+    color: var(--forest-500);
+    font-weight: 600;
+  }
+
   .site-nav__mobile { display: none; }
+
+  /* The bar gains its shadow only once content has scrolled beneath it.
+     Scroll-driven CSS, no JavaScript; browsers without support (and the
+     reduced-motion block in tokens.css, which kills the animation) keep the
+     constant hairline, which is the complete treatment they had before. */
+  @supports (animation-timeline: scroll()) {
+    .site-nav {
+      animation-name: rs-nav-elevate;
+      animation-duration: auto;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: scroll(root);
+      animation-range: 0px 48px;
+    }
+  }
+
+  @keyframes rs-nav-elevate {
+    to { box-shadow: var(--shadow-nav); }
+  }
 
   @media (max-width: 767.98px) {
     .site-nav { height: var(--nav-h-mobile); }
@@ -201,6 +241,26 @@ const links = [
       stroke-linecap: round;
     }
 
+    /* The toggle morphs to a close state, so the icon itself says which of
+       its two jobs it is doing. transform-origin is the icon centre; rotate
+       before translate in the written order so the strokes cross centred. */
+    .site-nav__menu-line {
+      transform-origin: 12px 12px;
+      transition:
+        transform var(--dur-short) var(--ease-out),
+        opacity var(--dur-short) var(--ease-out);
+    }
+
+    .site-nav__menu[open] .site-nav__menu-line--top {
+      transform: rotate(45deg) translateY(5px);
+    }
+
+    .site-nav__menu[open] .site-nav__menu-line--mid { opacity: 0; }
+
+    .site-nav__menu[open] .site-nav__menu-line--low {
+      transform: rotate(-45deg) translateY(-5px);
+    }
+
     .site-nav__panel {
       position: absolute;
       top: 100%;
@@ -211,9 +271,29 @@ const links = [
       border-bottom: 1px solid var(--rule);
     }
 
+    /* Entrance only. Closing stays instant on purpose: exits should be
+       faster than entrances. Opacity lives only inside the keyframes (the
+       rs-panel-enter contract), so reduced-motion users always see this. */
+    .site-nav__menu[open] .site-nav__panel {
+      animation: rs-menu-enter var(--dur-short) var(--ease-out);
+    }
+
+    .site-nav__menu[open] .site-nav__panel .site-nav__link {
+      animation: rs-menu-enter var(--dur-short) var(--ease-out) both;
+    }
+
+    .site-nav__menu[open] .site-nav__panel .site-nav__link:nth-child(1) { animation-delay: 40ms; }
+    .site-nav__menu[open] .site-nav__panel .site-nav__link:nth-child(2) { animation-delay: 80ms; }
+    .site-nav__menu[open] .site-nav__panel .site-nav__link:nth-child(3) { animation-delay: 120ms; }
+
     .site-nav__panel .site-nav__link {
       width: 100%;
       border-top: 1px solid var(--rule);
     }
+  }
+
+  @keyframes rs-menu-enter {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: none; }
   }
 </style>

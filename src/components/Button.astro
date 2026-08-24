@@ -42,7 +42,11 @@ const classes = [
   >
     <slot />
     {icon && (
-      <svg class="button__icon" viewBox="0 0 16 16" aria-hidden="true">
+      <svg
+        class:list={['button__icon', { 'button__icon--nudge': icon === 'arrow-right' }]}
+        viewBox="0 0 16 16"
+        aria-hidden="true"
+      >
         {icon === 'arrow-right'
           ? <path d="M2.5 8h10.25M8.75 4l4 4-4 4" />
           : <path d="M4 12 12 4M6 4h6v6" />}
@@ -53,7 +57,11 @@ const classes = [
   <button {...rest} type={type} class={classes} data-size={size}>
     <slot />
     {icon && (
-      <svg class="button__icon" viewBox="0 0 16 16" aria-hidden="true">
+      <svg
+        class:list={['button__icon', { 'button__icon--nudge': icon === 'arrow-right' }]}
+        viewBox="0 0 16 16"
+        aria-hidden="true"
+      >
         {icon === 'arrow-right'
           ? <path d="M2.5 8h10.25M8.75 4l4 4-4 4" />
           : <path d="M4 12 12 4M6 4h6v6" />}
@@ -130,4 +138,13 @@ const classes = [
     stroke-linecap: round;
     stroke-linejoin: round;
   }
+
+  /* arrow-right only: a forward arrow can lean into its own direction. The
+     arrow-up-right external glyph never nudges; sliding it sideways reads
+     as the wrong direction. (2026-08-24, approved UI-tweaks canvas.) */
+  .button__icon--nudge {
+    transition: transform var(--dur-micro) var(--ease-out);
+  }
+
+  .button:hover .button__icon--nudge { transform: translateX(2px); }
 </style>

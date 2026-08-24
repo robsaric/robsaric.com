@@ -105,6 +105,11 @@
   --dur-micro: 120ms;
   --dur-short: 200ms;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ---- Elevation ---- */
+  /* The only shadow in the system: --ink at 7%, under the sticky nav, and only
+     once content has scrolled beneath the bar. Not a new colour. */
+  --shadow-nav: 0 6px 16px rgb(20 32 27 / 0.07);
 }
 
 @media (prefers-reduced-motion: reduce) {
