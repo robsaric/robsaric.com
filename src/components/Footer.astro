@@ -16,6 +16,7 @@ interface FooterLink {
 
 const links: FooterLink[] = [
   { href: '/contact/', label: UI.footer.contact, internal: true },
+  { href: '/principles/', label: UI.footer.principles, internal: true },
   ...(SITE.links.linkedin ? [{ href: SITE.links.linkedin, label: UI.footer.linkedin }] : []),
   ...(SITE.links.x ? [{ href: SITE.links.x, label: UI.footer.x, mobileHidden: true }] : []),
   ...(SITE.links.github ? [{ href: SITE.links.github, label: UI.footer.github }] : []),

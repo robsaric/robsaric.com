@@ -44,7 +44,7 @@ Assembled from copy already shipped on the site; each entry notes where its sent
 | 20+ years | Years building software | Career; V2 in the `docs/COPY.md` verification table | approved (V2 confirmed by Rob 2026-08-24; ships in the About stat row and hero body) |
 | 50+ clinics | Clinics whose records Rob went through, twelve months each, one clinic at a time | Locked credential | approved, locked form only |
 | Twelve months | The record window per clinic, and the window Caretrics reads | Credential; `docs/COPY.md` 02 | approved |
-| $127,000 | Identified across four gaps in one clinic, over one year. Identified is not collected. | Cut from the site 2026-08-19; returns only with `/how-i-counted/` in the same change | held |
+| $127,000 | Identified across four gaps in one clinic, over one year. Identified is not collected. | Cut from the site 2026-08-19. `/how-i-counted/` shipped 2026-08-24, and the per-gap breakdown is published on caretrics.com (audit finding A3: unbilled claims $52,000 · no-shows $37,000 · missed re-bookings $24,000 · missing re-evals $14,000). Returns once Rob confirms those four | held, pending Rob |
 | 38 posts, 2009 to 2019 | Imported archive posts | `docs/MIGRATION.md` | approved |
 
 No clinic counts beyond the credential line. Every number that ships carries what it counts and where it came from.
@@ -55,7 +55,7 @@ Found or suspected on Caretrics pages, older author boxes, and profiles; none ma
 
 - `40+ clinics`, `65+ clinics` → the locked short form
 - `advised`, `audited` (as verbs), `ex-DSO`, `by hand`, `the books`
-- `$4,200`, `$50M` → no public use until a calculation page exists
+- `$4,200`, `$50M` → no public use until a calculation page exists ($4,200 is live on caretrics.com as a median with partial scope; audit finding A4. $50M not found on any fetched surface)
 - `Provider.app`, the 2024 purple palette → historical; never reintroduced
 - `recovered` / `collected` where the fact is `identified`
 - "practice" → "clinic"

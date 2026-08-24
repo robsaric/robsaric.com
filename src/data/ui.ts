@@ -13,8 +13,9 @@ export const UI = {
     /** The mark is decorative: the wordmark beside it already names the site. */
     markAlt: '',
     fieldNotes: 'Field notes',
-    principles: 'Principles',
     about: 'About',
+    /** Replaced Principles in the nav 2026-08-24; Principles moved to the footer. */
+    writeToMe: 'Write to me',
     caretrics: 'Caretrics',
     openMenu: 'Open menu',
     closeMenu: 'Close menu',
@@ -43,6 +44,10 @@ export const UI = {
   article: {
     backToFieldNotes: 'Back to field notes',
     backToArchive: 'Back to archive',
+    /** Field-note byline; the name links to /about/. Archive posts carry none. */
+    bylineBefore: 'By ',
+    bylineAfter: ' · Founder of Caretrics',
+    updated: (date: string) => `Updated ${date}`,
   },
   archive: {
     empty: 'Nothing imported yet.',
@@ -53,6 +58,8 @@ export const UI = {
   footer: {
     navigationLabel: 'Footer navigation',
     contact: 'Write to me',
+    /** Joined the row 2026-08-24 when Principles left the nav. */
+    principles: 'Principles',
     linkedin: 'LinkedIn',
     x: 'X',
     github: 'GitHub',

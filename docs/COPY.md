@@ -24,7 +24,7 @@ Human-centred, no AI slop. Enforced partly by `pnpm lint:copy` (see `scripts/lin
 - Home `<title>`: Rob Saric · Founder of Caretrics
 - Home meta description: Rob Saric builds Caretrics with allied-health and rehab clinics that run on Jane.app. Field notes on clinic revenue, ownership, and AI that shows its work.
 - Skip link: Skip to content
-- Nav links: Field notes · Principles · About · Caretrics (button, external)
+- Nav links: Field notes · About · Write to me · Caretrics (button, external). Changed 2026-08-24 per the reconciled authority review: Write to me proves a person is reachable and is more task-oriented in the nav than Principles. Principles keeps its homepage link (03) and gains a footer link. The review called this medium-confidence; watch it.
 - Menu toggle label: Open menu / Close menu
 
 ## Hero
@@ -64,6 +64,7 @@ Drafts carry `draft: true` in `src/data/now.ts` and are hidden in production. "O
 - Metric: **cut 2026-08-19.** The band now runs H2, body, then straight to the signal and the stepper. The figure ($127,000, one clinic, 25 providers, the twelve months of June 2025 through May 2026, AR the largest gap) is real, but copy law item 6 requires every public number to carry what it counts and where it came from, and the per-gap breakdown is not written down yet. When it is, this returns with `/how-i-counted/` in the same change: metric `$127,000`, note "Identified across four gaps in one clinic, over one year. Identified is not collected.", link "How I counted this →".
 - Signal eyebrow: The signal
 - Exit link: More of these, in the field notes → (`/field-notes/`). Added 2026-08-19 so the strongest argument on the page does not dead-end in "Start again".
+- Methods link: How I count and verify clinic findings → (`/how-i-counted/`). Added 2026-08-24 with the methods page, below the exit link.
 - Signal: 17 insurance items have had no activity in 21 days.
 - Steps (`src/data/evidence-steps.ts`):
   1. Detected / kicker "Signal detected" / body "Seventeen insurance items on one clinic's account show no status change in 21 days. Caretrics flags the group, not the individual claim, because the pattern is the finding." / source "read from Jane · read-only · grouped by days since last activity"
@@ -87,16 +88,14 @@ Drafts carry `draft: true` in `src/data/now.ts` and are hidden in production. "O
   4. Retained / "Does the plan of care finish, or fade?" / "Missed re-bookings · re-evaluations never scheduled · authorizations that expired with visits left" / "The stage where the most money quietly leaves."
   5. Paid (default open) / "Does the completed work turn into money?" / "Unbilled visits · aging receivables · claims that never went out" / "Identified only. Caretrics does not bill or collect."
 - H3: What Caretrics does
-- Body: It reads 12 months of a clinic's Jane account, groups what it finds into an Action Plan with a next step, and records who took it. The pieces are the Recovery Report, the Action Plan, a weekly report, Coverage Alerts, Patient Follow-Ups, and an Aging AR workspace.
+- Body: It reads twelve months of a clinic's Jane data, groups missed revenue and follow-up work into an Action Plan, and records who acted and what changed.
 - Trust line: Read-only access · Cancel anytime · Revoke anytime
 - H3: What it does not do
-- Body: It does not send bills, collect money, or decide what a patient clinically needs. It identifies. Your team decides. Found sits outside it.
-- Mobile combined paragraph: It reads 12 months of a clinic's Jane account, groups what it finds into an Action Plan with a next step, and records who took it. It does not send bills, collect money, or decide what a patient clinically needs.
+- Body: It does not send bills, collect money, or decide what a patient clinically needs. It identifies. Your team decides.
+- Mobile combined paragraph: It reads twelve months of a clinic's Jane data, groups missed revenue and follow-up work into an Action Plan, and records who acted and what changed. It does not send bills, collect money, or decide what a patient clinically needs.
 - CTA: See Caretrics
-- Togetheren title: Selected work through Togetheren
-- Togetheren body (desktop): I work with a small number of healthcare teams on AI strategy, product systems, and operational implementation. `[VERIFY: current Togetheren positioning]`
-- Togetheren body (mobile): A small number of healthcare teams, on AI strategy, product systems, and operational implementation.
-- Togetheren link: See selected work → (external, togetheren.com)
+
+Compressed 2026-08-24 per the reconciled authority review: the homepage explains the operating idea, the product page lists the pieces. The component inventory (Recovery Report, Action Plan, weekly report, Coverage Alerts, Patient Follow-Ups, Aging AR workspace) moved to caretrics.com/product. "Found sits outside it" dropped from the boundary: the Found stage note already carries it. The Togetheren row moved out of this section entirely; the footer's "Togetheren, selected work" link and the `/about/` page's "See selected work →" link are the remaining surfaces (V11).
 
 ## 03 · Principles
 
@@ -129,6 +128,8 @@ Principles 4 and 5 come from design v4 (7a), where the list had six; "Good syste
 - Card types: Field note · Shipped · Changed my mind
 - Notes (`src/content/notes/*.md`). Live: `2026-08-18-unbooked-at-the-desk` (2026-08-18), `2026-08-19-i-took-my-own-number-down` and `2026-08-19-i-only-checked-the-widths-i-designed-for` (both 2026-08-19). The two 08-19 notes are written from events in this repo that are verifiable in git history: the metric cut in `82b38da` and the mid-range layout bug measured in `0c016fe`. They invent no clinic data, which is why they could be written and the six seed notes could not. Still `draft: true` `[DRAFT, V9]`: the six seed entries transcribed from the artboard. Each card body is the note's `summary`; each seed file needs a real body before `draft` is removed.
 - `/field-notes/` H1: Field notes, and nothing else in the page header. The line "Kept in public, in order. The wrong turns stay in." belongs to the section intro and was printing twice on this page until 2026-08-19. · meta description: Field notes from Rob Saric on clinic revenue, ownership, and building Caretrics. Kept in public, in order.
+- Article byline (field-note articles only, added 2026-08-24): "By Rob Saric · Founder of Caretrics", under the date in the article header; the name links to `/about/`. The JSON-LD already carried the author; now the reader sees it too. Archive posts stay as written, no byline.
+- Updated line: when a note carries `updated` frontmatter, the date line reads "[published date] · Updated [updated date]".
 
 ## 05 · About
 
@@ -137,7 +138,7 @@ Principles 4 and 5 come from design v4 (7a), where the list had six; "Good syste
 - Body: I have mentored with Big Brothers Big Sisters for over a decade. Time is the thing people in care have least of, and it is the thing most software asks for more of. That is the whole reason I care about this work. `[VERIFY V7: BBBS wording and duration]`
 - Mobile body: first two sentences.
 - Quote: "If it adds work to care, it has failed."
-- Stat row: 20+ years building software `[VERIFY V2]` · 50+ clinics, firsthand · Founder of Caretrics, Ottawa
+- Stat row: 20+ years building software (V2 confirmed 2026-08-24) · 50+ clinics, firsthand · Founder of Caretrics, Ottawa
 - Photo alt: Rob Saric outdoors
 - Signature alt: Rob Saric (`rob-signature.png`, under the quote, signing the standard)
 
@@ -160,7 +161,7 @@ Its own composition (`src/pages/about.astro`), not the homepage About band. Buil
 The claude.ai/design export rewrote copy in both artboards. Those rewrites were NOT applied; they are listed for a ruling in `docs/ABOUT-PAGE-BRIEF.md`. The approved copy is what ships.
 
 - `/about/` H1: About
-- `/about/` body: the About body above, then the third-person credential paragraph (Copy law item 7), then: "Before Caretrics I spent years as a systems architect inside large managed health-service organizations, and earlier at Trend Micro, Mitel and Pythian." `[VERIFY V2/V3]`
+- `/about/` body: the About body above, then the third-person credential paragraph (Copy law item 7), then: "Before Caretrics I spent years as a systems architect inside large managed health-service organizations, and earlier at Trend Micro, Mitel and Pythian." `[VERIFY V3]` (V2 confirmed 2026-08-24)
 - `/about/` meta description: Rob Saric, founder of Caretrics in Ottawa. Twenty years building software, 50+ clinics firsthand, and one standard: if it adds work to care, it has failed.
 
 ## 06 · Write to me
@@ -202,6 +203,25 @@ Change from the artboard: "2011 to 2019" became "2009 to 2019" (the oldest post 
   - error: H1 "That did not go through." · body "Something failed on my side, not yours. Email me and I will add you myself." ("email me" links to `/contact/`)
   - all states: link "Back to the field notes →" (`/field-notes/`)
 
+## /how-i-counted/ page
+
+Added 2026-08-24, the methods page the authority review called the biggest missing trust layer after external proof. Every sentence is assembled from copy already approved elsewhere in this deck (the evidence steps, the stage notes, principles 3 and 4, the 02 trust line, copy law items 5 and 6); nothing on the page is a new claim. Strings live in `COPY.pages.howICounted`. Linked from the Evidence band. V5's metric returns here-adjacent: the $127,000 figure stays down until its per-gap breakdown is written, and when it returns it links to this page.
+
+- Title: How I count
+- H1: How I count and verify clinic findings.
+- Meta description (third person): How Rob Saric counts and verifies clinic findings: what Caretrics reads, what is never inferred, and why identified is not collected.
+- Intro: Every public number I use is held to the standard on this page. If a number cannot meet it, it comes down until it can. That has already happened once.
+- Intro link: The note where I took my own number down → (`/field-notes/2026-08-19-i-took-my-own-number-down/`)
+- Sections (H2 + one paragraph each):
+  1. What gets read. / Caretrics reads twelve months of a clinic's Jane.app data with read-only access and works between Booked and Paid. Signals come from the clinic's own calendar, visit, and billing records, never from clinical judgement. Access can be revoked anytime.
+  2. Read, not inferred. / Each item links back to the visit it came from, the date it was submitted, and the last status recorded. Nothing is inferred. Where a field was missing, the item says so instead of guessing.
+  3. A finding needs an owner. / The clinic assigns each finding to a person. Caretrics does not decide who. It records the name and the date, so the work stops being nobody's in particular.
+  4. Identified is not collected. / A scan identifies money that may be slipping. Nothing counts as recovered until it lands. The proof is what changed afterward: the claim that went out, the patient who rebooked, the authorization renewed before the visit.
+  5. How an outcome closes. / An item only closes when its status changes in Jane. Identified and collected are reported separately, and the record shows plainly which of the two happened.
+  6. Where AI assists, and where a person decides. / Anything automated says what it read, what it skipped, and what it is unsure about. If it cannot, it does not get to make the call. People assign the work and make the decisions, and each action is logged against the item, never against the person who made it.
+  7. Public examples. / Patient examples use a first name and last initial, never real data. Signals shown in public are anonymized, and every public number carries what it counts and where it came from. When a number is missing its breakdown, it comes down.
+- Exit link: Write to me and tell me where I am wrong → (`/contact/`)
+
 ## Verification table (carry into the launch checklist)
 
 | # | Claim | Where | Status |
@@ -209,10 +229,10 @@ Change from the artboard: "2011 to 2019" became "2009 to 2019" (the oldest post 
 | V1 | "Founder of Caretrics" (artboard dropped "& CEO") | hero, footer, About | VERIFY |
 | V2 | "20+ years building software" / "I spent twenty years building software" | About stat row, hero body (2026-08-23) | **CONFIRMED by Rob 2026-08-24** |
 | V3 | systems-architect / Trend Micro, Mitel, Pythian line | /about only | VERIFY |
-| V5 | $127,000 identified, four gaps, one clinic, one year | Evidence | **CUT 2026-08-19**, so nothing unsupported is on the page. Confirmed: one clinic, 25 providers, twelve months (June 2025 through May 2026), AR the largest gap. Still needed before it returns: the four gap names and the amount against each |
+| V5 | $127,000 identified, four gaps, one clinic, one year | Evidence | **CUT 2026-08-19**, so nothing unsupported is on the page. Confirmed: one clinic, 25 providers, twelve months (June 2025 through May 2026), AR the largest gap. Still needed before it returns: the four gap names and the amount against each. `/how-i-counted/` exists as of 2026-08-24, so the destination is no longer a blocker; the breakdown still is |
 | V6 | Jane.app wording, no endorsement | hero, 02 | approved shape used |
 | V7 | Big Brothers Big Sisters, "over a decade" | About | VERIFY |
 | V9 | Now items and six seed notes | Now strip, 04 | Writing item and first note LIVE 2026-08-18; the other two Now items and the six seed notes stay DRAFT (hidden in prod) |
 | V10 | Portrait 400×400 is below the 2x target for a 400×460 slot | hero, /about/ | **RESOLVED 2026-08-19.** Source replaced with a 944×1136 portrait, and `densities={[1, 2]}` added to both `<Image>` slots. The larger source alone was not enough: Astro emitted 1x only until the densities prop was set. Now serves 400×460 + 800×920 (hero) and 320×384 + 640×768 (/about/) |
-| V11 | Togetheren description | 02 | VERIFY |
+| V11 | Togetheren description | was 02 | **Row removed from 02 2026-08-24** with the section compression; the footer's "Togetheren, selected work" link is the remaining surface. The description string is retired until Togetheren returns somewhere, and still needs verifying if it does |
 | V12 | Social URLs, repo URL for "View source", contact email | footer, contact | SET 2026-08-18 (email rob@caretrics.com, LinkedIn, GitHub, source repo). X left off until decided. |

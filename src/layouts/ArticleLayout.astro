@@ -1,6 +1,8 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import Eyebrow from '../components/Eyebrow.astro';
+import { SITE } from '../data/site';
+import { UI } from '../data/ui';
 import '../styles/prose.css';
 
 interface Props {
@@ -11,6 +13,8 @@ interface Props {
   publishedTime: Date;
   modifiedTime?: Date;
   notice?: string;
+  /** Field notes carry the byline; archive posts stay as written. */
+  showByline?: boolean;
   backHref: string;
   backLabel: string;
   jsonLd: Record<string, unknown>;
@@ -24,17 +28,20 @@ const {
   publishedTime,
   modifiedTime,
   notice,
+  showByline = false,
   backHref,
   backLabel,
   jsonLd,
 } = Astro.props;
 
-const formattedDate = new Intl.DateTimeFormat('en-CA', {
+const dateFormat = new Intl.DateTimeFormat('en-CA', {
   year: 'numeric',
   month: 'long',
   day: 'numeric',
   timeZone: 'UTC',
-}).format(date);
+});
+const formattedDate = dateFormat.format(date);
+const formattedUpdated = modifiedTime ? dateFormat.format(modifiedTime) : undefined;
 ---
 
 <BaseLayout
@@ -50,7 +57,22 @@ const formattedDate = new Intl.DateTimeFormat('en-CA', {
       <header class="article__header">
         <Eyebrow>{eyebrow}</Eyebrow>
         <h1>{title}</h1>
-        <time datetime={date.toISOString()}>{formattedDate}</time>
+        <p class="article__dates">
+          <time datetime={date.toISOString()}>{formattedDate}</time>
+          {formattedUpdated && modifiedTime && (
+            <>
+              {' · '}
+              <time datetime={modifiedTime.toISOString()}>
+                {UI.article.updated(formattedUpdated)}
+              </time>
+            </>
+          )}
+        </p>
+        {showByline && (
+          <p class="article__byline">
+            {UI.article.bylineBefore}<a href="/about/">{SITE.author.name}</a>{UI.article.bylineAfter}
+          </p>
+        )}
         {notice && <p class="article__notice">{notice}</p>}
       </header>
 
@@ -95,10 +117,18 @@ const formattedDate = new Intl.DateTimeFormat('en-CA', {
     text-wrap: pretty;
   }
 
-  time {
+  .article__dates {
+    margin: 0;
     color: var(--ink-muted);
     font-family: var(--font-mono);
     font-size: 13px;
+  }
+
+  .article__byline {
+    margin: 0;
+    color: var(--ink-muted);
+    font-size: 16px;
+    line-height: 1.5;
   }
 
   .article__notice {

@@ -125,22 +125,6 @@ const idPrefix = 'caretrics-stage';
       </Button>
     </div>
 
-    <div class="caretrics__togetheren">
-      <div>
-        <span class="caretrics__togetheren-title">
-          {COPY.caretrics.togetherenTitle}
-        </span>
-        <span class="caretrics__togetheren-body caretrics__togetheren-body--desktop">
-          {COPY.caretrics.togetherenBodyDesktop}
-        </span>
-        <span class="caretrics__togetheren-body caretrics__togetheren-body--mobile">
-          {COPY.caretrics.togetherenBodyMobile}
-        </span>
-      </div>
-      <a href={SITE.togetherenUrl} target="_blank" rel="noopener">
-        {COPY.caretrics.togetherenLink}
-      </a>
-    </div>
   </div>
 </Section>
 
@@ -363,38 +347,6 @@ const idPrefix = 'caretrics-stage';
 
   .caretrics__cta { margin-top: 6px; }
 
-  .caretrics__togetheren {
-    padding-top: 28px;
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 40px;
-    border-top: 1px solid var(--rule);
-  }
-
-  .caretrics__togetheren > div {
-    max-width: 62ch;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .caretrics__togetheren-title { font-size: 18px; font-weight: 600; }
-
-  .caretrics__togetheren-body {
-    color: var(--ink-muted);
-    font-size: 17px;
-    line-height: 1.55;
-  }
-
-  .caretrics__togetheren-body--mobile { display: none; }
-
-  .caretrics__togetheren a {
-    flex: 0 0 auto;
-    font-size: 17px;
-    font-weight: 600;
-  }
-
   @media (max-width: 767.98px) {
     .caretrics { gap: 18px; }
     .caretrics__intro { gap: 18px; }
@@ -454,25 +406,5 @@ const idPrefix = 'caretrics-stage';
 
     .caretrics__mobile-summary p { font-size: 17px; }
     .caretrics__cta { width: 100%; margin-top: 0; }
-
-    .caretrics__togetheren {
-      padding-top: 18px;
-      flex-direction: column;
-      align-items: stretch;
-      gap: 6px;
-    }
-
-    .caretrics__togetheren-title { font-size: 17px; }
-    .caretrics__togetheren-body { font-size: 16px; }
-    .caretrics__togetheren-body--desktop { display: none; }
-    .caretrics__togetheren-body--mobile { display: inline; }
-
-    .caretrics__togetheren a {
-      min-height: var(--tap-min);
-      display: inline-flex;
-      align-items: center;
-      align-self: flex-start;
-      font-size: 16px;
-    }
   }
 </style>

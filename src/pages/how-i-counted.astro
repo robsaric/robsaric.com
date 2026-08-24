@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { COPY } from '../data/copy';
+
+const page = COPY.pages.howICounted;
+---
+
+<BaseLayout title={page.title} description={page.description}>
+  <div class="methods">
+    <header class="methods__header">
+      <h1>{page.heading}</h1>
+      <p>{page.intro}</p>
+      <a class="methods__note-link" href={page.noteHref}>{page.noteLink}</a>
+    </header>
+
+    <div class="methods__sections">
+      {page.sections.map((section) => (
+        <section class="methods__section">
+          <h2>{section.heading}</h2>
+          <p>{section.body}</p>
+        </section>
+      ))}
+    </div>
+
+    <footer class="methods__footer">
+      <a href="/contact/">{page.contactLink}</a>
+    </footer>
+  </div>
+</BaseLayout>
+
+<style>
+  .methods {
+    width: 100%;
+    max-width: var(--max-page);
+    margin: 0 auto;
+    padding: 96px var(--gutter-desktop);
+  }
+
+  .methods__header {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  h1 {
+    max-width: 20ch;
+    margin: 0;
+    font-size: 48px;
+    line-height: 1.1;
+    letter-spacing: -0.028em;
+    text-wrap: pretty;
+  }
+
+  .methods__header p {
+    max-width: 58ch;
+    margin: 0;
+    font-size: 18px;
+    line-height: var(--lh-body);
+    text-wrap: pretty;
+  }
+
+  .methods__note-link,
+  .methods__footer a {
+    min-height: var(--tap-min);
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    font-size: 17px;
+    font-weight: 600;
+  }
+
+  .methods__sections {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .methods__section {
+    padding: 32px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .methods__section:last-child { border-bottom: 1px solid var(--rule); }
+
+  h2 {
+    margin: 0;
+    font-size: var(--text-h3);
+    letter-spacing: var(--tracking-h3);
+  }
+
+  .methods__section p {
+    max-width: 58ch;
+    margin: 0;
+    font-size: 18px;
+    line-height: var(--lh-body);
+    text-wrap: pretty;
+  }
+
+  .methods__footer { padding-top: 28px; }
+
+  @media (max-width: 767.98px) {
+    .methods { padding: 44px var(--gutter-mobile); }
+    h1 { font-size: 34px; }
+    .methods__header p { font-size: 17px; }
+    .methods__note-link,
+    .methods__footer a { font-size: 16px; }
+    .methods__sections { margin-top: 28px; }
+    .methods__section { padding: 20px 0; gap: 8px; }
+    h2 { font-size: 20px; }
+    .methods__section p { font-size: 17px; }
+  }
+</style>

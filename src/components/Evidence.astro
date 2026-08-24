@@ -87,9 +87,14 @@ const totalSteps = EVIDENCE_STEPS.length;
         </span>
       </div>
 
-      <a class="evidence__exit" href="/field-notes/">
-        {COPY.evidence.exitLink}
-      </a>
+      <div class="evidence__exits">
+        <a class="evidence__exit" href="/field-notes/">
+          {COPY.evidence.exitLink}
+        </a>
+        <a class="evidence__exit" href="/how-i-counted/">
+          {COPY.evidence.methodsLink}
+        </a>
+      </div>
     </div>
   </div>
 </Section>
@@ -297,6 +302,13 @@ const totalSteps = EVIDENCE_STEPS.length;
     font-size: 13px;
     line-height: 1.5;
     border-top: 1px solid var(--on-dark-28);
+  }
+
+  .evidence__exits {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
   }
 
   .evidence__exit {

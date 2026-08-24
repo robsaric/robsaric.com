@@ -25,6 +25,7 @@ export const COPY = {
     bodyMobile: 'One anonymized signal, from detection through to a verified outcome.',
     signalEyebrow: 'The signal',
     exitLink: 'More of these, in the field notes →',
+    methodsLink: 'How I count and verify clinic findings →',
   },
   caretrics: {
     number: '02',
@@ -35,15 +36,13 @@ export const COPY = {
     questionEyebrow: "The clinic's question",
     signalsEyebrow: 'Example signals',
     doesHeading: 'What Caretrics does',
-    doesBody: "It reads 12 months of a clinic's Jane account, groups what it finds into an Action Plan with a next step, and records who took it. The pieces are the Recovery Report, the Action Plan, a weekly report, Coverage Alerts, Patient Follow-Ups, and an Aging AR workspace.",
+    doesBody: "It reads twelve months of a clinic's Jane data, groups missed revenue and follow-up work into an Action Plan, and records who acted and what changed.",
     trustLine: 'Read-only access · Cancel anytime · Revoke anytime',
     doesNotHeading: 'What it does not do',
-    doesNotBody: 'It does not send bills, collect money, or decide what a patient clinically needs. It identifies. Your team decides. Found sits outside it.',
-    mobileBody: "It reads 12 months of a clinic's Jane account, groups what it finds into an Action Plan with a next step, and records who took it. It does not send bills, collect money, or decide what a patient clinically needs.",
+    doesNotBody: 'It does not send bills, collect money, or decide what a patient clinically needs. It identifies. Your team decides.',
+    mobileBody: "It reads twelve months of a clinic's Jane data, groups missed revenue and follow-up work into an Action Plan, and records who acted and what changed. It does not send bills, collect money, or decide what a patient clinically needs.",
     cta: 'See Caretrics',
-    togetherenTitle: 'Selected work through Togetheren',
-    togetherenBodyDesktop: 'I work with a small number of healthcare teams on AI strategy, product systems, and operational implementation.',
-    togetherenBodyMobile: 'A small number of healthcare teams, on AI strategy, product systems, and operational implementation.',
+    /** The 02 Togetheren row was removed 2026-08-24; /about/ still uses this. */
     togetherenLink: 'See selected work →',
   },
   principles: {
@@ -243,6 +242,47 @@ export const COPY = {
     archivePost: {
       eyebrow: (year: number) => `From the archive · ${year}`,
       notice: (year: number) => `Written in ${year}. Kept as it was.`,
+    },
+    howICounted: {
+      title: 'How I count',
+      heading: 'How I count and verify clinic findings.',
+      description:
+        'How Rob Saric counts and verifies clinic findings: what Caretrics reads, what is never inferred, and why identified is not collected.',
+      intro:
+        'Every public number I use is held to the standard on this page. If a number cannot meet it, it comes down until it can. That has already happened once.',
+      noteLink: 'The note where I took my own number down →',
+      noteHref: '/field-notes/2026-08-19-i-took-my-own-number-down/',
+      sections: [
+        {
+          heading: 'What gets read.',
+          body: "Caretrics reads twelve months of a clinic's Jane.app data with read-only access and works between Booked and Paid. Signals come from the clinic's own calendar, visit, and billing records, never from clinical judgement. Access can be revoked anytime.",
+        },
+        {
+          heading: 'Read, not inferred.',
+          body: 'Each item links back to the visit it came from, the date it was submitted, and the last status recorded. Nothing is inferred. Where a field was missing, the item says so instead of guessing.',
+        },
+        {
+          heading: 'A finding needs an owner.',
+          body: "The clinic assigns each finding to a person. Caretrics does not decide who. It records the name and the date, so the work stops being nobody's in particular.",
+        },
+        {
+          heading: 'Identified is not collected.',
+          body: 'A scan identifies money that may be slipping. Nothing counts as recovered until it lands. The proof is what changed afterward: the claim that went out, the patient who rebooked, the authorization renewed before the visit.',
+        },
+        {
+          heading: 'How an outcome closes.',
+          body: 'An item only closes when its status changes in Jane. Identified and collected are reported separately, and the record shows plainly which of the two happened.',
+        },
+        {
+          heading: 'Where AI assists, and where a person decides.',
+          body: 'Anything automated says what it read, what it skipped, and what it is unsure about. If it cannot, it does not get to make the call. People assign the work and make the decisions, and each action is logged against the item, never against the person who made it.',
+        },
+        {
+          heading: 'Public examples.',
+          body: 'Patient examples use a first name and last initial, never real data. Signals shown in public are anonymized, and every public number carries what it counts and where it came from. When a number is missing its breakdown, it comes down.',
+        },
+      ],
+      contactLink: 'Write to me and tell me where I am wrong →',
     },
     contact: {
       title: 'Write to me',
