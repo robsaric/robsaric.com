@@ -32,13 +32,16 @@ Human-centred, no AI slop. Enforced partly by `pnpm lint:copy` (see `scripts/lin
 - Eyebrow (desktop): Founder of Caretrics · Allied-health revenue operations
 - Eyebrow (mobile): Founder of Caretrics
 - H1: I kept finding the same revenue gaps in clinic after clinic.
-- Body: So I built Caretrics. It helps allied-health and rehab teams using Jane.app identify the operational gaps affecting revenue, give the work a clear owner, and measure what changed.
-- Primary CTA: See Caretrics (external, caretrics.com)
-- Secondary CTA (desktop only): Read the field notes (`/field-notes/`)
+- Body, paragraph 1: I'm Rob Saric. I spent twenty years building software, then went through twelve months of records for more than fifty clinics, one clinic at a time.
+- Body, paragraph 2: That work became Caretrics. It helps allied-health and rehab teams using Jane.app see what is slipping, give the work an owner, and verify what changed.
+- Primary CTA: See how Caretrics works (external, caretrics.com/product; Rob chose the product explainer 2026-08-24 so the destination continues the label's promise. Nav, footer, and 02 keep the root.)
+- Secondary CTA: Read the field notes (`/field-notes/`). Outline button on desktop; on mobile a text link "Read the field notes →" below the full-width primary button.
 - Tagline: Evidence-led. AI-assisted. Human-controlled.
 - Portrait alt: Rob Saric
 
 Change from the artboard: "using Jane" became "using Jane.app" (first mention on the page).
+
+Changed 2026-08-23, per the reconciled authority review (`docs/strategy/`, 2026-08-20 set). The H1 stays. The body now does the orientation the old one skipped: paragraph 1 introduces Rob and carries the locked first-person credential components (item 7); paragraph 2 states the product consequence. The proof lives in the body, not a separate proof rail; one treatment, not both. The primary CTA label changed from "See Caretrics" because it named the destination, not the value of clicking. The secondary path is no longer desktop-only: hiding it on mobile removed the lowest-commitment route. Mobile order keeps H1 and body contiguous; the portrait moves below the actions.
 
 ## Now strip
 
@@ -204,7 +207,7 @@ Change from the artboard: "2011 to 2019" became "2009 to 2019" (the oldest post 
 | # | Claim | Where | Status |
 |---|---|---|---|
 | V1 | "Founder of Caretrics" (artboard dropped "& CEO") | hero, footer, About | VERIFY |
-| V2 | "20+ years building software" | About stat row | VERIFY |
+| V2 | "20+ years building software" / "I spent twenty years building software" | About stat row, hero body (2026-08-23) | **CONFIRMED by Rob 2026-08-24** |
 | V3 | systems-architect / Trend Micro, Mitel, Pythian line | /about only | VERIFY |
 | V5 | $127,000 identified, four gaps, one clinic, one year | Evidence | **CUT 2026-08-19**, so nothing unsupported is on the page. Confirmed: one clinic, 25 providers, twelve months (June 2025 through May 2026), AR the largest gap. Still needed before it returns: the four gap names and the amount against each |
 | V6 | Jane.app wording, no endorsement | hero, 02 | approved shape used |

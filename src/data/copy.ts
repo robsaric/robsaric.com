@@ -3,9 +3,14 @@ export const COPY = {
     eyebrowDesktop: 'Founder of Caretrics · Allied-health revenue operations',
     eyebrowMobile: 'Founder of Caretrics',
     heading: 'I kept finding the same revenue gaps in clinic after clinic.',
-    body: "So I built Caretrics. It helps allied-health and rehab teams using Jane.app identify the operational gaps affecting revenue, give the work a clear owner, and measure what changed.",
-    primaryCta: 'See Caretrics',
+    bodyIntro:
+      "I'm Rob Saric. I spent twenty years building software, then went through twelve months of records for more than fifty clinics, one clinic at a time.",
+    bodyOutcome:
+      'That work became Caretrics. It helps allied-health and rehab teams using Jane.app see what is slipping, give the work an owner, and verify what changed.',
+    primaryCta: 'See how Caretrics works',
     secondaryCta: 'Read the field notes',
+    /** Mobile renders the secondary path as a text link, not a second button. */
+    secondaryCtaMobile: 'Read the field notes →',
     tagline: 'Evidence-led. AI-assisted. Human-controlled.',
     portraitAlt: 'Rob Saric',
   },

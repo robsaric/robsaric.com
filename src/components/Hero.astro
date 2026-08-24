@@ -1,8 +1,9 @@
 ---
 import { Image } from 'astro:assets';
-/* The homepage carries the Jane Summit photo; the studio portrait stays on
-   /about/. Two different rooms, two different pictures. */
-import portrait from '../assets/images/rob-hero.jpg';
+/* The homepage carries the Caretrics polo portrait (2026-08-23): eye-level,
+   natural light, one brand cue, no lanyard. The Jane Summit photo it replaced
+   stays in the repo for an event context; the studio portrait stays on /about/. */
+import portrait from '../assets/images/rob-portrait-caretrics.png';
 import { COPY } from '../data/copy';
 import { SITE } from '../data/site';
 import Button from './Button.astro';
@@ -19,10 +20,13 @@ import Eyebrow from './Eyebrow.astro';
         {COPY.hero.eyebrowMobile}
       </Eyebrow>
       <h1>{COPY.hero.heading}</h1>
-      <p class="hero__body">{COPY.hero.body}</p>
+      <div class="hero__body">
+        <p>{COPY.hero.bodyIntro}</p>
+        <p>{COPY.hero.bodyOutcome}</p>
+      </div>
       <div class="hero__actions">
         <Button
-          href={SITE.caretricsUrl}
+          href={SITE.caretricsProductUrl}
           size="xl"
           icon="arrow-right"
           external
@@ -32,6 +36,9 @@ import Eyebrow from './Eyebrow.astro';
         <Button href="/field-notes/" size="xl" variant="outline">
           {COPY.hero.secondaryCta}
         </Button>
+        <a class="hero__notes-link" href="/field-notes/">
+          {COPY.hero.secondaryCtaMobile}
+        </a>
       </div>
       <p class="hero__tagline">{COPY.hero.tagline}</p>
     </div>
@@ -85,11 +92,26 @@ import Eyebrow from './Eyebrow.astro';
 
   .hero__body {
     max-width: 54ch;
-    margin: 0;
-    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
     font-size: var(--text-lead);
     line-height: var(--lh-body);
+  }
+
+  .hero__body p {
+    margin: 0;
+    color: var(--ink);
     text-wrap: pretty;
+  }
+
+  .hero__notes-link {
+    min-height: var(--tap-min);
+    display: none;
+    align-items: center;
+    align-self: flex-start;
+    font-size: 16px;
+    font-weight: 600;
   }
 
   .hero__actions {
@@ -140,11 +162,18 @@ import Eyebrow from './Eyebrow.astro';
     .hero__eyebrow--desktop { display: none; }
     .hero__eyebrow--mobile { display: inline; }
     h1 { order: 2; max-width: none; font-size: 34px; line-height: 1.1; letter-spacing: -0.028em; }
-    .hero__portrait { order: 3; width: 190px; height: 190px; }
-    .hero__body { order: 4; max-width: none; font-size: 17px; }
-    .hero__actions { order: 5; padding-top: 0; display: block; }
+    .hero__body { order: 3; max-width: none; gap: 12px; font-size: 17px; }
+    .hero__actions {
+      order: 4;
+      padding-top: 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 4px;
+    }
     .hero__actions :global(.button) { width: 100%; }
     .hero__actions :global(.button--outline) { display: none; }
+    .hero__notes-link { display: inline-flex; }
+    .hero__portrait { order: 5; width: 190px; height: 190px; }
     .hero__tagline { order: 6; }
   }
 </style>

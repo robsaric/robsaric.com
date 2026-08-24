@@ -71,12 +71,12 @@ Radius 12, 1px `--rule` border, `object-fit: cover`, `display: block`. Use Astro
 - Nav is `position: sticky; top: 0` with `z-index` above content. Skip link ("Skip to content") as the first focusable element, visually hidden until focused.
 
 ### Hero
-- Desktop: padding 104 96 72; grid `1fr 400px`, gap 88, `align-items: center`. Left column: eyebrow, H1, body (19px, max-width 54ch), CTA row (gap 14, padding-top 4): DS Button dark 48px "See Caretrics" (arrow-right, external) + outline button "Read the field notes" (link to `/field-notes/`); then a 15px `--ink-muted` line "Evidence-led. AI-assisted. Human-controlled." Right: portrait 400×460 (photo style).
-- Mobile: padding 40 20 32, single column gap 20 in this order: eyebrow ("Founder of Caretrics" short form), H1, portrait 190×190, body, DS Button full-width "See Caretrics", tagline. The outline "Read the field notes" button is dropped on mobile (the Now strip and nav carry that path).
+- Desktop: padding 104 96 72; grid `1fr 400px`, gap 88, `align-items: center`. Left column: eyebrow, H1, body (two paragraphs, 19px, gap 14, max-width 54ch), CTA row (gap 14, padding-top 4): DS Button dark 48px "See how Caretrics works" (arrow-right, external) + outline button "Read the field notes" (link to `/field-notes/`); then a 15px `--ink-muted` line "Evidence-led. AI-assisted. Human-controlled." Right: portrait 400×460 (photo style; `rob-portrait-caretrics.png` since 2026-08-23, the eye-level Caretrics polo portrait, source 1169×1345 so both densities are real).
+- Mobile: padding 40 20 32, single column gap 20 in this order: eyebrow ("Founder of Caretrics" short form), H1, body (17px, both paragraphs, gap 12), actions column (gap 4): DS Button full-width "See how Caretrics works" + text link "Read the field notes →" (16px/600, 44px tall, left-aligned; the outline button itself stays desktop-only), portrait 190×190, tagline. Changed 2026-08-23: the body sits with the H1 instead of below the portrait, and the field-notes path is no longer dropped on mobile; the reconciled authority review (`docs/strategy/`) called both.
 
 ### Now strip
 - Semantic: `<section aria-labelledby>` with a visually-hidden `<h2>` "What I am working on now".
-- Desktop: padding 0 96 88; top rule; padding-top 28; grid 3 columns gap 40. Each item is one `<a>` (column flex, gap 10, no underline): kicker eyebrow, title 19px/600/1.4 ink, blurb 16px/1.55 `--ink-muted`. Focus outline offset 4.
+- Desktop: padding 0 96 88; top rule; padding-top 28; grid gap 40 with one column per visible item (`--now-count`, max 3): one live item renders as a deliberate full-width row, never beside empty columns (2026-08-23, per the reconciled authority review). Each item is one `<a>` (column flex, gap 10, no underline): kicker eyebrow, title 19px/600/1.4 ink, blurb 16px/1.55 `--ink-muted` max 62ch. Focus outline offset 4.
 - Mobile: padding 0 20 40; column gap 18; each item has its own top rule and padding-top 16, gap 6; kicker + title (18px) only, blurb dropped.
 - Data: `src/data/now.ts`. Render nothing (no rule, no padding) when the list is empty after draft filtering.
 

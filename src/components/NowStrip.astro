@@ -3,14 +3,14 @@ import Eyebrow from './Eyebrow.astro';
 import { COPY } from '../data/copy';
 import { NOW_ITEMS, SHOW_DRAFTS } from '../data/now';
 
-const items = NOW_ITEMS.filter((item) => SHOW_DRAFTS || !item.draft);
+const items = NOW_ITEMS.filter((item) => SHOW_DRAFTS || !item.draft).slice(0, 3);
 ---
 
 {items.length > 0 && (
   <section class="now" aria-labelledby="now-heading">
     <div class="now__inner">
       <h2 id="now-heading" class="visually-hidden">{COPY.now.heading}</h2>
-      <div class="now__grid">
+      <div class="now__grid" style={`--now-count: ${items.length}`}>
         {items.map((item) => (
           <a class="now__item" href={item.href}>
             <Eyebrow>{item.kicker}</Eyebrow>
@@ -33,10 +33,12 @@ const items = NOW_ITEMS.filter((item) => SHOW_DRAFTS || !item.draft);
     padding: 0 var(--gutter-desktop) 88px;
   }
 
+  /* Columns follow the visible item count: no empty desktop columns while
+     the two draft slots stay hidden in production. */
   .now__grid {
     padding-top: 28px;
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(var(--now-count, 3), minmax(0, 1fr));
     gap: 40px;
     border-top: 1px solid var(--rule);
   }
@@ -62,6 +64,7 @@ const items = NOW_ITEMS.filter((item) => SHOW_DRAFTS || !item.draft);
   }
 
   .now__blurb {
+    max-width: 62ch;
     color: var(--ink-muted);
     font-size: 16px;
     line-height: 1.55;

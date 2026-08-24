@@ -16,6 +16,12 @@ export const SITE = {
     location: 'Ottawa',
   },
   caretricsUrl: 'https://caretrics.com',
+  /**
+   * Hero CTA destination (Rob, 2026-08-24): the product explainer continues
+   * the "See how Caretrics works" promise better than the root. Verified live
+   * 2026-08-24. Nav, footer, and the 02 section button keep the root.
+   */
+  caretricsProductUrl: 'https://caretrics.com/product',
   togetherenUrl: 'https://togetheren.com',
   email: 'rob@caretrics.com',
   links: {
