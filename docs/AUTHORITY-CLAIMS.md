@@ -44,7 +44,7 @@ Assembled from copy already shipped on the site; each entry notes where its sent
 | 20+ years | Years building software | Career; V2 in the `docs/COPY.md` verification table | approved (V2 confirmed by Rob 2026-08-24; ships in the About stat row and hero body) |
 | 50+ clinics | Clinics whose records Rob went through, twelve months each, one clinic at a time | Locked credential | approved, locked form only |
 | Twelve months | The record window per clinic, and the window Caretrics reads | Credential; `docs/COPY.md` 02 | approved |
-| $127,000 | Identified across four gaps in one clinic, over one year. Identified is not collected. | Cut from the site 2026-08-19. `/how-i-counted/` shipped 2026-08-24, and the per-gap breakdown is published on caretrics.com (audit finding A3: unbilled claims $52,000 · no-shows $37,000 · missed re-bookings $24,000 · missing re-evals $14,000). Returns once Rob confirms those four | held, pending Rob |
+| $127,000 | Identified across four gaps in one clinic, over one year. Identified is not collected. | One clinic, 25 providers, June 2025 through May 2026. Four gaps confirmed by Rob 2026-08-24: unbilled claims $52,000 · no-shows $37,000 · missed re-bookings $24,000 · missing re-evaluations $14,000 | approved; ships in the Evidence band and `/how-i-counted/` section 8 |
 | 38 posts, 2009 to 2019 | Imported archive posts | `docs/MIGRATION.md` | approved |
 
 No clinic counts beyond the credential line. Every number that ships carries what it counts and where it came from.

@@ -11,12 +11,40 @@ caretrics.com holds the line better than the strategy docs feared. The locked cr
 | # | Location | Current wording | Registry position | Call | Status |
 |---|---|---|---|---|---|
 | A1 | caretrics.com/about | "Rob spent twenty years building software, then went through twelve months of records for 50+ clinics, one clinic at a time." | Matches the locked components | **Keep** | aligned 2026-08-24 |
-| A2 | caretrics.com/about | "twenty years building software for health-service organizations, most of it on the systems that move the money" | Approved form: "including years as a systems architect inside large managed health-service organizations". The Caretrics line stretches "years inside" to all twenty. | **Change** on caretrics.com to the "including years" shape, or Rob confirms the broader claim and the registry updates | open, Rob |
-| A3 | caretrics.com home + /about | $127,000 in one clinic over one year, WITH the per-gap breakdown: Unbilled claims $52,000 · No-shows $37,000 · Missed re-bookings $24,000 · Missing re-evals $14,000 (sums to $127,000) | V5 cut the figure from robsaric.com precisely because the breakdown was not written down. It is written down, on caretrics.com. | **Rob confirms the four names and amounts**, then the metric can return to the Evidence band with the `/how-i-counted/` link, per the V5 plan | open, Rob |
-| A4 | caretrics.com home | "half of clinics find more than $4,200/month" | Registry: $4,200 has no public calculation page. The line does carry scope (a median across clinics), but nothing says what it counts, the period, or the denominator. | **Change**: publish the calculation (a Caretrics methods note, or extend `/how-i-counted/`) or attach "identified, not collected" scope where it appears | open |
-| A5 | caretrics.com home | Named testimonials: Kootenay Therapy Center ("$2,800 recovered"), London Chiro ("$6,000 recovered in the first few months") | robsaric.com's biggest missing trust layer is exactly one named, permissioned operator story. These exist and are already public. | **Opportunity**: if the permission covers robsaric.com, one becomes the homepage external-proof block the review called for | open, Rob |
+| A2 | caretrics.com/about | "twenty years building software for health-service organizations, most of it on the systems that move the money" | Approved form: "including years as a systems architect inside large managed health-service organizations". The Caretrics line stretches "years inside" to all twenty. | **Change**: exact replacement specified below; this session could not write to `caretricsplatform`, so Rob applies it there (two files, one paragraph and one test regex) | fix specified 2026-08-24, needs applying |
+| A3 | caretrics.com home + /about | $127,000 in one clinic over one year, WITH the per-gap breakdown: Unbilled claims $52,000 · No-shows $37,000 · Missed re-bookings $24,000 · Missing re-evals $14,000 (sums to $127,000) | V5 cut the figure from robsaric.com precisely because the breakdown was not written down. | **Done.** Rob confirmed the four names and amounts 2026-08-24; the metric is back in the Evidence band with the "How I counted this →" link, and the breakdown is written down in `/how-i-counted/` section 8 | resolved 2026-08-24 |
+| A4 | caretrics.com home | "On a first scan, half of clinics find more than $4,200/month. That is what twelve months of their own records identified." | The first fetch missed the second sentence. Re-reading the source: the rendered line states the median in plain English WITH "identified" attached, `src/config/marketingProof.ts` records the founder-confirmed source (2026-05-05, reaffirmed 2026-08-18), and tests pin both the median framing and the word "identified". | **Downgraded**: internal provenance and scope exist. A public calculation page stays a nice-to-have on the Caretrics side | mostly aligned 2026-08-24 |
+| A5 | caretrics.com home | Named testimonials: Steven Hill (Kings Cross Physio), Ryan Sleik (Kootenay Therapy Center, "$2,800 recovered"), Dr. Eric Jackson (London Chiro, "$6,000 recovered") | robsaric.com's biggest missing trust layer was one named, permissioned operator story. | **Done.** Rob approved reuse 2026-08-24; Ryan Sleik's quote, verbatim, is the homepage proof band (`src/data/operator-proof.ts`) | resolved 2026-08-24 |
 | A6 | caretrics.com home | Rob bio: "Rob Saric, Founder, Caretrics. I write about what I keep finding in clinic operations at robsaric.com." | Consistent with the approved title; cross-links the two properties | **Keep** | aligned 2026-08-24 |
 | A7 | LinkedIn, author boxes, decks, social | unknown | The strategy docs report older bios with different counts and revenue claims | **Audit next** with Rob logged in; record each occurrence here | blocked on access |
+
+## The A2 fix, ready to apply in `caretricsplatform`
+
+Two files. The paragraph is the CAR-1131 PR5 letter on `/about`; the test pins its old wording.
+
+**`src/app/(site)/about/AboutPageClient.tsx`** (the P2a paragraph, ~line 283). Replace:
+
+> I have spent twenty years building software for health-service organizations, most of it on the systems that move the money.
+
+with:
+
+> I have spent twenty years building software, including years inside large managed health-service organizations, most of it on the systems that move the money.
+
+The rest of the paragraph stays. This keeps Rob's own "systems that move the money" line and "That is how I ended up doing the work myself", and only corrects the scope: the bios on the same page (and the Person JSON-LD they feed) say "including years ... inside", so the letter now agrees with them. "As a systems architect" is left to the bios; repeating it before "the systems that move the money" doubles "systems" in one sentence.
+
+**`src/app/(site)/__tests__/homepage-additions.spec.ts`** (~line 727). Replace:
+
+```
+assert.match(src.about, /twenty years building software for health-service/);
+```
+
+with:
+
+```
+assert.match(src.about, /twenty years building software, including years\s+inside large managed health-service/);
+```
+
+(`\s+` because the JSX wraps the line.)
 
 ## Not found anywhere fetched
 

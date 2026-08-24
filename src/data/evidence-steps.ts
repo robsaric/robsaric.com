@@ -9,12 +9,10 @@ export interface EvidenceStep {
 export const EVIDENCE_SIGNAL = '17 insurance items have had no activity in 21 days.';
 
 /**
- * The $127,000 metric and its `/how-i-counted/` link were cut on 2026-08-19.
- * The figure is real (one clinic, 25 providers, the twelve months of June 2025
- * through May 2026, AR the largest gap) but the four gap names and the amount
- * against each are not written down yet, and copy law item 6 says every public
- * number carries what it counts and where it came from. It returns together
- * with `/how-i-counted/`, not before. See docs/COPY.md V5.
+ * The $127,000 metric was cut on 2026-08-19 (breakdown not written down) and
+ * restored on 2026-08-24 after Rob confirmed the four gaps and amounts. The
+ * metric strings live in COPY.evidence; the breakdown is written down in
+ * /how-i-counted/ section 8. See docs/COPY.md V5 (resolved).
  */
 
 export const EVIDENCE_STEPS: EvidenceStep[] = [

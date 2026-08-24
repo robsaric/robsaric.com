@@ -47,7 +47,7 @@ Never run `pnpm build | tail`; piping hides the exit code. Run the command bare.
 ```
 src/
   assets/images/        rob-portrait-caretrics.png (hero) rob-portrait.jpg rob-hero.jpg rob-family.png rob-avatar.png rob-sketch.png rob-signature.png
-  components/           Nav, Hero, NowStrip, Evidence, Stages, Principles, FieldNotes, NoteCard, About, WriteToMe, Footer, Button, Eyebrow, SectionLabel, Seo
+  components/           Nav, Hero, NowStrip, Evidence, OperatorProof, Stages, Principles, FieldNotes, NoteCard, About, WriteToMe, Footer, Button, Eyebrow, SectionLabel, Seo
   layouts/              BaseLayout.astro (head, skip link, nav, footer), ArticleLayout.astro
   pages/                index, field-notes/{index,[slug]}, principles, about, how-i-counted, archive/{index,[slug]}, contact, 404, rss.xml.ts
   content/notes/        field notes (md/mdx)

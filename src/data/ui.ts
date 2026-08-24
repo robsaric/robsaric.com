@@ -25,6 +25,9 @@ export const UI = {
     startAgain: 'Start again',
     stepCounter: (step: number, total: number) => `Step ${step} of ${total}`,
   },
+  operatorProof: {
+    regionLabel: 'From a clinic owner',
+  },
   fieldNotes: {
     allFilter: 'All',
     filtersLabel: 'Filter field notes by tag',

@@ -24,6 +24,11 @@ export const COPY = {
     bodyDesktop: 'The same pattern turned up in clinic after clinic. The report existed, somebody had read it, and the task it implied still belonged to no one in particular. Here is one anonymized signal, from detection through to a verified outcome.',
     bodyMobile: 'One anonymized signal, from detection through to a verified outcome.',
     signalEyebrow: 'The signal',
+    /** Restored 2026-08-24 (V5 resolved); the breakdown lives in /how-i-counted/. */
+    metric: '$127,000',
+    metricNote:
+      'Identified across four gaps in one clinic, over one year. Identified is not collected.',
+    metricLink: 'How I counted this →',
     exitLink: 'More of these, in the field notes →',
     methodsLink: 'How I count and verify clinic findings →',
   },
@@ -280,6 +285,10 @@ export const COPY = {
         {
           heading: 'Public examples.',
           body: 'Patient examples use a first name and last initial, never real data. Signals shown in public are anonymized, and every public number carries what it counts and where it came from. When a number is missing its breakdown, it comes down.',
+        },
+        {
+          heading: 'The $127,000.',
+          body: 'The number on the homepage: one clinic, 25 providers, the twelve months of June 2025 through May 2026. Four gaps: unbilled claims, $52,000. No-shows, $37,000. Missed re-bookings, $24,000. Missing re-evaluations, $14,000. Identified across those four, and identified is not collected: it is what the records showed, not what the clinic banked.',
         },
       ],
       contactLink: 'Write to me and tell me where I am wrong →',

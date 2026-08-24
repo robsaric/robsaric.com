@@ -61,7 +61,7 @@ Drafts carry `draft: true` in `src/data/now.ts` and are hidden in production. "O
 - H2: The dashboard held the evidence. The work still had no owner.
 - Body (desktop): The same pattern turned up in clinic after clinic. The report existed, somebody had read it, and the task it implied still belonged to no one in particular. Here is one anonymized signal, from detection through to a verified outcome.
 - Body (mobile): One anonymized signal, from detection through to a verified outcome.
-- Metric: **cut 2026-08-19.** The band now runs H2, body, then straight to the signal and the stepper. The figure ($127,000, one clinic, 25 providers, the twelve months of June 2025 through May 2026, AR the largest gap) is real, but copy law item 6 requires every public number to carry what it counts and where it came from, and the per-gap breakdown is not written down yet. When it is, this returns with `/how-i-counted/` in the same change: metric `$127,000`, note "Identified across four gaps in one clinic, over one year. Identified is not collected.", link "How I counted this →".
+- Metric (**restored 2026-08-24**, cut 2026-08-19): `$127,000` · note "Identified across four gaps in one clinic, over one year. Identified is not collected." · mono link "How I counted this →" (`/how-i-counted/`). The 2026-08-19 cut was waiting on the per-gap breakdown; Rob confirmed it 2026-08-24, matching what caretrics.com publishes: unbilled claims $52,000 · no-shows $37,000 · missed re-bookings $24,000 · missing re-evaluations $14,000 (sums to $127,000). The breakdown is written down in `/how-i-counted/` ("The $127,000"), which the metric links to. Cohort: one clinic, 25 providers, the twelve months of June 2025 through May 2026. On mobile the metric sits after the body, before the panel.
 - Signal eyebrow: The signal
 - Exit link: More of these, in the field notes → (`/field-notes/`). Added 2026-08-19 so the strongest argument on the page does not dead-end in "Start again".
 - Methods link: How I count and verify clinic findings → (`/how-i-counted/`). Added 2026-08-24 with the methods page, below the exit link.
@@ -73,6 +73,13 @@ Drafts carry `draft: true` in `src/data/now.ts` and are hidden in production. "O
   4. Action / "Action completed" / "The owner resubmits, corrects, or writes each item off. The choice is logged against the item, never against the person who made it." / "one action per item · reversible · audit trail retained"
   5. Verified / "Outcome verified" / "An item only closes when its status changes in Jane. Identified is not collected, and the record shows plainly which of the two happened." / "confirmed against source data · identified and collected reported separately"
 - Controls: Next step / Start again / Step N of 5
+
+## Operator proof (unnumbered band between 01 and 02)
+
+Added 2026-08-24: the external-proof layer the authority review called the site's largest gap. One named clinic-operator quote, verbatim from caretrics.com (fetched 2026-08-24); Rob approved its reuse here the same day. "Recovered" is Ryan's own word about his own result and stays untouched; site copy keeps "identified". The band carries no section number on purpose: 01 to 06 are the homepage's table of contents, and one quote does not renumber it. Strings live in `src/data/operator-proof.ts`; do not edit the quote.
+
+- Quote: "No-shows and late cancels were costing us more than we realized, and we never had a clear number on it. Rob and the Caretrics team gave us the number, then helped our front desk stay on top of exactly who to follow up with first. We recovered about $2,800 last month, and our team now runs the week on top of our operational priorities instead of chasing them."
+- Attribution: Ryan Sleik · Owner, Kootenay Therapy Center
 
 ## 02 · Caretrics
 
@@ -193,7 +200,7 @@ Change from the artboard: "2011 to 2019" became "2009 to 2019" (the oldest post 
 
 - `/archive/` H1: Earlier writing, 2009 to 2019 · intro: Thirty-eight posts from the first blog, kept as they were written. Systems, flow, leadership, and a few detours. · meta description: Rob Saric's earlier writing on systems, flow, and leadership, 2009 to 2019, kept as it was written.
 - Archive post notice: Written in {year}. Kept as it was.
-- `/how-i-counted/` — **not built.** Removed 2026-08-19 with the metric it existed to explain; an orphaned page describing a number the site no longer shows is worse than no page. When the metric returns, the page returns with it: H1 "How I counted it", three short sections, "What was counted", "What was not counted", "Where it came from". Named for what it does rather than "methodology": it exists to be checked, not to assert rigour.
+- `/how-i-counted/` — built 2026-08-24; the full deck is the "/how-i-counted/ page" section below. Named for what it does rather than "methodology": it exists to be checked, not to assert rigour. (The 2026-08-19 plan sketched here, three sections and "How I counted it", was superseded by the shipped page.)
 - `/contact/` H1: Write to me · body: "You run the clinic. You see things I cannot. If a principle does not match what you see at your front desk, or you know where money slips, message me. I read and answer everything myself, and if I do not know, I will say so." then the email (if set) and LinkedIn. First person throughout. The page carries its own meta description, third person to match the other pages: "Write to Rob Saric about clinic revenue, where money slips, or a principle that does not match your front desk. He reads and answers everything himself." (152 chars, under the 155 clamp in `src/lib/seo.ts`)
 - 404 H1: Nothing here. · body: The page moved or never existed. Try the field notes or the archive.
 - `/subscribed/` (server-rendered result of the subscribe form; `noindex`; state comes from `?status=`):
@@ -205,7 +212,7 @@ Change from the artboard: "2011 to 2019" became "2009 to 2019" (the oldest post 
 
 ## /how-i-counted/ page
 
-Added 2026-08-24, the methods page the authority review called the biggest missing trust layer after external proof. Every sentence is assembled from copy already approved elsewhere in this deck (the evidence steps, the stage notes, principles 3 and 4, the 02 trust line, copy law items 5 and 6); nothing on the page is a new claim. Strings live in `COPY.pages.howICounted`. Linked from the Evidence band. V5's metric returns here-adjacent: the $127,000 figure stays down until its per-gap breakdown is written, and when it returns it links to this page.
+Added 2026-08-24, the methods page the authority review called the biggest missing trust layer after external proof. Every sentence is assembled from copy already approved elsewhere in this deck (the evidence steps, the stage notes, principles 3 and 4, the 02 trust line, copy law items 5 and 6); nothing on the page is a new claim. Strings live in `COPY.pages.howICounted`. Linked from the Evidence band. V5 resolved 2026-08-24: the $127,000 metric is back in the Evidence band, its "How I counted this →" link lands here, and the per-gap breakdown is section 8 below.
 
 - Title: How I count
 - H1: How I count and verify clinic findings.
@@ -220,7 +227,10 @@ Added 2026-08-24, the methods page the authority review called the biggest missi
   5. How an outcome closes. / An item only closes when its status changes in Jane. Identified and collected are reported separately, and the record shows plainly which of the two happened.
   6. Where AI assists, and where a person decides. / Anything automated says what it read, what it skipped, and what it is unsure about. If it cannot, it does not get to make the call. People assign the work and make the decisions, and each action is logged against the item, never against the person who made it.
   7. Public examples. / Patient examples use a first name and last initial, never real data. Signals shown in public are anonymized, and every public number carries what it counts and where it came from. When a number is missing its breakdown, it comes down.
+  8. The $127,000. / The number on the homepage: one clinic, 25 providers, the twelve months of June 2025 through May 2026. Four gaps: unbilled claims, $52,000. No-shows, $37,000. Missed re-bookings, $24,000. Missing re-evaluations, $14,000. Identified across those four, and identified is not collected: it is what the records showed, not what the clinic banked.
 - Exit link: Write to me and tell me where I am wrong → (`/contact/`)
+
+Section 8 added 2026-08-24 when the metric returned to the Evidence band (V5). The four gap names and amounts are the ones caretrics.com publishes, confirmed by Rob 2026-08-24.
 
 ## Verification table (carry into the launch checklist)
 
@@ -229,7 +239,7 @@ Added 2026-08-24, the methods page the authority review called the biggest missi
 | V1 | "Founder of Caretrics" (artboard dropped "& CEO") | hero, footer, About | VERIFY |
 | V2 | "20+ years building software" / "I spent twenty years building software" | About stat row, hero body (2026-08-23) | **CONFIRMED by Rob 2026-08-24** |
 | V3 | systems-architect / Trend Micro, Mitel, Pythian line | /about only | VERIFY |
-| V5 | $127,000 identified, four gaps, one clinic, one year | Evidence | **CUT 2026-08-19**, so nothing unsupported is on the page. Confirmed: one clinic, 25 providers, twelve months (June 2025 through May 2026), AR the largest gap. Still needed before it returns: the four gap names and the amount against each. `/how-i-counted/` exists as of 2026-08-24, so the destination is no longer a blocker; the breakdown still is |
+| V5 | $127,000 identified, four gaps, one clinic, one year | Evidence, /how-i-counted/ | **RESOLVED 2026-08-24.** Rob confirmed the four gaps and amounts (unbilled claims $52,000, no-shows $37,000, missed re-bookings $24,000, missing re-evaluations $14,000; the caretrics.com breakdown). Metric restored to the Evidence band with the "How I counted this →" link; the breakdown is written down in `/how-i-counted/` section 8. Cohort: one clinic, 25 providers, June 2025 through May 2026 |
 | V6 | Jane.app wording, no endorsement | hero, 02 | approved shape used |
 | V7 | Big Brothers Big Sisters, "over a decade" | About | VERIFY |
 | V9 | Now items and six seed notes | Now strip, 04 | Writing item and first note LIVE 2026-08-18; the other two Now items and the six seed notes stay DRAFT (hidden in prod) |

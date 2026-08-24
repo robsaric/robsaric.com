@@ -43,7 +43,7 @@ Old posts are kept as written and are exempt from `pnpm lint:copy` by path (`src
 ## Cutover checklist
 
 1. `pnpm gate` green; all `[VERIFY]` items in `docs/COPY.md` cleared or removed from the page.
-2. ~~`/how-i-counted/` written (V5) or the `$127,000` metric removed from the Evidence band.~~ **Done 2026-08-19: the metric was cut.** Nothing unsupported is on the page and this no longer blocks cutover. To put the number back, the four gap names and the amount against each are what is missing; the rest is confirmed (one clinic, 25 providers, the twelve months of June 2025 through May 2026, AR the largest gap).
+2. ~~`/how-i-counted/` written (V5) or the `$127,000` metric removed from the Evidence band.~~ **Closed for good 2026-08-24:** `/how-i-counted/` is built, Rob confirmed the four gaps and amounts (unbilled claims $52,000, no-shows $37,000, missed re-bookings $24,000, missing re-evaluations $14,000), and the metric is back in the Evidence band with its "How I counted this →" link. (Interim state 2026-08-19 to 08-24: the metric was cut so nothing unsupported was on the page.)
 3. Newsletter endpoint set (`PUBLIC_NEWSLETTER_ENDPOINT`) or the card ships in its no-form state.
 4. `src/data/site.ts` links set (LinkedIn, X, GitHub, View source, email).
 5. Deploy to Vercel preview; run the redirect check: `node scripts/check-redirects.mjs https://<preview>` should report 301 for every legacy URL (script to add when the preview exists).
