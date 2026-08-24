@@ -28,9 +28,9 @@ Two files. The paragraph is the CAR-1131 PR5 letter on `/about`; the test pins i
 
 with:
 
-> I have spent twenty years building software, including years inside large managed health-service organizations, most of it on the systems that move the money.
+> I have spent twenty years building software, including years inside large managed health-service organizations, working on billing and operations.
 
-The rest of the paragraph stays. This keeps Rob's own "systems that move the money" line and "That is how I ended up doing the work myself", and only corrects the scope: the bios on the same page (and the Person JSON-LD they feed) say "including years ... inside", so the letter now agrees with them. "As a systems architect" is left to the bios; repeating it before "the systems that move the money" doubles "systems" in one sentence.
+The rest of the paragraph stays. Two corrections in one sentence: the scope (the bios on the same page, and the Person JSON-LD they feed, say "including years ... inside", so the letter now agrees with them) and the language ("the systems that move the money" was rejected by Rob 2026-08-24 as too cute; "billing and operations" states the same claim plainly). Rob should confirm "billing and operations" names those years accurately before applying; if not, the sentence stands without the final clause. "As a systems architect" is left to the bios.
 
 **`src/app/(site)/__tests__/homepage-additions.spec.ts`** (~line 727). Replace:
 
