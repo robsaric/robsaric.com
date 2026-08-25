@@ -155,7 +155,21 @@ export const COPY = {
         'I am a dad to two kids and have mentored with Big Brothers Big Sisters for over a decade. Family and community keep the rest in proportion.',
         'At the centre of all of it, I try to work hard, treat people well, and build things that earn their place.',
       ],
-      quote: 'If it adds work to care, it has failed.',
+      /**
+       * Rob's pick 2026-08-25 from the About refinements canvas: the creed
+       * signs /about/, the test line stays on the homepage About band
+       * (COPY.about.quote). Division of labor, each said once.
+       */
+      quote: 'People who do good should do well.',
+      /**
+       * Photo strip above the standard card, from the same canvas. Captions
+       * are Rob's to write; the strip is dev-only (SHOW_OUTSIDE_PHOTOS) until
+       * they are real. Keys map to imports in about.astro.
+       */
+      photos: [
+        { key: 'event', alt: 'Rob Saric at the Jane Summit', caption: '[Caption for Rob to write]' },
+        { key: 'family', alt: 'Rob Saric outdoors', caption: '[Caption for Rob to write]' },
+      ],
       signatureAlt: 'Rob Saric',
       attribution: 'Rob Saric, founder of Caretrics',
       contactLink: 'Write to me and tell me where I am wrong →',
@@ -304,3 +318,9 @@ export const COPY = {
     },
   },
 } as const;
+
+/**
+ * Same rule as SHOW_DRAFTS in now.ts: the Outside photo strip renders in dev,
+ * never in production, until Rob replaces the placeholder captions.
+ */
+export const SHOW_OUTSIDE_PHOTOS = import.meta.env.DEV;

@@ -15,11 +15,15 @@ import Eyebrow from '../components/Eyebrow.astro';
 import Button from '../components/Button.astro';
 import portrait from '../assets/images/rob-portrait.jpg';
 import signature from '../assets/images/rob-signature.png';
-import { COPY } from '../data/copy';
+import eventPhoto from '../assets/images/rob-portrait-caretrics.png';
+import familyPhoto from '../assets/images/rob-family.png';
+import { COPY, SHOW_OUTSIDE_PHOTOS } from '../data/copy';
 import { SITE } from '../data/site';
 import { UI } from '../data/ui';
 
 const A = COPY.aboutPage;
+
+const stripImages = { event: eventPhoto, family: familyPhoto } as const;
 
 const sameAs = [
   SITE.links.linkedin,
@@ -131,6 +135,25 @@ const jsonLd = {
         {A.outside.body.map((paragraph) => <p>{paragraph}</p>)}
       </div>
 
+      {SHOW_OUTSIDE_PHOTOS && (
+        <div class="strip">
+          {A.outside.photos.map((photo) => (
+            <figure class="strip__shot">
+              <Image
+                class="strip__image"
+                src={stripImages[photo.key]}
+                alt={photo.alt}
+                width={440}
+                height={300}
+                densities={[1, 2]}
+                loading="lazy"
+              />
+              <figcaption class="strip__caption">{photo.caption}</figcaption>
+            </figure>
+          ))}
+        </div>
+      )}
+
       <figure class="standard">
         <blockquote>{A.outside.quote}</blockquote>
         <figcaption>
@@ -165,7 +188,7 @@ const jsonLd = {
     width: 100%;
     max-width: var(--max-page);
     margin: 0 auto;
-    padding: 96px var(--gutter-desktop) 72px;
+    padding: 96px var(--gutter-desktop) 56px;
     display: grid;
     grid-template-columns: var(--label-col) minmax(0, 1fr);
     gap: var(--label-gap);
@@ -199,8 +222,10 @@ const jsonLd = {
 
   .about-header__intro {
     margin: 0;
-    max-width: 62ch;
-    font-size: var(--text-body-l);
+    /* 19px on 58ch, a step above body-l, so the ragged edge sits closer to
+       the portrait and the middle of the header stops reading loose. */
+    max-width: 58ch;
+    font-size: 19px;
     line-height: 1.7;
     text-wrap: pretty;
   }
@@ -240,10 +265,12 @@ const jsonLd = {
      and the largest glyph on the page is still the h1. */
   .facts {
     grid-column: 1 / -1;
-    margin: 48px 0 0;
-    padding: 32px 0;
+    margin: 36px 0 0;
+    padding: 28px 0 0;
+    /* Top rule only. The Background section's cream-rule border closes the
+       band, so one hairline separates the rail from the next section instead
+       of two parallel rules with dead cream between. */
     border-top: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule);
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -297,7 +324,7 @@ const jsonLd = {
     letter-spacing: var(--tracking-h3);
   }
 
-  .prose-zone__heading--spaced { margin-top: 48px; }
+  .prose-zone__heading--spaced { margin-top: 64px; }
 
   .prose-zone__body {
     display: flex;
@@ -330,6 +357,41 @@ const jsonLd = {
 
   .prose-zone__quiet:hover { text-decoration: underline; text-underline-offset: 4px; }
 
+  /* ---- Photo strip --------------------------------------------------------
+     Two shots above the standard card, dev-only until the captions are
+     Rob's words (SHOW_OUTSIDE_PHOTOS in copy.ts). */
+  .strip {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 40px;
+    max-width: 920px;
+  }
+
+  .strip__shot {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .strip__image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-xl);
+  }
+
+  .strip__caption {
+    color: var(--ink-muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-eyebrow);
+    font-weight: 500;
+    letter-spacing: var(--tracking-eyebrow);
+    text-transform: uppercase;
+  }
+
   /* ---- The standard -------------------------------------------------------
      722px card wrapping a 46ch measure with even 64px padding, box-sizing
      border-box so the width is the real width. A tighter, taller block gives
@@ -338,8 +400,8 @@ const jsonLd = {
     box-sizing: border-box;
     /**
      * fit-content, capped at 722px. The 722 wraps a 46ch measure with even
-     * 64px padding, which is right for a long pull quote. The standard as
-     * written is 39 characters, so a fixed 722 would leave half the card empty.
+     * 64px padding, which is right for a long pull quote. The creed as
+     * written is 34 characters, so a fixed 722 would leave half the card empty.
      * This shrink-wraps to whichever quote ships and caps at the designed width.
      */
     width: fit-content;
@@ -426,6 +488,7 @@ const jsonLd = {
     .about-header__portrait { width: 100%; max-width: 320px; }
 
     .facts__item { padding: 0 28px; }
+    .strip { gap: 28px; }
     .standard { padding: 44px 40px; }
   }
 
@@ -451,7 +514,7 @@ const jsonLd = {
     h1 { order: 1; font-size: 32px; letter-spacing: -0.024em; max-width: none; }
     .about-header__portrait { order: 2; width: 100%; height: 280px; }
     .about-header__intro { order: 3; font-size: var(--text-body); max-width: none; }
-    .facts { order: 4; margin-top: 12px; padding: 20px 0 4px; }
+    .facts { order: 4; margin-top: 12px; padding: 20px 0 0; }
 
     .about-header__offset { left: -10px; bottom: -10px; }
 
@@ -470,11 +533,19 @@ const jsonLd = {
     .facts__value--wide { font-size: 26px; }
 
     .prose-zone h2 { font-size: 24px; }
-    .prose-zone__heading--spaced { margin-top: 36px; }
+    .prose-zone__heading--spaced { margin-top: 44px; }
     .prose-zone__body { gap: 20px; }
     .prose-zone__body p { font-size: var(--text-body); max-width: none; }
 
     .prose-zone__cta { align-self: stretch; }
+
+    .strip {
+      margin-top: 36px;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 24px;
+    }
+
+    .strip__image { height: 240px; }
 
     .standard {
       margin-top: 36px;
