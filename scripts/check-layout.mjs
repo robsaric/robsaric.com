@@ -13,10 +13,9 @@
  * Run: pnpm check:layout   (also runs inside `pnpm gate`)
  */
 import { createServer } from 'node:http';
-import { spawn } from 'node:child_process';
-import { readFileSync, existsSync, readdirSync, statSync, mkdtempSync, rmSync } from 'node:fs';
+import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
 import { join, extname } from 'node:path';
-import { tmpdir } from 'node:os';
+import { MIME, launchChrome } from './lib/chrome.mjs';
 
 const ROOT = new URL('..', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
 const DIST = join(ROOT, 'dist', 'client');
@@ -26,34 +25,6 @@ const WIDTHS = [320, 390, 768, 900, 1024, 1280, 1440];
 const HEIGHT = 900;
 /** The archive is 38 near-identical templates; one is enough to cover the layout. */
 const ARCHIVE_SAMPLE = 1;
-
-const CHROME_CANDIDATES = [
-  'C:/Program Files/Google/Chrome/Application/chrome.exe',
-  'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe',
-  'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',
-  'C:/Program Files/Microsoft/Edge/Application/msedge.exe',
-  '/usr/bin/google-chrome',
-  '/usr/bin/chromium',
-  '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
-];
-
-const MIME = {
-  '.html': 'text/html; charset=utf-8',
-  '.css': 'text/css; charset=utf-8',
-  '.js': 'text/javascript; charset=utf-8',
-  '.svg': 'image/svg+xml',
-  '.png': 'image/png',
-  '.jpg': 'image/jpeg',
-  '.jpeg': 'image/jpeg',
-  '.webp': 'image/webp',
-  '.avif': 'image/avif',
-  '.woff2': 'font/woff2',
-  '.woff': 'font/woff',
-  '.xml': 'application/xml',
-  '.txt': 'text/plain; charset=utf-8',
-  '.ico': 'image/x-icon',
-  '.json': 'application/json',
-};
 
 /** Every built route, with the archive collapsed to a sample. */
 function routes() {
@@ -102,66 +73,6 @@ function serve() {
   });
 }
 
-/** Minimal CDP client: send(method, params) -> Promise<result>, plus one-shot event waiters. */
-function cdp(url) {
-  const ws = new WebSocket(url);
-  const pending = new Map();
-  const waiters = [];
-  let nextId = 0;
-
-  ws.addEventListener('message', (event) => {
-    const msg = JSON.parse(event.data);
-
-    if (msg.id && pending.has(msg.id)) {
-      const { resolve, reject } = pending.get(msg.id);
-      pending.delete(msg.id);
-      if (msg.error) reject(new Error(msg.error.message));
-      else resolve(msg.result);
-      return;
-    }
-
-    for (let i = waiters.length - 1; i >= 0; i -= 1) {
-      if (waiters[i].method === msg.method) {
-        waiters[i].resolve(msg.params);
-        waiters.splice(i, 1);
-      }
-    }
-  });
-
-  const ready = new Promise((resolve, reject) => {
-    ws.addEventListener('open', () => resolve());
-    ws.addEventListener('error', () => reject(new Error(`cdp connect failed: ${url}`)));
-  });
-
-  return {
-    ready,
-    send(method, params = {}) {
-      nextId += 1;
-      const id = nextId;
-      return new Promise((resolve, reject) => {
-        pending.set(id, { resolve, reject });
-        ws.send(JSON.stringify({ id, method, params }));
-      });
-    },
-    once(method, timeoutMs = 20000) {
-      return new Promise((resolve, reject) => {
-        const waiter = { method, resolve };
-        waiters.push(waiter);
-        setTimeout(() => {
-          const at = waiters.indexOf(waiter);
-          if (at >= 0) {
-            waiters.splice(at, 1);
-            reject(new Error(`timed out waiting for ${method}`));
-          }
-        }, timeoutMs);
-      });
-    },
-    close() {
-      ws.close();
-    },
-  };
-}
-
 /**
  * Runs in the page. Reports the document overflow plus the widest offenders,
  * skipping any element whose parent already sticks out at least as far, so a
@@ -207,59 +118,24 @@ async function main() {
     process.exit(1);
   }
 
-  const chrome = CHROME_CANDIDATES.find((candidate) => existsSync(candidate));
-  if (!chrome) {
-    console.error(`check-layout: no Chrome or Edge found. Checked:\n  ${CHROME_CANDIDATES.join('\n  ')}`);
+  const { server, port } = await serve();
+
+  let browser;
+  try {
+    browser = await launchChrome();
+  } catch (error) {
+    try { server.close(); } catch { /* already closed */ }
+    console.error(`check-layout: ${error.message}`);
     process.exit(1);
   }
 
-  const { server, port } = await serve();
-  const profile = mkdtempSync(join(tmpdir(), 'rs-layout-'));
-  const browser = spawn(chrome, [
-    '--headless=new',
-    '--disable-gpu',
-    '--no-first-run',
-    '--no-default-browser-check',
-    '--disable-extensions',
-    '--hide-scrollbars',
-    `--user-data-dir=${profile}`,
-    '--remote-debugging-port=0',
-    'about:blank',
-  ], { stdio: 'ignore' });
-
-  let cleaned = false;
   const cleanup = () => {
-    if (cleaned) return;
-    cleaned = true;
-    try { browser.kill(); } catch { /* already gone */ }
+    browser.close();
     try { server.close(); } catch { /* already closed */ }
-    try { rmSync(profile, { recursive: true, force: true }); } catch { /* best effort */ }
   };
   process.on('exit', cleanup);
 
-  // Chrome writes the port it actually took into the profile directory.
-  const portFile = join(profile, 'DevToolsActivePort');
-  let debugPort = null;
-  for (let attempt = 0; attempt < 150 && debugPort === null; attempt += 1) {
-    await new Promise((resolve) => setTimeout(resolve, 100));
-    if (!existsSync(portFile)) continue;
-    const line = readFileSync(portFile, 'utf8').split('\n')[0].trim();
-    if (line) debugPort = Number(line);
-  }
-  if (!debugPort) {
-    cleanup();
-    console.error('check-layout: Chrome did not report a debugging port.');
-    process.exit(1);
-  }
-
-  const version = await (await fetch(`http://127.0.0.1:${debugPort}/json/version`)).json();
-  const browserCdp = cdp(version.webSocketDebuggerUrl);
-  await browserCdp.ready;
-
-  const { targetId } = await browserCdp.send('Target.createTarget', { url: 'about:blank' });
-  const page = cdp(`ws://127.0.0.1:${debugPort}/devtools/page/${targetId}`);
-  await page.ready;
-  await page.send('Page.enable');
+  const page = await browser.newPage();
 
   const list = routes();
   const failures = [];
@@ -290,7 +166,6 @@ async function main() {
   }
 
   page.close();
-  browserCdp.close();
   cleanup();
 
   if (failures.length > 0) {

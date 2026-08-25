@@ -18,6 +18,9 @@ interface Props {
   backHref: string;
   backLabel: string;
   jsonLd: Record<string, unknown>;
+  /** Notes pass their generated share card; archive posts keep the default. */
+  ogImage?: string;
+  ogImageAlt?: string;
 }
 
 const {
@@ -32,6 +35,8 @@ const {
   backHref,
   backLabel,
   jsonLd,
+  ogImage,
+  ogImageAlt,
 } = Astro.props;
 
 const dateFormat = new Intl.DateTimeFormat('en-CA', {
@@ -51,6 +56,8 @@ const formattedUpdated = modifiedTime ? dateFormat.format(modifiedTime) : undefi
   type="article"
   publishedTime={publishedTime}
   modifiedTime={modifiedTime}
+  ogImage={ogImage}
+  ogImageAlt={ogImageAlt}
 >
   <div class="article-shell">
     <article class="article">

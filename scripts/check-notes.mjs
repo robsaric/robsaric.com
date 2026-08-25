@@ -14,15 +14,20 @@
  *      is the permanent URL; the field drives the ordering and the byline.
  *   5. A `meta` string whose stage name disagrees with the `stage` index, so the
  *      card footer and the five-dot rail tell the reader different things.
+ *   6. A published note without its 1200x630 OG share card in public/og/notes/,
+ *      so the page ships an og:image URL that 404s and shares carry no image.
+ *   7. A stat/statLabel half-pair, which the OG card stat slot cannot render.
  *
  * Run: pnpm check:notes   (also runs inside `pnpm gate`, after the build)
  */
 import { readdirSync, readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
+import { frontmatter, isDraft } from './lib/frontmatter.mjs';
 
 const ROOT = new URL('..', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
 const NOTES_DIR = join(ROOT, 'src', 'content', 'notes');
 const DIST = join(ROOT, 'dist', 'client');
+const OG_DIR = join(ROOT, 'public', 'og', 'notes');
 
 /** Keep in step with DESCRIPTION_LIMIT in src/lib/seo.ts. */
 const DESCRIPTION_LIMIT = 155;
@@ -30,28 +35,15 @@ const DESCRIPTION_LIMIT = 155;
 const errors = [];
 const fail = (where, message) => errors.push(`${where}: ${message}`);
 
-/** Minimal frontmatter reader. Only the scalar fields this gate cares about. */
-function frontmatter(raw) {
-  if (!raw.startsWith('---')) return null;
-  const end = raw.indexOf('\n---', 3);
-  if (end === -1) return null;
-
-  const data = {};
-  for (const line of raw.slice(3, end).split('\n')) {
-    const match = /^([a-zA-Z]+):\s*(.*)$/.exec(line);
-    if (!match) continue;
-    const [, key, rest] = match;
-    let value = rest.trim();
-    if (value === '') continue;
-    if (
-      (value.startsWith('"') && value.endsWith('"'))
-      || (value.startsWith("'") && value.endsWith("'"))
-    ) {
-      value = value.slice(1, -1);
-    }
-    data[key] = value;
-  }
-  return data;
+/**
+ * PNG pixel size from the IHDR chunk, which the format fixes at bytes 16..23.
+ * Returns null when the file is missing or not a PNG.
+ */
+function pngSize(path) {
+  if (!existsSync(path)) return null;
+  const buf = readFileSync(path);
+  if (buf.length < 24 || buf.readUInt32BE(0) !== 0x89504e47) return null;
+  return { width: buf.readUInt32BE(16), height: buf.readUInt32BE(20) };
 }
 
 /** Stage names in index order, read from the data file rather than duplicated. */
@@ -95,6 +87,21 @@ for (const name of noteFiles) {
     fail(where, `filename date ${prefix[1]} does not match date: ${data.date}`);
   }
 
+  // The URL and the OG card path both come from Astro's entry.id, which is the
+  // filename run through github-slugger (or a frontmatter `slug`, which the
+  // schema then silently strips). A stem that is not already a clean slug
+  // diverges from its id: the page ships /og/notes/<slugified>.png while the
+  // generator wrote <raw>.png, and the og:image 404s with the gate green. An
+  // already-clean stem passes through the slugger unchanged, so requiring one
+  // pins filename == entry.id and keeps every derived path honest.
+  const stem = name.replace(/\.mdx?$/u, '');
+  if (!/^[a-z0-9-]+$/u.test(stem)) {
+    fail(where, `filename stem "${stem}" must be a clean slug (lowercase a-z, 0-9, hyphens): Astro slugifies the id and every URL derived from it would diverge from this file`);
+  }
+  if (data.slug !== undefined) {
+    fail(where, 'frontmatter `slug` is not allowed: it silently rewrites entry.id away from the filename, and the filename is the permanent URL');
+  }
+
   if (data.description && data.description.length > DESCRIPTION_LIMIT) {
     fail(where, `description is ${data.description.length} chars, clamps at ${DESCRIPTION_LIMIT} and truncates`);
   }
@@ -112,6 +119,27 @@ for (const name of noteFiles) {
     const expected = STAGES[stage];
     if (!data.meta.startsWith(expected)) {
       fail(where, `meta "${data.meta}" does not start with stage ${stage} ("${expected}")`);
+    }
+  }
+
+  // 7. A stat half-pair. The OG card's stat slot needs both the value and its
+  //    label; one without the other means a card silently falls back to the
+  //    plain layout (or would render a bare number with no claim).
+  if (Boolean(data.stat) !== Boolean(data.statLabel)) {
+    fail(where, 'stat and statLabel come as a pair; one without the other and the OG card stat slot cannot render');
+  }
+  if (data.statContext && !data.stat) {
+    fail(where, 'statContext without stat does nothing; the OG card stat slot renders only from stat + statLabel');
+  }
+
+  // 6. A published note without its OG share card. The page still builds and
+  //    ships pointing at a PNG that 404s, so every share falls back to no image.
+  if (!isDraft(data)) {
+    const size = pngSize(join(OG_DIR, `${stem}.png`));
+    if (!size) {
+      fail(where, `published note has no OG card at public/og/notes/${stem}.png. Run \`pnpm generate:og\` and commit the PNG.`);
+    } else if (size.width !== 1200 || size.height !== 630) {
+      fail(where, `OG card is ${size.width}x${size.height}, must be 1200x630. Re-run \`pnpm generate:og\`.`);
     }
   }
 }

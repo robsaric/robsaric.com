@@ -26,6 +26,7 @@ pnpm lint:copy      # copy law gate: em dashes, banned words, chatbot tone, cred
 pnpm check:notes    # note frontmatter + every Now strip href resolves in dist (run after build)
 pnpm check:layout   # no horizontal overflow, 7 widths, headless Chrome (run after build)
 pnpm gate           # check + lint:copy + build + check-redirects + check-notes + check-layout
+pnpm generate:og    # render 1200x630 OG cards for published notes (needs a build first; commit the PNGs)
 pnpm import:legacy  # pull the 38 WordPress posts into src/content/archive
 ```
 
@@ -33,7 +34,7 @@ Never run `pnpm build | tail`; piping hides the exit code. Run the command bare.
 
 ## Hard rules
 
-1. **Copy law is a gate.** `docs/COPY.md` "Copy law" applies to every string in components, pages, data, content, and meta. No em dashes. No chatbot tone. No hype adjectives or empty verbs. `pnpm lint:copy` must exit 0. Copy lives in `docs/COPY.md`, `src/data/*.ts`, or a content entry, never inline in a component (structural strings like "Skip to content" go in `src/data/site.ts` or a `ui.ts`).
+1. **Copy law is a gate.** `docs/COPY.md` "Copy law" applies to every string in components, pages, data, content, and meta. No em dashes. No chatbot tone. No hype adjectives or empty verbs. `pnpm lint:copy` must exit 0. Copy lives in `docs/COPY.md`, `src/data/*.ts` (`.mjs` when a Node script must import it, like `og-card.mjs`), or a content entry, never inline in a component or a script (structural strings like "Skip to content" go in `src/data/site.ts` or a `ui.ts`).
 2. **The credential is locked.** Short form `50+ clinics, firsthand`. Never "advised", "audited", "by hand", "ex-DSO", "the books". Long forms in `docs/COPY.md` item 7.
 3. **Do not invent facts.** Now items, notes, numbers, biography lines marked `[VERIFY]` or `[DRAFT]` stay flagged. Drafts carry `draft: true` and are hidden in production (`SHOW_DRAFTS` in `src/data/now.ts`; collections filter `data.draft` unless `import.meta.env.DEV`).
 4. **Layout follows the artboard.** Desktop 8a and mobile 8b are both first-class; mobile is "edited, not stacked" (some elements are dropped or shortened on mobile, per `docs/DESIGN-SPEC.md`). Between them, 768 to 1150 runs the desktop layout with its two-column blocks stacked and its page chrome reduced; it drops nothing. There is no artboard for that range and it does not get its own design. Tokens only; no new colours, radii, or fonts. Lime is never text on a light background.
@@ -52,9 +53,9 @@ src/
   pages/                index, field-notes/{index,[slug]}, principles, about, how-i-counted, archive/{index,[slug]}, contact, 404, rss.xml.ts
   content/notes/        field notes (md/mdx)
   content/archive/      imported legacy posts
-  data/                 site.ts evidence-steps.ts stages.ts principles.ts filters.ts now.ts legacy-redirects.mjs
+  data/                 site.ts evidence-steps.ts stages.ts principles.ts filters.ts now.ts legacy-redirects.mjs og-card.mjs
   styles/               tokens.css global.css
-scripts/                lint-copy.mjs import-legacy.mjs check-redirects.mjs check-notes.mjs check-layout.mjs
+scripts/                lint-copy.mjs import-legacy.mjs check-redirects.mjs check-notes.mjs check-layout.mjs generate-og.mjs og-card-template.mjs lib/{chrome,frontmatter}.mjs
 docs/                   DESIGN-SPEC.md COPY.md MIGRATION.md design-reference/
 ```
 

@@ -59,6 +59,8 @@ const jsonLd = {
 <ArticleLayout
   title={entry.data.title}
   description={description}
+  ogImage={`/og/notes/${entry.id}.png`}
+  ogImageAlt={UI.meta.noteOgImageAlt(entry.data.type, entry.data.title)}
   eyebrow={eyebrow}
   date={entry.data.date}
   publishedTime={entry.data.date}

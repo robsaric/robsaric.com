@@ -21,6 +21,15 @@ const notes = defineCollection({
     /** Card footer meta, e.g. "Paid · Aging AR workspace". Falls back to stage · first tag. */
     meta: z.string().optional(),
     description: z.string().max(200).optional(),
+    /**
+     * The note's one load-bearing number, for the OG share card's stat slot
+     * (design 9c, approved 2026-08-25). All from the note's own verified body;
+     * `stat` and `statLabel` come as a pair (check-notes enforces it),
+     * `statContext` is the provenance line, e.g. "one clinic, two years".
+     */
+    stat: z.string().optional(),
+    statLabel: z.string().optional(),
+    statContext: z.string().optional(),
     draft: z.boolean().default(false),
   }),
 });

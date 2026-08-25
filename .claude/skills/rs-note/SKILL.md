@@ -5,7 +5,7 @@ description: Publish a field note on robsaric.com end to end. Use when writing, 
 
 # Publish a field note
 
-Nine steps. Steps 5 and 6 are the ones every gate misses.
+Ten steps. Steps 5 and 6 are the ones every gate misses.
 
 ## 1. Write the file
 
@@ -25,6 +25,7 @@ nothing enforces this.
 | `stage` | `-1` if not about a stage, else `0..4` per `src/data/stages.ts`. **Never `0` (Found)**: section 02 says Caretrics does not measure Found, so a Found note contradicts the homepage. |
 | `meta` | Card footer. Convention is `<Stage> · <first tag>`. Falls back to that automatically, so set it only to override. |
 | `description` | Schema allows 200, **the clamp is 155**. A 156-to-200 char description passes `astro check` and truncates in the wild. Keep it under 155. |
+| `stat` / `statLabel` / `statContext` | Optional, for the OG card's stat slot: the note's one load-bearing number, its claim, and its provenance ("one clinic, two years"). `stat` and `statLabel` are a pair (`check:notes` enforces it); numbers must come from the note body, verified. |
 | `draft` | Omit for a live note. See step 5. |
 
 ## 3. Write the body against copy law
@@ -72,7 +73,20 @@ Three places, all of them:
 `docs/COPY.md` is the source of truth for copy. A data file that disagrees with it is the defect,
 whichever one you edited last.
 
-## 8. Run the gate bare
+## 8. Generate the OG share card
+
+Every published note ships a 1200x630 card at `/og/notes/<slug>.png`, committed under
+`public/og/notes/`. After a build (the generator reads the built fonts from `dist/`):
+
+```
+pnpm build
+pnpm generate:og
+```
+
+`pnpm check:notes` fails a published note whose PNG is missing or the wrong size, so skipping this
+fails the gate. Regenerate after a title change too; nothing detects a stale title on the card.
+
+## 9. Run the gate bare
 
 ```
 pnpm gate
@@ -81,14 +95,15 @@ pnpm gate
 Never pipe it. `pnpm gate | tail` hides the exit code. Six steps: `astro check`, `lint-copy`,
 `astro build`, `check-redirects`, `check-notes`, `check-layout`.
 
-The lint baseline is **3 warnings**, all `"dashboard"` (`src/data/copy.ts`, `src/data/principles.ts`,
-`public/llms.txt`), all deliberate: the site uses the word critically. **A fourth warning is yours.**
-Read it, do not wave it through on a green exit code.
+The lint baseline is **4 warnings**, all `"dashboard"` (`src/data/copy.ts`, `src/data/principles.ts`,
+`src/content/notes/2026-08-19-i-took-my-own-number-down.md`, `public/llms.txt`), all deliberate: the
+site uses the word critically. **A fifth warning is yours.** Read it, do not wave it through on a
+green exit code.
 
-## 9. Confirm it actually shipped
+## 10. Confirm it actually shipped
 
-`pnpm check:notes` covers the draft trap, the date prefix, the 155 clamp, and the stage/meta
-agreement. Confirm the rest by eye:
+`pnpm check:notes` covers the draft trap, the date prefix, the slug-clean filename, the 155 clamp,
+the stage/meta agreement, and the OG card (present and 1200x630). Confirm the rest by eye:
 
 ```
 ls dist/client/field-notes/<slug>/index.html

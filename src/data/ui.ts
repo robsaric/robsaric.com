@@ -2,6 +2,8 @@ export const UI = {
   meta: {
     titleSeparator: ' · ',
     ogImageAlt: 'Rob Saric, founder of Caretrics',
+    /** Alt for a note's generated share card; type is the note's own. */
+    noteOgImageAlt: (type: string, title: string) => `${type}: ${title}`,
   },
   section: {
     separator: ' · ',
