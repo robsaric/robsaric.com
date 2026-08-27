@@ -172,7 +172,12 @@ export const COPY = {
       ],
       signatureAlt: 'Rob Saric',
       attribution: 'Rob Saric, founder of Caretrics',
-      contactLink: 'Write to me and tell me where I am wrong →',
+      /**
+       * Softened from "Write to me and tell me where I am wrong →" 2026-08-25:
+       * the challenge line stays where it is earned, on the homepage band
+       * heading and the /how-i-counted/ exit; the About exit is a plain door.
+       */
+      contactLink: 'Write to me →',
       notesLink: 'Read the field notes →',
     },
   },
@@ -309,8 +314,14 @@ export const COPY = {
     },
     contact: {
       title: 'Write to me',
-      description: 'Write to Rob Saric about clinic revenue, where money slips, or a principle that does not match your front desk. He reads and answers everything himself.',
-      body: 'You run the clinic. You see things I cannot. If a principle does not match what you see at your front desk, or you know where money slips, message me. I read and answer everything myself, and if I do not know, I will say so.',
+      description: 'Write to Rob Saric about clinic operations, a field note that landed or missed, or a question he has not answered. He reads and answers everything himself.',
+      /**
+       * Rob's pick 2026-08-25 ("Answer key"): the door is wide, the humor is
+       * dry, and the "tell me where money slips" ask is gone because nobody
+       * writes in to report that. The challenge framing lives on the homepage
+       * band and /how-i-counted/, where it follows the evidence.
+       */
+      body: 'You run the clinic. I only write about them. That means you hold the answer key, and I would rather hear a correction from you than keep being wrong in public. Questions, arguments, and notes that missed all land in the same inbox, which is just me. I read and answer everything, and if I do not know, I will say so.',
     },
     notFound: {
       title: 'Nothing here.',
