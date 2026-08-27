@@ -20,6 +20,8 @@ So the number came off.
 
 Not because it was wrong. Because a figure without its method is a claim, and this site has a principle that says identified is not collected. I wrote that principle to describe what a scan does and does not prove. It turns out it also describes what I had done to my own visitors: shown them a total and asked them to take my word for the arithmetic.
 
+If you have ever been handed a recovery figure in a vendor deck, this is a note about that number too.
+
 Taking someone's word for the arithmetic is the exact habit I am asking clinic owners to break.
 
 The uncomfortable part is that nobody would have caught it. The number is true. If I had left it up and written the page in a month, no reader would have known the difference. The only thing that failed was the standard, and standards that only bind you when someone is watching are not standards.
