@@ -69,6 +69,31 @@ checks, in order:
 Then the human gate no lint can run: read it once more as a clinic owner, and confirm nothing in
 it requires trusting Rob rather than checking for themselves.
 
+## The post gate (added 2026-08-27; a note is only worth posting if all five pass)
+
+The widths test asks whether the right reader can parse the note. This gate asks whether the note
+deserves to exist. Run it on every draft, and on every published note that gets reworked. A note
+that fails any question is a diary entry; keep it draft or do not write it.
+
+1. **The lesson survives one sentence.** Before drafting, write the takeaway as one sentence a
+   reader could repeat a week later. If it cannot be written, there is no note. That sentence
+   belongs in the title or the first three lines, never buried in the middle.
+2. **Lesson first, story as evidence.** The structure a stranger can interpret is: the claim, the
+   proof, the exit. A note structured as chronology (what happened to Rob, in order) makes the
+   reader excavate the lesson. Rob's story earns the lesson; it never leads it.
+3. **The share sentence can be filled in.** Name who sends this to a colleague and finish their
+   sentence: "read this because ____". If no specific person and no honest ending exist, the note
+   is not worth a stranger's time yet.
+4. **It stands cold.** The first three sentences carry every fact a reader from a shared link
+   needs. Nothing assumes the reader has seen this site, its homepage, or an earlier note.
+5. **The exit is theirs.** The last paragraph hands the reader something to do or check in their
+   own clinic or their next vendor meeting, never a report on Rob's workflow.
+
+The first note held to this gate was `2026-08-19-i-took-my-own-number-down`, reworked 2026-08-27:
+its lesson ("If they need a week, you are looking at a claim") had been sitting in paragraph nine
+under a chronology of the homepage. The gate inverts it: vendor test first, the homepage story as
+the confession that earns it.
+
 ## From the archive, do not carry forward
 
 Listicle scaffolding ("Here are the 3...", "There you have it"), consensus openers ("Many people

@@ -5,7 +5,8 @@ description: Publish a field note on robsaric.com end to end. Use when writing, 
 
 # Publish a field note
 
-Ten steps. Steps 5 and 6 are the ones every gate misses.
+Eleven steps. Steps 5 and 6 are the ones every gate misses; step 8 is the one that catches what
+neither a gate nor the author can see.
 
 ## 1. Write the file
 
@@ -28,7 +29,12 @@ nothing enforces this.
 | `stat` / `statLabel` / `statContext` | Optional, for the OG card's stat slot: the note's one load-bearing number, its claim, and its provenance ("one clinic, two years"). `stat` and `statLabel` are a pair (`check:notes` enforces it); numbers must come from the note body, verified. |
 | `draft` | Omit for a live note. See step 5. |
 
-## 3. Write the body against copy law
+## 3. Write the body against copy law, the widths test, and the post gate
+
+Load `rs-voice` first: its widths test decides whether the right reader can parse the note, and
+its post gate (five questions: one-sentence lesson, lesson-first structure, the share sentence,
+stands cold, the exit is theirs) decides whether the note deserves to exist at all. A draft that
+fails the gate stays a draft.
 
 `docs/COPY.md` "Copy law", all nine items. Beyond what `pnpm lint:copy` catches:
 
@@ -73,7 +79,31 @@ Three places, all of them:
 `docs/COPY.md` is the source of truth for copy. A data file that disagrees with it is the defect,
 whichever one you edited last.
 
-## 8. Generate the OG share card
+## 8. Send it to Codex for review
+
+Claude orchestrates, Codex reviews (AGENTS.md, "What this is"). Run this before the card and the
+gate, from the repo root. The prompt lives in `.claude/skills/rs-note/codex-review.md`; swap the
+slug in first, or paste the note's path when it asks.
+
+```
+(Get-Content .claude/skills/rs-note/codex-review.md -Raw) -replace '<SLUG>', '2026-08-19-my-note' |
+  codex exec --sandbox read-only -m gpt-5.6-sol -c model_reasoning_effort="medium" -c service_tier="priority" -
+```
+
+Flags, and why each one: `--sandbox read-only` because Codex reviews and never writes here;
+`-m gpt-5.6-sol` pins the latest model rather than inheriting whatever the user config drifts to;
+`model_reasoning_effort="medium"` returns in well under a minute where the config's `ultra` runs
+for many (raise it to `high` for a note carrying a new public number); `service_tier="priority"`
+for the faster queue. On Windows PowerShell, pipe the prompt in on stdin as above: passing it as
+an argument breaks on the quotes inside it.
+
+**Codex is a reviewer, not an author.** Take its factual corrections, its boundary catches, and
+its cuts. Ignore any rewrite it offers in its own voice. It has caught, on real notes: a body that
+never said "identified" while the whole note was about a number, an OG stat label that implied
+recovery on a card seen without the body, and an exit that landed in Rob's workflow rather than
+the reader's clinic. Fix what it finds, then re-read the note yourself as a clinic owner.
+
+## 9. Generate the OG share card
 
 Every published note ships a 1200x630 card at `/og/notes/<slug>.png`, committed under
 `public/og/notes/`. After a build (the generator reads the built fonts from `dist/`):
@@ -86,7 +116,7 @@ pnpm generate:og
 `pnpm check:notes` fails a published note whose PNG is missing or the wrong size, so skipping this
 fails the gate. Regenerate after a title change too; nothing detects a stale title on the card.
 
-## 9. Run the gate bare
+## 10. Run the gate bare
 
 ```
 pnpm gate
@@ -100,7 +130,7 @@ The lint baseline is **4 warnings**, all `"dashboard"` (`src/data/copy.ts`, `src
 site uses the word critically. **A fifth warning is yours.** Read it, do not wave it through on a
 green exit code.
 
-## 10. Confirm it actually shipped
+## 11. Confirm it actually shipped
 
 `pnpm check:notes` covers the draft trap, the date prefix, the slug-clean filename, the 155 clamp,
 the stage/meta agreement, and the OG card (present and 1200x630). Confirm the rest by eye:

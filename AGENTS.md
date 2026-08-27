@@ -8,6 +8,15 @@ Rob Saric's personal site and field-notes blog, rebuilt on Astro from the 2009 t
 
 Roles on this project: **Claude (Fable) orchestrates and reviews; Codex builds.** Codex runs read-only on this machine and emits complete files as `===FILE=== <path>` … `===END===` blocks; Claude applies them, runs the gates, and resumes the Codex thread with results. Nobody pushes to a remote without Rob.
 
+Codex also reviews copy. Every field note goes through it before shipping (`rs-note` step 8, prompt in `.claude/skills/rs-note/codex-review.md`), read-only, latest model, fast tier:
+
+```
+(Get-Content .claude/skills/rs-note/codex-review.md -Raw) -replace '<SLUG>', '<the-note-slug>' |
+  codex exec --sandbox read-only -m gpt-5.6-sol -c model_reasoning_effort="medium" -c service_tier="priority" -
+```
+
+It checks the note against copy law, the identified-is-not-collected boundary, the post gate, and git history, which is how it catches claims about this site that the author remembers wrong. Take its corrections; ignore any rewrite in its own voice.
+
 ## Stack
 
 - Astro 7 (static output, Vercel adapter, `trailingSlash: 'always'`), TypeScript strict, pnpm, Node 22.
