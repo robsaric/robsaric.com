@@ -14,7 +14,7 @@ export const UI = {
     wordmarkLabel: 'Home',
     /** The mark is decorative: the wordmark beside it already names the site. */
     markAlt: '',
-    fieldNotes: 'Field notes',
+    fieldNotes: 'My notes',
     about: 'About',
     /** Replaced Principles in the nav 2026-08-24; Principles moved to the footer. */
     writeToMe: 'Write to me',
@@ -32,7 +32,7 @@ export const UI = {
   },
   fieldNotes: {
     allFilter: 'All',
-    filtersLabel: 'Filter field notes by tag',
+    filtersLabel: 'Filter notes by tag',
     empty: 'Nothing filed under this one yet.',
   },
   newsletter: {
@@ -47,7 +47,7 @@ export const UI = {
     methodNotAllowed: 'Method not allowed.',
   },
   article: {
-    backToFieldNotes: 'Back to field notes',
+    backToFieldNotes: 'Back to my notes',
     backToArchive: 'Back to archive',
     /** Field-note byline; the name links to /about/. Archive posts carry none. */
     bylineBefore: 'By ',

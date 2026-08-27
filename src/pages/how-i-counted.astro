@@ -1,23 +1,59 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Eyebrow from '../components/Eyebrow.astro';
 import { COPY } from '../data/copy';
+import { EVIDENCE_STEPS } from '../data/evidence-steps';
 
 const page = COPY.pages.howICounted;
+const maxGap = Math.max(...page.gaps.map((gap) => gap.value));
+const lastIndex = page.sections.length - 1;
 ---
 
 <BaseLayout title={page.title} description={page.description}>
   <div class="methods">
     <header class="methods__header">
       <h1>{page.heading}</h1>
+      <p>{page.context}</p>
       <p>{page.intro}</p>
       <a class="methods__note-link" href={page.noteHref}>{page.noteLink}</a>
     </header>
 
+    <!-- The journey the sections below describe, so the page has its map
+         before the detail. Labels come from the evidence stepper's data. -->
+    <div class="pipeline">
+      <Eyebrow>{page.pipelineEyebrow}</Eyebrow>
+      <ol class="pipeline__steps">
+        {EVIDENCE_STEPS.map((step, index) => (
+          <li class="pipeline__step">
+            <span class="pipeline__number">{index + 1}</span>
+            <span class="pipeline__label">{step.label}</span>
+            <span class="pipeline__kicker">{step.kicker}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
+
     <div class="methods__sections">
-      {page.sections.map((section) => (
+      {page.sections.map((section, index) => (
         <section class="methods__section">
           <h2>{section.heading}</h2>
           <p>{section.body}</p>
+          {index === lastIndex && (
+            <div class="gaps">
+              <ul class="gaps__list">
+                {page.gaps.map((gap) => (
+                  <li class="gaps__row">
+                    <span class="gaps__name">{gap.name}</span>
+                    <span class="gaps__track">
+                      <span class="gaps__bar" style={`width: ${(gap.value / maxGap) * 100}%`}></span>
+                    </span>
+                    <span class="gaps__amount">{gap.amount}</span>
+                  </li>
+                ))}
+              </ul>
+              <p class="gaps__note">{page.gapsNote}</p>
+            </div>
+          )}
         </section>
       ))}
     </div>
@@ -69,6 +105,112 @@ const page = COPY.pages.howICounted;
     font-weight: 600;
   }
 
+  /* ---- Pipeline strip ---- */
+  .pipeline {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .pipeline__steps {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .pipeline__step {
+    min-width: 0;
+    padding: 16px 20px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    border-top: 3px solid var(--forest-500);
+  }
+
+  .pipeline__number {
+    color: var(--ink-muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-eyebrow);
+    font-weight: 500;
+    letter-spacing: var(--tracking-eyebrow);
+  }
+
+  .pipeline__label {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: var(--tracking-h3);
+  }
+
+  .pipeline__kicker {
+    color: var(--ink-muted);
+    font-size: var(--text-meta);
+    line-height: 1.4;
+  }
+
+  /* ---- The $127,000 breakdown ----
+     One measure across four gaps: single hue, labels carry identity, every
+     value direct-labeled, so the bars need no legend, grid, or hover. */
+  .gaps {
+    margin-top: 20px;
+    max-width: 640px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .gaps__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .gaps__row {
+    display: grid;
+    grid-template-columns: 172px minmax(0, 1fr) 64px;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .gaps__name {
+    font-size: var(--text-ui-s);
+    line-height: 1.35;
+  }
+
+  .gaps__track {
+    height: 16px;
+    display: block;
+    background: var(--wash);
+    border-radius: var(--radius-sm);
+  }
+
+  .gaps__bar {
+    height: 100%;
+    display: block;
+    background: var(--forest-500);
+    border-radius: var(--radius-sm);
+  }
+
+  .gaps__amount {
+    font-size: var(--text-ui-s);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+  }
+
+  .gaps__note {
+    max-width: 58ch;
+    margin: 0;
+    color: var(--ink-muted);
+    font-size: var(--text-meta);
+    line-height: 1.5;
+  }
+
   .methods__sections {
     margin-top: 40px;
     display: flex;
@@ -111,5 +253,20 @@ const page = COPY.pages.howICounted;
     .methods__section { padding: 20px 0; gap: 8px; }
     h2 { font-size: 20px; }
     .methods__section p { font-size: 17px; }
+
+    .pipeline { margin-top: 32px; }
+    .pipeline__steps { grid-template-columns: minmax(0, 1fr); }
+    .pipeline__step {
+      padding: 10px 0 10px 16px;
+      border-top: 0;
+      border-left: 3px solid var(--forest-500);
+    }
+
+    .gaps__row {
+      grid-template-columns: minmax(0, 1fr) 64px;
+      grid-template-rows: auto auto;
+      gap: 4px 12px;
+    }
+    .gaps__name { grid-column: 1 / -1; }
   }
 </style>

@@ -1,43 +1,67 @@
 export const COPY = {
+  /**
+   * Rob's copy VERBATIM, 2026-08-27, his "follow this copy entirely" ruling
+   * over the panel synthesis. Recorded tensions with the deck, his to rule
+   * on, listed in docs/COPY.md Hero: "Every single one" vs the locked hedge
+   * "almost every time" (still live on /about/, llms.txt, extendedCredential);
+   * "verifies the revenue is recovered" vs "identified is not collected";
+   * Jane.app twice on the page's first screen vs the first-mention rule;
+   * "manually" beside the banned "by hand". The tagline stays removed.
+   */
   hero: {
-    eyebrowDesktop: 'Founder of Caretrics · Allied-health revenue operations',
-    eyebrowMobile: 'Founder of Caretrics',
-    heading: 'I kept finding the same revenue gaps in clinic after clinic.',
+    eyebrowDesktop: 'Founder of Caretrics · For clinics on Jane.app',
+    eyebrowMobile: 'For clinics on Jane.app',
+    heading: 'I reviewed 50+ clinics. Almost every one was leaking revenue in the exact same four places.',
     bodyIntro:
-      "I'm Rob Saric. I spent twenty years building software, then went through twelve months of records for more than fifty clinics, one clinic at a time.",
+      "I'm Rob Saric. I spent 20 years building software for health, insurance, and enterprise sales teams. I realized how broken clinic operations were when I spent two full years manually digging through the bookings, visits, and billing data for over 50 clinics.",
+    /** Rendered bold at the end of paragraph 1, per Rob's markup. */
+    bodyIntroEmphasis: 'One by one.',
     bodyOutcome:
-      'That work became Caretrics. It helps allied-health and rehab teams using Jane.app see what is slipping, give the work an owner, and verify what changed.',
-    primaryCta: 'See how Caretrics works',
-    secondaryCta: 'Read the field notes',
+      'That obsession became Caretrics. Caretrics connects to Jane.app to show you exactly which areas to focus on, lets you assign the fix to your team, and verifies the revenue is recovered.',
+    primaryCta: 'Find Your Leaks',
+    secondaryCta: 'Read My Notes',
     /** Mobile renders the secondary path as a text link, not a second button. */
-    secondaryCtaMobile: 'Read the field notes →',
-    tagline: 'Evidence-led. AI-assisted. Human-controlled.',
+    secondaryCtaMobile: 'Read My Notes →',
     portraitAlt: 'Rob Saric',
   },
   now: {
     heading: 'What I am working on now',
   },
+  /**
+   * Restructured 2026-08-27 at Rob's direction: the old 01 Evidence and 02
+   * Caretrics read as a product pitch interrupting a personal site. They are
+   * now one arc under "01 · What I found": the realization, the proof (metric,
+   * signal, operator quote), then Caretrics as the answer. The Caretrics block
+   * keeps its label but loses its own number; everything after renumbers.
+   */
   evidence: {
     number: '01',
-    label: 'Evidence',
-    heading: 'The dashboard held the evidence. The work still had no owner.',
-    bodyDesktop: 'The same pattern turned up in clinic after clinic. The report existed, somebody had read it, and the task it implied still belonged to no one in particular. Here is one anonymized signal, from detection through to a verified outcome.',
-    bodyMobile: 'One anonymized signal, from detection through to a verified outcome.',
+    label: 'What I found',
+    heading: 'I realized why the money keeps slipping.',
+    bodyDesktop: 'Not carelessness. The report exists, somebody reads it, and the task it points at belongs to no one in particular. I watched the same pattern in clinic after clinic, places full of people doing real good and quietly eating the cost. Everyone selling to clinics was selling demand, more new patients, more bookings. I became obsessed with the other side: operations, and recovering the money a clinic has already earned. Here is one signal, from detection through to a verified outcome.',
+    bodyMobile: 'The report exists, somebody reads it, and the task it points at belongs to no one. Everyone sells demand; I became obsessed with recovering money already earned. Here is one signal, from detection to a verified outcome.',
     signalEyebrow: 'The signal',
     /** Restored 2026-08-24 (V5 resolved); the breakdown lives in /how-i-counted/. */
     metric: '$127,000',
     metricNote:
       'Identified across four gaps in one clinic, over one year. Identified is not collected.',
     metricLink: 'How I counted this →',
-    exitLink: 'More of these, in the field notes →',
+    exitLink: 'More of these, in my notes →',
     methodsLink: 'How I count and verify clinic findings →',
   },
   caretrics: {
-    number: '02',
+    /** Empty on purpose: this block continues 01 rather than starting a section. */
+    number: '',
     label: 'Caretrics',
-    heading: 'Clinic revenue moves through five stages. So do its problems.',
-    bodyDesktop: "Caretrics reads a clinic's Jane data with read-only access and works between Booked and Paid. Select a stage.",
-    bodyMobile: "Caretrics reads a clinic's Jane data with read-only access and works between Booked and Paid.",
+    heading: 'So I am building Caretrics.',
+    /**
+     * The Revenue Recovery Diagnostic named 2026-08-27 (Rob's direction): the
+     * five-stage read is ours and carries a name, the way Action Plan does.
+     * Named and shown, never called proprietary; the sample report is the
+     * proof, and /how-i-counted/ exists so the method can be checked.
+     */
+    bodyDesktop: "It starts with the Revenue Recovery Diagnostic: a read-only pass over a clinic's own Jane data, across the five stages revenue moves through. It works between Booked and Paid, and it shows where money slips and what to fix first. Select a stage.",
+    bodyMobile: "It starts with the Revenue Recovery Diagnostic: a read-only pass over a clinic's own Jane data, across the five stages revenue moves through. It shows where money slips and what to fix first.",
     questionEyebrow: "The clinic's question",
     signalsEyebrow: 'Example signals',
     doesHeading: 'What Caretrics does',
@@ -51,39 +75,47 @@ export const COPY = {
     togetherenLink: 'See selected work →',
   },
   principles: {
-    number: '03',
+    number: '02',
     label: 'Principles',
     heading: 'Principles I use when reviewing clinic operations.',
     itemLink: 'The note behind this one →',
     allLink: 'See all five principles →',
   },
   fieldNotes: {
-    number: '04',
-    label: 'Field notes',
-    heading: 'What I am seeing, shipping, and rethinking.',
+    number: '03',
+    label: 'My notes',
+    heading: 'What I am seeing, building, and rethinking.',
     body: 'Kept in public, in order. The wrong turns stay in.',
-    desktopLink: 'All field notes →',
-    mobileLink: 'See all field notes →',
+    desktopLink: 'All notes →',
+    mobileLink: 'See all notes →',
   },
   about: {
-    number: '05',
+    number: '04',
     label: 'About',
-    heading: 'Where the standard came from.',
-    bodyDesktop: 'I have mentored with Big Brothers Big Sisters for over a decade. Time is the thing people in care have least of, and it is the thing most software asks for more of. That is the whole reason I care about this work.',
-    bodyMobile: 'I have mentored with Big Brothers Big Sisters for over a decade. Time is the thing people in care have least of, and it is the thing most software asks for more of.',
+    /**
+     * Rewritten 2026-08-27 at Rob's direction: "Where the standard came from."
+     * read as self-regard. This band is now the belief, in his words: tired of
+     * people who contribute nothing monetizing the people who do. The creed
+     * leads here and signs the /about/ card; the test line stays the quote.
+     */
+    heading: 'Why I care.',
+    bodyDesktop: 'People who do good should do well. I am tired of the opposite: people who contribute little, monetizing the people who carry the world. Clinicians spend themselves helping others live with pain and injury. The clinics around them should thrive for it, not struggle.',
+    bodyMobile: 'People who do good should do well. I am tired of the opposite: people who contribute little, monetizing the people who carry the world.',
     /**
      * Third person by design: this feeds the JSON-LD Person.description on
      * /about/ and public/llms.txt, never a rendered page. `extendedHistory` is
      * currently unrendered; /about/ carries its content in aboutPage.intro.
      */
-    extendedCredential: 'Rob Saric spent twenty years building software, including years as a systems architect inside large managed health-service organizations. He built Dentallytics, an analytics platform for dental groups, then went through twelve months of records for 50+ allied health clinics, one clinic at a time, and found the same four gaps almost every time.',
+    extendedCredential: 'Rob Saric spent twenty years building software, including years as a systems architect inside large managed health-service organizations. He built Dentallytics, an analytics platform for dental groups, then went through twelve months of bookings, visits, and billing for 50+ allied health clinics, one clinic at a time, and found the same four gaps almost every time.',
     extendedHistory: 'Before Caretrics I spent years as a systems architect inside large managed health-service organizations, and earlier at Trend Micro, Mitel and Pythian.',
     quote: '"If it adds work to care, it has failed."',
-    stats: [
-      '20+ years building software',
-      '50+ clinics, firsthand',
-      'Founder of Caretrics, Ottawa',
-    ],
+    /**
+     * Replaced the three stat rows 2026-08-27: after "Why I care." the resume
+     * register broke the band's emotion, and both claims already live in the
+     * hero prose and the /about/ facts rail. One quiet line remains, in the
+     * same grammar as the /about/ signed card.
+     */
+    attribution: 'Founder of Caretrics · Ottawa',
     photoAlt: 'Rob Saric outdoors',
     signatureAlt: 'Rob Saric',
   },
@@ -124,7 +156,7 @@ export const COPY = {
         'My first real view into healthcare operations came through Dentallytics, an analytics platform I built for a dental group.',
         'Later, as a digital advisor through the Canadian Digital Adoption Program, I worked directly with clinic owners on the gap between software, operations, and care. I also have family members who run clinics, and I have tried more than once to build clinical software companies.',
         'It is difficult work. The workflows are complicated and trust is earned slowly.',
-        'I went through twelve months of records for more than fifty clinics, one clinic at a time, and kept finding the same four gaps.',
+        'I went through twelve months of bookings, visits, and billing for more than fifty clinics, one clinic at a time, and kept finding the same four gaps.',
       ],
       headingTwo: 'What the failures changed.',
       bodyTwo: [
@@ -178,11 +210,11 @@ export const COPY = {
        * heading and the /how-i-counted/ exit; the About exit is a plain door.
        */
       contactLink: 'Write to me →',
-      notesLink: 'Read the field notes →',
+      notesLink: 'Read my notes →',
     },
   },
   writeToMe: {
-    number: '06',
+    number: '05',
     label: 'Write to me',
     heading: 'Tell me where I am wrong.',
     bodyDesktop: {
@@ -195,7 +227,7 @@ export const COPY = {
       link: 'Write to me',
       afterLink: '. I read and answer everything myself.',
     },
-    cardHeading: 'Get the field notes.',
+    cardHeading: 'Get the notes.',
     cardBodyDesktop: 'Occasional notes on what I saw in a clinic and what I would check in yours. No schedule I cannot keep.',
     cardBodyMobile: 'Occasional notes on what I saw in a clinic and what I would check in yours.',
   },
@@ -234,7 +266,7 @@ export const COPY = {
         },
       },
     },
-    backLink: 'Back to the field notes →',
+    backLink: 'Back to my notes →',
   },
   footer: {
     line: 'I build things to help people live better lives.',
@@ -246,8 +278,9 @@ export const COPY = {
   },
   pages: {
     fieldNotes: {
-      title: 'Field notes',
-      description: 'Field notes from Rob Saric on clinic revenue, ownership, and building Caretrics. Kept in public, in order.',
+      /** The URL stays /field-notes/ and the card type stays "Field note"; only the surfaces rename. */
+      title: 'My notes',
+      description: 'Notes from Rob Saric on clinic revenue, ownership, and building Caretrics. Kept in public, in order.',
     },
     principles: {
       title: 'Five principles for reviewing clinic operations',
@@ -272,10 +305,31 @@ export const COPY = {
       heading: 'How I count and verify clinic findings.',
       description:
         'How Rob Saric counts and verifies clinic findings: what Caretrics reads, what is never inferred, and why identified is not collected.',
+      /**
+       * Context paragraph added 2026-08-27 (Rob: the page assumed the reader
+       * arrived from the homepage). One orienting line for the stranger, then
+       * the standard.
+       */
+      context:
+        "I find revenue that clinics are missing, by reading their own Jane.app data. Numbers like that are easy to claim and hard to check, so this page shows the counting.",
       intro:
         'Every public number I use is held to the standard on this page. If a number cannot meet it, it comes down until it can. That has already happened once.',
       noteLink: 'The note where I took my own number down →',
       noteHref: '/field-notes/2026-08-19-i-took-my-own-number-down/',
+      /** The five-step strip reuses the evidence stepper's labels; this names it. */
+      pipelineEyebrow: "One signal's journey",
+      /**
+       * The $127,000 broken into its four gaps, for the bar breakdown in the
+       * last section. Amounts are the V5 figures Rob confirmed 2026-08-24,
+       * matching what caretrics.com publishes; `value` drives the bar width.
+       */
+      gaps: [
+        { name: 'Unbilled claims', amount: '$52,000', value: 52000 },
+        { name: 'No-shows', amount: '$37,000', value: 37000 },
+        { name: 'Missed re-bookings', amount: '$24,000', value: 24000 },
+        { name: 'Missing re-evaluations', amount: '$14,000', value: 14000 },
+      ],
+      gapsNote: 'One clinic, 25 providers, June 2025 through May 2026. Identified is not collected.',
       sections: [
         {
           heading: 'What gets read.',
@@ -314,7 +368,7 @@ export const COPY = {
     },
     contact: {
       title: 'Write to me',
-      description: 'Write to Rob Saric about clinic operations, a field note that landed or missed, or a question he has not answered. He reads and answers everything himself.',
+      description: 'Write to Rob Saric about clinic operations, a note that landed or missed, or a question he has not answered. He reads and answers everything himself.',
       /**
        * Rob's pick 2026-08-25 ("Answer key"): the door is wide, the humor is
        * dry, and the "tell me where money slips" ask is gone because nobody
@@ -325,7 +379,7 @@ export const COPY = {
     },
     notFound: {
       title: 'Nothing here.',
-      body: 'The page moved or never existed. Try the field notes or the archive.',
+      body: 'The page moved or never existed. Try my notes or the archive.',
     },
   },
 } as const;

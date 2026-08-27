@@ -1,12 +1,17 @@
 ---
-/* Unnumbered band between 01 and 02: one named operator quote, verbatim from
-   caretrics.com with Rob's approval (2026-08-24). See docs/COPY.md. */
+/* Unnumbered band closing the 01 arc, after the Caretrics block: one named
+   operator quote, verbatim from caretrics.com with Rob's approval (2026-08-24).
+   Moved below Caretrics 2026-08-27: the quote names "the Caretrics team", so
+   ahead of the Caretrics block it floated. The eyebrow became visible the same
+   day for the same reason. See docs/COPY.md. */
+import Eyebrow from './Eyebrow.astro';
 import { OPERATOR_PROOF } from '../data/operator-proof';
 import { UI } from '../data/ui';
 ---
 
 <section class="proof" aria-label={UI.operatorProof.regionLabel}>
   <div class="proof__inner">
+    <Eyebrow>{UI.operatorProof.regionLabel}</Eyebrow>
     <figure class="proof__figure">
       <blockquote class="proof__quote">
         <p>“{OPERATOR_PROOF.quote}”</p>
@@ -25,7 +30,12 @@ import { UI } from '../data/ui';
     width: 100%;
     max-width: var(--max-page);
     margin: 0 auto;
-    padding: 88px var(--gutter-desktop) 0;
+    /* Below the Caretrics block, whose own bottom padding provides the space
+       above; the 88px here holds the band off the Principles rule below. */
+    padding: 0 var(--gutter-desktop) 88px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
 
   .proof__figure {
@@ -60,7 +70,7 @@ import { UI } from '../data/ui';
   }
 
   @media (max-width: 767.98px) {
-    .proof__inner { padding: 40px var(--gutter-mobile) 0; }
+    .proof__inner { padding: 0 var(--gutter-mobile) 40px; gap: 14px; }
     .proof__figure { gap: 12px; }
     .proof__quote { padding-left: 16px; }
     .proof__quote p { font-size: 19px; line-height: 1.45; }

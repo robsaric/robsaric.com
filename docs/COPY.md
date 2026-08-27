@@ -14,7 +14,7 @@ Human-centred, no AI slop. Enforced partly by `pnpm lint:copy` (see `scripts/lin
 4. **Machine-rhythm tells.** At most one "not X, it's Y" contrast per section. Two examples where two carry the point, not three. Do not end two consecutive paragraphs on a punchline. Do not announce the point ("Here's the thing:"). Vary sentence length. Active voice.
 5. **Healthcare register.** "Clinic", never "practice". "Provider" for headcount, "clinician" only when the care relationship is the point. "Jane.app" on first mention on a page, "Jane" after that. Never imply a Jane partnership or endorsement; "reads a clinic's Jane data with read-only access" is the approved shape. Patient examples use "First L." format and never real data.
 6. **Numbers.** Every public number carries a line saying what it counts and where it came from. "Identified is not collected." No clinic counts beyond the credential line. Never say "audited", "advised", "ex-DSO", "by hand", or "the books".
-7. **The credential (locked 2026-08-16; the ban narrowed 2026-08-19).** The banned words are the VERBS: "advised" and "audited". They are the claim. The NOUNS "advisor" and "advisory" are not banned, because a named role is a checkable job title, not a claim about how many clinics were advised. Rob was on the Canadian Digital Adoption Program approved advisor roster, confirmed 2026-08-19, so "digital advisor through the Canadian Digital Adoption Program" is permitted. Short: `50+ clinics, firsthand`. First person: "I went through twelve months of records for more than fifty clinics, one clinic at a time, and kept finding the same four gaps." Third person (About page, JSON-LD): "Rob Saric spent twenty years building software, including years as a systems architect inside large managed health-service organizations. He built Dentallytics, an analytics platform for dental groups, then went through twelve months of records for 50+ allied health clinics, one clinic at a time, and found the same four gaps almost every time." Dentallytics is named without "and sold". Trend Micro, Mitel, Pythian may be named on `/about/` only, text only.
+7. **The credential (locked 2026-08-16; the ban narrowed 2026-08-19).** The banned words are the VERBS: "advised" and "audited". They are the claim. The NOUNS "advisor" and "advisory" are not banned, because a named role is a checkable job title, not a claim about how many clinics were advised. Rob was on the Canadian Digital Adoption Program approved advisor roster, confirmed 2026-08-19, so "digital advisor through the Canadian Digital Adoption Program" is permitted. Short: `50+ clinics, firsthand`. First person: "I went through twelve months of bookings, visits, and billing for more than fifty clinics, one clinic at a time, and kept finding the same four gaps." Third person (About page, JSON-LD): "Rob Saric spent twenty years building software, including years as a systems architect inside large managed health-service organizations. He built Dentallytics, an analytics platform for dental groups, then went through twelve months of bookings, visits, and billing for 50+ allied health clinics, one clinic at a time, and found the same four gaps almost every time." ("records" became "bookings, visits, and billing" 2026-08-27, Rob's re-ruling: the concrete nouns name what was actually read. The claim's substance is unchanged.) Dentallytics is named without "and sold". Trend Micro, Mitel, Pythian may be named on `/about/` only, text only.
 8. **Do not invent.** Now items, field notes, dates, dollar figures, and biography lines flagged `[VERIFY]` or `[DRAFT]` below stay flagged until Rob confirms them. Draft entries carry `draft: true` and are hidden from production builds.
 9. **Vision line** may be used but never over-explained: "clinics that do good do well." Never the word "simple".
 
@@ -22,26 +22,23 @@ Human-centred, no AI slop. Enforced partly by `pnpm lint:copy` (see `scripts/lin
 
 - Site name: Rob Saric
 - Home `<title>`: Rob Saric · Founder of Caretrics
-- Home meta description: Rob Saric builds Caretrics with allied-health and rehab clinics that run on Jane.app. Field notes on clinic revenue, ownership, and AI that shows its work.
+- Home meta description: Rob Saric builds Caretrics with allied-health and rehab clinics that run on Jane.app. Notes on clinic revenue, ownership, and AI that shows its work.
 - Skip link: Skip to content
-- Nav links: Field notes · About · Write to me · Caretrics (button, external). Changed 2026-08-24 per the reconciled authority review: Write to me proves a person is reachable and is more task-oriented in the nav than Principles. Principles keeps its homepage link (03) and gains a footer link. The review called this medium-confidence; watch it.
+- Nav links: My notes · About · Write to me · Caretrics (button, external). "Field notes" renamed "My notes" 2026-08-27 (Rob's call; the URL `/field-notes/` and the card type "Field note" stay). Write to me in the nav since 2026-08-24 per the reconciled authority review; Principles keeps its homepage link (02) and its footer link.
 - Menu toggle label: Open menu / Close menu
 
 ## Hero
 
-- Eyebrow (desktop): Founder of Caretrics · Allied-health revenue operations
-- Eyebrow (mobile): Founder of Caretrics
-- H1: I kept finding the same revenue gaps in clinic after clinic.
-- Body, paragraph 1: I'm Rob Saric. I spent twenty years building software, then went through twelve months of records for more than fifty clinics, one clinic at a time.
-- Body, paragraph 2: That work became Caretrics. It helps allied-health and rehab teams using Jane.app see what is slipping, give the work an owner, and verify what changed.
-- Primary CTA: See how Caretrics works (external, caretrics.com/product; Rob chose the product explainer 2026-08-24 so the destination continues the label's promise. Nav, footer, and 02 keep the root.)
-- Secondary CTA: Read the field notes (`/field-notes/`). Outline button on desktop; on mobile a text link "Read the field notes →" below the full-width primary button.
-- Tagline: Evidence-led. AI-assisted. Human-controlled.
+- Eyebrow (desktop): Founder of Caretrics · For clinics on Jane.app
+- Eyebrow (mobile): For clinics on Jane.app
+- H1: I reviewed 50+ clinics. Almost every one was leaking revenue in the exact same four places. (Rob's two-beat and vocabulary; the one adjustment he delegated 2026-08-27: "Every single one" became "Almost every one" to match the locked record "found the same four gaps almost every time", which stays quotable on /about/ and llms.txt.)
+- Body, paragraph 1: I'm Rob Saric. I spent 20 years building software for health, insurance, and enterprise sales teams. I realized how broken clinic operations were when I spent two full years manually digging through the bookings, visits, and billing data for over 50 clinics. **One by one.** (the closing fragment renders bold, per Rob's markup)
+- Body, paragraph 2: That obsession became Caretrics. Caretrics connects to Jane.app to show you exactly which areas to focus on, lets you assign the fix to your team, and verifies the revenue is recovered.
+- Primary CTA: Find Your Leaks (external, caretrics.com/product; Rob's ruling overrides the 2026-08-24 destination-continues-the-promise rule)
+- Secondary CTA: Read My Notes (`/field-notes/`). Outline button on desktop; on mobile a text link "Read My Notes →" below the full-width primary button.
 - Portrait alt: Rob Saric
 
-Change from the artboard: "using Jane" became "using Jane.app" (first mention on the page).
-
-Changed 2026-08-23, per the reconciled authority review (`docs/strategy/`, 2026-08-20 set). The H1 stays. The body now does the orientation the old one skipped: paragraph 1 introduces Rob and carries the locked first-person credential components (item 7); paragraph 2 states the product consequence. The proof lives in the body, not a separate proof rail; one treatment, not both. The primary CTA label changed from "See Caretrics" because it named the destination, not the value of clicking. The secondary path is no longer desktop-only: hiding it on mobile removed the lowest-commitment route. Mobile order keeps H1 and body contiguous; the portrait moves below the actions.
+THE HERO IS ROB'S COPY VERBATIM, 2026-08-27, his "follow this copy entirely" ruling over the three-judge panel synthesis. Open tensions with the rest of the deck, recorded for his ruling, none resolved silently: (1) resolved 2026-08-27: the H1 quantifier realigned to the locked hedge under the one adjustment Rob delegated. (2) "verifies the revenue is recovered" vs "identified is not collected" (principle 4, `/how-i-counted/`, the Caretrics stage note "Identified only"). (3) "Jane.app" appears in both the eyebrow and paragraph 2, against the first-mention-then-Jane rule, and "connects to" replaces the approved no-endorsement shape "reads a clinic's Jane data with read-only access". (4) "manually" sits one synonym from the banned "by hand". (5) Numerals ("20 years", "50+", "two full years") and Title Case CTAs against the house style of spelled numbers and sentence case. The tagline stays removed (Rob's 2026-08-27 ruling reversing the 08-20 "Keep"). The 2026-08-23 body architecture (orientation in paragraph 1, consequence in paragraph 2, secondary path on mobile) carries forward.
 
 ## Now strip
 
@@ -55,15 +52,18 @@ Visually hidden H2: What I am working on now
 
 Drafts carry `draft: true` in `src/data/now.ts` and are hidden in production. "Ownership is the difference between a report and a result" was the third placeholder; the real Writing item replaced it.
 
-## 01 · Evidence
+## 01 · What I found
 
-- Eyebrow: 01 · Evidence
-- H2: The dashboard held the evidence. The work still had no owner.
-- Body (desktop): The same pattern turned up in clinic after clinic. The report existed, somebody had read it, and the task it implied still belonged to no one in particular. Here is one anonymized signal, from detection through to a verified outcome.
-- Body (mobile): One anonymized signal, from detection through to a verified outcome.
+Restructured 2026-08-27 at Rob's direction: the old 01 Evidence and 02 Caretrics read as a product pitch interrupting a personal site. They are now one arc, the realization, the proof, then Caretrics as the answer; the Caretrics block keeps its label but loses its number, and 03 to 06 renumber to 02 to 05.
+
+- Eyebrow: 01 · What I found
+- H2: I realized why the money keeps slipping.
+- Body (desktop): Not carelessness. The report exists, somebody reads it, and the task it points at belongs to no one in particular. I watched the same pattern in clinic after clinic, places full of people doing real good and quietly eating the cost. Everyone selling to clinics was selling demand, more new patients, more bookings. I became obsessed with the other side: operations, and recovering the money a clinic has already earned. Here is one signal, from detection through to a verified outcome.
+- Body (mobile): The report exists, somebody reads it, and the task it points at belongs to no one. Everyone sells demand; I became obsessed with recovering money already earned. Here is one signal, from detection to a verified outcome.
+- The obsession beat (Rob's line, added 2026-08-27) does double duty: it is principle 1 ("recover before you acquire") in story form, and it sets up the Revenue Recovery Diagnostic name in the Caretrics block that follows.
 - Metric (**restored 2026-08-24**, cut 2026-08-19): `$127,000` · note "Identified across four gaps in one clinic, over one year. Identified is not collected." · mono link "How I counted this →" (`/how-i-counted/`). The 2026-08-19 cut was waiting on the per-gap breakdown; Rob confirmed it 2026-08-24, matching what caretrics.com publishes: unbilled claims $52,000 · no-shows $37,000 · missed re-bookings $24,000 · missing re-evaluations $14,000 (sums to $127,000). The breakdown is written down in `/how-i-counted/` ("The $127,000"), which the metric links to. Cohort: one clinic, 25 providers, the twelve months of June 2025 through May 2026. On mobile the metric sits after the body, before the panel.
 - Signal eyebrow: The signal
-- Exit link: More of these, in the field notes → (`/field-notes/`). Added 2026-08-19 so the strongest argument on the page does not dead-end in "Start again".
+- Exit link: More of these, in my notes → (`/field-notes/`). Added 2026-08-19 so the strongest argument on the page does not dead-end in "Start again".
 - Methods link: How I count and verify clinic findings → (`/how-i-counted/`). Added 2026-08-24 with the methods page, below the exit link.
 - Signal: 17 insurance items have had no activity in 21 days.
 - Steps (`src/data/evidence-steps.ts`):
@@ -74,19 +74,20 @@ Drafts carry `draft: true` in `src/data/now.ts` and are hidden in production. "O
   5. Verified / "Outcome verified" / "An item only closes when its status changes in Jane. Identified is not collected, and the record shows plainly which of the two happened." / "confirmed against source data · identified and collected reported separately"
 - Controls: Next step / Start again / Step N of 5
 
-## Operator proof (unnumbered band between 01 and 02)
+## Operator proof (unnumbered band closing the 01 arc, after the Caretrics block)
 
-Added 2026-08-24: the external-proof layer the authority review called the site's largest gap. One named clinic-operator quote, verbatim from caretrics.com (fetched 2026-08-24); Rob approved its reuse here the same day. "Recovered" is Ryan's own word about his own result and stays untouched; site copy keeps "identified". The band carries no section number on purpose: 01 to 06 are the homepage's table of contents, and one quote does not renumber it. Strings live in `src/data/operator-proof.ts`; do not edit the quote.
+Added 2026-08-24: the external-proof layer the authority review called the site's largest gap. One named clinic-operator quote, verbatim from caretrics.com (fetched 2026-08-24); Rob approved its reuse here the same day. "Recovered" is Ryan's own word about his own result and stays untouched; site copy keeps "identified". The band carries no section number on purpose: 01 to 05 are the homepage's table of contents, and one quote does not renumber it. Moved below the Caretrics block 2026-08-27 (it names "the Caretrics team", so ahead of that block it floated) and the "From a clinic owner" eyebrow became visible, not aria-only, the same day. Strings live in `src/data/operator-proof.ts`; do not edit the quote.
 
 - Quote: "No-shows and late cancels were costing us more than we realized, and we never had a clear number on it. Rob and the Caretrics team gave us the number, then helped our front desk stay on top of exactly who to follow up with first. We recovered about $2,800 last month, and our team now runs the week on top of our operational priorities instead of chasing them."
 - Attribution: Ryan Sleik · Owner, Kootenay Therapy Center
 
-## 02 · Caretrics
+## Caretrics (continues 01, unnumbered since 2026-08-27)
 
-- Eyebrow: 02 · Caretrics
-- H2: Clinic revenue moves through five stages. So do its problems.
-- Body (desktop): Caretrics reads a clinic's Jane data with read-only access and works between Booked and Paid. Select a stage.
-- Body (mobile): Caretrics reads a clinic's Jane data with read-only access and works between Booked and Paid.
+- Eyebrow: Caretrics (label only; the block continues the 01 arc rather than starting a section)
+- H2: So I am building Caretrics.
+- Body (desktop): It starts with the Revenue Recovery Diagnostic: a read-only pass over a clinic's own Jane data, across the five stages revenue moves through. It works between Booked and Paid, and it shows where money slips and what to fix first. Select a stage.
+- Body (mobile): It starts with the Revenue Recovery Diagnostic: a read-only pass over a clinic's own Jane data, across the five stages revenue moves through. It shows where money slips and what to fix first.
+- The Revenue Recovery Diagnostic, named 2026-08-27 (Rob's direction): the five-stage read is Caretrics' own method and carries a capitalized name, the same convention as Action Plan. Named and shown, never called "proprietary": the sample client report is the proof and `/how-i-counted/` exists so the method can be checked, which is worth more trust than the word asserts. The draft Now item aligned to the same name.
 - Panel eyebrows: The clinic's question · Example signals
 - Stages (`src/data/stages.ts`):
   1. Found (not owned) / "Are the right patients finding you and booking a first visit?" / "Referral sources · first-visit bookings · enquiries that never became appointments" / "Caretrics does not measure this stage. A gap here often gets blamed on a later one."
@@ -104,9 +105,9 @@ Added 2026-08-24: the external-proof layer the authority review called the site'
 
 Compressed 2026-08-24 per the reconciled authority review: the homepage explains the operating idea, the product page lists the pieces. The component inventory (Recovery Report, Action Plan, weekly report, Coverage Alerts, Patient Follow-Ups, Aging AR workspace) moved to caretrics.com/product. "Found sits outside it" dropped from the boundary: the Found stage note already carries it. The Togetheren row moved out of this section entirely; the footer's "Togetheren, selected work" link and the `/about/` page's "See selected work →" link are the remaining surfaces (V11).
 
-## 03 · Principles
+## 02 · Principles
 
-- Eyebrow: 03 · Principles
+- Eyebrow: 02 · Principles
 - H2: Principles I use when reviewing clinic operations.
 - Homepage shows 1 to 3; `/principles/` shows all five. Bodies below are the desktop long form; the mobile short form is the first sentence (or as marked).
 
@@ -124,12 +125,14 @@ Compressed 2026-08-24 per the reconciled authority review: the homepage explains
 
 Principles 4 and 5 come from design v4 (7a), where the list had six; "Good systems create flow" (2011) is retired from the list and lives in the archive.
 
-## 04 · Field notes
+## 03 · My notes
 
-- Eyebrow: 04 · Field notes
-- H2: What I am seeing, shipping, and rethinking.
+Renamed from "Field notes" 2026-08-27 (Rob's call, made personal). The URL `/field-notes/` is permanent and the card type "Field note" keeps its name; only the visible surfaces rename. "Shipping" left the H2 the same day for plainer language.
+
+- Eyebrow: 03 · My notes
+- H2: What I am seeing, building, and rethinking.
 - Body: Kept in public, in order. The wrong turns stay in.
-- Header link: All field notes → · Mobile bottom link: See all field notes →
+- Header link: All notes → · Mobile bottom link: See all notes →
 - Filter pills: All, then only the tags carried by notes actually in that grid, in `NOTE_TAGS` order (Clinic revenue · Billing and insurance · Patient flow · AI and trust · Building Caretrics · Founder notes). Below two represented tags the row is not rendered, so a pill never leads to the empty state.
 - Empty state: Nothing filed under this one yet.
 - Card types: Field note · Shipped · Changed my mind
@@ -139,14 +142,16 @@ Principles 4 and 5 come from design v4 (7a), where the list had six; "Good syste
 - Updated line: when a note carries `updated` frontmatter, the date line reads "[published date] · Updated [updated date]".
 - OG share cards (added 2026-08-25): every published note ships a generated 1200x630 card at `/og/notes/<slug>.png` (`pnpm generate:og`, committed under `public/og/notes/`). On the card: the note's `type` and full date as the eyebrow, the title anchored to the footer rule, then the avatar mark, "Rob Saric" and "robsaric.com" (`src/data/og-card.mjs`). Design approved 2026-08-25 from the claude.ai/design "Field Note OG Cards" sheet: 9a dark with the 92/84/76 title ladder, plus the 9c stat slot when a note carries `stat` + `statLabel` (+ optional `statContext`) frontmatter, the avatar added by Rob; transcribed in `scripts/og-card-template.mjs`. Stat strings state what they count ("against 15% booked at the desk · one clinic, two years"). Other pages keep `og-default.png`.
 
-## 05 · About
+## 04 · About
 
-- Eyebrow: 05 · About
-- H2: Where the standard came from.
-- Body: I have mentored with Big Brothers Big Sisters for over a decade. Time is the thing people in care have least of, and it is the thing most software asks for more of. That is the whole reason I care about this work. `[VERIFY V7: BBBS wording and duration]`
+Rewritten 2026-08-27 at Rob's direction: "Where the standard came from." read as self-regard. The band is now the belief, in his words. The BBBS line moved off the homepage (it lives on `/about/`, V7 still applies there); the creed now leads here and signs the `/about/` card, superseding the 2026-08-25 division-of-labor ruling.
+
+- Eyebrow: 04 · About
+- H2: Why I care.
+- Body: People who do good should do well. I am tired of the opposite: people who contribute little, monetizing the people who carry the world. Clinicians spend themselves helping others live with pain and injury. The clinics around them should thrive for it, not struggle.
 - Mobile body: first two sentences.
 - Quote: "If it adds work to care, it has failed."
-- Stat row: 20+ years building software (V2 confirmed 2026-08-24) · 50+ clinics, firsthand · Founder of Caretrics, Ottawa
+- Under the signature, one mono line replacing the three stat rows (2026-08-27, Rob's call: the resume register broke the band's emotion, and both claims already live in the hero prose and the `/about/` facts rail): Founder of Caretrics · Ottawa
 - Photo alt: Rob Saric outdoors
 - Signature alt: Rob Saric (`rob-signature.png`, under the quote, signing the standard)
 
@@ -156,15 +161,15 @@ Change from the artboard: "50+ clinic owners advised" became "50+ clinics, first
 
 Its own composition (`src/pages/about.astro`), not the homepage About band. Built 2026-08-19 from `docs/ABOUT-PAGE-BRIEF.md` and the claude.ai/design turn 9 artboards. Strings live in `COPY.aboutPage`.
 
-- Label: About (plain word in the label column; `Section` `number` is optional as of 2026-08-19, because 01 to 06 are a table of contents for one homepage scroll)
+- Label: About (plain word in the label column; `Section` `number` is optional as of 2026-08-19, because 01 to 05 are a table of contents for one homepage scroll)
 - H1: I spent twenty years building software. Healthcare is where the work became personal.
 - Facts rail (definition list, values at body size, never a stat display): Based in / Ottawa, Canada · Building software / 20+ years · Clinics seen firsthand / 50+
 - Background opens on the reason, not the resume: "My father battled illness for ten years. Watching that is what made healthcare personal for me, before it was ever a business." Confirmed true by Rob 2026-08-19. The wording is a rewrite of the claude.ai/design line "After watching my father battle illness for 10 years" into the house register; Rob should own the final words.
 - Zones: Background ("Where healthcare came in." and "What the failures changed."), Caretrics ("Why Caretrics."), Outside ("Outside the work.")
 - The standard sits in a card at the end: serif italic 28px (24 mobile), signature, then "Rob Saric, founder of Caretrics". The card is `fit-content` capped at 722px.
-- Card quote: "People who do good should do well." Rob's pick 2026-08-25 from the About refinements canvas. Division of labor: the creed signs `/about/`, the test line ("If it adds work to care, it has failed.") stays on the homepage About band, section 05. The line is used, never over-explained (vision-line rule).
-- Outside photo strip: two photos above the card, from images already shipped (`rob-portrait-caretrics.png`, the Jane Summit shot; `rob-family.png`). Captions are Rob's to write; placeholders read `[Caption for Rob to write]` and the strip is dev-only (`SHOW_OUTSIDE_PHOTOS` in `copy.ts`) until they are real. `[DRAFT V14: photo strip captions]`
-- Exits: "Write to me →" (`/contact/`) · "Read the field notes →" (`/field-notes/`). Softened from "Write to me and tell me where I am wrong →" 2026-08-25: the challenge line stays on the homepage band heading and the `/how-i-counted/` exit, where it follows the evidence; the About exit is a plain door.
+- Card quote: "People who do good should do well." Rob's pick 2026-08-25 from the About refinements canvas. As of 2026-08-27 the creed also leads the homepage About band body (section 04, "Why I care."), superseding the one-surface division of labor; the test line ("If it adds work to care, it has failed.") remains that band's signed quote and the `/how-i-counted/` standard. The line is used, never over-explained (vision-line rule).
+- Outside photo strip: two photos above the card, from images already shipped (`rob-portrait-caretrics.png`, the Jane Summit shot; `rob-family.png`). Captions are Rob's to write; placeholders read `[Caption for Rob to write]` and the strip is dev-only (`SHOW_OUTSIDE_PHOTOS` in `copy.ts`) until they are real. `[DRAFT V14: photo strip captions]` (`rob-portrait-caretrics.png` re-shot 2026-08-27 with Rob's new taller crop from the same event; the hero and the strip both read from that one asset.)
+- Exits: "Write to me →" (`/contact/`) · "Read my notes →" (`/field-notes/`). Softened from "Write to me and tell me where I am wrong →" 2026-08-25: the challenge line stays on the homepage band heading and the `/how-i-counted/` exit, where it follows the evidence; the About exit is a plain door.
 
 `Clinics seen firsthand / 50+` splits the locked short form `50+ clinics, firsthand` across a term and a value. `[VERIFY V13: item 7 sign-off for the split, or the rail drops to two cells and the credential lives in prose only]`
 
@@ -174,13 +179,13 @@ The claude.ai/design export rewrote copy in both artboards. Those rewrites were 
 - `/about/` body: the About body above, then the third-person credential paragraph (Copy law item 7), then: "Before Caretrics I spent years as a systems architect inside large managed health-service organizations, and earlier at Trend Micro, Mitel and Pythian." `[VERIFY V3]` (V2 confirmed 2026-08-24)
 - `/about/` meta description: Rob Saric, founder of Caretrics in Ottawa. Twenty years building software, 50+ clinics firsthand, and one standard: if it adds work to care, it has failed.
 
-## 06 · Write to me
+## 05 · Write to me
 
-- Eyebrow: 06 · Write to me
+- Eyebrow: 05 · Write to me
 - H2: Tell me where I am wrong.
 - Body (desktop): You run the clinic. You see things I cannot. If a principle does not match what you see at your front desk, or you know where money slips that I have not mentioned, write to me. I read and answer everything myself. ("write to me" links to `/contact/`)
 - Body (mobile): You run the clinic. You see things I cannot. Write to me. I read and answer everything myself.
-- Card H3: Get the field notes.
+- Card H3: Get the notes.
 - Card body (desktop): Occasional notes on what I saw in a clinic and what I would check in yours. No schedule I cannot keep.
 - Card body (mobile): Occasional notes on what I saw in a clinic and what I would check in yours.
 - Label: Email address · Placeholder: you@clinic.com · Button: Subscribe · Loading label: Subscribing…
@@ -204,14 +209,14 @@ Change from the artboard: "2011 to 2019" became "2009 to 2019" (the oldest post 
 - `/archive/` H1: Earlier writing, 2009 to 2019 · intro: Thirty-eight posts from the first blog, kept as they were written. Systems, flow, leadership, and a few detours. · meta description: Rob Saric's earlier writing on systems, flow, and leadership, 2009 to 2019, kept as it was written.
 - Archive post notice: Written in {year}. Kept as it was.
 - `/how-i-counted/` — built 2026-08-24; the full deck is the "/how-i-counted/ page" section below. Named for what it does rather than "methodology": it exists to be checked, not to assert rigour. (The 2026-08-19 plan sketched here, three sections and "How I counted it", was superseded by the shipped page.)
-- `/contact/` H1: Write to me · body: "You run the clinic. I only write about them. That means you hold the answer key, and I would rather hear a correction from you than keep being wrong in public. Questions, arguments, and notes that missed all land in the same inbox, which is just me. I read and answer everything, and if I do not know, I will say so." (Rob's pick 2026-08-25, the "Answer key" body: the door is wide, the humor is dry, and the "tell me where money slips" ask is gone because nobody writes in to report that. The challenge line stays on the homepage band and the `/how-i-counted/` exit.) then the email (if set) and LinkedIn. First person throughout. The page carries its own meta description, third person to match the other pages: "Write to Rob Saric about clinic operations, a field note that landed or missed, or a question he has not answered. He reads and answers everything himself." (under the 155 clamp in `src/lib/seo.ts`)
-- 404 H1: Nothing here. · body: The page moved or never existed. Try the field notes or the archive.
+- `/contact/` H1: Write to me · body: "You run the clinic. I only write about them. That means you hold the answer key, and I would rather hear a correction from you than keep being wrong in public. Questions, arguments, and notes that missed all land in the same inbox, which is just me. I read and answer everything, and if I do not know, I will say so." (Rob's pick 2026-08-25, the "Answer key" body: the door is wide, the humor is dry, and the "tell me where money slips" ask is gone because nobody writes in to report that. The challenge line stays on the homepage band and the `/how-i-counted/` exit.) then the email (if set) and LinkedIn. First person throughout. The page carries its own meta description, third person to match the other pages: "Write to Rob Saric about clinic operations, a note that landed or missed, or a question he has not answered. He reads and answers everything himself." (under the 155 clamp in `src/lib/seo.ts`)
+- 404 H1: Nothing here. · body: The page moved or never existed. Try my notes or the archive.
 - `/subscribed/` (server-rendered result of the subscribe form; `noindex`; state comes from `?status=`):
   - ok (default): H1 "You are on the list." · body "Occasional notes, no schedule I cannot keep. Reply to any of them. I read and answer everything myself."
   - exists: H1 "You were already on the list." · body "Nothing to do. The next note will reach you."
   - invalid: H1 "That does not look like an email address." · body "Go back and try again, or email me and I will add you myself." ("email me" links to `/contact/`)
   - error: H1 "That did not go through." · body "Something failed on my side, not yours. Email me and I will add you myself." ("email me" links to `/contact/`)
-  - all states: link "Back to the field notes →" (`/field-notes/`)
+  - all states: link "Back to my notes →" (`/field-notes/`)
 
 ## /how-i-counted/ page
 
@@ -220,8 +225,11 @@ Added 2026-08-24, the methods page the authority review called the biggest missi
 - Title: How I count
 - H1: How I count and verify clinic findings.
 - Meta description (third person): How Rob Saric counts and verifies clinic findings: what Caretrics reads, what is never inferred, and why identified is not collected.
+- Context (added 2026-08-27, before the intro; Rob: the page assumed the reader arrived from the homepage): I find revenue that clinics are missing, by reading their own Jane.app data. Numbers like that are easy to claim and hard to check, so this page shows the counting.
 - Intro: Every public number I use is held to the standard on this page. If a number cannot meet it, it comes down until it can. That has already happened once.
 - Intro link: The note where I took my own number down → (`/field-notes/2026-08-19-i-took-my-own-number-down/`)
+- Pipeline strip (added 2026-08-27, between the header and the sections): eyebrow "One signal's journey", then the five evidence-stepper labels and kickers (Detected/Signal detected .. Verified/Outcome verified) as a numbered strip, forest rule per step. Data reused from `src/data/evidence-steps.ts`, nothing new authored.
+- Breakdown bars (added 2026-08-27, inside section 8): the four gaps as single-hue forest bars on wash tracks, name left, amount right, every value direct-labeled, no legend or hover. Note under it: "One clinic, 25 providers, June 2025 through May 2026. Identified is not collected." Data in `copy.ts` `pages.howICounted.gaps`, the V5 amounts.
 - Sections (H2 + one paragraph each):
   1. What gets read. / Caretrics reads twelve months of a clinic's Jane.app data with read-only access and works between Booked and Paid. Signals come from the clinic's own calendar, visit, and billing records, never from clinical judgement. Access can be revoked anytime.
   2. Read, not inferred. / Each item links back to the visit it came from, the date it was submitted, and the last status recorded. Nothing is inferred. Where a field was missing, the item says so instead of guessing.

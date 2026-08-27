@@ -22,7 +22,7 @@ export const NOW_ITEMS: NowItem[] = [
   },
   {
     kicker: 'Building',
-    title: 'The Caretrics revenue diagnostic',
+    title: 'The Revenue Recovery Diagnostic',
     blurb: 'What a first read of a clinic’s Jane account looks for, and what it deliberately leaves alone.',
     href: '/field-notes/',
     draft: true,

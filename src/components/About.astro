@@ -46,9 +46,7 @@ import Section from './Section.astro';
         decoding="async"
       />
 
-      <div class="about__stats">
-        {COPY.about.stats.map((stat) => <span>{stat}</span>)}
-      </div>
+      <span class="about__attribution">{COPY.about.attribution}</span>
     </div>
   </div>
 </Section>
@@ -115,16 +113,14 @@ import Section from './Section.astro';
     display: block;
   }
 
-  .about__stats {
-    padding-top: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    column-gap: 28px;
-    row-gap: 10px;
-    border-top: 1px solid var(--rule);
+  .about__attribution {
+    color: var(--ink-muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-eyebrow);
+    font-weight: 500;
+    letter-spacing: var(--tracking-eyebrow);
+    text-transform: uppercase;
   }
-
-  .about__stats span { font-size: 17px; line-height: 1.5; }
 
   @media (min-width: 768px) and (max-width: 1149.98px) {
     .about {
@@ -152,14 +148,6 @@ import Section from './Section.astro';
     .about__body--mobile { display: block; }
     .about__quote { order: 5; max-width: none; font-size: 24px; line-height: 1.32; }
     .about__signature { order: 6; width: 150px; margin: 0 0 -10px -11px; }
-
-    .about__stats {
-      order: 7;
-      padding-top: 16px;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .about__stats span { font-size: 16px; }
+    .about__attribution { order: 7; }
   }
 </style>

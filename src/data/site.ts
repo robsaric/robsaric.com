@@ -7,7 +7,7 @@ export const SITE = {
   name: 'Rob Saric',
   title: 'Rob Saric · Founder of Caretrics',
   description:
-    'Rob Saric builds Caretrics with allied-health and rehab clinics that run on Jane.app. Field notes on clinic revenue, ownership, and AI that shows its work.',
+    'Rob Saric builds Caretrics with allied-health and rehab clinics that run on Jane.app. Notes on clinic revenue, ownership, and AI that shows its work.',
   url: 'https://robsaric.com',
   locale: 'en',
   author: {

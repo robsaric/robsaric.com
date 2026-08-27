@@ -21,7 +21,7 @@ import Eyebrow from './Eyebrow.astro';
       </Eyebrow>
       <h1>{COPY.hero.heading}</h1>
       <div class="hero__body">
-        <p>{COPY.hero.bodyIntro}</p>
+        <p>{COPY.hero.bodyIntro} <strong>{COPY.hero.bodyIntroEmphasis}</strong></p>
         <p>{COPY.hero.bodyOutcome}</p>
       </div>
       <div class="hero__actions">
@@ -40,19 +40,21 @@ import Eyebrow from './Eyebrow.astro';
           {COPY.hero.secondaryCtaMobile}
         </a>
       </div>
-      <p class="hero__tagline">{COPY.hero.tagline}</p>
     </div>
 
-    <Image
-      class="hero__portrait"
-      src={portrait}
-      alt={COPY.hero.portraitAlt}
-      width={400}
-      height={460}
-      densities={[1, 2]}
-      loading="eager"
-      decoding="async"
-    />
+    <div class="hero__portrait-frame">
+      <span class="hero__portrait-offset" aria-hidden="true"></span>
+      <Image
+        class="hero__portrait"
+        src={portrait}
+        alt={COPY.hero.portraitAlt}
+        width={400}
+        height={460}
+        densities={[1, 2]}
+        loading="eager"
+        decoding="async"
+      />
+    </div>
   </div>
 </section>
 
@@ -80,7 +82,9 @@ import Eyebrow from './Eyebrow.astro';
   .hero__eyebrow--mobile { display: none; }
 
   h1 {
-    max-width: 17ch;
+    /* 21ch: Rob's 2026-08-27 headline is a two-beat 92 characters; narrower
+       measures stack it past four lines. */
+    max-width: 21ch;
     margin: 0;
     color: var(--ink);
     font-size: var(--text-hero);
@@ -122,21 +126,54 @@ import Eyebrow from './Eyebrow.astro';
     gap: 14px;
   }
 
-  .hero__tagline {
-    margin: 0;
-    color: var(--ink-muted);
-    font-size: var(--text-ui-s);
-    line-height: var(--lh-ui);
+  /* The site's signature photo treatment (the /about/ header grammar): a lime
+     offset card behind the portrait. Lime as a surface on cream, never text. */
+  .hero__portrait-frame {
+    position: relative;
+    width: 400px;
+    height: 460px;
+  }
+
+  .hero__portrait-offset {
+    position: absolute;
+    left: -14px;
+    bottom: -14px;
+    width: 100%;
+    height: 100%;
+    background: var(--lime-500);
+    border-radius: var(--radius-xl);
   }
 
   .hero__portrait {
-    width: 400px;
-    height: 460px;
+    position: relative;
+    width: 100%;
+    height: 100%;
     display: block;
     object-fit: cover;
     border: 1px solid var(--rule);
     border-radius: var(--radius-xl);
   }
+
+  /* One staggered entrance on first paint, opacity and transform only so
+     nothing shifts layout. tokens.css kills all animation under
+     prefers-reduced-motion, so the reduced case needs nothing extra here. */
+  @keyframes hero-rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  .hero__eyebrow,
+  h1,
+  .hero__body,
+  .hero__actions,
+  .hero__portrait-frame {
+    animation: hero-rise 0.6s var(--ease-out) both;
+  }
+
+  h1 { animation-delay: 60ms; }
+  .hero__body { animation-delay: 120ms; }
+  .hero__portrait-frame { animation-delay: 120ms; }
+  .hero__actions { animation-delay: 180ms; }
 
   @media (min-width: 768px) and (max-width: 1149.98px) {
     .hero__inner {
@@ -145,7 +182,7 @@ import Eyebrow from './Eyebrow.astro';
       gap: 48px;
     }
 
-    .hero__portrait { width: 100%; height: 340px; }
+    .hero__portrait-frame { width: 100%; height: 340px; }
   }
 
   @media (max-width: 767.98px) {
@@ -173,7 +210,7 @@ import Eyebrow from './Eyebrow.astro';
     .hero__actions :global(.button) { width: 100%; }
     .hero__actions :global(.button--outline) { display: none; }
     .hero__notes-link { display: inline-flex; }
-    .hero__portrait { order: 5; width: 190px; height: 190px; }
-    .hero__tagline { order: 6; }
+    .hero__portrait-frame { order: 5; width: 190px; height: 190px; }
+    .hero__portrait-offset { left: -10px; bottom: -10px; }
   }
 </style>

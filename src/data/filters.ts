@@ -1,4 +1,4 @@
-/** 04 · Field note tags. "All" is the implicit first pill; not a tag. */
+/** 03 · My notes tags. "All" is the implicit first pill; not a tag. */
 export const NOTE_TAGS = [
   'Clinic revenue',
   'Billing and insurance',
