@@ -35,10 +35,16 @@ After importing, run `pnpm build` and spot-check three posts against the live si
 ### Import log (2026-08-18)
 
 - `pnpm import:legacy` pulled all 38 posts; 9 images under `robsaric.com/wp-content/uploads` were localized to `public/archive/<slug>/`.
-- 23 image references and 2 links pointed at `robertsaric.com` (an older domain that no longer resolves; the files are not in the current media library either, so they were already broken on the live site). They were removed from the imported Markdown by a one-time cleanup: dead images dropped, dead links unwrapped to their text. Affected posts: 7-lessons-learned-while-building-a-startup, 7-of-the-most-extraordinary-people (14 portraits), continually-disrupt-and-reinvent-yourself, dont-be-an-organizational-houdini, entering-beast-mode, thank-you-steve-jobs, the-humble-rainmaker, treat-contractors-well, why-entrepreneurs-should-have-a-bit-of-an-ego, 9-steps-to-creating-your-sales-battlecard, alignment.
+- 23 image references and 2 links pointed at `robertsaric.com` (an older domain; the files are not in the current media library either, so they were already broken on the live site). They were removed from the imported Markdown by a one-time cleanup: dead images dropped, dead links unwrapped to their text. Affected posts: 7-lessons-learned-while-building-a-startup, 7-of-the-most-extraordinary-people (14 portraits), continually-disrupt-and-reinvent-yourself, dont-be-an-organizational-houdini, entering-beast-mode, thank-you-steve-jobs, the-humble-rainmaker, treat-contractors-well, why-entrepreneurs-should-have-a-bit-of-an-ego, 9-steps-to-creating-your-sales-battlecard, alignment.
 - A `--force` re-import would bring the dead references back; if you ever re-import, re-apply the same cleanup (or extend the script to drop `robertsaric.com` references).
 
 Old posts are kept as written and are exempt from `pnpm lint:copy` by path (`src/content/archive`). Do not edit their prose. If a post is truly not worth keeping, remove it from the collection but keep its redirect pointing at `/archive/`.
+
+### robertsaric.com still resolves (corrected 2026-08-29)
+
+The import log above said that domain no longer resolved. It does: `http://robertsaric.com/<path>` 301s path for path to `https://robsaric.com/<path>`. So every legacy path Google still holds for the old domain arrives here, and any path without an entry in `src/data/legacy-redirects.mjs` lands on a hard 404. Retired nav pages and two renamed post slugs were added to that file 2026-08-29.
+
+Still open: roughly twenty legacy posts exist in the Wayback CDX index for both domains but were never imported (they predate the 38, and `/something-from-nothing/` is being handed out by web search today). They 404. Two honest options, Rob's call: import them into `src/content/archive/` the way the 38 were imported, which makes the URLs real again, or leave them 404 so search drops them. A blanket 301 to `/archive/` is the wrong answer for content that no longer exists; Google reads that as a soft 404.
 
 ## Cutover checklist
 

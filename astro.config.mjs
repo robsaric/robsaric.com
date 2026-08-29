@@ -50,8 +50,13 @@ export default defineConfig({
   adapter: vercel(),
   integrations: [
     sitemap({
-      // No pages excluded. /how-i-counted/ returns with the metric (docs/COPY.md, V5).
-      filter: () => true,
+      /**
+       * /how-i-counted/ stays in (docs/COPY.md, V5). /subscribed/ comes out
+       * 2026-08-29: it renders `noindex, nofollow` and is Disallow'd in
+       * robots.txt, so submitting it made Search Console report the page as
+       * both blocked and noindexed. Nothing else is excluded.
+       */
+      filter: (page) => !page.includes('/subscribed/'),
     }),
     mdx(),
     vercelSlashTolerantRedirects(),

@@ -54,6 +54,32 @@ export const LEGACY_PAGE_REDIRECTS = {
   '/links': '/',
   '/writing': '/field-notes/',
   '/feed': '/rss.xml',
+
+  /**
+   * Added 2026-08-29. robertsaric.com, the older domain, forwards path for path
+   * to robsaric.com, so every indexed legacy path without an entry here lands on
+   * a hard 404. `docs/MIGRATION.md` said that domain no longer resolved, which is
+   * why the gap went unseen. Slugs confirmed against the Wayback CDX index for
+   * both domains and each 404 verified in production before it was added.
+   *
+   * Two are the same post under an older slug, so they redirect to the post:
+   */
+  '/great-software-entrepreneurs-are-artists': '/archive/great-coders-are-artists/',
+  '/question-of-the-day-should-i-ever-provide-free-services-to-earn-new-business':
+    '/archive/should-i-ever-provide-free-services-to-earn-new-business/',
+
+  /** The rest are retired nav and section pages, sent where the reader meant to go. */
+  '/bio': '/about/',
+  '/mission': '/about/',
+  '/my-startups': '/about/',
+  '/projects': '/about/',
+  '/speaking': '/about/',
+  '/connect': '/contact/',
+  '/contribute': '/contact/',
+  '/work-with-me': '/contact/',
+  '/essays': '/archive/',
+  '/my-observations': '/archive/',
+  '/book': '/archive/',
 };
 
 /** Astro `redirects` config object: old path -> { status: 301, destination }. */
