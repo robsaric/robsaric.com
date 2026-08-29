@@ -29,16 +29,18 @@ Human-centred, no AI slop. Enforced partly by `pnpm lint:copy` (see `scripts/lin
 
 ## Hero
 
-- Eyebrow (desktop): Founder of Caretrics · For clinics on Jane.app
+- Eyebrow (desktop): Founder of Caretrics · Revenue recovery operations for clinics on Jane.app
 - Eyebrow (mobile): For clinics on Jane.app
-- H1: I reviewed 50+ clinics. Almost every one was leaking revenue in the exact same four places. (Rob's two-beat and vocabulary; the one adjustment he delegated 2026-08-27: "Every single one" became "Almost every one" to match the locked record "found the same four gaps almost every time", which stays quotable on /about/ and llms.txt.)
-- Body, paragraph 1: I'm Rob Saric. I spent 20 years building software for health, insurance, and enterprise sales teams. I realized how broken clinic operations were when I spent two full years manually digging through the bookings, visits, and billing data for over 50 clinics. **One by one.** (the closing fragment renders bold, per Rob's markup)
-- Body, paragraph 2: That obsession became Caretrics. Caretrics connects to Jane.app to show you exactly which areas to focus on, lets you assign the fix to your team, and verifies the revenue is recovered.
-- Primary CTA: Find Your Leaks (external, caretrics.com/product; Rob's ruling overrides the 2026-08-24 destination-continues-the-promise rule)
-- Secondary CTA: Read My Notes (`/field-notes/`). Outline button on desktop; on mobile a text link "Read My Notes →" below the full-width primary button.
+- H1: I kept finding the same revenue gaps in clinic after clinic.
+- Body, paragraph 1: I'm Rob Saric. I spent twenty years building software, then went through twelve months of bookings, visits, and billing for more than fifty clinics, one clinic at a time. (the locked credential, item 7)
+- Body, paragraph 2: That work became Caretrics. It helps allied-health and rehab teams identify the work affecting revenue, give it a clear owner, and verify what changed, without replacing Jane or the people making the decisions.
+- Primary CTA: See how Caretrics works (external, caretrics.com/product; the destination continues the label's promise, per the 2026-08-24 rule)
+- Secondary CTA: Read my notes (`/field-notes/`). Outline button on desktop; on mobile a text link "Read my notes →" below the full-width primary button.
+- Tagline: Evidence-led. AI-assisted. Human-controlled. (restored 2026-08-29)
 - Portrait alt: Rob Saric
+- The eyebrow carries the page's FIRST "Jane.app"; every later homepage mention is plain "Jane".
 
-THE HERO IS ROB'S COPY VERBATIM, 2026-08-27, his "follow this copy entirely" ruling over the three-judge panel synthesis. Open tensions with the rest of the deck, recorded for his ruling, none resolved silently: (1) resolved 2026-08-27: the H1 quantifier realigned to the locked hedge under the one adjustment Rob delegated. (2) "verifies the revenue is recovered" vs "identified is not collected" (principle 4, `/how-i-counted/`, the Caretrics stage note "Identified only"). (3) "Jane.app" appears in both the eyebrow and paragraph 2, against the first-mention-then-Jane rule, and "connects to" replaces the approved no-endorsement shape "reads a clinic's Jane data with read-only access". (4) "manually" sits one synonym from the banned "by hand". (5) Numerals ("20 years", "50+", "two full years") and Title Case CTAs against the house style of spelled numbers and sentence case. The tagline stays removed (Rob's 2026-08-27 ruling reversing the 08-20 "Keep"). The 2026-08-23 body architecture (orientation in paragraph 1, consequence in paragraph 2, secondary path on mobile) carries forward.
+Hero history, three rulings in three days: Rob's verbatim Hormozi hero shipped 2026-08-27 ("I reviewed 50+ clinics..."); on 2026-08-29 he adopted the cleaned opening from an external review after two independent reviews flagged the same boundary breach ("verifies the revenue is recovered" vs "identified is not collected"). Cleaned means: the review's em dash removed, the locked credential restored as paragraph 1, present-boundary paragraph 2 ("verify what changed"), Jane.app once, sentence-case CTAs, and a CTA the destination can honor. Every open tension from the 08-27 hero closed with this replacement, and the tagline returned, reversing the 08-27 cut and restoring the 08-20 "Keep". To kill the echo with the new H1, the 01 body's "I watched the same pattern in clinic after clinic" became "I watched it repeat in" (same date). The 2026-08-23 body architecture carries forward.
 
 ## Now strip
 
@@ -58,7 +60,7 @@ Restructured 2026-08-27 at Rob's direction: the old 01 Evidence and 02 Caretrics
 
 - Eyebrow: 01 · What I found
 - H2: I realized why the money keeps slipping.
-- Body (desktop): Not carelessness. The report exists, somebody reads it, and the task it points at belongs to no one in particular. I watched the same pattern in clinic after clinic, places full of people doing real good and quietly eating the cost. Everyone selling to clinics was selling demand, more new patients, more bookings. I became obsessed with the other side: operations, and recovering the money a clinic has already earned. Here is one signal, from detection through to a verified outcome.
+- Body (desktop): Not carelessness. The report exists, somebody reads it, and the task it points at belongs to no one in particular. I watched it repeat in places full of people doing real good and quietly eating the cost. Everyone selling to clinics was selling demand, more new patients, more bookings. I became obsessed with the other side: operations, and recovering the money a clinic has already earned. Here is one signal, from detection through to a verified outcome.
 - Body (mobile): The report exists, somebody reads it, and the task it points at belongs to no one. Everyone sells demand; I became obsessed with recovering money already earned. Here is one signal, from detection to a verified outcome.
 - The obsession beat (Rob's line, added 2026-08-27) does double duty: it is principle 1 ("recover before you acquire") in story form, and it sets up the Revenue Recovery Diagnostic name in the Caretrics block that follows.
 - Metric (**restored 2026-08-24**, cut 2026-08-19): `$127,000` · note "Identified across four gaps in one clinic, over one year. Identified is not collected." · mono link "How I counted this →" (`/how-i-counted/`). The 2026-08-19 cut was waiting on the per-gap breakdown; Rob confirmed it 2026-08-24, matching what caretrics.com publishes: unbilled claims $52,000 · no-shows $37,000 · missed re-bookings $24,000 · missing re-evaluations $14,000 (sums to $127,000). The breakdown is written down in `/how-i-counted/` ("The $127,000"), which the metric links to. Cohort: one clinic, 25 providers, the twelve months of June 2025 through May 2026. On mobile the metric sits after the body, before the panel.
@@ -85,9 +87,9 @@ Added 2026-08-24: the external-proof layer the authority review called the site'
 
 - Eyebrow: Caretrics (label only; the block continues the 01 arc rather than starting a section)
 - H2: So I am building Caretrics.
-- Body (desktop): It starts with the Revenue Recovery Diagnostic: a read-only pass over a clinic's own Jane data, across the five stages revenue moves through. It works between Booked and Paid, and it shows where money slips and what to fix first. Select a stage.
-- Body (mobile): It starts with the Revenue Recovery Diagnostic: a read-only pass over a clinic's own Jane data, across the five stages revenue moves through. It shows where money slips and what to fix first.
-- The Revenue Recovery Diagnostic, named 2026-08-27 (Rob's direction): the five-stage read is Caretrics' own method and carries a capitalized name, the same convention as Action Plan. Named and shown, never called "proprietary": the sample client report is the proof and `/how-i-counted/` exists so the method can be checked, which is worth more trust than the word asserts. The draft Now item aligned to the same name.
+- Body (desktop): It starts with the Recovery Scan: a read-only pass over a clinic's own Jane data, across the five stages revenue moves through. It works between Booked and Paid, and it shows where money slips and what to fix first. Select a stage.
+- Body (mobile): It starts with the Recovery Scan: a read-only pass over a clinic's own Jane data, across the five stages revenue moves through. It shows where money slips and what to fix first.
+- Noun alignment 2026-08-29, superseding the 2026-08-27 "Revenue Recovery Diagnostic" naming: verified against live caretrics.com, "Diagnostic" appears zero times there while the Recovery Scan is the named entry (producing the Recovery Report, discussed in the Recovery Review, yielding the Action Plan, worked on the Recovery Board). One vocabulary across both sites; on this site the five-stage read is described as the method behind the Scan, never a sixth object. The draft Now item renamed to "The Recovery Scan" the same day. "Proprietary" stays unused on principle: the method is owned by being named and shown (`/how-i-counted/`), not asserted.
 - Panel eyebrows: The clinic's question · Example signals
 - Stages (`src/data/stages.ts`):
   1. Found (not owned) / "Are the right patients finding you and booking a first visit?" / "Referral sources · first-visit bookings · enquiries that never became appointments" / "Caretrics does not measure this stage. A gap here often gets blamed on a later one."

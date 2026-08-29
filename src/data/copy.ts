@@ -1,27 +1,27 @@
 export const COPY = {
   /**
-   * Rob's copy VERBATIM, 2026-08-27, his "follow this copy entirely" ruling
-   * over the panel synthesis. Recorded tensions with the deck, his to rule
-   * on, listed in docs/COPY.md Hero: "Every single one" vs the locked hedge
-   * "almost every time" (still live on /about/, llms.txt, extendedCredential);
-   * "verifies the revenue is recovered" vs "identified is not collected";
-   * Jane.app twice on the page's first screen vs the first-mention rule;
-   * "manually" beside the banned "by hand". The tagline stays removed.
+   * Rob adopted the cleaned review opening 2026-08-29, superseding his
+   * 2026-08-27 verbatim hero after two independent reviews flagged the same
+   * boundary breach ("verifies the revenue is recovered" vs "identified is
+   * not collected"). Cleaned means: no em dash, the locked credential back
+   * in paragraph 1, "Jane.app" once (the eyebrow), Jane after, sentence-case
+   * CTAs, and a destination the CTA's promise can honor. This replacement
+   * closed every tension the 08-27 hero carried; the tagline returns on the
+   * same ruling.
    */
   hero: {
-    eyebrowDesktop: 'Founder of Caretrics · For clinics on Jane.app',
+    eyebrowDesktop: 'Founder of Caretrics · Revenue recovery operations for clinics on Jane.app',
     eyebrowMobile: 'For clinics on Jane.app',
-    heading: 'I reviewed 50+ clinics. Almost every one was leaking revenue in the exact same four places.',
+    heading: 'I kept finding the same revenue gaps in clinic after clinic.',
     bodyIntro:
-      "I'm Rob Saric. I spent 20 years building software for health, insurance, and enterprise sales teams. I realized how broken clinic operations were when I spent two full years manually digging through the bookings, visits, and billing data for over 50 clinics.",
-    /** Rendered bold at the end of paragraph 1, per Rob's markup. */
-    bodyIntroEmphasis: 'One by one.',
+      "I'm Rob Saric. I spent twenty years building software, then went through twelve months of bookings, visits, and billing for more than fifty clinics, one clinic at a time.",
     bodyOutcome:
-      'That obsession became Caretrics. Caretrics connects to Jane.app to show you exactly which areas to focus on, lets you assign the fix to your team, and verifies the revenue is recovered.',
-    primaryCta: 'Find Your Leaks',
-    secondaryCta: 'Read My Notes',
+      'That work became Caretrics. It helps allied-health and rehab teams identify the work affecting revenue, give it a clear owner, and verify what changed, without replacing Jane or the people making the decisions.',
+    primaryCta: 'See how Caretrics works',
+    secondaryCta: 'Read my notes',
     /** Mobile renders the secondary path as a text link, not a second button. */
-    secondaryCtaMobile: 'Read My Notes →',
+    secondaryCtaMobile: 'Read my notes →',
+    tagline: 'Evidence-led. AI-assisted. Human-controlled.',
     portraitAlt: 'Rob Saric',
   },
   now: {
@@ -38,7 +38,7 @@ export const COPY = {
     number: '01',
     label: 'What I found',
     heading: 'I realized why the money keeps slipping.',
-    bodyDesktop: 'Not carelessness. The report exists, somebody reads it, and the task it points at belongs to no one in particular. I watched the same pattern in clinic after clinic, places full of people doing real good and quietly eating the cost. Everyone selling to clinics was selling demand, more new patients, more bookings. I became obsessed with the other side: operations, and recovering the money a clinic has already earned. Here is one signal, from detection through to a verified outcome.',
+    bodyDesktop: 'Not carelessness. The report exists, somebody reads it, and the task it points at belongs to no one in particular. I watched it repeat in places full of people doing real good and quietly eating the cost. Everyone selling to clinics was selling demand, more new patients, more bookings. I became obsessed with the other side: operations, and recovering the money a clinic has already earned. Here is one signal, from detection through to a verified outcome.',
     bodyMobile: 'The report exists, somebody reads it, and the task it points at belongs to no one. Everyone sells demand; I became obsessed with recovering money already earned. Here is one signal, from detection to a verified outcome.',
     signalEyebrow: 'The signal',
     /** Restored 2026-08-24 (V5 resolved); the breakdown lives in /how-i-counted/. */
@@ -55,13 +55,14 @@ export const COPY = {
     label: 'Caretrics',
     heading: 'So I am building Caretrics.',
     /**
-     * The Revenue Recovery Diagnostic named 2026-08-27 (Rob's direction): the
-     * five-stage read is ours and carries a name, the way Action Plan does.
-     * Named and shown, never called proprietary; the sample report is the
-     * proof, and /how-i-counted/ exists so the method can be checked.
+     * Noun alignment 2026-08-29, superseding the 2026-08-27 "Revenue Recovery
+     * Diagnostic" naming: caretrics.com never says Diagnostic and already
+     * names this exact first read the Recovery Scan (verified against the
+     * live site; the scan produces the Recovery Report). One vocabulary
+     * across both sites; the five-stage read is the method behind the Scan.
      */
-    bodyDesktop: "It starts with the Revenue Recovery Diagnostic: a read-only pass over a clinic's own Jane data, across the five stages revenue moves through. It works between Booked and Paid, and it shows where money slips and what to fix first. Select a stage.",
-    bodyMobile: "It starts with the Revenue Recovery Diagnostic: a read-only pass over a clinic's own Jane data, across the five stages revenue moves through. It shows where money slips and what to fix first.",
+    bodyDesktop: "It starts with the Recovery Scan: a read-only pass over a clinic's own Jane data, across the five stages revenue moves through. It works between Booked and Paid, and it shows where money slips and what to fix first. Select a stage.",
+    bodyMobile: "It starts with the Recovery Scan: a read-only pass over a clinic's own Jane data, across the five stages revenue moves through. It shows where money slips and what to fix first.",
     questionEyebrow: "The clinic's question",
     signalsEyebrow: 'Example signals',
     doesHeading: 'What Caretrics does',

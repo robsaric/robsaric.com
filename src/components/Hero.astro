@@ -21,7 +21,7 @@ import Eyebrow from './Eyebrow.astro';
       </Eyebrow>
       <h1>{COPY.hero.heading}</h1>
       <div class="hero__body">
-        <p>{COPY.hero.bodyIntro} <strong>{COPY.hero.bodyIntroEmphasis}</strong></p>
+        <p>{COPY.hero.bodyIntro}</p>
         <p>{COPY.hero.bodyOutcome}</p>
       </div>
       <div class="hero__actions">
@@ -40,6 +40,7 @@ import Eyebrow from './Eyebrow.astro';
           {COPY.hero.secondaryCtaMobile}
         </a>
       </div>
+      <p class="hero__tagline">{COPY.hero.tagline}</p>
     </div>
 
     <div class="hero__portrait-frame">
@@ -82,9 +83,7 @@ import Eyebrow from './Eyebrow.astro';
   .hero__eyebrow--mobile { display: none; }
 
   h1 {
-    /* 21ch: Rob's 2026-08-27 headline is a two-beat 92 characters; narrower
-       measures stack it past four lines. */
-    max-width: 21ch;
+    max-width: 17ch;
     margin: 0;
     color: var(--ink);
     font-size: var(--text-hero);
@@ -124,6 +123,13 @@ import Eyebrow from './Eyebrow.astro';
     align-items: center;
     flex-wrap: wrap;
     gap: 14px;
+  }
+
+  .hero__tagline {
+    margin: 0;
+    color: var(--ink-muted);
+    font-size: var(--text-ui-s);
+    line-height: var(--lh-ui);
   }
 
   /* The site's signature photo treatment (the /about/ header grammar): a lime
@@ -166,6 +172,7 @@ import Eyebrow from './Eyebrow.astro';
   h1,
   .hero__body,
   .hero__actions,
+  .hero__tagline,
   .hero__portrait-frame {
     animation: hero-rise 0.6s var(--ease-out) both;
   }
@@ -174,6 +181,7 @@ import Eyebrow from './Eyebrow.astro';
   .hero__body { animation-delay: 120ms; }
   .hero__portrait-frame { animation-delay: 120ms; }
   .hero__actions { animation-delay: 180ms; }
+  .hero__tagline { animation-delay: 240ms; }
 
   @media (min-width: 768px) and (max-width: 1149.98px) {
     .hero__inner {
@@ -212,5 +220,6 @@ import Eyebrow from './Eyebrow.astro';
     .hero__notes-link { display: inline-flex; }
     .hero__portrait-frame { order: 5; width: 190px; height: 190px; }
     .hero__portrait-offset { left: -10px; bottom: -10px; }
+    .hero__tagline { order: 6; }
   }
 </style>
