@@ -195,13 +195,16 @@ export const COPY = {
        */
       quote: 'People who do good should do well.',
       /**
-       * Photo strip above the standard card, from the same canvas. Captions
-       * are Rob's to write; the strip is dev-only (SHOW_OUTSIDE_PHOTOS) until
-       * they are real. Keys map to imports in about.astro.
+       * Photo strip above the standard card, live since 2026-08-29 with the
+       * three photos Rob delivered. Captions drafted by Claude at Rob's
+       * direction ("come up with the captions for now"), written to what the
+       * photos visibly show and nothing more; his wording overrules anytime.
+       * Keys map to imports in about.astro.
        */
       photos: [
-        { key: 'event', alt: 'Rob Saric at the Jane Summit', caption: '[Caption for Rob to write]' },
-        { key: 'family', alt: 'Rob Saric outdoors', caption: '[Caption for Rob to write]' },
+        { key: 'event', alt: 'Rob Saric at the Jane Summit', caption: 'The Jane Summit, 2026' },
+        { key: 'family', alt: 'Rob Saric with his family in a park', caption: 'Family day at the park' },
+        { key: 'hiking', alt: 'Rob Saric hiking above a valley', caption: 'On the trail, above the valley' },
       ],
       signatureAlt: 'Rob Saric',
       attribution: 'Rob Saric, founder of Caretrics',
@@ -384,9 +387,3 @@ export const COPY = {
     },
   },
 } as const;
-
-/**
- * Same rule as SHOW_DRAFTS in now.ts: the Outside photo strip renders in dev,
- * never in production, until Rob replaces the placeholder captions.
- */
-export const SHOW_OUTSIDE_PHOTOS = import.meta.env.DEV;

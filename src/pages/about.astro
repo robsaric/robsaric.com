@@ -13,17 +13,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Section from '../components/Section.astro';
 import Eyebrow from '../components/Eyebrow.astro';
 import Button from '../components/Button.astro';
-import portrait from '../assets/images/rob-portrait.jpg';
+/* Header portrait replaced 2026-08-29 with the head-and-shoulders shot Rob
+   delivered; the studio rob-portrait.jpg stays in the repo unused. */
+import portrait from '../assets/images/rob-portrait-about.png';
 import signature from '../assets/images/rob-signature.png';
 import eventPhoto from '../assets/images/rob-portrait-caretrics.png';
-import familyPhoto from '../assets/images/rob-family.png';
-import { COPY, SHOW_OUTSIDE_PHOTOS } from '../data/copy';
+import familyPhoto from '../assets/images/rob-family-together.jpg';
+import hikingPhoto from '../assets/images/rob-hiking.jpg';
+import { COPY } from '../data/copy';
 import { SITE } from '../data/site';
 import { UI } from '../data/ui';
 
 const A = COPY.aboutPage;
 
-const stripImages = { event: eventPhoto, family: familyPhoto } as const;
+const stripImages = { event: eventPhoto, family: familyPhoto, hiking: hikingPhoto } as const;
 
 const sameAs = [
   SITE.links.linkedin,
@@ -135,24 +138,24 @@ const jsonLd = {
         {A.outside.body.map((paragraph) => <p>{paragraph}</p>)}
       </div>
 
-      {SHOW_OUTSIDE_PHOTOS && (
-        <div class="strip">
-          {A.outside.photos.map((photo) => (
-            <figure class="strip__shot">
-              <Image
-                class="strip__image"
-                src={stripImages[photo.key]}
-                alt={photo.alt}
-                width={440}
-                height={300}
-                densities={[1, 2]}
-                loading="lazy"
-              />
-              <figcaption class="strip__caption">{photo.caption}</figcaption>
-            </figure>
-          ))}
-        </div>
-      )}
+      <div class="strip">
+        {A.outside.photos.map((photo) => (
+          <figure class="strip__shot">
+            <Image
+              class="strip__image"
+              src={stripImages[photo.key]}
+              alt={photo.alt}
+              width={320}
+              height={213}
+              densities={[1, 2]}
+              loading="lazy"
+              fit="cover"
+              position="top"
+            />
+            <figcaption class="strip__caption">{photo.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
 
       <figure class="standard">
         <blockquote>{A.outside.quote}</blockquote>
@@ -324,7 +327,9 @@ const jsonLd = {
     letter-spacing: var(--tracking-h3);
   }
 
-  .prose-zone__heading--spaced { margin-top: 64px; }
+  /* The h2 must be in the selector: `.prose-zone h2` outranks the bare class
+     and its `margin: 0 0 24px` was zeroing this top margin at every width. */
+  .prose-zone h2.prose-zone__heading--spaced { margin-top: 64px; }
 
   .prose-zone__body {
     display: flex;
@@ -358,14 +363,14 @@ const jsonLd = {
   .prose-zone__quiet:hover { text-decoration: underline; text-underline-offset: 4px; }
 
   /* ---- Photo strip --------------------------------------------------------
-     Two shots above the standard card, dev-only until the captions are
-     Rob's words (SHOW_OUTSIDE_PHOTOS in copy.ts). */
+     Three shots above the standard card (the design's O1-O3), live since
+     2026-08-29. */
   .strip {
     margin-top: 48px;
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 40px;
-    max-width: 920px;
+    max-width: 1040px;
   }
 
   .strip__shot {
@@ -377,7 +382,12 @@ const jsonLd = {
 
   .strip__image {
     width: 100%;
-    height: 300px;
+    height: 213px;
+    /* The crop happens server-side: Astro's <Image> with width+height rasters
+       to the exact box (sharp fit cover), so CSS object-position is a no-op
+       here. position="top" on the <Image> is what keeps heads in frame; the
+       portrait-oriented Jane Summit shot loses 44% of its height to this slot
+       and a centered crop would start below the eyes. */
     object-fit: cover;
     border: 1px solid var(--rule);
     border-radius: var(--radius-xl);
@@ -489,6 +499,7 @@ const jsonLd = {
 
     .facts__item { padding: 0 28px; }
     .strip { gap: 28px; }
+    .strip__image { height: 150px; }
     .standard { padding: 44px 40px; }
   }
 
@@ -533,7 +544,7 @@ const jsonLd = {
     .facts__value--wide { font-size: 26px; }
 
     .prose-zone h2 { font-size: 24px; }
-    .prose-zone__heading--spaced { margin-top: 44px; }
+    .prose-zone h2.prose-zone__heading--spaced { margin-top: 44px; }
     .prose-zone__body { gap: 20px; }
     .prose-zone__body p { font-size: var(--text-body); max-width: none; }
 
