@@ -31,6 +31,93 @@ function titleStyle(title, hasStat) {
   return 'font-size: 76px; line-height: 1.06; letter-spacing: -0.032em;';
 }
 
+/**
+ * The site-wide card (og-default.png): cream ground, the hero line, and the
+ * current portrait on the site's lime offset backplate. Photo served by the
+ * generator at /site-photo.png. Added 2026-08-29 replacing a stale static
+ * asset that still carried the old studio portrait.
+ */
+export function renderSiteCard({ eyebrow, heading, author, site, fontCss }) {
+  return `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>${fontCss}</style>
+<link rel="stylesheet" href="/tokens.css">
+<style>
+  * { margin: 0; box-sizing: border-box; }
+  body { width: 1200px; height: 630px; overflow: hidden; }
+  .card {
+    width: 100%;
+    height: 100%;
+    padding: 72px 80px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 400px;
+    gap: 72px;
+    align-items: center;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--font-sans);
+  }
+  .copy { display: flex; flex-direction: column; gap: 28px; }
+  .eyebrow {
+    color: var(--ink-muted);
+    font-family: var(--font-mono);
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .heading {
+    font-size: 58px;
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+  .foot { display: flex; align-items: baseline; gap: 14px; }
+  .author { font-size: 26px; font-weight: 600; }
+  .site { color: var(--teal-700); font-size: 26px; font-weight: 500; }
+  .frame { position: relative; width: 400px; height: 470px; }
+  .offset {
+    position: absolute;
+    left: -16px;
+    bottom: -16px;
+    width: 100%;
+    height: 100%;
+    background: var(--lime-500);
+    border-radius: var(--radius-xl);
+  }
+  .photo {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-xl);
+    display: block;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="copy">
+      <div class="eyebrow">${esc(eyebrow)}</div>
+      <div class="heading">${esc(heading)}</div>
+      <div class="foot">
+        <span class="author">${esc(author)}</span>
+        <span class="site">${esc(site)}</span>
+      </div>
+    </div>
+    <div class="frame">
+      <span class="offset"></span>
+      <img class="photo" src="/site-photo.png" alt="">
+    </div>
+  </div>
+</body>
+</html>`;
+}
+
 export function renderCard({ title, eyebrow, author, site, stat, fontCss }) {
   return `<!doctype html>
 <html lang="en">

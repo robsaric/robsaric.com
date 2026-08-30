@@ -22,15 +22,17 @@ import { join, extname } from 'node:path';
 import sharp from 'sharp';
 import { MIME, launchChrome } from './lib/chrome.mjs';
 import { frontmatter, isDraft } from './lib/frontmatter.mjs';
-import { renderCard } from './og-card-template.mjs';
-import { OG_CARD } from '../src/data/og-card.mjs';
+import { renderCard, renderSiteCard } from './og-card-template.mjs';
+import { OG_CARD, OG_SITE_CARD } from '../src/data/og-card.mjs';
 
 const ROOT = new URL('..', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
 const DIST = join(ROOT, 'dist', 'client');
 const NOTES_DIR = join(ROOT, 'src', 'content', 'notes');
 const TOKENS = join(ROOT, 'src', 'styles', 'tokens.css');
 const AVATAR = join(ROOT, 'src', 'assets', 'images', 'rob-avatar.png');
+const SITE_PHOTO = join(ROOT, 'src', 'assets', 'images', 'rob-portrait-caretrics.png');
 const OUT_DIR = join(ROOT, 'public', 'og', 'notes');
+const SITE_CARD_OUT = join(ROOT, 'public', 'og-default.png');
 
 /** Same shape as the article header date (Intl en-CA long, UTC). */
 const dateFormat = new Intl.DateTimeFormat('en-CA', {
@@ -92,6 +94,11 @@ function serve(cards) {
       res.end(readFileSync(AVATAR));
       return;
     }
+    if (url === '/site-photo.png') {
+      res.writeHead(200, { 'content-type': MIME['.png'] });
+      res.end(readFileSync(SITE_PHOTO));
+      return;
+    }
 
     let file = join(DIST, url);
     try {
@@ -136,6 +143,8 @@ async function main() {
     }),
   ]));
 
+  cards.set('/card/__site__/', renderSiteCard({ ...OG_SITE_CARD, fontCss }));
+
   const { server, port } = await serve(cards);
   const browser = await launchChrome();
   const cleanup = () => {
@@ -171,6 +180,22 @@ async function main() {
     const out = join(OUT_DIR, `${id}.png`);
     writeFileSync(out, png);
     console.log(`  og/notes/${id}.png  ${Math.round(png.length / 1024)}KB`);
+  }
+
+  {
+    const loaded = page.once('Page.loadEventFired');
+    await page.send('Page.navigate', { url: `http://127.0.0.1:${port}/card/__site__/` });
+    await loaded;
+    await page.send('Runtime.evaluate', {
+      expression: 'document.fonts.ready.then(() => true)',
+      awaitPromise: true,
+    });
+    const shot = await page.send('Page.captureScreenshot', { format: 'png' });
+    const png = await sharp(Buffer.from(shot.data, 'base64'))
+      .png({ compressionLevel: 9 })
+      .toBuffer();
+    writeFileSync(SITE_CARD_OUT, png);
+    console.log(`  og-default.png  ${Math.round(png.length / 1024)}KB (site card)`);
   }
 
   page.close();
