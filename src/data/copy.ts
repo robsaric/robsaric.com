@@ -131,7 +131,8 @@ export const COPY = {
     heading: 'I spent twenty years building software. Healthcare is where the work became personal.',
     intro: [
       'I grew up in a blue-collar family in Windsor, Ontario. Work meant showing up, helping where help was needed, and not making much noise about it. I carried that with me to Ottawa and into a career building software.',
-      'Along the way I moved into executive leadership at Trend Micro, Pythian, and Mitel. Each taught me something about running systems other people depend on.',
+      /** Reframed active 2026-08-30; the old "Along the way I moved into" read passive. */
+      'I worked my way into executive leadership at Trend Micro, Pythian, and Mitel, and learned what it takes to run systems other people depend on.',
     ],
     portraitAlt: 'Rob Saric',
     /**
@@ -146,23 +147,35 @@ export const COPY = {
      */
     facts: [
       { value: '20+ years', term: 'Building software' },
-      { value: '50+ clinics', term: 'Firsthand' },
+      /**
+       * Term expanded 2026-08-30: Rob himself read "Firsthand" alone and asked
+       * what it meant, which settles V13. "Reviewed" is legal where "audited"
+       * is banned; the locked components stay intact.
+       */
+      { value: '50+ clinics', term: 'Reviewed firsthand' },
       { value: 'Ottawa, Canada', term: 'Based in', wide: true },
     ] as { value: string; term: string; wide?: boolean }[],
+    /**
+     * Rebuilt 2026-08-30 at Rob's direction: the father paragraph now carries
+     * what actually happened (his words: sepsis from a catheter, a stent,
+     * repeated mistakes, lost mobility), and the second zone replaces "What
+     * the failures changed." with the every-seat arc, so the section earns
+     * "well suited to make it better" instead of asserting it.
+     */
     background: {
       label: 'Background',
       headingOne: 'Where healthcare came in.',
       bodyOne: [
-        'My father battled illness for ten years. Watching that is what made healthcare personal for me, before it was ever a business.',
-        'My first real view into healthcare operations came through Dentallytics, an analytics platform I built for a dental group.',
-        'Later, as a digital advisor through the Canadian Digital Adoption Program, I worked directly with clinic owners on the gap between software, operations, and care. I also have family members who run clinics, and I have tried more than once to build clinical software companies.',
+        'My father was sick for ten years. The system meant to help him kept hurting him instead: sepsis from a catheter, a stent that went wrong, mistake after mistake until he lost his mobility. Watching that is what made healthcare personal for me, before it was ever a business.',
+        'Professionally, I kept circling the same system. I spent years as a systems architect inside large managed health-service organizations, then built Dentallytics, an analytics platform for a dental group.',
+        'As a digital advisor through the Canadian Digital Adoption Program, I worked directly with clinic owners on the gap between software, operations, and care. I have family members who run clinics. I have tried more than once to build clinical software companies.',
         'It is difficult work. The workflows are complicated and trust is earned slowly.',
         'I went through twelve months of bookings, visits, and billing for more than fifty clinics, one clinic at a time, and kept finding the same four gaps.',
       ],
-      headingTwo: 'What the failures changed.',
+      headingTwo: 'Every side of the system.',
       bodyTwo: [
-        'I built one startup around helping orthopedic surgeons deliver care protocols. Athlete Builder had a product I believed in and the wrong economic model.',
-        'Those failures cost time and money. They also changed how I build. Stay close to the people doing the work, and test the business before the product.',
+        'One of those companies was Athlete Builder, built to help orthopedic surgeons deliver care protocols. It had a product I believed in and the wrong economic model. The failure cost time and money, and it changed how I build: stay close to the people doing the work, and test the business before the product.',
+        'I have been the architect inside the system, the founder selling into it, part of a family that runs clinics in it, and the son it failed. Most people see healthcare from one seat. I have sat in nearly all of them, and that is the experience Caretrics is built on.',
       ],
     },
     caretrics: {
@@ -189,11 +202,12 @@ export const COPY = {
         'At the centre of all of it, I try to work hard, treat people well, and build things that earn their place.',
       ],
       /**
-       * Rob's pick 2026-08-25 from the About refinements canvas: the creed
-       * signs /about/, the test line stays on the homepage About band
-       * (COPY.about.quote). Division of labor, each said once.
+       * The pairing, adopted 2026-08-30 when Rob asked the card to carry more:
+       * creed then test, both his lines, no explanation added (the vision-line
+       * rule holds; the card explains nothing, it commits to two things). This
+       * was the canvas's own second option from 2026-08-25.
        */
-      quote: 'People who do good should do well.',
+      quote: 'People who do good should do well. If what I build adds work to care, it has failed.',
       /**
        * Photo strip above the standard card, live since 2026-08-29 with the
        * three photos Rob delivered. Captions drafted by Claude at Rob's
@@ -202,7 +216,8 @@ export const COPY = {
        * Keys map to imports in about.astro.
        */
       photos: [
-        { key: 'event', alt: 'Rob Saric at the Jane Summit', caption: 'The Jane Summit, 2026' },
+        /** Event corrected by Rob 2026-08-30: Accelerate OTT, not the Jane Summit. */
+        { key: 'event', alt: 'Rob Saric at Accelerate OTT', caption: 'Accelerate OTT, 2026' },
         { key: 'family', alt: 'Rob Saric with his family in a park', caption: 'Family day at the park' },
         { key: 'hiking', alt: 'Rob Saric hiking above a valley', caption: 'On the trail, above the valley' },
       ],

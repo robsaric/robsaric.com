@@ -65,7 +65,7 @@ Found or suspected on Caretrics pages, older author boxes, and profiles; none ma
 | File | Use |
 |---|---|
 | `src/assets/images/rob-portrait-caretrics.png` | Homepage hero portrait (eye-level Caretrics polo, 2026-08-23) |
-| `src/assets/images/rob-hero.jpg` | Jane Summit event photo, held for an event or "currently building" context |
+| `src/assets/images/rob-hero.jpg` | Accelerate OTT event photo (Rob corrected the event name 2026-08-30; earlier notes said Jane Summit), held for an event or "currently building" context |
 | `src/assets/images/rob-portrait.jpg` | `/about/` portrait |
 | `src/assets/images/rob-family.png` | Homepage About band |
 | `src/assets/images/rob-avatar.png` | Nav mark (decorative, empty alt) |
