@@ -25,7 +25,7 @@ Verbatim from `docs/COPY.md` item 7. These are the approved forms; new surfaces 
 
 - **Short:** `50+ clinics, firsthand`
 - **First person:** "I went through twelve months of records for more than fifty clinics, one clinic at a time, and kept finding the same four gaps."
-- **Third person (About page, JSON-LD):** "Rob Saric spent twenty years building software, including years as a systems architect inside large managed health-service organizations. He built Dentallytics, an analytics platform for dental groups, then went through twelve months of records for 50+ allied health clinics, one clinic at a time, and found the same four gaps almost every time."
+- **Third person (About page, JSON-LD):** "Rob Saric spent twenty years building software, including years as a systems architect inside large managed health-service organizations. He built Dentallytics, an analytics platform for dental service organizations, then went through twelve months of bookings, visits, and billing for 50+ allied health clinics, one clinic at a time, and found the same four gaps almost every time." (Both wording updates are Rob's rulings: "records" → the concrete nouns 2026-08-27; "dental groups" → "dental service organizations" 2026-08-30.)
 
 Banned verbs: "advised", "audited". Banned phrases: "ex-DSO", "by hand", "the books". The nouns "advisor"/"advisory" are permitted only as the checkable role: "digital advisor through the Canadian Digital Adoption Program" (roster confirmed 2026-08-19). Dentallytics is named without "and sold".
 

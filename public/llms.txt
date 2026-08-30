@@ -2,7 +2,7 @@
 
 > Personal site and notes of Rob Saric, founder of Caretrics (Ottawa). Caretrics reads an allied-health or rehab clinic's Jane.app data with read-only access, identifies the operational gaps affecting revenue, gives the work a clear owner, and measures what changed. Identified is not collected.
 
-Rob Saric spent twenty years building software, including years as a systems architect inside large managed health-service organizations. He built Dentallytics, an analytics platform for dental groups, then went through twelve months of bookings, visits, and billing for 50+ allied health clinics, one clinic at a time, and found the same four gaps almost every time.
+Rob Saric spent twenty years building software, including years as a systems architect inside large managed health-service organizations. He built Dentallytics, an analytics platform for dental service organizations, then went through twelve months of bookings, visits, and billing for 50+ allied health clinics, one clinic at a time, and found the same four gaps almost every time.
 
 ## Pages
 

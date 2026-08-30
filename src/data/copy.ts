@@ -107,7 +107,7 @@ export const COPY = {
      * /about/ and public/llms.txt, never a rendered page. `extendedHistory` is
      * currently unrendered; /about/ carries its content in aboutPage.intro.
      */
-    extendedCredential: 'Rob Saric spent twenty years building software, including years as a systems architect inside large managed health-service organizations. He built Dentallytics, an analytics platform for dental groups, then went through twelve months of bookings, visits, and billing for 50+ allied health clinics, one clinic at a time, and found the same four gaps almost every time.',
+    extendedCredential: 'Rob Saric spent twenty years building software, including years as a systems architect inside large managed health-service organizations. He built Dentallytics, an analytics platform for dental service organizations, then went through twelve months of bookings, visits, and billing for 50+ allied health clinics, one clinic at a time, and found the same four gaps almost every time.',
     extendedHistory: 'Before Caretrics I spent years as a systems architect inside large managed health-service organizations, and earlier at Trend Micro, Mitel and Pythian.',
     quote: '"If it adds work to care, it has failed."',
     /**
@@ -167,20 +167,28 @@ export const COPY = {
       headingOne: 'Where healthcare came in.',
       bodyOne: [
         'My father was sick for ten years. The system meant to help him kept hurting him instead: sepsis from a catheter, a stent that went wrong, mistake after mistake until he lost his mobility. Watching that is what made healthcare personal for me, before it was ever a business.',
-        'Professionally, I kept circling the same system. I spent years as a systems architect inside large managed health-service organizations, then built Dentallytics, an analytics platform for a dental group.',
+        'Professionally, I kept circling the same system. I spent years as a systems architect inside large managed health-service organizations, then built Dentallytics, an analytics platform for dental service organizations.',
         'As a digital advisor through the Canadian Digital Adoption Program, I worked directly with clinic owners on the gap between software, operations, and care. I have family members who run clinics. I have tried more than once to build clinical software companies.',
         'It is difficult work. The workflows are complicated and trust is earned slowly.',
         'I went through twelve months of bookings, visits, and billing for more than fifty clinics, one clinic at a time, and kept finding the same four gaps.',
       ],
       headingTwo: 'Every side of the system.',
+      /**
+       * Two ventures, untangled 2026-08-30 on Rob's correction: Athlete
+       * Builder was the youth-sports education platform (customers, model
+       * that could not sustain them); the orthopedic care-protocols product
+       * was a separate build. Earlier copy, back to the original brief, had
+       * conflated them.
+       */
       bodyTwo: [
-        'One of those companies was Athlete Builder, built to help orthopedic surgeons deliver care protocols. It had a product I believed in and the wrong economic model. The failure cost time and money, and it changed how I build: stay close to the people doing the work, and test the business before the product.',
+        'I have built things that did not survive. Athlete Builder, an educational platform for youth sports, had real customers and an economic model that could not sustain them. Another product helped orthopedic surgeons deliver care protocols; I believed in it, and the market was hard to win and harder to go deep in. Different failures, the same two lessons: stay close to the people doing the work, and test the business before the product.',
         'I have been the architect inside the system, the founder selling into it, part of a family that runs clinics in it, and the son it failed. Most people see healthcare from one seat. I have sat in nearly all of them, and that is the experience Caretrics is built on.',
       ],
     },
     caretrics: {
       label: 'Caretrics',
-      heading: 'Why Caretrics.',
+      /** "Why I believe in" since 2026-08-30 (Rob): conviction earned by the section above it. */
+      heading: 'Why I believe in Caretrics.',
       body: [
         'Most clinic owners do not know how the business is actually doing this month, because what matters is split between Jane, payroll, and a spreadsheet nobody has time to open. Finding a real margin should not cost a Sunday afternoon and an Excel template.',
         'Allied-health and rehab clinicians help people live better with pain, injury, and chronic conditions. There are not enough of them, and the clinics around them have to stay open.',
