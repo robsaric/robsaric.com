@@ -14,7 +14,7 @@ const newsletterEndpoint =
   label={COPY.writeToMe.label}
   tone="lime"
 >
-  <div class="write-to-me" data-write-to-me>
+  <div class="write-to-me" data-write-to-me data-invalid-email={UI.newsletter.invalidEmail}>
     <div class="write-to-me__intro">
       <h2>{COPY.writeToMe.heading}</h2>
 
@@ -94,7 +94,7 @@ const newsletterEndpoint =
   </div>
 </Section>
 
-<script define:vars={{ invalidEmail: UI.newsletter.invalidEmail }}>
+<script>
   const writeRoots =
     document.querySelectorAll<HTMLElement>('[data-write-to-me]');
 
@@ -125,7 +125,7 @@ const newsletterEndpoint =
       if (!email.validity.valid) {
         event.preventDefault();
         email.setAttribute('aria-invalid', 'true');
-        status.textContent = invalidEmail;
+        status.textContent = root.dataset.invalidEmail ?? '';
         email.focus();
         return;
       }

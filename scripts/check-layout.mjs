@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /**
- * Layout gate: no page may scroll horizontally at any width we support.
+ * Layout gate: no page may scroll horizontally at any width we support, and
+ * the homepage's motivation copy and newsletter script must be visible/ready.
  *
  * The site had exactly one breakpoint (max-width: 767.98px) and four sections
  * with fixed 360/400px columns, so everything between 768 and about 1150 broke.
@@ -112,6 +113,30 @@ const PROBE = `(() => {
   return { overflow: Math.round(overflow), culprits: culprits.slice(0, 3) };
 })()`;
 
+/** Catch homepage content hidden by CSS and browser scripts that failed to run. */
+const HOMEPAGE_PROBE = `(() => {
+  const mobile = matchMedia('(max-width: 767.98px)').matches;
+  const body = document.querySelector(mobile ? '.about__body--mobile' : '.about__body--desktop');
+  const rect = body?.getBoundingClientRect();
+  const style = body ? getComputedStyle(body) : null;
+  const newsletter = document.querySelector('[data-write-to-me]');
+  const form = newsletter?.querySelector('[data-newsletter-form]');
+  let newsletterValidationWorks = true;
+  if (form) {
+    const email = form.querySelector('[data-newsletter-email]');
+    const status = form.querySelector('[data-newsletter-status]');
+    form.addEventListener('submit', (event) => event.preventDefault(), { capture: true, once: true });
+    form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+    newsletterValidationWorks = email?.getAttribute('aria-invalid') === 'true'
+      && status?.textContent === newsletter.dataset.invalidEmail;
+  }
+  return {
+    aboutCopyVisible: Boolean(rect && rect.width > 0 && rect.height > 0 && style.display !== 'none' && style.visibility !== 'hidden'),
+    newsletterScriptReady: newsletter?.dataset.ready === 'true',
+    newsletterValidationWorks,
+  };
+})()`;
+
 async function main() {
   if (!existsSync(DIST)) {
     console.error('check-layout: dist/client not found. Run `astro build` first.');
@@ -139,6 +164,7 @@ async function main() {
 
   const list = routes();
   const failures = [];
+  const homeFailures = [];
   let checks = 0;
 
   for (const width of WIDTHS) {
@@ -162,14 +188,24 @@ async function main() {
       checks += 1;
       const { overflow, culprits } = result.value;
       if (overflow > 0) failures.push({ width, route, overflow, culprits });
+
+      if (route === '/') {
+        const home = await page.send('Runtime.evaluate', {
+          expression: HOMEPAGE_PROBE,
+          returnByValue: true,
+        });
+        if (!home.result.value.aboutCopyVisible) homeFailures.push(`${width}px: Why I care copy is hidden`);
+        if (!home.result.value.newsletterScriptReady) homeFailures.push(`${width}px: newsletter script did not initialize`);
+        if (!home.result.value.newsletterValidationWorks) homeFailures.push(`${width}px: newsletter email validation failed`);
+      }
     }
   }
 
   page.close();
   cleanup();
 
-  if (failures.length > 0) {
-    console.error(`check-layout: ${failures.length} horizontal overflow(s) across ${checks} checks\n`);
+  if (failures.length > 0 || homeFailures.length > 0) {
+    console.error(`check-layout: ${failures.length} horizontal overflow(s), ${homeFailures.length} homepage failure(s) across ${checks} checks\n`);
     for (const failure of failures) {
       const who = failure.culprits
         .map((c) => `${c.tag}${c.cls ? `.${c.cls}` : ''} +${c.past}px`)
@@ -179,13 +215,14 @@ async function main() {
         + ` overflow ${failure.overflow}px${who ? `  [${who}]` : ''}`,
       );
     }
+    for (const failure of homeFailures) console.error(`  ${failure}`);
     console.error('');
     process.exit(1);
   }
 
   console.log(
     `check-layout: ${list.length} route(s) x ${WIDTHS.length} width(s),`
-    + ` ${checks} checks, no horizontal overflow`,
+    + ` ${checks} checks, no horizontal overflow or homepage failures`,
   );
 }
 

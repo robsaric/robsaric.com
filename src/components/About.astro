@@ -84,7 +84,12 @@ import Section from './Section.astro';
     text-wrap: pretty;
   }
 
-  .about__body,
+  .about__body {
+    margin: 0;
+    font-size: var(--text-body-l);
+    line-height: var(--lh-body);
+    text-wrap: pretty;
+  }
 
   .about__body--mobile { display: none; }
 
