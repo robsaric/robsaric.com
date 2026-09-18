@@ -1,5 +1,16 @@
 # robsaric.com copy deck
 
+## Personal site v2, 2026-09-18
+
+This positioning supersedes the older homepage Hero, Now strip, Evidence, Caretrics walkthrough, Principles, Field notes, About and Write to me composition documented below. The older text remains as a record of prior approvals; its factual and credential rulings still apply where relevant. Current strings live in `src/data/copy.ts` and the approved implementation brief is `docs/planning/v2/02-PERSONAL-COPY.md`.
+
+- Homepage H1: "I build software that helps good people run better businesses."
+- Hero: Rob is a founder in Ottawa interested in how AI can reduce the operational burden on people doing valuable work. Clinics are the current focus.
+- Homepage order: Hero, two current projects, up to three published notes, Why I care, contact and newsletter. Caretrics is the first project. Clinic Operations is an early invitation for people running one clinic or several and links to `/contact/` until its public site is checked.
+- About retains the approved personal history, family story and outside-work copy, then names both current projects. Contact welcomes clinic operators, software builders and questions about software and AI.
+- The methods page keeps the historical $127,000 example but distinguishes recorded balances, estimated opportunities, completed actions and collected money.
+- Metadata and the site share card use the wider founder framing. The short credential remains `50+ clinics, firsthand`; no new quantified result is implied by the homepage.
+
 Words win here; layout wins in `docs/DESIGN-SPEC.md`. Every string on the site comes from this file, `src/data/*.ts`, or a content entry. Nothing is written inline in a component.
 
 ## Copy law (applies to every string, every content entry, every meta description)

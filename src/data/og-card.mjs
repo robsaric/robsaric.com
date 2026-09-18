@@ -20,8 +20,8 @@ export const OG_CARD = {
  * old line.
  */
 export const OG_SITE_CARD = {
-  eyebrow: 'Founder of Caretrics',
-  heading: 'I kept finding the same revenue gaps in clinic after clinic.',
+  eyebrow: 'Founder and builder',
+  heading: 'I build software that helps good people run better businesses.',
   author: 'Rob Saric',
   site: 'robsaric.com',
 };

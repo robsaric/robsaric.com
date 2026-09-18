@@ -5,7 +5,6 @@ import { Image } from 'astro:assets';
    stays in the repo for an event context; the studio portrait stays on /about/. */
 import portrait from '../assets/images/rob-portrait-caretrics.png';
 import { COPY } from '../data/copy';
-import { SITE } from '../data/site';
 import Button from './Button.astro';
 import Eyebrow from './Eyebrow.astro';
 ---
@@ -26,10 +25,9 @@ import Eyebrow from './Eyebrow.astro';
       </div>
       <div class="hero__actions">
         <Button
-          href={SITE.caretricsProductUrl}
+          href="/#work"
           size="xl"
           icon="arrow-right"
-          external
         >
           {COPY.hero.primaryCta}
         </Button>
@@ -40,7 +38,6 @@ import Eyebrow from './Eyebrow.astro';
           {COPY.hero.secondaryCtaMobile}
         </a>
       </div>
-      <p class="hero__tagline">{COPY.hero.tagline}</p>
     </div>
 
     <div class="hero__portrait-frame">
@@ -125,12 +122,6 @@ import Eyebrow from './Eyebrow.astro';
     gap: 14px;
   }
 
-  .hero__tagline {
-    margin: 0;
-    color: var(--ink-muted);
-    font-size: var(--text-ui-s);
-    line-height: var(--lh-ui);
-  }
 
   /* The site's signature photo treatment (the /about/ header grammar): a lime
      offset card behind the portrait. Lime as a surface on cream, never text. */
@@ -172,7 +163,6 @@ import Eyebrow from './Eyebrow.astro';
   h1,
   .hero__body,
   .hero__actions,
-  .hero__tagline,
   .hero__portrait-frame {
     animation: hero-rise 0.6s var(--ease-out) both;
   }
@@ -181,7 +171,6 @@ import Eyebrow from './Eyebrow.astro';
   .hero__body { animation-delay: 120ms; }
   .hero__portrait-frame { animation-delay: 120ms; }
   .hero__actions { animation-delay: 180ms; }
-  .hero__tagline { animation-delay: 240ms; }
 
   @media (min-width: 768px) and (max-width: 1149.98px) {
     .hero__inner {
@@ -220,6 +209,5 @@ import Eyebrow from './Eyebrow.astro';
     .hero__notes-link { display: inline-flex; }
     .hero__portrait-frame { order: 5; width: 190px; height: 190px; }
     .hero__portrait-offset { left: -10px; bottom: -10px; }
-    .hero__tagline { order: 6; }
   }
 </style>

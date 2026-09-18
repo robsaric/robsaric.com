@@ -10,12 +10,14 @@ interface Props {
   notes: NoteEntry[];
   limit?: number;
   showHeaderLink?: boolean;
+  compact?: boolean;
 }
 
 const {
   notes,
   limit,
   showHeaderLink = false,
+  compact = false,
 } = Astro.props;
 
 const visibleNotes = limit === undefined ? notes : notes.slice(0, limit);
@@ -29,7 +31,7 @@ const visibleNotes = limit === undefined ? notes : notes.slice(0, limit);
 const presentTags = NOTE_TAGS.filter((tag) =>
   visibleNotes.some((entry) => entry.data.tags.includes(tag)),
 );
-const showFilters = presentTags.length > 1;
+const showFilters = !compact && presentTags.length > 1;
 const filters = [UI.fieldNotes.allFilter, ...presentTags];
 ---
 
@@ -269,8 +271,8 @@ const filters = [UI.fieldNotes.allFilter, ...presentTags];
 
     .field-notes__intro { gap: 0; }
     h2 { font-size: 27px; line-height: 1.2; letter-spacing: -0.022em; }
-    .field-notes__intro p,
     .field-notes__header-link { display: none; }
+    .field-notes__intro p { font-size: 17px; }
 
     .field-notes__filters {
       flex-wrap: nowrap;

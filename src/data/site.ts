@@ -5,9 +5,9 @@
  */
 export const SITE = {
   name: 'Rob Saric',
-  title: 'Rob Saric · Founder of Caretrics',
+  title: 'Rob Saric · Founder and builder',
   description:
-    'Rob Saric builds Caretrics with allied-health and rehab clinics that run on Jane.app. Notes on clinic revenue, ownership, and AI that shows its work.',
+    'Rob Saric is a founder in Ottawa building Caretrics and exploring how software and AI can help clinics and the people running them.',
   url: 'https://robsaric.com',
   locale: 'en',
   author: {
@@ -16,6 +16,11 @@ export const SITE = {
     location: 'Ottawa',
   },
   caretricsUrl: 'https://caretrics.com',
+  /** Switch both values only after the public Clinic Operations site is checked. */
+  clinicOperations: {
+    href: '/contact/',
+    label: 'Talk with me about clinic operations →',
+  },
   /**
    * Hero CTA destination (Rob, 2026-08-24): the product explainer continues
    * the "See how Caretrics works" promise better than the root. Verified live

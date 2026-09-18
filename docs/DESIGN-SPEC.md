@@ -1,5 +1,9 @@
 # robsaric.com design spec (turn 8a desktop / 8b mobile)
 
+## Personal site v2 composition, 2026-09-18
+
+The original turn 8 artboards remain the typography, spacing, token and responsive references. The homepage section order and product walkthrough below are superseded by the v2 content brief in `docs/planning/v2/02-PERSONAL-COPY.md`: Hero, Current work, My notes, About, Write to me. Current work is two compact entries. The homepage notes block contains at most three published entries without filters; the notes index retains filters. At mobile widths the hero keeps both links, and the personal motivation and newsletter text remain visible. The original numbered section labels below describe the prior composition.
+
 Source of truth: `docs/design-reference/site-directions-turn8.dc.html`. Open it in a browser to see both artboards. This document is the structural transcription so an agent can build without parsing the artboard HTML. When the two disagree, the artboard wins on layout; `docs/COPY.md` wins on words.
 
 Tokens: `src/styles/tokens.css`. No new colours, radii, or fonts.

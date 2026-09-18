@@ -1,0 +1,32 @@
+# Page and shared-surface review
+
+Review basis: source of every route/template under src/pages, shared data/layouts, all nine current notes, archive inventory and template. This is a source/content review, not a claim of completed visual QA or a line-by-line editorial audit of 38 historical posts. Visual acceptance is specified in 04.
+
+| Route or surface | Current finding | Action | Source / acceptance |
+|---|---|---|---|
+| `/` | Leads with revenue gaps and Jane. Evidence, stages, testimonial and principles make the scroll product-heavy. | Replace opening and section order; two project entries; three recent notes; retain personal portrait and motivation. Remove the product demo from homepage rendering. | `src/pages/index.astro`, Hero, NowStrip, Evidence, Stages, OperatorProof, Principles, About, WriteToMe; 02 defines exact new order. |
+| `/about/` | Strong personal history and photos already exist. Caretrics section narrows the whole story back to one product. | Keep childhood, career, father story, two distinct ventures and outside-work content. Add broader present-day opening and change current-work section to two short projects. | `COPY.aboutPage`, `src/pages/about.astro`; preserve Person schema and existing photo imports. |
+| `/contact/` | “You run the clinic. I only write about them” understates Rob's builder role and excludes other useful collaborators. | Replace with direct invitation for operators and builders. Keep known email and LinkedIn. | `COPY.pages.contact`; no new form. |
+| `/field-notes/` | Reuses FieldNotes, filters and real articles; broader existing tags already support founder and AI topics. | Add a short broader intro. Keep URL, existing tags/types and production draft filtering. Do not create empty new categories. | `COPY.pages.fieldNotes`, `src/data/filters.ts`, `src/lib/notes.ts`. |
+| `/field-notes/[slug]/` | Shared byline, date, schema and per-note OG cards are useful. | Preserve template and URLs. Audit summaries below; edit articles only for a bounded factual clarification. | `ArticleLayout.astro`, content collection and OG generation. |
+| `/principles/` | Explicitly five clinic-operation principles, linked from current homepage. | Retain as a focused supporting page with existing five principles. Add a one-sentence context as part of Rob's wider work. Do not rename it into universal principles while retaining clinic-only content. | `src/data/principles.ts`, `COPY.pages.principles`; footer link stays. |
+| `/how-i-counted/` | Worked $127,000 breakdown and methodology. Some universal claims about product behavior exceed what this repo alone can verify. | Keep URL and historical example. Reframe as how Rob checks findings, distinguish observed data from estimates and actions from outcomes. Use safe copy in 02 for the absolute statements. | `COPY.pages.howICounted`; no claim that all opportunities are collectible AR. |
+| `/archive/` | 38 posts grouped by original year. | Preserve index and dates. Historical writing helps establish range; keep link in footer. | `src/pages/archive/index.astro`. |
+| `/archive/[slug]/` | Archive notice, original date and permanent redirect plumbing. | Preserve article prose exactly, per AGENTS.md. Review layout as a template, not 38 rewrites. | `src/content/archive/*`, `src/data/legacy-redirects.mjs`. |
+| `/subscribed/` | Dynamic success, existing, invalid and error states. | Preserve behavior and noindex. Broaden only personal-newsletter descriptions. Do not transplant into Clinic Operations MVP. | `src/pages/subscribed.astro`, COPY.subscribed. |
+| `/api/subscribe` | Actual implementation uses Resend server env vars, validation, honeypot, timeout and status mapping. | No changes in this positioning pass. Do not rely on older AGENTS reference to PUBLIC_NEWSLETTER_ENDPOINT as the implementation contract. | `src/pages/api/subscribe.ts`; RESEND_API_KEY / RESEND_SEGMENT_ID / optional RESEND_TOPIC_ID. |
+| `/rss.xml` | Uses published note helpers and page description. | Preserve address and published-only feed; description follows broader notes copy. | `src/pages/rss.xml.ts`. |
+| `/404` | Plain recovery links, noindex. | Keep; optionally add Home alongside notes/archive with UI strings in data. | `src/pages/404.astro`. |
+| Navigation/footer | Personal name, notes, About, contact and Caretrics. | Keep small; Caretrics secondary external link. Do not add six project links or an empty Work page. | Nav, Footer, UI and SITE. |
+| Metadata, OG, llms.txt | Hero claim appears in multiple places beyond the visible page. | Update site title/description, OG_SITE_CARD heading, regenerated default card and llms.txt. Keep factual jobTitle Founder, Caretrics. | `src/data/site.ts`, `src/data/og-card.mjs`, `src/layouts/BaseLayout.astro`, `public/llms.txt`. |
+
+## Published notes: individual review
+
+- `2026-08-18-unbooked-at-the-desk`: interesting, concrete, already distinguishes correlation from causation. Header says “never” although observations cover nine weeks; summary says same year while context says two years. Before featuring the statistic prominently, reconcile the timeframe against the underlying work. Safe interim homepage: show title and link without a large stat callout; do not repackage this as an industry benchmark. An eventual correction should say “did not return within nine weeks” where supported and preserve original publication date with updated date.
+- `2026-08-19-i-took-my-own-number-down`: the full article explains the figure was restored five days later. Earlier chat inference of a contradiction was incomplete. Keep the story; make summary communicate removal then restoration and update “back on the page” if it is no longer displayed on the redesigned homepage. The methods page remains its destination.
+- `2026-08-19-i-only-checked-the-widths-i-designed-for`: slug differs from current title “A clean report is not a clean clinic.” Keep the slug. Strong builder/clinic bridge. Avoid expanding its categorical claims about what all reports contain.
+- Six other notes are `draft: true` placeholders. Do not publish them, count them as evidence or use their asserted outcomes in launch copy.
+
+## Priority
+
+First: homepage, contact, shared metadata and broken-anchor prevention. Second, same implementation cycle: About and notes intro, methods wording, summary reconciliation. Keep archive, newsletter infrastructure and content schema stable. This is a positioning pass with bounded layout changes, not a redesign of every page.

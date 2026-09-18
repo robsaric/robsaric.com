@@ -1,39 +1,39 @@
 export const COPY = {
-  /**
-   * Rob adopted the cleaned review opening 2026-08-29, superseding his
-   * 2026-08-27 verbatim hero after two independent reviews flagged the same
-   * boundary breach ("verifies the revenue is recovered" vs "identified is
-   * not collected"). Cleaned means: no em dash, the locked credential back
-   * in paragraph 1, "Jane.app" once (the eyebrow), Jane after, sentence-case
-   * CTAs, and a destination the CTA's promise can honor. This replacement
-   * closed every tension the 08-27 hero carried; the tagline returns on the
-   * same ruling.
-   */
+  /** Broader personal opening adopted in the v2 brief, 2026-09-18. */
   hero: {
-    eyebrowDesktop: 'Founder of Caretrics · Revenue recovery operations for clinics on Jane.app',
-    eyebrowMobile: 'For clinics on Jane.app',
-    heading: 'I kept finding the same revenue gaps in clinic after clinic.',
+    eyebrowDesktop: 'Founder and builder · Ottawa',
+    eyebrowMobile: 'Founder and builder · Ottawa',
+    heading: 'I build software that helps good people run better businesses.',
     bodyIntro:
-      "I'm Rob Saric. I spent twenty years building software, then went through twelve months of bookings, visits, and billing for more than fifty clinics, one clinic at a time.",
+      "I'm Rob Saric, a founder in Ottawa. I'm interested in how AI can take more of the operational burden off people doing valuable work.",
     bodyOutcome:
-      'That work became Caretrics. It helps allied-health and rehab teams identify the work affecting revenue, give it a clear owner, and verify what changed, without replacing Jane or the people making the decisions.',
-    primaryCta: 'See how Caretrics works',
+      'My focus today is clinics: helping teams see what needs attention, follow through, and know whether things improved.',
+    primaryCta: 'What I am building',
     secondaryCta: 'Read my notes',
     /** Mobile renders the secondary path as a text link, not a second button. */
     secondaryCtaMobile: 'Read my notes →',
-    tagline: 'Evidence-led. AI-assisted. Human-controlled.',
     portraitAlt: 'Rob Saric',
+  },
+  work: {
+    number: '01',
+    label: 'Current work',
+    heading: 'What I am building.',
+    projects: {
+      caretrics: {
+        name: 'Caretrics',
+        body: "I'm building Caretrics to help clinic teams using Jane see where revenue and follow-up work need attention, decide what to work on next, and check what changed.",
+        link: 'Explore Caretrics →',
+      },
+      clinicOperations: {
+        name: 'Clinic Operations',
+        body: "I'm starting a place for the people running clinics to compare notes on what works and where they get stuck. One clinic or several, there's something to learn from each other.",
+      },
+    },
   },
   now: {
     heading: 'What I am working on now',
   },
-  /**
-   * Restructured 2026-08-27 at Rob's direction: the old 01 Evidence and 02
-   * Caretrics read as a product pitch interrupting a personal site. They are
-   * now one arc under "01 · What I found": the realization, the proof (metric,
-   * signal, operator quote), then Caretrics as the answer. The Caretrics block
-   * keeps its label but loses its own number; everything after renumbers.
-   */
+  /** Retained for supporting routes; no longer rendered on the homepage. */
   evidence: {
     number: '01',
     label: 'What I found',
@@ -50,7 +50,7 @@ export const COPY = {
     methodsLink: 'How I count and verify clinic findings →',
   },
   caretrics: {
-    /** Empty on purpose: this block continues 01 rather than starting a section. */
+    /** Retained with the product walkthrough component. */
     number: '',
     label: 'Caretrics',
     heading: 'So I am building Caretrics.',
@@ -83,25 +83,21 @@ export const COPY = {
     allLink: 'See all five principles →',
   },
   fieldNotes: {
-    number: '03',
+    number: '02',
     label: 'My notes',
-    heading: 'What I am seeing, building, and rethinking.',
-    body: 'Kept in public, in order. The wrong turns stay in.',
+    heading: 'What I am learning and building.',
+    body: 'Notes on clinic operations, software, AI, and the decisions that change my mind.',
     desktopLink: 'All notes →',
     mobileLink: 'See all notes →',
   },
   about: {
-    number: '04',
+    number: '03',
     label: 'About',
-    /**
-     * Rewritten 2026-08-27 at Rob's direction: "Where the standard came from."
-     * read as self-regard. This band is now the belief, in his words: tired of
-     * people who contribute nothing monetizing the people who do. The creed
-     * leads here and signs the /about/ card; the test line stays the quote.
-     */
+    /** The personal belief stays; the surrounding copy follows the v2 brief. */
     heading: 'Why I care.',
-    bodyDesktop: 'People who do good should do well. I am tired of the opposite: people who contribute little, monetizing the people who carry the world. Clinicians spend themselves helping others live with pain and injury. The clinics around them should thrive for it, not struggle.',
-    bodyMobile: 'People who do good should do well. I am tired of the opposite: people who contribute little, monetizing the people who carry the world.',
+    bodyDesktop: 'People who do good should do well. Clinicians spend their days helping people live better. I want the businesses around them to work better too. That is where I am putting my time, and why I stay close to the people doing the work.',
+    bodyMobile: 'People who do good should do well. Clinicians spend their days helping people live better. I want the businesses around them to work better too.',
+    link: 'More about me →',
     /**
      * Third person by design: this feeds the JSON-LD Person.description on
      * /about/ and public/llms.txt, never a rendered page. `extendedHistory` is
@@ -133,6 +129,7 @@ export const COPY = {
       'I grew up in a blue-collar family in Windsor, Ontario. Work meant showing up, helping where help was needed, and not making much noise about it. I carried that with me to Ottawa and into a career building software.',
       /** Reframed active 2026-08-30; the old "Along the way I moved into" read passive. */
       'I worked my way into executive leadership at Trend Micro, Pythian, and Mitel, and learned what it takes to run systems other people depend on.',
+      "Today, I'm building software that helps good people run better businesses. My focus is clinics, and the operational work that gets in the way of looking after people.",
     ],
     portraitAlt: 'Rob Saric',
     /**
@@ -186,14 +183,9 @@ export const COPY = {
       ],
     },
     caretrics: {
-      label: 'Caretrics',
-      /** "Why I believe in" since 2026-08-30 (Rob): conviction earned by the section above it. */
-      heading: 'Why I believe in Caretrics.',
-      body: [
-        'Most clinic owners do not know how the business is actually doing this month, because what matters is split between Jane, payroll, and a spreadsheet nobody has time to open. Finding a real margin should not cost a Sunday afternoon and an Excel template.',
-        'Allied-health and rehab clinicians help people live better with pain, injury, and chronic conditions. There are not enough of them, and the clinics around them have to stay open.',
-        'That is what I am building with Caretrics: a way for clinics to see the revenue and follow-up work that gets missed, give it an owner, and keep it moving without adding administration.',
-      ],
+      label: 'Current work',
+      /** This key remains for the existing About page composition. */
+      heading: 'What I am building now.',
     },
     outside: {
       label: 'Outside',
@@ -241,29 +233,29 @@ export const COPY = {
     },
   },
   writeToMe: {
-    number: '05',
+    number: '04',
     label: 'Write to me',
-    heading: 'Tell me where I am wrong.',
+    heading: 'What are you working through?',
     bodyDesktop: {
-      beforeLink: 'You run the clinic. You see things I cannot. If a principle does not match what you see at your front desk, or you know where money slips that I have not mentioned, ',
-      link: 'write to me',
-      afterLink: '. I read and answer everything myself.',
+      beforeLink: "If you run a clinic, build useful software, or have a question worth exploring, I'd like to hear from you. ",
+      link: 'Write to me',
+      afterLink: '.',
     },
     bodyMobile: {
-      beforeLink: 'You run the clinic. You see things I cannot. ',
+      beforeLink: "If you run a clinic, build useful software, or have a question worth exploring, I'd like to hear from you. ",
       link: 'Write to me',
-      afterLink: '. I read and answer everything myself.',
+      afterLink: '.',
     },
-    cardHeading: 'Get the notes.',
-    cardBodyDesktop: 'Occasional notes on what I saw in a clinic and what I would check in yours. No schedule I cannot keep.',
-    cardBodyMobile: 'Occasional notes on what I saw in a clinic and what I would check in yours.',
+    cardHeading: 'Get my notes.',
+    cardBodyDesktop: 'Occasional notes on what I am building and learning. Reply whenever something connects with your own work.',
+    cardBodyMobile: 'Occasional notes on what I am building and learning. Reply whenever something connects with your own work.',
   },
   subscribed: {
     states: {
       ok: {
         heading: 'You are on the list.',
         body: {
-          beforeLink: 'Occasional notes, no schedule I cannot keep. Reply to any of them. I read and answer everything myself.',
+          beforeLink: 'You are on the list for my occasional notes. You can reply to any of them.',
           link: '',
           afterLink: '',
         },
@@ -307,16 +299,17 @@ export const COPY = {
     fieldNotes: {
       /** The URL stays /field-notes/ and the card type stays "Field note"; only the surfaces rename. */
       title: 'My notes',
-      description: 'Notes from Rob Saric on clinic revenue, ownership, and building Caretrics. Kept in public, in order.',
+      intro: 'What I am learning about clinic operations, building software, and using AI in real work. Some are observations. Some are decisions I have changed my mind about.',
+      description: 'Notes from Rob Saric on clinic operations, software, AI, and what he is learning while building Caretrics.',
     },
     principles: {
       title: 'Five principles for reviewing clinic operations',
-      intro: 'Written down so a clinic owner can hold me to them. If one does not match what you see at your front desk, write to me.',
+      intro: 'These are the principles I use in my work with clinics. They are one part of how I think about building useful software. If your experience challenges one, write to me.',
       description: 'Five principles Rob Saric uses when reviewing clinic operations, from recover before you acquire to billing problems usually start upstream.',
     },
     about: {
       title: 'About',
-      description: 'Rob Saric, founder of Caretrics in Ottawa. Twenty years building software, 50+ clinics firsthand, and one standard: if it adds work to care, it has failed.',
+      description: 'Meet Rob Saric, a founder in Ottawa building Caretrics and sharing what he learns about clinics, software, and AI.',
     },
     archive: {
       title: 'Earlier writing, 2009 to 2019',
@@ -331,14 +324,14 @@ export const COPY = {
       title: 'How I count',
       heading: 'How I count and verify clinic findings.',
       description:
-        'How Rob Saric counts and verifies clinic findings: what Caretrics reads, what is never inferred, and why identified is not collected.',
+        'How Rob Saric checks clinic findings, separates records from estimates, and distinguishes identified opportunities from collected money.',
       /**
        * Context paragraph added 2026-08-27 (Rob: the page assumed the reader
        * arrived from the homepage). One orienting line for the stranger, then
        * the standard.
        */
       context:
-        "I find revenue that clinics are missing, by reading their own Jane.app data. Numbers like that are easy to claim and hard to check, so this page shows the counting.",
+        'This page explains how I check clinic findings and describe their limits. A recorded balance, an estimated opportunity and money collected are different things.',
       intro:
         'Every public number I use is held to the standard on this page. If a number cannot meet it, it comes down until it can. That has already happened once.',
       noteLink: 'The note where I took my own number down →',
@@ -360,11 +353,11 @@ export const COPY = {
       sections: [
         {
           heading: 'What gets read.',
-          body: "Caretrics reads twelve months of a clinic's Jane.app data with read-only access and works between Booked and Paid. Signals come from the clinic's own calendar, visit, and billing records, never from clinical judgement. Access can be revoked anytime.",
+          body: 'The relevant records depend on the question being investigated and the information available from the clinic. I state the period, sources and missing information for each finding.',
         },
         {
-          heading: 'Read, not inferred.',
-          body: 'Each item links back to the visit it came from, the date it was submitted, and the last status recorded. Nothing is inferred. Where a field was missing, the item says so instead of guessing.',
+          heading: 'Separate records from estimates.',
+          body: 'For each finding, I want to know which records support it, which fields are missing, and whether any part is estimated. Missing billing information alone does not prove that a service was never invoiced.',
         },
         {
           heading: 'A finding needs an owner.',
@@ -372,11 +365,11 @@ export const COPY = {
         },
         {
           heading: 'Identified is not collected.',
-          body: 'A scan identifies money that may be slipping. Nothing counts as recovered until it lands. The proof is what changed afterward: the claim that went out, the patient who rebooked, the authorization renewed before the visit.',
+          body: 'A finding can point to work worth doing. Completing that work does not by itself prove that money was collected. I describe bookings, submitted claims and payments separately, using the evidence available for each.',
         },
         {
-          heading: 'How an outcome closes.',
-          body: 'An item only closes when its status changes in Jane. Identified and collected are reported separately, and the record shows plainly which of the two happened.',
+          heading: 'Check what changed.',
+          body: 'A completed task is evidence of work done. A booking, a payment and an updated balance are different outcomes. I check the relevant source before describing a result as confirmed, and I keep an estimated opportunity separate from collected money.',
         },
         {
           heading: 'Where AI assists, and where a person decides.',
@@ -388,21 +381,21 @@ export const COPY = {
         },
         {
           heading: 'The $127,000.',
-          body: 'The number on the homepage: one clinic, 25 providers, the twelve months of June 2025 through May 2026. Four gaps: unbilled claims, $52,000. No-shows, $37,000. Missed re-bookings, $24,000. Missing re-evaluations, $14,000. Identified across those four, and identified is not collected: it is what the records showed, not what the clinic banked.',
+          body: 'This historical example covers one clinic with 25 providers, from June 2025 through May 2026. The four categories are unbilled claims, $52,000; no-shows, $37,000; missed re-bookings, $24,000; and missing re-evaluations, $14,000. These categories include estimated revenue opportunities. The total is not cash collected or a receivables balance.',
         },
       ],
       contactLink: 'Write to me and tell me where I am wrong →',
     },
     contact: {
       title: 'Write to me',
-      description: 'Write to Rob Saric about clinic operations, a note that landed or missed, or a question he has not answered. He reads and answers everything himself.',
+      description: 'Get in touch with Rob Saric about clinic operations, building software, or a question worth exploring.',
       /**
        * Rob's pick 2026-08-25 ("Answer key"): the door is wide, the humor is
        * dry, and the "tell me where money slips" ask is gone because nobody
        * writes in to report that. The challenge framing lives on the homepage
        * band and /how-i-counted/, where it follows the evidence.
        */
-      body: 'You run the clinic. I only write about them. That means you hold the answer key, and I would rather hear a correction from you than keep being wrong in public. Questions, arguments, and notes that missed all land in the same inbox, which is just me. I read and answer everything, and if I do not know, I will say so.',
+      body: "If you run a clinic, are building something useful, or want to compare notes on software and AI, I'd like to hear from you. Tell me what you're working on and what you're trying to figure out.",
     },
     notFound: {
       title: 'Nothing here.',

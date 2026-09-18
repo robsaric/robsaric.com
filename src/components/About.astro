@@ -47,6 +47,7 @@ import Section from './Section.astro';
       />
 
       <span class="about__attribution">{COPY.about.attribution}</span>
+      <a class="about__link" href="/about/">{COPY.about.link}</a>
     </div>
   </div>
 </Section>
@@ -122,6 +123,8 @@ import Section from './Section.astro';
     text-transform: uppercase;
   }
 
+  .about__link { min-height: var(--tap-min); display: inline-flex; align-items: center; align-self: flex-start; font-size: 17px; font-weight: 600; }
+
   @media (min-width: 768px) and (max-width: 1149.98px) {
     .about {
       grid-template-columns: minmax(0, 1fr);
@@ -149,5 +152,6 @@ import Section from './Section.astro';
     .about__quote { order: 5; max-width: none; font-size: 24px; line-height: 1.32; }
     .about__signature { order: 6; width: 150px; margin: 0 0 -10px -11px; }
     .about__attribution { order: 7; }
+    .about__link { order: 8; font-size: 16px; }
   }
 </style>

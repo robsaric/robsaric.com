@@ -14,14 +14,14 @@ Rules of this file:
 | Field | Canonical value | Notes |
 |---|---|---|
 | Name | Rob Saric | |
-| Title | Founder of Caretrics | "& CEO" was dropped by the artboard; still flagged V1 `[VERIFY]` in `docs/COPY.md` |
+| Title | Founder and builder on the personal site; Founder of Caretrics in factual biography | "& CEO" was dropped by the artboard; still flagged V1 `[VERIFY]` in `docs/COPY.md` |
 | JSON-LD jobTitle | Founder, Caretrics | `src/data/site.ts` |
 | Location | Ottawa, Canada | "Ottawa" alone in the footer byline |
 | Email | rob@caretrics.com | `src/data/site.ts` |
 
 ## The credential (locked 2026-08-16; ban narrowed 2026-08-19)
 
-Verbatim from `docs/COPY.md` item 7. These are the approved forms; new surfaces assemble from these components verbatim rather than rewording them. The homepage hero body (changed 2026-08-23, see `docs/COPY.md` Hero) is one such assembly: the first-person core clause, prefixed with the twenty-years fact, with "the same four gaps" carried by the H1 as "the same revenue gaps".
+Verbatim from `docs/COPY.md` item 7. These are the approved forms; new factual credential surfaces assemble from these components verbatim rather than rewording them. The credential remains on `/about/`. The v2 homepage hero uses a broader personal opening.
 
 - **Short:** `50+ clinics, firsthand`
 - **First person:** "I went through twelve months of records for more than fifty clinics, one clinic at a time, and kept finding the same four gaps."
@@ -33,7 +33,7 @@ Banned verbs: "advised", "audited". Banned phrases: "ex-DSO", "by hand", "the bo
 
 Assembled from copy already shipped on the site; each entry notes where its sentences come from. Word counts are approximate targets, not promises.
 
-- **~25 words (site description, approved):** "Rob Saric builds Caretrics with allied-health and rehab clinics that run on Jane.app. Field notes on clinic revenue, ownership, and AI that shows its work."
+- **Site description, v2 positioning 2026-09-18:** "Rob Saric is a founder in Ottawa building Caretrics and exploring how software and AI can help clinics and the people running them."
 - **~60 words `[DRAFT until Rob approves]`:** "Rob Saric is the founder of Caretrics, in Ottawa. He spent twenty years building software, then went through twelve months of records for 50+ allied health clinics, one clinic at a time, and found the same four gaps almost every time. Caretrics helps allied-health and rehab teams using Jane.app see what is slipping, give the work an owner, and verify what changed."
 - **~120 words `[DRAFT until Rob approves]`:** the third-person credential above, followed by: "Before Caretrics he spent years as a systems architect inside large managed health-service organizations, and earlier at Trend Micro, Mitel and Pythian. He built one startup around helping orthopedic surgeons deliver care protocols; Athlete Builder had a product he believed in and the wrong economic model. He is a dad to two kids and has mentored with Big Brothers Big Sisters for over a decade. His standard: if it adds work to care, it has failed." (Employer names are approved for `/about/` text only; confirm before using this bio off-site. The Athlete Builder and family/BBBS sentences trace to the `/about/` copy in `src/data/copy.ts`, whose verification rows are still pending per `docs/ABOUT-PAGE-BRIEF.md`; BBBS "over a decade" is V7 `[VERIFY]` in `docs/COPY.md`.)
 
@@ -44,7 +44,7 @@ Assembled from copy already shipped on the site; each entry notes where its sent
 | 20+ years | Years building software | Career; V2 in the `docs/COPY.md` verification table | approved (V2 confirmed by Rob 2026-08-24; ships in the About stat row and hero body) |
 | 50+ clinics | Clinics whose records Rob went through, twelve months each, one clinic at a time | Locked credential | approved, locked form only |
 | Twelve months | The record window per clinic, and the window Caretrics reads | Credential; `docs/COPY.md` 02 | approved |
-| $127,000 | Identified across four gaps in one clinic, over one year. Identified is not collected. | One clinic, 25 providers, June 2025 through May 2026. Four gaps confirmed by Rob 2026-08-24: unbilled claims $52,000 · no-shows $37,000 · missed re-bookings $24,000 · missing re-evaluations $14,000 | approved; ships in the Evidence band and `/how-i-counted/` section 8 |
+| $127,000 | Historical total across four categories in one clinic, over one year. The categories include estimated revenue opportunities; the total is not cash collected or a receivables balance. | One clinic, 25 providers, June 2025 through May 2026. Four gaps confirmed by Rob 2026-08-24: unbilled claims $52,000 · no-shows $37,000 · missed re-bookings $24,000 · missing re-evaluations $14,000 | approved; retained on `/how-i-counted/`, removed from the v2 homepage |
 | 38 posts, 2009 to 2019 | Imported archive posts | `docs/MIGRATION.md` | approved |
 
 No clinic counts beyond the credential line. Every number that ships carries what it counts and where it came from.

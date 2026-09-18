@@ -1,16 +1,16 @@
 # Rob Saric
 
-> Personal site and notes of Rob Saric, founder of Caretrics (Ottawa). Caretrics reads an allied-health or rehab clinic's Jane.app data with read-only access, identifies the operational gaps affecting revenue, gives the work a clear owner, and measures what changed. Identified is not collected.
+> Personal website and notes of Rob Saric, founder of Caretrics in Ottawa. Rob writes about clinic operations, building software and using AI in real work.
 
 Rob Saric spent twenty years building software, including years as a systems architect inside large managed health-service organizations. He built Dentallytics, an analytics platform for dental service organizations, then went through twelve months of bookings, visits, and billing for 50+ allied health clinics, one clinic at a time, and found the same four gaps almost every time.
 
 ## Pages
 
-- [Home](https://robsaric.com/): the five-stage clinic revenue model (Found, Booked, Treated, Retained, Paid), one worked signal from detection to verified outcome, three principles, latest notes.
-- [My notes](https://robsaric.com/field-notes/): short first-person observations from clinics, dated, kept in order. Types: Field note, Shipped, Changed my mind. RSS: https://robsaric.com/rss.xml
+- [Home](https://robsaric.com/): Rob's current work, Caretrics and an early invitation to discuss Clinic Operations, recent notes, personal motivation and contact.
+- [My notes](https://robsaric.com/field-notes/): dated notes on clinic operations, software, AI and decisions changed while building Caretrics. Types: Field note, Shipped, Changed my mind. RSS: https://robsaric.com/rss.xml
 - [Principles](https://robsaric.com/principles/): five principles for reviewing clinic operations: recover before you acquire; a signal without an owner is just another dashboard; AI must show its work; identified is not collected; billing problems usually start upstream.
-- [How I count](https://robsaric.com/how-i-counted/): the standard behind every public number: what Caretrics reads, what is never inferred, and why identified is not collected.
-- [About](https://robsaric.com/about/): background and the creed: people who do good should do well.
+- [How I count](https://robsaric.com/how-i-counted/): how Rob checks clinic findings, separates records from estimates and distinguishes identified opportunities from collected money.
+- [About](https://robsaric.com/about/): Rob's background, current work and the creed: people who do good should do well.
 - [Archive](https://robsaric.com/archive/): 38 earlier posts on systems, flow, and leadership, 2009 to 2019, kept as written.
 - [Contact](https://robsaric.com/contact/): rob@caretrics.com
 

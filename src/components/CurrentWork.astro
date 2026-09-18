@@ -1,0 +1,47 @@
+---
+import { COPY } from '../data/copy';
+import { SITE } from '../data/site';
+import Section from './Section.astro';
+
+const work = COPY.work;
+---
+
+<Section id="work" number={work.number} label={work.label} tone="cream-rule">
+  <div class="work">
+    <h2>{work.heading}</h2>
+    <div class="work__projects">
+      <article id="caretrics" class="work__project">
+        <h3>{work.projects.caretrics.name}</h3>
+        <p>{work.projects.caretrics.body}</p>
+        <a href={SITE.caretricsUrl} target="_blank" rel="noopener">
+          {work.projects.caretrics.link}
+        </a>
+      </article>
+      <article class="work__project">
+        <h3>{work.projects.clinicOperations.name}</h3>
+        <p>{work.projects.clinicOperations.body}</p>
+        <a href={SITE.clinicOperations.href}>{SITE.clinicOperations.label}</a>
+      </article>
+    </div>
+  </div>
+</Section>
+
+<style>
+  .work { display: flex; flex-direction: column; gap: 32px; }
+  h2 { margin: 0; font-size: var(--text-h2); line-height: var(--lh-heading); letter-spacing: var(--tracking-h2); }
+  .work__projects { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+  .work__project { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; min-width: 0; padding-top: 24px; border-top: 1px solid var(--rule); scroll-margin-top: var(--nav-h-desktop); }
+  h3 { margin: 0; font-size: var(--text-h3); letter-spacing: var(--tracking-h3); }
+  p { margin: 0; font-size: var(--text-body-l); line-height: var(--lh-body); text-wrap: pretty; }
+  a { min-height: var(--tap-min); display: inline-flex; align-items: center; font-size: 17px; font-weight: 600; }
+  @media (max-width: 1149.98px) { .work__projects { grid-template-columns: minmax(0, 1fr); } }
+  @media (max-width: 767.98px) {
+    .work { gap: 20px; }
+    h2 { font-size: 27px; line-height: 1.2; }
+    .work__projects { gap: 24px; }
+    .work__project { padding-top: 20px; gap: 12px; scroll-margin-top: var(--nav-h-mobile); }
+    h3 { font-size: 20px; }
+    p { font-size: 17px; }
+    a { font-size: 16px; }
+  }
+</style>

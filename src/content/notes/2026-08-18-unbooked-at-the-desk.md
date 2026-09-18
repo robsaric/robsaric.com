@@ -1,15 +1,16 @@
 ---
-title: "Unbooked at the desk, seventy percent never come back"
-summary: "New patients who left their first visit without a next one booked never returned seventy percent of the time. Booked at the desk, fifteen. Same clinic, same year."
+title: "Unbooked at the desk, seventy percent did not return within nine weeks"
+summary: "In one clinic's two years of records, 70% of new patients who left their first visit unbooked did not return within nine weeks, against 15% booked at the desk."
 type: "Field note"
 date: 2026-08-18
+updated: 2026-09-18
 tags:
   - "Patient flow"
 stage: 3
 meta: "Retained · Patient flow"
-description: "In one clinic's records, new patients who left the first visit unbooked never returned 70% of the time, against 15% for those booked at the desk."
+description: "In one clinic's records, 70% of new patients who left the first visit unbooked did not return within nine weeks, against 15% booked at the desk."
 stat: "70%"
-statLabel: "never returned when unbooked"
+statLabel: "did not return within nine weeks when unbooked"
 statContext: "against 15% booked at the desk · one clinic, two years"
 ---
 
@@ -17,7 +18,7 @@ I went through two years of appointment records at one clinic, looking at every 
 
 One split explained most of what followed.
 
-Patients who left that first visit with the next one already booked came back. Fifteen percent of them never returned. Patients who left with nothing booked mostly did not come back. Seventy percent of them never returned. Same clinic, same providers, same year. The only difference I could see at the desk was whether the next appointment existed when they walked out.
+Patients who left that first visit with the next one already booked came back within nine weeks more often. Fifteen percent of them did not return within that window. Patients who left with nothing booked mostly did not come back within nine weeks. Seventy percent of them did not return within that window. Same clinic, same providers, same two years of records. The only difference I could see at the desk was whether the next appointment existed when they walked out.
 
 The unbooked group was small, about one in six new patients, roughly eleven people a month. That is the number that made it interesting. Eleven names is a list a person can work. Sixty-five names, which is what "every new patient" comes to, is a list nobody works.
 

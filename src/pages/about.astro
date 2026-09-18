@@ -6,7 +6,7 @@
  * It deliberately does NOT reuse `About.astro`. That component is transcribed
  * from artboards 8a and 8b and belongs to the homepage; this page needs a
  * different narrative shape. `Section` carries a plain label here rather than a
- * number, because 01 to 05 are a table of contents for one homepage scroll.
+ * number, because 01 to 04 are a table of contents for one homepage scroll.
  */
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
@@ -112,17 +112,24 @@ const jsonLd = {
     </div>
   </Section>
 
-  <Section id="caretrics" label={A.caretrics.label} tone="cream-rule">
+  <Section id="work" label={A.caretrics.label} tone="cream-rule">
     <div class="prose-zone">
       <h2>{A.caretrics.heading}</h2>
       <div class="prose-zone__body">
-        {A.caretrics.body.map((paragraph) => <p>{paragraph}</p>)}
-      </div>
-
-      <div class="prose-zone__cta">
-        <Button href={SITE.caretricsUrl} variant="dark" size="lg" icon="arrow-up-right" external>
-          {COPY.caretrics.cta}
-        </Button>
+        <div class="current-project">
+          <h3>{COPY.work.projects.caretrics.name}</h3>
+          <p>{COPY.work.projects.caretrics.body}</p>
+          <Button href={SITE.caretricsUrl} variant="dark" size="lg" icon="arrow-up-right" external>
+            {COPY.caretrics.cta}
+          </Button>
+        </div>
+        <div class="current-project">
+          <h3>{COPY.work.projects.clinicOperations.name}</h3>
+          <p>{COPY.work.projects.clinicOperations.body}</p>
+          <a class="prose-zone__quiet" href={SITE.clinicOperations.href}>
+            {SITE.clinicOperations.label}
+          </a>
+        </div>
       </div>
 
       <a class="prose-zone__quiet" href={SITE.togetherenUrl} target="_blank" rel="noopener">
@@ -337,6 +344,9 @@ const jsonLd = {
     gap: 24px;
   }
 
+  .current-project { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+  .current-project h3 { margin: 0; font-size: var(--text-h3); letter-spacing: var(--tracking-h3); }
+
   .prose-zone__body p {
     margin: 0;
     max-width: 62ch;
@@ -344,8 +354,6 @@ const jsonLd = {
     line-height: var(--lh-body);
     text-wrap: pretty;
   }
-
-  .prose-zone__cta { padding-top: 32px; align-self: flex-start; }
 
   /* Never beside the button, so the hierarchy is unambiguous. */
   .prose-zone__quiet {
@@ -359,6 +367,8 @@ const jsonLd = {
     font-weight: 600;
     text-decoration: none;
   }
+
+  .current-project .prose-zone__quiet { margin-top: 0; }
 
   .prose-zone__quiet:hover { text-decoration: underline; text-underline-offset: 4px; }
 
@@ -546,7 +556,7 @@ const jsonLd = {
     .prose-zone__body { gap: 20px; }
     .prose-zone__body p { font-size: var(--text-body); max-width: none; }
 
-    .prose-zone__cta { align-self: stretch; }
+    .current-project :global(.button) { width: 100%; }
 
     .strip {
       margin-top: 36px;

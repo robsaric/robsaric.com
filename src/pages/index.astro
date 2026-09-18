@@ -1,11 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
-import NowStrip from '../components/NowStrip.astro';
-import Evidence from '../components/Evidence.astro';
-import OperatorProof from '../components/OperatorProof.astro';
-import Stages from '../components/Stages.astro';
-import Principles from '../components/Principles.astro';
+import CurrentWork from '../components/CurrentWork.astro';
 import FieldNotes from '../components/FieldNotes.astro';
 import About from '../components/About.astro';
 import WriteToMe from '../components/WriteToMe.astro';
@@ -38,15 +34,12 @@ const personJsonLd = {
 
 <BaseLayout jsonLd={personJsonLd}>
   <Hero />
-  <NowStrip />
-  <Evidence />
-  <Stages />
-  <OperatorProof />
-  <Principles />
+  <CurrentWork />
   <FieldNotes
     notes={notes}
-    limit={6}
+    limit={3}
     showHeaderLink
+    compact
   />
   <About />
   <WriteToMe />
