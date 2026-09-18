@@ -95,8 +95,8 @@ export const COPY = {
     label: 'About',
     /** The personal belief stays; the surrounding copy follows the v2 brief. */
     heading: 'Why I care.',
-    bodyDesktop: 'People who do good should do well. Clinicians spend their days helping people live better. I want the businesses around them to work better too. That is where I am putting my time, and why I stay close to the people doing the work.',
-    bodyMobile: 'People who do good should do well. Clinicians spend their days helping people live better. I want the businesses around them to work better too.',
+    bodyDesktop: 'People who do good should do well. My father spent ten years inside a healthcare system that kept making his life harder. Working with clinics later showed me how much effort it takes just to keep care going. I build software to make that work lighter.',
+    bodyMobile: 'People who do good should do well. My father spent ten years inside a healthcare system that kept making his life harder. Working with clinics later showed me how much effort it takes just to keep care going. I build software to make that work lighter.',
     link: 'More about me →',
     /**
      * Third person by design: this feeds the JSON-LD Person.description on

@@ -7,6 +7,7 @@ This positioning supersedes the older homepage Hero, Now strip, Evidence, Caretr
 - Homepage H1: "I build software that helps good people run better businesses."
 - Hero: Rob is a founder in Ottawa interested in how AI can reduce the operational burden on people doing valuable work. Clinics are the current focus.
 - Homepage order: Hero, two current projects, up to three published notes, Why I care, contact and newsletter. Caretrics is the first project. Clinic Operations is an early invitation for people running one clinic or several and links to `/contact/` until its public site is checked.
+- Why I care now draws on the approved account of Rob's father's illness and his later work with clinics. The closing standard remains verbatim: "If it adds work to care, it has failed."
 - About retains the approved personal history, family story and outside-work copy, then names both current projects. Contact welcomes clinic operators, software builders and questions about software and AI.
 - The methods page keeps the historical $127,000 example but distinguishes recorded balances, estimated opportunities, completed actions and collected money.
 - Metadata and the site share card use the wider founder framing. The short credential remains `50+ clinics, firsthand`; no new quantified result is implied by the homepage.
