@@ -1,7 +1,7 @@
 ---
 title: "Are dashboards going the way of the dodo?"
-summary: "A chart can tell a small business something is wrong. The useful part is helping someone work out what to do about it."
-description: "Will AI replace dashboards? Why small teams need help acting on their data, where charts still earn their place, and what a chatbot cannot fix."
+summary: "When software starts doing the work, the dashboard gets a different job: show what happened, what failed, and where a person needs to decide."
+description: "Will AI replace dashboards? What Gumloop and n8n reveal about moving from reports to action, and why small teams still need a view they can trust."
 type: "Field note"
 date: 2026-10-19
 tags: ["AI and trust", "Founder notes"]
@@ -10,55 +10,68 @@ draft: false
 ---
 
 import DashboardSketch from '../../components/DashboardSketch.astro';
+import ActionReview from '../../components/ActionReview.astro';
 
-Some dashboards deserve to go the way of the dodo. The ones that show a small business owner something is wrong, then leave them to spend the afternoon figuring out what to do about it.
+Are dashboards going the way of the dodo? I don’t think so. But the dashboard that points out a problem and leaves someone to spend the afternoon dealing with it has some work to do.
 
-But dashboards as a whole? No. I want to keep the chart that helps me understand a problem. I want the software around it to take more responsibility for helping me deal with it.
+I’m more interested in what happens when software can do part of that work. We still need to see how the business is doing. We also need to know what the software changed, where it got stuck, and which decisions belong to us.
 
-## The chart is where the work starts
+## The customer already said no
 
-Imagine a small home-renovation company. This is a made-up example, but the work is ordinary: visit the house, prepare the quote, follow up.
+Imagine a small home-renovation company. This is a hypothetical example: the owner checks a dashboard and sees that fewer quotes are turning into jobs.
 
-The owner opens a dashboard and sees that fewer quotes are turning into jobs. That is useful to know. But now she has to open each quote, read the messages and ask around the team to understand why.
+She opens the outstanding quotes. One customer wants a revised price. Another has already declined by email, but the quote is still open. Someone needs to sort out which customers to call.
 
-One customer is waiting for a revised price. Another already said no, but the record still says pending. A third asked the team to call after the weekend.
+So she exports the list, checks the messages and adds notes to a spreadsheet. She records the customer’s no and moves on to the price request. By the end of the afternoon, she knows where things stand.
 
-So she exports the quotes to a spreadsheet, adds notes beside each customer and works through the list. She sends the revised price and marks the declined quote as closed. By the end of the afternoon, the spreadsheet describes what happened.
+But the quoting system has none of those notes. The next morning, a colleague sees the open quote and calls the customer who already declined.
 
-But the quoting system does not. Next week, its dashboard sends her back to the same unresolved records. Her colleague opens one and calls a customer she has already dealt with.
-
-She can update both places, or ask everyone to use her spreadsheet. Either way, keeping the software informed has become another job. The chart did its part. The product stopped short of helping her finish hers.
-
-The dashboard found the question. The useful work happened when the team could answer it and do something about it.
-
-## What should replace a dashboard?
-
-For that owner, I would start with the quotes that need attention, with the reason each one is there and the messages behind it. Let her correct a bad suggestion without a fight. Once she sends the revised price, record it so nobody chases the same customer tomorrow.
-
-Keep the chart nearby. She will still want to know whether the change is helping.
+The owner can keep both places updated, or ask everyone to work from her spreadsheet. Either way, she has become the connection between the software and what actually happened.
 
 <DashboardSketch complete />
 
-This is a direction I can see in existing analytics products, too. [Tableau Pulse delivers metric insights through email and Slack](https://help.tableau.com/current/online/en-gb/pulse_explore_metrics.htm), so people can notice a change without first remembering to open a dashboard. That is a useful step. It still leaves a product question: what can the person receiving that message actually do next?
+It is easy to say the dashboard needs to be more actionable. That has been good advice for years. The more interesting question is why the owner has to start this whole process by looking at a chart.
 
-Sending every wobble in a graph to someone’s phone would make their day worse. A small team needs to decide which changes deserve an interruption, who can respond, and which can wait for a weekly review.
+## The work can start when something happens
 
-## AI still needs to know what the numbers mean
+The customer’s reply is the event that matters. A workflow could bring that reply together with the quote, propose closing it, ask the owner if needed, and save the outcome. The team would not have to rediscover the same information during the next dashboard review.
 
-Conversational analytics lets someone ask a question in ordinary language instead of finding the right filter. I want that option. I also want to see where the answer came from.
+This is the direction that interests me in companies like Gumloop. Its [Agent Tasks can run on a schedule or respond to events in connected apps](https://www.gumloop.com/blog/introducing-agent-tasks), such as an incoming email or a form submission. Its [approval controls can pause an agent before a chosen action](https://www.gumloop.com/blog/human-in-the-loop), including sending an email, and let a person approve or reject it.
 
-Ask whether sales are up. Do we mean accepted quotes, invoices sent, or money in the bank? Those answers can point in different directions. A confident sentence does not settle the definition.
+[n8n also supports human approval before selected AI tool calls](https://docs.n8n.io/advanced-ai/human-in-the-loop-tools/). These are capabilities a team can configure. They are not evidence that either product will understand a particular business or run its quoting process correctly without careful setup.
 
-[Microsoft’s guidance for preparing Power BI data for Copilot](https://learn.microsoft.com/en-us/power-bi/create-reports/copilot-prepare-data-ai-faq) covers selecting relevant data, defining business terms and configuring verified answers. The chat interface still needs people to establish what the data means.
+Automation is not new. What interests me here is the possibility of bringing messy emails and notes into a workflow that can also change the underlying records. Reading the customer’s message is useful. Connecting it to the right quote and recording what happened is what saves the next person from starting over.
 
-That is why I’m wary of replacing a wall of charts with a blank chat box and calling the job finished. Now the owner has to know which question to ask, and enough about the business’s records to judge the answer. We may have made the screen tidier while asking more of her.
+## But faster follow-up can still be the wrong follow-up
 
-## Keep the view. Finish the job.
+Back at the renovation company, the other customer wants a lower price. The software could prepare a reply, but agreeing to a discount is a business decision. The owner may know that the job has almost no margin left.
 
-A dashboard earns its place when people need to compare trends, investigate something unexpected, or look at the same picture together. A list of overdue quotes cannot tell the whole story of a business. Neither can a chatbot’s reply.
+So the useful next step is to put the request, the quote and a draft reply in front of her. Let her decide. Sending a confident answer sooner would not make it a good answer.
 
-But a person opening software to get through today’s work needs a way to finish it. Show them the relevant records. Help them make a decision. Remember what they did.
+There is a less exciting problem, too: the reply might go out while saving the updated quote fails. If the system just says “done,” someone will eventually repeat the work. Trying again carelessly could send the customer a second email.
 
-That is the standard I want to build toward with [tools for small teams](/building/). If the owner still has to copy everything into a spreadsheet before she can act, there is work left for us to do.
+That is where I think dashboards get a different job.
 
-Pick one number your team checks every week. Follow what happens after someone reads it. Where do they go next? What do they have to piece together? Start improving the software there.
+## Show me what happened, and what still needs me
+
+If software can handle a routine step, I don’t need to watch it happen. I need a way to inspect the result, find a mistake and understand why it asked for help.
+
+For the owner, that could mean a view like this:
+
+<ActionReview />
+
+I still want the chart of quotes turning into jobs. It helps the owner see whether the business is improving, whether fewer customers are saying yes, or whether the team is solving the wrong problem efficiently.
+
+But the daily view can spend more of its attention on decisions and exceptions. What was completed? What could not be saved? What is waiting for me? I should be able to open any item and see the customer’s message and the action taken.
+
+This is my bet about the future of dashboards: as software takes on more work, being able to check that work becomes more valuable. A quieter screen only helps if it is quiet because things were handled, rather than because failures were hidden.
+
+## A chat box still needs trustworthy numbers
+
+Asking an AI “How are sales?” can be useful. But do we mean accepted quotes, invoices sent, or money in the bank? A confident sentence does not settle the definition.
+
+[Microsoft’s guidance for preparing Power BI data for Copilot](https://learn.microsoft.com/en-us/power-bi/create-reports/copilot-prepare-data-ai-faq) includes defining business terms and configuring verified answers. Replacing filters with conversation does not remove that work.
+
+I want small teams to have better ways to ask questions, understand their business and act. I also want the tools to remember what happened, so the team can get on with something else. That is part of what I’m [building toward](/building/).
+
+Pick one number your team checks every week. Follow what happens after someone reads it. Which part could the software help finish? Where does a person need to decide? And how would the next person know the work was done?
