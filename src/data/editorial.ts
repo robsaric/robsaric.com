@@ -2,7 +2,7 @@
 export const EDITORIAL = {
   hero: {
     identity: 'Founder · Writer · Ottawa',
-    heading: 'Work is complicated enough.',
+    heading: 'Work is hard enough.',
     emphasis: 'The tools should help.',
     lead: 'I build software for small teams and write about better work, useful AI, and what’s worth keeping human.',
     promise: 'The goal isn’t to fit more work into life. It’s to make more room for life outside it.',

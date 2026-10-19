@@ -5,7 +5,7 @@
  */
 export const SITE = {
   name: 'Rob Saric',
-  title: 'Rob Saric · Work is complicated enough. The tools should help.',
+  title: 'Rob Saric · Work is hard enough. The tools should help.',
   description:
     'Rob Saric on building useful tools for small teams, starting companies, and making room for life beyond the screen. Founder and dad in Ottawa.',
   url: 'https://robsaric.com',

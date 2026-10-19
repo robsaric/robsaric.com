@@ -4,7 +4,7 @@ Prepared 2026-10-18; refined 2026-10-19 for Rob Saric. Repository: `robsaric/rob
 
 ## Result
 
-The homepage now leads with “Work is complicated enough. The tools should help.” Rob approved applying a supplied homepage critique on 2026-10-19 and then explicitly selected a warm background, blue accents, and the unbranded portrait. The smaller rectangular photo makes room for three real writing selections under “Start here.” Primary action leads to those selections; secondary action leads to current work. The supporting copy connects better tools to more room for life.
+The homepage now leads with “Work is hard enough. The tools should help.” Rob approved applying a supplied homepage critique on 2026-10-19 and then explicitly selected a warm background, blue accents, and the unbranded portrait. The smaller rectangular photo makes room for three real writing selections under “Start here.” Primary action leads to those selections; secondary action leads to current work. The supporting copy connects better tools to more room for life.
 
 The dedicated `/building/` page leads with “More people should get to build something of their own.” It connects opportunity, ownership and independence to Rob’s already-public personal history, Togetheren, developing SkillNav and Caretrics. The homepage sequence is introduction, writing, conditional email signup, a short mission invitation, and a personal introduction. Navigation and the hero work link go directly to the new page. LinkedIn remains in navigation and footer and is the new page’s closing primary action. No email form appears without a configured endpoint, and no cadence or new service is promised.
 
@@ -37,6 +37,12 @@ No dependencies, package version, lockfile, backend newsletter handler, tracking
 
 ## Validation
 
+### October 19 final headline and push preparation
+
+- Chose “Work is hard enough. The tools should help.” after Rob asked for the stronger wording and authorized pushing. Updated the homepage, page title, share-card text/alt, generated site card and current documentation together.
+- Refreshed editorial preview and opened the homepage in the default browser. Inspected the final homepage at 1440, 900 and 390px and the generated sharing image. Heading, loaded images, first writing selection, keyboard focus, reduced motion and no-JavaScript reading links pass. Evidence: `.impeccable/review/home-headline/`.
+- Final ordinary `corepack pnpm@10.27.0 gate` passed: zero Astro/copy errors, 112 redirects, 11 notes and 84 layout checks. Existing 25 Astro hints and three copy taste warnings remain. The last build is ordinary production.
+- GitHub main contains no newer commits than the redesign base. Push destination is the separate `codex/personal-site-redesign` branch in `robsaric/robsaric.com`, with a review PR against main. The two essays remain drafts; no newsletter configuration, subscriber write or direct production deploy is part of this push.
 ### October 19 homepage copy refinement
 
 - User supplied a Perplexity critique as a copy reference and explicitly rejected its styling. Kept the existing visual composition, portrait, dark headline, button shapes and two-action hierarchy; the building page is unchanged.
@@ -107,7 +113,7 @@ Review evidence and scripts live locally in `.impeccable/review/` and are intent
 
 ## Release boundary
 
-All implementation is in the isolated redesign checkout. No remote push, merge, production deployment, newsletter submission, or social publishing occurred. The source checkout was not edited by this work.
+All implementation is in the isolated redesign checkout. Rob authorized the GitHub redesign-branch push on October 19; the earlier validation entries record the local-only state before that authorization. Merge, direct production deployment, newsletter submission and social publishing are outside this push. The source checkout was not edited by this work.
 
 Before an authorized release, review the two essay drafts, inspect the preview on Rob's own phone, and confirm the hosting environment's newsletter configuration. Run the ordinary `pnpm gate` last: the Vercel adapter writes its deployment output during both ordinary and review builds. The final validated output for this handoff is the ordinary production build.
 

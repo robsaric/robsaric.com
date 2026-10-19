@@ -57,3 +57,7 @@ Rob supplied a Perplexity critique and screenshot, explicitly saying he disliked
 Use “Founder · Writer · Ottawa” and the tighter introduction: “I build software for small teams and write about better work, useful AI, and what’s worth keeping human.” Preserve the exact existing promise about making more room for life outside work. Give that promise charcoal text and medium weight while keeping its current scale and spacing.
 
 The existing conditional signup follows the writing selections. Label it “Get my notes” when configured. The local review checkout has no newsletter endpoint or provider credentials; it does not show a working signup. Production configuration is unverified. This refinement adds no publishing cadence, provider setup or subscriber writes.
+
+## October 19 push preparation
+
+Rob asked to choose between “Work is complicated enough” and “Work is hard enough” and authorized pushing the changes. Use “Work is hard enough. The tools should help.” for the more direct, human opening, keeping the visual treatment and supporting copy. Match the page title and sharing image to it. Push the redesign branch for review; preserve both essays as drafts and the conditional newsletter behavior.

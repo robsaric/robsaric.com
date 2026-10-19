@@ -2,7 +2,7 @@ export const UI = {
   editorialReview: 'Design preview · Includes two proposed essays, awaiting Rob’s review.',
   meta: {
     titleSeparator: ' · ',
-    ogImageAlt: 'Rob Saric: Work is complicated enough. The tools should help.',
+    ogImageAlt: 'Rob Saric: Work is hard enough. The tools should help.',
     /** Alt for a note's generated share card; type is the note's own. */
     noteOgImageAlt: (type: string, title: string) => `${type}: ${title}`,
   },
