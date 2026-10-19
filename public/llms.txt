@@ -12,7 +12,7 @@ Rob is building Caretrics and developing a broader small-team tools direction th
 - [About](https://robsaric.com/about/): background, building companies, parenting, mentoring and the questions behind Rob's work.
 - [Archive](https://robsaric.com/archive/): earlier writing from 2009 to 2019, kept as written.
 - [Contact](https://robsaric.com/contact/): rob@caretrics.com
-- [Clinic principles](https://robsaric.com/principles/): principles behind the clinic operations work.
+- [What I believe](https://robsaric.com/principles/): personal principles about ownership, useful tools, human control and room for life.
 - [How I count](https://robsaric.com/how-i-counted/): methods and qualifications for the clinic findings.
 - [RSS](https://robsaric.com/rss.xml): published field notes.
 
