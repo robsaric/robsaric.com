@@ -25,3 +25,15 @@ export const OG_SITE_CARD = {
   author: 'Rob Saric',
   site: 'robsaric.com',
 };
+
+/** Card-only editorial strings. Page titles come from the built page's own heading. */
+export const OG_EDITORIAL = {
+  dashboardSlug: '2026-10-19-are-dashboards-dead',
+  analogSlug: '2026-10-18-building-with-ai-and-life-beyond-the-feed',
+  report: 'Quote needs follow-up.',
+  outcome: 'Customer declined. Quote closed.',
+  evidence: 'Reply attached. Change recorded.',
+  archiveSection: 'From the archive',
+  essaySection: 'An essay by Rob Saric',
+  writingSection: 'Writing',
+};

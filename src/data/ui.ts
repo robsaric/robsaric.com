@@ -3,6 +3,7 @@ export const UI = {
   meta: {
     titleSeparator: ' · ',
     ogImageAlt: 'Rob Saric: Work is hard enough. The tools should help.',
+    pageOgImageAlt: (title: string) => `${title} · Rob Saric`,
     /** Alt for a note's generated share card; type is the note's own. */
     noteOgImageAlt: (type: string, title: string) => `${type}: ${title}`,
   },

@@ -9,6 +9,7 @@ import { COPY } from '../../data/copy';
 import { SITE } from '../../data/site';
 import { UI } from '../../data/ui';
 import { clampDescription } from '../../lib/seo';
+import { socialImagePath, SOCIAL_IMAGE_VERSION } from '../../lib/social.mjs';
 
 interface Props {
   entry: CollectionEntry<'archive'>;
@@ -53,6 +54,7 @@ const jsonLd = {
   description,
   datePublished: entry.data.date.toISOString(),
   url: pageUrl,
+  image: new URL(`${socialImagePath(new URL(pageUrl).pathname)}?v=${SOCIAL_IMAGE_VERSION}`, Astro.site ?? SITE.url).href,
   author: {
     '@type': 'Person',
     name: SITE.author.name,
