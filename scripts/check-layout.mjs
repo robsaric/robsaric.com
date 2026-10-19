@@ -131,7 +131,7 @@ const HOMEPAGE_PROBE = `(() => {
   }
   return {
     aboutCopyVisible: Boolean(rect && rect.width > 0 && rect.height > 0 && style.display !== 'none' && style.visibility !== 'hidden'),
-    newsletterScriptReady: newsletter?.dataset.ready === 'true',
+    newsletterScriptReady: !newsletter || newsletter.dataset.ready === 'true',
     newsletterValidationWorks,
   };
 })()`;

@@ -4,11 +4,11 @@ Prepared 2026-10-18; refined 2026-10-19 for Rob Saric. Repository: `robsaric/rob
 
 ## Result
 
-The site now leads with “The people doing the work know what needs fixing.” Rob approved this replacement opening on 2026-10-19, with “doing the work” in blue, one supporting paragraph, and no separate biography tier or portrait caption. Rob's perspective connects useful tools, building companies, design, and life beyond the screen. Togetheren is the intended home for SkillNav, visibly in development. Caretrics is one example of the work. LinkedIn is easy to find in the introduction, navigation, articles, and closing invitation.
+The homepage now leads with “Work is complicated enough. The tools should help.” Rob approved applying a supplied homepage critique on 2026-10-19 and then explicitly selected a warm background, blue accents, and the unbranded portrait. The smaller rectangular photo makes room for three real writing selections under “Start here.” Primary action leads to those selections; secondary action leads to current work. The supporting copy connects better tools to more room for life.
 
-The October 19 refinement also names the current section “Latest writing,” removes its repeated introduction, aligns article endings with the prose, replaces the large follow panel with a quiet invitation, and selects one relevant next read with a reason. Articles without a deliberate match omit recommendations. Arrow feedback on hover and keyboard focus respects reduced motion; the existing working sketch remains the focal interaction. RSS now has a 44px-wide target. Social sharing uses the new opening too.
+Togetheren remains the intended home for SkillNav, visibly in development. Caretrics is one example of the work. The homepage sequence is introduction, writing, conditional email signup, current work, and a short personal introduction. The process demonstration and repeated follow panel are removed from this page. LinkedIn remains in navigation and footer. No email form appears without a configured endpoint, and no cadence or new service is promised.
 
-The blue, paper, ink, and yellow system pairs self-hosted Manrope headlines with Inter prose. Existing solo photographs carry the personal identity. A three-step working sketch adds finite, purposeful motion; readers can use it by keyboard, with reduced motion, or without JavaScript. The writing index shows actual titles, summaries, and dates, including wider selections from the archive. Mobile keeps those selections visible.
+The writing index and articles retain their cool-paper reading palette, real titles, dates, and complete mobile selections. Article endings retain the quiet follow invitation and one deliberate next read. Shared arrow feedback respects reduced motion. The homepage's warm variant and updated default sharing image use the same blue and typefaces, so it has a personal identity without reverting to clinic-only framing. The “Creed” screenshot was a point-of-view reference, not approved copy or a request to make subscription primary.
 
 ## Review
 
@@ -36,6 +36,16 @@ Only explicit `editorial-review` mode includes these drafts, with a visible revi
 No dependencies, package version, lockfile, backend newsletter handler, tracking service, or legacy redirect mapping changed.
 
 ## Validation
+
+### October 19 homepage publication update
+
+- Final `corepack pnpm@10.27.0 gate`: passed on the selected warm-background/blue-accent/unbranded-portrait version. Astro: zero errors, 25 existing hints. Copy lint: zero errors, three existing taste warnings. Redirects: 112 URLs, zero misses. Notes: 11, no problems. Layout: 77 checks across 11 routes and seven widths, no overflow or homepage failures.
+- Explicit editorial-review build passed. Fresh homepage, writing, and essay probes passed at 1440, 900, and 390px. Homepage first article titles are fully visible within a 900px-tall viewport, starting at about 723, 783, and 804px. Desktop, intermediate, mobile, and sharing-image captures were visually inspected.
+- All three homepage reading links return 200; both hero anchors resolve. All 24 desktop keyboard targets have visible focus. Enter opens the mobile menu; Escape closes it and returns focus. Link feedback, reduced motion, and no-JavaScript reading links passed. Measured principal text contrasts range from 5.11:1 to 11.99:1.
+- All 49 production and 51 review HTML pages passed generated-output checks. Draft exclusions and next-read destinations remain correct. The two draft essay bodies did not change in this task. Newsletter submission/provider delivery were not tested; the homepage renders no signup without a configured endpoint.
+- Independent finish review: **ship** for the layout. The follow-up review confirmed the user-selected blue/warm identity and unbranded image, with no material corrections. The Impeccable launcher/detector was unavailable; source inspection and browser evidence were used directly.
+- Files changed: homepage composition; editorial, site, UI, and sharing copy; the optional warm theme in BaseLayout/tokens; the conditional newsletter-only variant in Connect; the matching layout guard; default sharing-card template/output; and design/direction/handoff documentation. No dependency, lockfile, article body, redirect, or tracking changes.
+- Evidence: `.impeccable/review/home-publication/`. The updated homepage was opened in the default browser. Review the headline, the first three pieces, and the two reading/work actions. Nothing was pushed or published.
 
 ### October 19 analog-life essay revision
 

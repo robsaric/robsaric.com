@@ -8,6 +8,8 @@ The previous writing page repeated its heading, hid the actual article titles be
 
 The redesign makes the point of view explicit, shows readable titles and dates, brings wider writing into the journey, and gives readers relevant next reads and a clear invitation to follow. Existing article bodies and the 2009–2019 archive remain untouched.
 
+The October 19 homepage revision leads with “Work is complicated enough. The tools should help.” Its reader promise connects better tools to more room for life. Three real dated selections appear under “Start here,” ahead of projects and biography. In the review build the two proposed essays lead; ordinary production uses published archive selections. Rob chose a warm background, blue accents and an unbranded rectangular portrait. Email remains conditional on a configured service; reading is the primary action. The supplied “Creed” example informs the point-of-view framing, without adopting its clinic-specific wording or assuming an opt-in or loyalty advantage.
+
 Two new proposed essays are included in the local preview. They express the views Rob gave during this conversation; they do not invent customer stories or private family scenes. Review these as Rob's first-person writing before any public release:
 - A small team shouldn’t need a department for everything
 - I want my analog life back.

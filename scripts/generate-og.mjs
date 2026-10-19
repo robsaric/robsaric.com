@@ -95,7 +95,7 @@ function serve(cards) {
       return;
     }
     if (url === '/site-photo.png') {
-      res.writeHead(200, { 'content-type': MIME['.png'] });
+      res.writeHead(200, { 'content-type': MIME['.jpg'] });
       res.end(readFileSync(SITE_PHOTO));
       return;
     }

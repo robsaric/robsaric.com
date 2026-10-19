@@ -1,16 +1,17 @@
 /** Approved personal positioning. Article bodies remain in their content collections. */
 export const EDITORIAL = {
   hero: {
-    heading: 'The people',
-    emphasis: 'doing the work',
-    ending: 'know what needs fixing.',
-    lead: 'Small teams need tools that help them act on what they know. That’s what I build. But useful technology should also leave room for life, so I write about both: making better tools and knowing when to close the laptop.',
+    identity: 'Founder · Ottawa',
+    heading: 'Work is complicated enough.',
+    emphasis: 'The tools should help.',
+    lead: 'I’m Rob Saric. I build software for small teams and write about making work simpler: what to fix, where AI can help, and what’s better left human.',
+    promise: 'The goal isn’t to fit more work into life. It’s to make more room for life outside it.',
     portraitAlt: 'Rob Saric in a blue blazer',
     read: 'Read my writing',
-    follow: 'Find me on LinkedIn',
+    work: 'What I’m building',
   },
   writing: {
-    title: 'A few things worth thinking about.',
+    title: 'Start here.',
     intro: 'Notes on building things, working with people, and changing my mind. Some from this week’s work. Some I’ve been turning over for years.',
     pageTitle: 'Writing',
     pageHeading: 'Thinking out loud.',
@@ -35,7 +36,7 @@ export const EDITORIAL = {
     ],
   },
   work: {
-    heading: 'Putting that into practice.',
+    heading: 'What I’m building.',
     intro: 'Different projects. The same interest in helping people do good work without needing a big team behind them.',
     togetheren: {
       name: 'Togetheren',
@@ -54,9 +55,9 @@ export const EDITORIAL = {
     },
   },
   personal: {
-    heading: 'There’s a person on the other side of every system.',
-    body: 'I care about how people spend their time. That includes the owner trying to keep a business going and the kid who deserves an afternoon without a screen.',
-    bodyTwo: 'I build with AI. I also have serious questions about the incentives of the companies building it. I want to be honest about that tension, including my own part in it.',
+    heading: 'A little about me.',
+    body: 'I’m a founder and dad in Ottawa. I care about the people trying to make a business work, and the lives they’re trying to make room for.',
+    bodyTwo: 'Outside the work, I’m interested in parenting, time away from screens, and making things for the pleasure of it.',
     link: 'A little more about me',
   },
   about: {
@@ -92,6 +93,11 @@ export const EDITORIAL = {
     email: 'Or write to me',
     newsletterTitle: 'Prefer a note in your inbox?',
     newsletterBody: 'Leave your email for new writing from me.',
+  },
+  homeNewsletter: {
+    heading: 'Notes on making work better.',
+    body: 'What I’m learning about small teams, useful AI, and making room for life outside work.',
+    action: 'Send me the notes',
   },
   article: {
     heading: 'Read next',

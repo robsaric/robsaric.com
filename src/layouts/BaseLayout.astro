@@ -9,6 +9,7 @@ import { isEditorialReview } from '../lib/notes';
 import '../styles/global.css';
 
 interface Props {
+  theme?: 'warm';
   title?: string;
   description?: string;
   noindex?: boolean;
@@ -21,6 +22,7 @@ interface Props {
 }
 
 const {
+  theme,
   title,
   description = SITE.description,
   noindex = false,
@@ -46,7 +48,7 @@ const serializedJsonLd = jsonLd
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme={theme}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />

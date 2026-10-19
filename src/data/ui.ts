@@ -2,7 +2,7 @@ export const UI = {
   editorialReview: 'Design preview · Includes two proposed essays, awaiting Rob’s review.',
   meta: {
     titleSeparator: ' · ',
-    ogImageAlt: 'Rob Saric: I’m on the side of small teams.',
+    ogImageAlt: 'Rob Saric: Work is complicated enough. The tools should help.',
     /** Alt for a note's generated share card; type is the note's own. */
     noteOgImageAlt: (type: string, title: string) => `${type}: ${title}`,
   },
@@ -13,7 +13,7 @@ export const UI = {
   nav: {
     primaryLabel: 'Primary navigation',
     wordmarkLabel: 'Rob Saric, home',
-    work: 'Work',
+    work: 'What I’m building',
     /** The mark is decorative: the wordmark beside it already names the site. */
     markAlt: '',
     fieldNotes: 'Writing',

@@ -1,5 +1,5 @@
 const esc = (s) => s.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
-const shell = (fontCss, styles, body) => `<!doctype html><html lang="en"><head><meta charset="utf-8"><style>${fontCss}</style><link rel="stylesheet" href="/tokens.css"><style>
+const shell = (fontCss, styles, body, theme = '') => `<!doctype html><html lang="en"${theme ? ' data-theme="warm"' : ''}><head><meta charset="utf-8"><style>${fontCss}</style><link rel="stylesheet" href="/tokens.css"><style>
 *{box-sizing:border-box;margin:0}body{width:1200px;height:630px;overflow:hidden;font-family:var(--font-sans)}
 ${styles}</style></head><body>${body}</body></html>`;
 
@@ -10,8 +10,8 @@ export function renderSiteCard({ heading, author, site, fontCss }) {
 .heading{font:800 76px/1.06 var(--font-display);letter-spacing:-.04em;color:var(--blue)}
 .foot{margin-top:42px;display:flex;flex-direction:column;gap:8px}
 .author{font:700 28px var(--font-display)}.site{font-size:20px;color:var(--ink-muted)}
-.photo{width:100%;height:502px;object-fit:cover;border-radius:180px 180px 4px 4px}
-`, `<div class="card"><div class="copy"><div class="heading">${esc(heading)}</div><div class="foot"><span class="author">${esc(author)}</span><span class="site">${esc(site)}</span></div></div><img class="photo" src="/site-photo.png" alt=""></div>`);
+.photo{width:100%;height:430px;align-self:center;object-fit:cover;border-radius:12px}
+`, `<div class="card"><div class="copy"><div class="heading">${esc(heading)}</div><div class="foot"><span class="author">${esc(author)}</span><span class="site">${esc(site)}</span></div></div><img class="photo" src="/site-photo.png" alt=""></div>`, 'warm');
 }
 
 export function renderCard({ title, eyebrow, author, site, stat, fontCss }) {

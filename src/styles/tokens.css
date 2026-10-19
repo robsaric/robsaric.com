@@ -82,6 +82,24 @@
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --shadow-nav: 0 6px 16px rgb(25 43 58 / 7%);
 }
+/* Homepage direction approved October 19. Reading routes keep their palette. */
+:root[data-theme="warm"] {
+  --blue: #244fc7;
+  --blue-deep: #183996;
+  --paper: #faf8f2;
+  --sky: #f0f1ec;
+  --yellow: #f2cc69;
+  --ink: #29343b;
+  --ink-muted: #61666a;
+  --rule: #d6d9d9;
+  --forest-900: #19252f;
+  --forest-700: #29343b;
+  --on-dark: #faf8f2;
+  --on-dark-78: #dce1e5;
+  --on-dark-28: rgb(250 248 242 / 28%);
+  --on-dark-05: rgb(250 248 242 / 5%);
+  --shadow-nav: 0 6px 16px rgb(41 52 59 / 7%);
+}
 @media (max-width: 767.98px) {
   :root { --gutter-desktop: var(--gutter-mobile); }
 }

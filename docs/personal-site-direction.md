@@ -3,6 +3,8 @@
 Date: 2026-10-18. Supersedes the old Caretrics palette and clinic-only framing for the personal site. User explicitly approved implementation after the grill interview. Decisions appended to CAR-1171.
 
 ## Direction contract
+The October 19 homepage update below supersedes this initial composition for the homepage only. Other routes retain the established blue reading palette.
+
 - Home mode: Persuade, grounded in personal writing. Writing and articles: Read.
 - Thesis: I am on the side of small teams. Care and agency are the reason to build.
 - Visual world: vivid blue, cool paper, deep ink, occasional yellow; expressive geometric sans headlines; unbranded existing portrait; generous editorial margins. The personal website should feel like a person with a view, not a product funnel.
@@ -24,6 +26,20 @@ Visuals should clarify an idea: diagrams and actual artifacts first, with occasi
 
 ## Assets
 Existing repository assets: rob-portrait.jpg (unbranded solo portrait), rob-hiking.jpg (solo outdoors). Source files are preserved; crops use CSS/Astro. Family images excluded from the redesign. No new image generation or external photography.
+
+## Homepage publication direction, 2026-10-19
+
+Rob supplied and approved a pasted homepage critique, then clarified that its scope is the homepage. Apply its preferred direction: “Work is complicated enough. The tools should help.” A small founder/Ottawa identity line and one lead introduce Rob's writing; the closing thought connects better work to more room for life. Keep the audience broad enough for small teams, with Caretrics and Togetheren/SkillNav as concrete examples below.
+
+The homepage is a warm, light personal publication. After reviewing the initial cream/forest interpretation, Rob explicitly chose “Warm background, blue accents, unbranded portrait.” Cream paper, charcoal text, blue actions, and occasional yellow detail apply through the warm theme on this route. Existing self-hosted Manrope and Inter stay. The unbranded blue-blazer portrait uses a modest rounded rectangle on desktop and a small portrait beside the identity line on mobile. No retouched or generated likeness.
+
+The sequence is introduction, “Start here” with three real dated pieces, conditional email signup, current work, and a short personal introduction. Remove the process demonstration and repeated follow panel from this page. Primary action leads to the three selections; secondary action leads to current projects. Navigation says Writing, About, What I’m building. LinkedIn remains in navigation and footer.
+
+Preview selections use the two approved-for-review essays and an existing archive piece. Production uses published archive selections instead of exposing drafts. Do not create the critique's hypothetical article titles or promise a publishing schedule. Email signup exists only with a configured endpoint; no service or submission is added by this task.
+
+First-viewport target: the first writing selection is visible within a 900px-tall desktop and mobile review viewport. Retain subtle link-arrow feedback, visible keyboard focus, and reduced-motion support. No entrance delay or autoplay.
+
+Rob also supplied “The Creed” as a framing reference, explicitly excluding its sample copy. Take its point-of-view-led reader promise, not the clinic-specific headline or an unconfigured email signup as the primary action. Reading remains primary until email publishing is ready.
 
 ## Acceptance
 Production build; copy checks; existing note, redirect and responsive gates; desktop/mobile visual inspection; keyboard menu and process controls; no-JS and reduced-motion check; actual metadata/share cards; no publication or newsletter submission during verification.
