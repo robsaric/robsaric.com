@@ -82,7 +82,7 @@
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --shadow-nav: 0 6px 16px rgb(25 43 58 / 7%);
 }
-/* Homepage direction approved October 19. Reading routes keep their palette. */
+/* Warm paper throughout, approved in the October 19 editorial refinement. */
 :root[data-theme="warm"] {
   --blue: #244fc7;
   --blue-deep: #183996;

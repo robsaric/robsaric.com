@@ -75,13 +75,6 @@ export const COPY = {
     /** The 02 Togetheren row was removed 2026-08-24; /about/ still uses this. */
     togetherenLink: 'See selected work →',
   },
-  principles: {
-    number: '02',
-    label: 'Principles',
-    heading: 'Principles I use when reviewing clinic operations.',
-    itemLink: 'The note behind this one →',
-    allLink: 'See all five principles →',
-  },
   fieldNotes: {
     number: '02',
     label: 'My notes',
@@ -301,11 +294,6 @@ export const COPY = {
       title: 'My notes',
       intro: 'What I am learning about clinic operations, building software, and using AI in real work. Some are observations. Some are decisions I have changed my mind about.',
       description: 'Notes from Rob Saric on clinic operations, software, AI, and what he is learning while building Caretrics.',
-    },
-    principles: {
-      title: 'Five principles for reviewing clinic operations',
-      intro: 'These are the principles I use in my work with clinics. They are one part of how I think about building useful software. If your experience challenges one, write to me.',
-      description: 'Five principles Rob Saric uses when reviewing clinic operations, from recover before you acquire to billing problems usually start upstream.',
     },
     about: {
       title: 'About',

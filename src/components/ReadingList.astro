@@ -3,10 +3,10 @@ import Arrow from './Arrow.astro';
 import { EDITORIAL as E } from '../data/editorial';
 import { formatNoteDate } from '../lib/notes';
 import type { ReadingItem } from '../lib/editorial';
-interface Props { items: ReadingItem[]; compact?: boolean; }
-const { items, compact = false } = Astro.props;
+interface Props { items: ReadingItem[]; compact?: boolean; paired?: boolean; }
+const { items, compact = false, paired = false } = Astro.props;
 ---
-<ol class:list={['reading-list', { compact }]}>
+<ol class:list={['reading-list', { compact, paired }]}>
   {items.map(item => <li>
     <div class="reading-date"><time datetime={item.date.toISOString()}>{formatNoteDate(item.date)}</time>{item.earlier && <span>{E.writing.earlier}</span>}</div>
     <div class="reading-copy"><h3><a href={item.href}>{item.title}<Arrow diagonal /></a></h3><p>{item.summary}</p></div>
@@ -25,11 +25,15 @@ p { margin: 10px 0 0; max-width: 68ch; font-size: 16px; line-height: 1.65; color
 .compact li { grid-template-columns: minmax(0,1fr); gap: 12px; padding: 26px 0; }
 .compact .reading-date { flex-direction: row; gap: 14px; padding: 0; }
 .compact h3 { font-size: 24px; }
+.paired { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); column-gap: 64px; }
+.paired li { padding-block: 28px; }
+.paired h3 { max-width: 28ch; }
 @media (max-width: 767.98px) {
  li { grid-template-columns: minmax(0,1fr); gap: 12px; padding: 26px 0; }
  .reading-date { flex-direction: row; gap: 14px; padding: 0; }
  h3, .compact h3 { font-size: 23px; }
  h3 a { gap: 16px; }
  p { font-size: 16px; }
+ .paired { grid-template-columns: minmax(0,1fr); }
 }
 </style>

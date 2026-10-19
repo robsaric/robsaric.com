@@ -1,175 +1,23 @@
 ---
-import Section from './Section.astro';
-import { COPY } from '../data/copy';
-import {
-  PRINCIPLES,
-  type Principle,
-} from '../data/principles';
-
-interface Props {
-  items?: Principle[];
-  showAll?: boolean;
-}
-
-const {
-  items,
-  showAll = false,
-} = Astro.props;
-
-const visibleItems = items
-  ?? (showAll ? PRINCIPLES : PRINCIPLES.filter((item) => item.featured));
+import Arrow from './Arrow.astro';
+import { PRINCIPLES } from '../data/principles';
 ---
-
-<Section
-  id="principles"
-  number={COPY.principles.number}
-  label={COPY.principles.label}
-  tone="cream-rule"
->
-  <div class="principles">
-    <h2>{COPY.principles.heading}</h2>
-
-    <ol>
-      {visibleItems.map((item, index) => (
-        <li>
-          <div class="principle__heading">
-            <span class="principle__number">
-              {String(index + 1).padStart(2, '0')}
-            </span>
-            <span class="principle__line">{item.line}</span>
-          </div>
-
-          <div class="principle__detail">
-            <span class="principle__body principle__body--desktop">
-              {item.body}
-            </span>
-            <span class="principle__body principle__body--mobile">
-              {item.bodyShort}
-            </span>
-            {item.noteSlug && (
-              <a
-                class="principle__note-link"
-                href={`/field-notes/${item.noteSlug}/`}
-              >
-                {COPY.principles.itemLink}
-              </a>
-            )}
-          </div>
-        </li>
-      ))}
-    </ol>
-
-    {!showAll && (
-      <a class="principles__all-link" href="/principles/">
-        {COPY.principles.allLink}
-      </a>
-    )}
-  </div>
-</Section>
-
+<div class="beliefs">
+  {PRINCIPLES.map(item => <section class="belief">
+    <h2>{item.line}</h2>
+    <div class="belief-detail"><p>{item.body}</p><p>{item.choice}</p><a class="text-link" href={item.href}>{item.link}<Arrow /></a></div>
+  </section>)}
+</div>
 <style>
-  .principles {
-    display: flex;
-    flex-direction: column;
-    gap: 36px;
-  }
-
-  h2 {
-    max-width: 24ch;
-    margin: 0;
-    font-size: var(--text-h2);
-    line-height: var(--lh-heading);
-    letter-spacing: var(--tracking-h2);
-    text-wrap: pretty;
-  }
-
-  ol {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    list-style: none;
-  }
-
-  li {
-    padding: 32px 0;
-    display: grid;
-    grid-template-columns: 56px minmax(0, 1fr) minmax(0, 1fr);
-    gap: 40px;
-    align-items: baseline;
-    border-top: 1px solid var(--rule);
-  }
-
-  li:last-child { border-bottom: 1px solid var(--rule); }
-  .principle__heading { display: contents; }
-
-  .principle__number {
-    color: var(--ink-muted);
-    font-family: var(--font-mono);
-    font-size: 24px;
-    font-variant-numeric: tabular-nums;
-  }
-
-  .principle__line {
-    font-family: var(--font-serif);
-    font-size: var(--text-serif-principle);
-    font-style: italic;
-    line-height: 1.28;
-  }
-
-  .principle__detail {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .principle__body {
-    font-size: var(--text-body-l);
-    line-height: var(--lh-body);
-    text-wrap: pretty;
-  }
-
-  .principle__body--mobile { display: none; }
-  .principle__note-link { align-self: flex-start; font-size: 16px; font-weight: 600; }
-
-  .principles__all-link {
-    min-height: var(--tap-min);
-    display: inline-flex;
-    align-items: center;
-    align-self: flex-start;
-    font-size: 17px;
-    font-weight: 600;
-  }
-
-  @media (max-width: 767.98px) {
-    .principles { gap: 16px; }
-    h2 { font-size: 27px; line-height: 1.2; letter-spacing: -0.022em; }
-
-    li {
-      padding: 20px 0;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .principle__heading { display: block; }
-
-    .principle__number {
-      padding-right: 10px;
-      font-size: 15px;
-      font-style: normal;
-    }
-
-    .principle__line {
-      font-size: 23px;
-      line-height: 1.3;
-    }
-
-    .principle__detail { gap: 8px; }
-    .principle__body { font-size: 17px; }
-    .principle__body--desktop { display: none; }
-    .principle__body--mobile { display: inline; }
-    .principle__note-link { display: none; }
-    .principles__all-link { font-size: 16px; }
-  }
+.belief { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.2fr); gap: clamp(40px,7vw,100px); padding-block: 48px; border-top: 1px solid var(--rule); }
+h2 { margin: 0; font-size: clamp(28px,3.1vw,42px); line-height: 1.2; max-width: 21ch; }
+p { margin: 0 0 18px; font-size: 18px; line-height: 1.75; max-width: 58ch; }
+.text-link { font-size: 14px; margin-top: 4px; }
+.belief:first-child { padding-top: 0; border: 0; }
+.belief:last-child { padding-bottom: 0; }
+@media (max-width: 767.98px) {
+ .belief { grid-template-columns: minmax(0,1fr); gap: 20px; padding-block: 32px; }
+ h2 { font-size: 29px; }
+ p { font-size: 17px; }
+}
 </style>

@@ -1,26 +1,29 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ReadingList from '../../components/ReadingList.astro';
+import FeaturedEssay from '../../components/FeaturedEssay.astro';
 import Connect from '../../components/Connect.astro';
 import Arrow from '../../components/Arrow.astro';
 import { EDITORIAL as E } from '../../data/editorial';
 import { getEarlierWriting, getRecentWriting } from '../../lib/editorial';
 const earlier = await getEarlierWriting();
 const recent = await getRecentWriting();
+const featured = recent.find(item => item.href === E.writing.featuredHref);
+const supporting = recent.filter(item => item.href !== featured?.href);
 ---
-<BaseLayout title={E.writing.pageTitle} description={E.writing.pageIntro}>
+<BaseLayout title={E.writing.pageTitle} description={E.writing.pageDescription}>
   <div class="wrap writing-page">
     <header><h1>{E.writing.pageHeading}</h1><p>{E.writing.pageIntro}</p></header>
-    <section aria-labelledby="recent-title"><div class="section-intro"><h2 id="recent-title">{E.writing.latest}</h2></div><ReadingList items={recent} /></section>
+    <section aria-labelledby="recent-title"><div class="section-intro"><h2 id="recent-title">{E.writing.latest}</h2></div>{featured && <FeaturedEssay item={featured} />}<ReadingList items={supporting} compact paired /></section>
     <section class="earlier" aria-labelledby="earlier-title"><div class="section-intro"><h2 id="earlier-title">{E.writing.earlier}</h2><p>{E.writing.earlierIntro}</p></div><ReadingList items={earlier} /><a class="text-link archive-link" href="/archive/">{E.writing.archive}<Arrow /></a></section>
     <aside class="afterword"><h2>{E.writing.topics}</h2><p>{E.writing.afterword}</p></aside>
   </div>
   <Connect />
 </BaseLayout>
 <style>
-.writing-page { padding-block: 76px 80px; }
-header { max-width: 960px; margin-bottom: 72px; }
-h1 { font-size: clamp(3rem, 7vw, 6rem); margin: 0 0 28px; font-weight: 800; color: var(--blue); }
+.writing-page { padding-block: 56px 80px; }
+header { max-width: 1100px; margin-bottom: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: end; }
+h1 { font-size: clamp(3rem, 5.5vw, 5rem); margin: 0; font-weight: 800; }
 header p { font-size: 21px; line-height: 1.65; max-width: 56ch; margin: 0; }
 section { margin-top: 64px; }
 .section-intro { display: grid; grid-template-columns: 1fr 1.6fr; gap: 64px; margin-bottom: 32px; }
@@ -31,8 +34,8 @@ section { margin-top: 64px; }
 .afterword h2 { font-size: 30px; margin: 0; max-width: 20ch; }
 .afterword p { font-size: 17px; line-height: 1.7; margin: 0; }
 @media (max-width: 767.98px) {
- .writing-page { padding-block: 44px 56px; }
- header { margin-bottom: 48px; }
+ .writing-page { padding-block: 36px 56px; }
+ header { margin-bottom: 36px; grid-template-columns: minmax(0,1fr); gap: 20px; }
  header p { font-size: 18px; }
  .section-intro, .afterword { grid-template-columns: minmax(0,1fr); gap: 20px; }
  .section-intro h2 { font-size: 28px; }

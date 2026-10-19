@@ -9,6 +9,8 @@ stage: -1
 draft: false
 ---
 
+import DashboardSketch from '../../components/DashboardSketch.astro';
+
 Some dashboards deserve to go the way of the dodo. The ones that show a small business owner something is wrong, then leave them to spend the afternoon figuring out what to do about it.
 
 But dashboards as a whole? No. I want to keep the chart that helps me understand a problem. I want the software around it to take more responsibility for helping me deal with it.
@@ -34,6 +36,8 @@ The dashboard found the question. The useful work happened when the team could a
 For that owner, I would start with the quotes that need attention, with the reason each one is there and the messages behind it. Let her correct a bad suggestion without a fight. Once she sends the revised price, record it so nobody chases the same customer tomorrow.
 
 Keep the chart nearby. She will still want to know whether the change is helping.
+
+<DashboardSketch complete />
 
 This is a direction I can see in existing analytics products, too. [Tableau Pulse delivers metric insights through email and Slack](https://help.tableau.com/current/online/en-gb/pulse_explore_metrics.htm), so people can notice a change without first remembering to open a dashboard. That is a useful step. It still leaves a product question: what can the person receiving that message actually do next?
 

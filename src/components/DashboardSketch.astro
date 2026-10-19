@@ -1,0 +1,65 @@
+---
+import { DASHBOARD_SKETCH as D } from '../data/dashboard-sketch';
+interface Props { complete?: boolean; }
+const { complete = false } = Astro.props;
+---
+<figure class:list={['dashboard-sketch', { complete }]}>
+  <div class="sketch-heading">{D.heading}</div>
+  <div class="split-record">
+    <div class="record original">
+      <span class="record-source">{D.record}</span>
+      <strong>{D.stale}</strong>
+      <svg class="record-lines" width="108" height="28" viewBox="0 0 108 28" fill="none" aria-hidden="true"><path d="M0 4h108M0 14h82M0 24h94" stroke="currentColor" stroke-width="1.5" /></svg>
+    </div>
+    <svg class="handoff" width="48" height="24" viewBox="0 0 48 24" fill="none" aria-hidden="true"><path d="M1 12h44m-8-8 8 8-8 8" stroke="currentColor" stroke-width="1.5" /></svg>
+    <div class="record working">
+      <span class="record-source">{D.spreadsheet}</span>
+      <strong>{D.done}</strong>
+      <span class="stuck"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8 3 3 7-7" stroke="currentColor" stroke-width="1.5"/></svg>{D.gap}</span>
+    </div>
+  </div>
+  {complete && <div class="reconnected">
+    <div class="sketch-heading">{D.after}</div>
+    <div class="resolved-record">
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true"><path d="m4 13 6 6L22 7" stroke="currentColor" stroke-width="2"/></svg>
+      <div><strong>{D.resolved}</strong><span>{D.detail}</span></div>
+    </div>
+  </div>}
+  <figcaption>{D.caption}</figcaption>
+</figure>
+<style>
+.dashboard-sketch { margin: 0; padding: 32px; background: var(--sky); color: var(--ink); }
+.sketch-heading { font-family: var(--font-display); font-size: clamp(20px, 2vw, 26px); font-weight: 700; line-height: 1.25; letter-spacing: -.025em; max-width: 25ch; }
+.split-record { display: grid; grid-template-columns: minmax(0,1fr) 32px minmax(0,1fr); align-items: center; margin-top: 32px; }
+.record { min-height: 158px; padding: 20px 16px; display: flex; flex-direction: column; gap: 16px; border: 1px solid var(--ink-muted); background: var(--paper); }
+.record-source { font-size: 12px; line-height: 1.5; color: var(--ink-muted); }
+.record strong { font-size: 18px; font-weight: 600; line-height: 1.3; }
+.record-lines { color: var(--rule); max-width: 100%; margin-top: auto; }
+.working { background: var(--yellow); border-color: transparent; transform: translateY(20px); }
+.working .record-source { color: var(--ink); }
+.handoff { width: 100%; }
+.stuck { font-size: 11px; line-height: 1.5; display: flex; align-items: center; gap: 5px; margin-top: auto; }
+.stuck svg { flex: 0 0 auto; }
+figcaption { font-size: 13px; line-height: 1.6; color: var(--ink-muted); margin-top: 42px; max-width: 48ch; }
+.complete { margin-block: 40px; padding: 32px; }
+.reconnected { border-top: 1px solid var(--rule); padding-top: 28px; margin-top: 48px; }
+.resolved-record { margin-top: 20px; display: flex; align-items: center; gap: 18px; border: 1px solid var(--ink-muted); padding: 20px; background: var(--paper); }
+.resolved-record svg { flex-shrink: 0; }
+.resolved-record strong, .resolved-record span { display: block; font-size: 18px; line-height: 1.5; }
+.resolved-record span { font-size: 14px; margin-top: 4px; color: var(--ink-muted); }
+.complete figcaption { margin-top: 24px; }
+@media (max-width: 767.98px) {
+ .dashboard-sketch, .complete { padding: 24px 20px; }
+ .record { padding: 16px 12px; min-height: 150px; }
+ .record strong { font-size: 16px; }
+ .split-record { grid-template-columns: minmax(0,1fr) 24px minmax(0,1fr); margin-top: 24px; }
+ .stuck { display: block; }
+ .stuck svg { display: none; }
+ .sketch-heading { font-size: 22px; }
+}
+@media (max-width: 360px) {
+ .dashboard-sketch, .complete { padding-inline: 14px; }
+ .record { padding-inline: 8px; }
+ .record strong { font-size: 15px; }
+}
+</style>

@@ -15,6 +15,9 @@ export const EDITORIAL = {
     title: 'Start here.',
     intro: 'Notes on building things, working with people, and changing my mind. Some from this week’s work. Some I’ve been turning over for years.',
     pageTitle: 'Writing',
+    pageDescription: 'Essays by Rob Saric on small teams, useful AI, building companies and making room for life beyond the screen.',
+    featuredHref: '/field-notes/2026-10-19-are-dashboards-dead/',
+    readEssay: 'Read the essay',
     pageHeading: 'Thinking out loud.',
     pageIntro: 'Building companies has given me plenty to write about. So has being a parent, paying attention to design, and wondering what all this technology is doing to us.',
     latest: 'Latest writing',
@@ -147,7 +150,7 @@ export const EDITORIAL = {
     line: 'Good work. More room for life.',
     small: 'Built with care in Ottawa.',
     archive: 'Earlier writing',
-    principles: 'Clinic principles',
+    principles: 'What I believe',
     source: 'Site source',
   },
 } as const;

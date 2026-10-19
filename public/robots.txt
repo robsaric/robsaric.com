@@ -4,16 +4,21 @@ Allow: /
 Disallow: /api/
 Disallow: /subscribed/
 
-# AI discovery crawlers are welcome; the site is meant to be read.
-User-agent: GPTBot
-Allow: /
+# Search and user-requested retrieval. Specific groups repeat the shared exclusions.
+User-agent: OAI-SearchBot
+User-agent: Codex-SearchBot
 User-agent: ChatGPT-User
-Allow: /
-User-agent: ClaudeBot
-Allow: /
-User-agent: anthropic-ai
-Allow: /
 User-agent: PerplexityBot
 Allow: /
+Disallow: /api/
+Disallow: /subscribed/
+
+# Training crawlers retain the site's existing allow policy.
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: anthropic-ai
+Allow: /
+Disallow: /api/
+Disallow: /subscribed/
 
 Sitemap: https://robsaric.com/sitemap-index.xml
