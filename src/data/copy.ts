@@ -333,9 +333,7 @@ export const COPY = {
       context:
         'This page explains how I check clinic findings and describe their limits. A recorded balance, an estimated opportunity and money collected are different things.',
       intro:
-        'Every public number I use is held to the standard on this page. If a number cannot meet it, it comes down until it can. That has already happened once.',
-      noteLink: 'The note where I took my own number down →',
-      noteHref: '/field-notes/2026-08-19-i-took-my-own-number-down/',
+        'Every public number I use is held to the standard on this page. If a number cannot meet it, it comes down until it can.',
       /** The five-step strip reuses the evidence stepper's labels; this names it. */
       pipelineEyebrow: "One signal's journey",
       /**

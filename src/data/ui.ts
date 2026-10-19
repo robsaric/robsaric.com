@@ -1,5 +1,5 @@
 export const UI = {
-  editorialReview: 'Design preview · Includes two proposed essays, awaiting Rob’s review.',
+  editorialReview: 'Design preview · Local review copy.',
   meta: {
     titleSeparator: ' · ',
     ogImageAlt: 'Rob Saric: Work is hard enough. The tools should help.',

@@ -6,13 +6,8 @@ import { STAGES } from '../data/stages';
 
 export type NoteEntry = CollectionEntry<'notes'>;
 
-// Only the explicitly requested review build includes these proposed essays.
-// Ordinary production builds keep every draft out of routes and indexes.
+// Review builds stay visibly labelled and noindex. Drafts are local-dev only.
 export const isEditorialReview = import.meta.env.MODE === 'editorial-review';
-const reviewDraftIds = new Set([
-  '2026-10-18-small-teams-deserve-their-time-back',
-  '2026-10-18-building-with-ai-and-life-beyond-the-feed',
-]);
 
 const MONTHS = [
   'Jan',
@@ -33,8 +28,7 @@ export async function getPublishedNotes(): Promise<NoteEntry[]> {
   const notes = await getCollection('notes');
 
   return notes
-    .filter((entry) => import.meta.env.DEV || !entry.data.draft
-      || (isEditorialReview && reviewDraftIds.has(entry.id)))
+    .filter((entry) => import.meta.env.DEV || !entry.data.draft)
     .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 }
 

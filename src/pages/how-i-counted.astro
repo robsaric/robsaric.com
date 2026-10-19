@@ -15,7 +15,6 @@ const lastIndex = page.sections.length - 1;
       <h1>{page.heading}</h1>
       <p>{page.context}</p>
       <p>{page.intro}</p>
-      <a class="methods__note-link" href={page.noteHref}>{page.noteLink}</a>
     </header>
 
     <!-- The journey the sections below describe, so the page has its map
@@ -95,7 +94,6 @@ const lastIndex = page.sections.length - 1;
     text-wrap: pretty;
   }
 
-  .methods__note-link,
   .methods__footer a {
     min-height: var(--tap-min);
     display: inline-flex;
@@ -247,7 +245,6 @@ const lastIndex = page.sections.length - 1;
     .methods { padding: 44px var(--gutter-mobile); }
     h1 { font-size: 34px; }
     .methods__header p { font-size: 17px; }
-    .methods__note-link,
     .methods__footer a { font-size: 16px; }
     .methods__sections { margin-top: 28px; }
     .methods__section { padding: 20px 0; gap: 8px; }

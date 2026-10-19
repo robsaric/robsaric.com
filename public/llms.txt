@@ -8,12 +8,19 @@ Rob is building Caretrics and developing a broader small-team tools direction th
 
 - [Home](https://robsaric.com/): personal perspective, selected writing, current work and contact.
 - [Writing](https://robsaric.com/field-notes/): recent field notes and selected earlier essays. Original dates remain visible.
+- [What I'm building](https://robsaric.com/building/): opportunity, ownership and independence through tools for small teams.
 - [About](https://robsaric.com/about/): background, building companies, parenting, mentoring and the questions behind Rob's work.
 - [Archive](https://robsaric.com/archive/): earlier writing from 2009 to 2019, kept as written.
 - [Contact](https://robsaric.com/contact/): rob@caretrics.com
 - [Clinic principles](https://robsaric.com/principles/): principles behind the clinic operations work.
 - [How I count](https://robsaric.com/how-i-counted/): methods and qualifications for the clinic findings.
 - [RSS](https://robsaric.com/rss.xml): published field notes.
+
+## Selected writing
+
+- [Small teams still have to answer the phone](https://robsaric.com/field-notes/2026-10-18-small-teams-deserve-their-time-back/): the responsibilities a team takes on after a prototype becomes a promise.
+- [I want my analog life back](https://robsaric.com/field-notes/2026-10-18-building-with-ai-and-life-beyond-the-feed/): useful AI, control of our time and room for life away from screens.
+- [Are dashboards going the way of the dodo?](https://robsaric.com/field-notes/2026-10-19-are-dashboards-dead/): where charts help and why operational software needs to help people act.
 
 ## Elsewhere
 

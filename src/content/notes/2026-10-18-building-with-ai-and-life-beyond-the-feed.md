@@ -5,7 +5,7 @@ type: "Field note"
 date: 2026-10-18
 tags: ["AI and trust", "Founder notes"]
 stage: -1
-draft: true
+draft: false
 ---
 
 I build with AI because I want it to take work off people’s plates. I want the time back, including my own.

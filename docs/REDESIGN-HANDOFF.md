@@ -1,5 +1,7 @@
 # Personal-site redesign handoff
 
+Publication update, October 19: the redesign merged to main in PR #2. Rob subsequently approved both October 18 essays and requested a dashboard replacement plus removal of three clinic notes. The draft/publication statements below describe the earlier review state. Current publication decisions and research are in `docs/publishing-2026-10-19.md`.
+
 Prepared 2026-10-18; refined 2026-10-19 for Rob Saric. Repository: `robsaric/robsaric.com`. Branch: `codex/personal-site-redesign`. Base: `ca034cfd010467db249e072ecc9cda1a43e2166d`.
 
 ## Result
