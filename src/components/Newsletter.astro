@@ -1,0 +1,78 @@
+---
+import { EDITORIAL as E } from '../data/editorial';
+import { SITE } from '../data/site';
+import { UI } from '../data/ui';
+import Arrow from './Arrow.astro';
+
+interface Props {
+  id: string;
+  prominent?: boolean;
+  headingLevel?: 2 | 3;
+  showSample?: boolean;
+  showLinkedIn?: boolean;
+}
+const { id, prominent = false, headingLevel = 2, showSample = false, showLinkedIn = false } = Astro.props;
+const endpoint = import.meta.env.PUBLIC_NEWSLETTER_ENDPOINT?.trim();
+const Heading = headingLevel === 3 ? 'h3' : 'h2';
+---
+{endpoint && <section class:list={['newsletter', { prominent }]} aria-labelledby={`${id}-title`} data-write-to-me data-invalid-email={UI.newsletter.invalidEmail}>
+  <Heading id={`${id}-title`}>{E.newsletter.heading}</Heading>
+  <p class="newsletter-intro">{E.newsletter.body}</p>
+  <form method="post" action={endpoint} data-newsletter-form>
+    <div class="visually-hidden" aria-hidden="true"><input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" /></div>
+    <label for={`${id}-email`}>{UI.newsletter.emailLabel}</label>
+    <input id={`${id}-email`} type="email" name="email" required autocomplete="email" placeholder={UI.newsletter.emailPlaceholder} aria-describedby={`${id}-cadence ${id}-status`} data-newsletter-email />
+    <span id={`${id}-status`} class="newsletter-status" aria-live="polite" data-newsletter-status></span>
+    <button class="action" type="submit" data-newsletter-submit data-loading-label={UI.newsletter.subscribing}>{E.newsletter.action}<Arrow /></button>
+  </form>
+  <p id={`${id}-cadence`} class="cadence">{E.newsletter.cadence}</p>
+  {(showSample || showLinkedIn) && <div class="newsletter-links">
+    {showSample && <a class="text-link" href={E.newsletter.sampleHref}>{E.newsletter.sample}<Arrow /></a>}
+    {showLinkedIn && <a class="text-link" href={SITE.links.linkedin} target="_blank" rel="noopener">{E.newsletter.follow}<Arrow diagonal /></a>}
+  </div>}
+</section>}
+<script>
+  document.querySelectorAll<HTMLElement>('.newsletter[data-write-to-me]').forEach(root => {
+    const form = root.querySelector<HTMLFormElement>('[data-newsletter-form]');
+    const email = root.querySelector<HTMLInputElement>('[data-newsletter-email]');
+    const status = root.querySelector<HTMLElement>('[data-newsletter-status]');
+    const submit = root.querySelector<HTMLButtonElement>('[data-newsletter-submit]');
+    if (!form || !email || !status || !submit) return;
+    root.dataset.ready = 'true';
+    form.noValidate = true;
+    email.addEventListener('input', () => {
+      if (email.validity.valid) { email.removeAttribute('aria-invalid'); status.textContent = ''; }
+    });
+    form.addEventListener('submit', event => {
+      if (!email.validity.valid) {
+        event.preventDefault(); email.setAttribute('aria-invalid', 'true');
+        status.textContent = root.dataset.invalidEmail ?? ''; email.focus(); return;
+      }
+      email.removeAttribute('aria-invalid');
+      status.textContent = '';
+      submit.textContent = submit.dataset.loadingLabel ?? ''; submit.disabled = true;
+    });
+  });
+</script>
+<style>
+.newsletter { min-width: 0; }
+h2, h3 { font-size: clamp(1.6rem, 2.5vw, 2rem); line-height: 1.2; max-width: 26ch; margin: 0 0 20px; }
+.prominent h2 { font-size: var(--text-h2); max-width: 23ch; }
+.newsletter-intro { max-width: 62ch; font-size: 17px; line-height: 1.65; margin: 0 0 28px; }
+form { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; max-width: 580px; }
+label { font-size: 14px; font-weight: 500; }
+input[type=email] { width: 100%; height: 52px; padding: 12px 14px; border: 1px solid var(--ink-muted); border-radius: 6px; background: var(--white); color: var(--ink); }
+input::placeholder { color: var(--ink-muted); }
+input[aria-invalid=true] { border-color: var(--status-critical-text); }
+.newsletter-status { font-size: 14px; line-height: 1.5; color: var(--status-critical-text); }
+.newsletter-status:empty { display: none; }
+button { cursor: pointer; }
+button:disabled { opacity: .7; cursor: wait; }
+.cadence { font-size: 14px; line-height: 1.6; color: var(--ink-muted); margin: 16px 0 0; max-width: 52ch; }
+.newsletter-links { display: flex; flex-wrap: wrap; column-gap: 24px; margin-top: 12px; font-size: 15px; }
+@media (max-width: 767.98px) {
+ .newsletter-intro { font-size: 16px; }
+ .prominent h2 { font-size: clamp(1.9rem, 6.5vw, 2.6rem); }
+ button { width: 100%; }
+}
+</style>
