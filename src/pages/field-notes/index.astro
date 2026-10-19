@@ -11,7 +11,7 @@ const recent = await getRecentWriting();
 <BaseLayout title={E.writing.pageTitle} description={E.writing.pageIntro}>
   <div class="wrap writing-page">
     <header><h1>{E.writing.pageHeading}</h1><p>{E.writing.pageIntro}</p></header>
-    <section aria-labelledby="recent-title"><div class="section-intro"><h2 id="recent-title">{E.writing.latest}</h2><p>{E.writing.latestIntro}</p></div><ReadingList items={recent} /></section>
+    <section aria-labelledby="recent-title"><div class="section-intro"><h2 id="recent-title">{E.writing.latest}</h2></div><ReadingList items={recent} /></section>
     <section class="earlier" aria-labelledby="earlier-title"><div class="section-intro"><h2 id="earlier-title">{E.writing.earlier}</h2><p>{E.writing.earlierIntro}</p></div><ReadingList items={earlier} /><a class="text-link archive-link" href="/archive/">{E.writing.archive}<Arrow /></a></section>
     <aside class="afterword"><h2>{E.writing.topics}</h2><p>{E.writing.afterword}</p></aside>
   </div>

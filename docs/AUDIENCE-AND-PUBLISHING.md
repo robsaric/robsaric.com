@@ -22,6 +22,14 @@ The second essay links to the official [Unplugged Canada website](https://www.un
 
 Use real artifacts when there is permission to show them. Keep client material anonymous unless approved. Parenting can inform the position without exposing the children.
 
+## Reading and returning
+
+Keep each essay focused on an observation, the complication it exposes, and what follows from it. The [But & Therefore rule](https://perell.com/note/but-therefore-rule/) is a useful editing test for cause and effect, not a sentence template. Preserve Rob's uncertainty and specific examples. Do not manufacture an anecdote or dispute to create an arc.
+
+Let the final sentence finish the essay. After a quiet divider, invite readers to follow the ongoing thinking on LinkedIn, then offer one relevant next article with a short reason. The selections live in `NEXT_READS` in `src/data/editorial.ts`. They resolve only against content available in the current build; a draft never becomes a production link. Leave the recommendation absent when there is no deliberate match. Add a reader question only where it is substantive and has a real reply path.
+
+Use diagrams, annotated sketches and actual artifacts when they make the idea easier to understand. Occasional AI-assisted editorial illustration is appropriate with a specific concept and deliberate art direction. Preserve provenance; never present a generated scene as evidence of a real family, customer or event. Short text-only essays remain a valid choice.
+
 ## A workable publishing rhythm
 
 Start with one substantial website note every two weeks and one or two LinkedIn posts each week. This is a proposed workload, not an algorithm claim. The website holds the fuller thinking; a LinkedIn post should contain a complete useful thought on its own.

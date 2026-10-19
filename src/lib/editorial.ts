@@ -1,5 +1,5 @@
 import { getCollection } from 'astro:content';
-import { EARLIER_WRITING } from '../data/editorial';
+import { EARLIER_WRITING, NEXT_READS } from '../data/editorial';
 import { getPublishedNotes, noteHref } from './notes';
 
 export interface ReadingItem {
@@ -21,4 +21,17 @@ export async function getRecentWriting(): Promise<ReadingItem[]> {
     title: entry.data.title, summary: entry.data.summary,
     href: noteHref(entry), date: entry.data.date, earlier: false,
   }));
+}
+
+export async function getNextRead(pathname: string): Promise<ReadingItem | undefined> {
+  const choices = NEXT_READS[pathname];
+  if (!choices) return;
+
+  // Resolve against the same visible collections as the index, so curated
+  // links never expose an unpublished essay in an ordinary production build.
+  const available = [...await getRecentWriting(), ...await getEarlierWriting()];
+  for (const choice of choices) {
+    const item = available.find(entry => entry.href === choice.href && entry.href !== pathname);
+    if (item) return { ...item, summary: choice.reason };
+  }
 }

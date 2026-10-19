@@ -6,4 +6,12 @@ const { diagonal = false } = Astro.props;
 <style>
 .arrow { flex: 0 0 auto; vertical-align: middle; transition: transform var(--dur-short) var(--ease-out); }
 .arrow--diagonal { transform: rotate(-45deg); }
+@media (prefers-reduced-motion: no-preference) {
+  :global(a:focus-visible) > .arrow { transform: translateX(3px); }
+  :global(a:focus-visible) > .arrow--diagonal { transform: translate(2px, -2px) rotate(-45deg); }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  :global(a:hover) > .arrow { transform: translateX(3px); }
+  :global(a:hover) > .arrow--diagonal { transform: translate(2px, -2px) rotate(-45deg); }
+}
 </style>

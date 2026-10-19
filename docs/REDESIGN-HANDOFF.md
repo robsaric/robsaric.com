@@ -1,10 +1,12 @@
 # Personal-site redesign handoff
 
-Prepared 2026-10-18 for Rob Saric. Repository: `robsaric/robsaric.com`. Branch: `codex/personal-site-redesign`. Base: `ca034cfd010467db249e072ecc9cda1a43e2166d`.
+Prepared 2026-10-18; refined 2026-10-19 for Rob Saric. Repository: `robsaric/robsaric.com`. Branch: `codex/personal-site-redesign`. Base: `ca034cfd010467db249e072ecc9cda1a43e2166d`.
 
 ## Result
 
-The site now leads with “I’m on the side of small teams.” Rob's perspective connects useful tools, building companies, design, and life beyond the screen. Togetheren is the intended home for SkillNav, visibly in development. Caretrics is one example of the work. LinkedIn is easy to find in the introduction, navigation, articles, and closing invitation.
+The site now leads with “The people doing the work know what needs fixing.” Rob approved this replacement opening on 2026-10-19, with “doing the work” in blue, one supporting paragraph, and no separate biography tier or portrait caption. Rob's perspective connects useful tools, building companies, design, and life beyond the screen. Togetheren is the intended home for SkillNav, visibly in development. Caretrics is one example of the work. LinkedIn is easy to find in the introduction, navigation, articles, and closing invitation.
+
+The October 19 refinement also names the current section “Latest writing,” removes its repeated introduction, aligns article endings with the prose, replaces the large follow panel with a quiet invitation, and selects one relevant next read with a reason. Articles without a deliberate match omit recommendations. Arrow feedback on hover and keyboard focus respects reduced motion; the existing working sketch remains the focal interaction. RSS now has a 44px-wide target. Social sharing uses the new opening too.
 
 The blue, paper, ink, and yellow system pairs self-hosted Manrope headlines with Inter prose. Existing solo photographs carry the personal identity. A three-step working sketch adds finite, purposeful motion; readers can use it by keyboard, with reduced motion, or without JavaScript. The writing index shows actual titles, summaries, and dates, including wider selections from the archive. Mobile keeps those selections visible.
 
@@ -34,6 +36,18 @@ Only explicit `editorial-review` mode includes these drafts, with a visible revi
 No dependencies, package version, lockfile, backend newsletter handler, tracking service, or legacy redirect mapping changed.
 
 ## Validation
+
+### October 19 refinement validation
+
+- Final `corepack pnpm@10.27.0 gate`: passed after the sharing-image update. Astro: zero errors; copy lint: zero errors and the same three existing taste warnings. Content: 11 notes. Redirects: 112 URLs with zero misses. Responsive gate: 77 checks across 11 routes and seven widths.
+- Explicit editorial-review build: passed. Visually inspected homepage and article endings at 1440, 900 and 390px, plus the mobile writing index and 1200x630 social image. Nine page/viewport probes passed: no overflow, one H1, images loaded, RSS targets 44x44px, and article endings aligned with prose within one pixel.
+- Browser interaction checks: 3px hover feedback, keyboard focus with a visible outline, stationary arrows under reduced motion, and all three sketch panels available without JavaScript. No loading sequence or new client script was introduced.
+- Generated-output check: all 49 production HTML pages and 51 review HTML pages inspected. Six production and eight review next-read links resolve, none point to themselves, production contains no links to the two draft essays, and both RSS feeds exclude drafts. Unselected articles omit the related section instead of showing an empty state or arbitrary fallback.
+- Share card regenerated and inspected. `git diff --check` passed. No content-entry, dependency or lockfile changes.
+- Evidence is local in `.impeccable/review/refinements/`. The Impeccable launcher remains unavailable; the checks above used the repository tools and rendered browser evidence.
+- Both requested pages were opened in the default browser. Review the opening, hover or tab through its reading link, then read to the post's final sentence and follow invitation. No deployment or public posting occurred.
+
+### Original redesign validation
 
 Node 22.18.0; pnpm 10.27.0. Dependencies installed with the frozen lockfile. In this sandbox, commands used the pinned `corepack pnpm@10.27.0` executable with automatic package-manager pinning disabled; plain `pnpm` otherwise attempted a registry lookup.
 

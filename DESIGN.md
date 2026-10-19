@@ -168,7 +168,7 @@ The functional `status-critical-text` color is reserved for the conditional news
 Both families are self-hosted through Astro's font build. Manrope supplies compact, geometric headings; Inter keeps paragraphs, controls, and dates quiet. The scale is role-based and fluid rather than a single mathematical ratio.
 
 ### Hierarchy
-- **Display:** the frontmatter's largest role is the home statement. Its short measure (12ch on desktop) creates an emphatic, readable composition; the blue emphasis occupies its own line.
+- **Display:** the longer home statement uses `clamp(3rem, 5.2vw, 4.5rem)` within an 18ch measure and a 1.08 line height. Mobile uses `clamp(2.5rem, 9.8vw, 4.5rem)`. The blue phrase stays inline so the sentence wraps naturally. One lead paragraph supports it; there is no separate biography tier or portrait caption.
 - **Headline:** recurring section headings use the fluid headline role. Balancing is applied to headings, with reading-section headings allowed to wrap naturally.
 - **Title:** writing-list titles use the title role; compact entries use a slightly smaller size (24px), then (23px) on mobile.
 - **Article title:** the separate article-title role fits long titles without forcing the home's short measure. Mobile articles use `clamp(2.1rem, 7.7vw, 3rem)`.
@@ -191,7 +191,7 @@ Mobile stacks the source reading order into one column. Main sections commonly u
 
 Writing rows have a date column (154px), a gap (32px), and a flexible text column. Compact and mobile rows place the date above the title. They retain rules and generous vertical breathing room rather than turning into tiles.
 
-The article shell narrows to (1040px), with an author column (160px), a gap (64px), and a reading column capped at (720px). At (1023px) and below the author rail disappears and the reading column centers. The article follow invitation and related reading remain in the document flow.
+The article shell narrows to (1040px), with an author column (160px), a gap (64px), and a reading column capped at (720px). The ending shares this grid, keeping its divider, follow invitation and single next read aligned with the prose. At (1023px) and below the author rail disappears and both the prose and ending center.
 
 **The Open Structure Rule.** Use aligned text and thin rules for repeated writing and project entries. Reserve sky panels for a deliberately featured idea or invitation.
 
@@ -218,7 +218,7 @@ Rules are a single thin stroke (1px). Link arrows are inline SVG strokes, with a
 
 Direct and easy to identify. The primary action uses blue with white text, a medium corner, an internal gap (14px), and a minimum height (52px). Its hover deepens the blue over (180ms). Keyboard focus uses the shared visible outline (2px), offset (2px).
 
-The lighter text action is an inline link with a minimum target height (44px), a gap (12px), and an underline on hover, offset (5px). The inline SVG arrow can point forward or diagonally. Preserve both treatments; the outline action class retained in the stylesheet is not an observed public-page primitive.
+The lighter text action is an inline link with a minimum target height (44px), a gap (12px), and an underline on hover, offset (5px). The inline SVG arrow can point forward or diagonally. On hover-capable devices it moves 2–3px in its direction over 200ms with the existing ease-out curve. Keyboard focus gets the same feedback; reduced motion keeps its position fixed. Primary-action focus also deepens the background while retaining the visible outline. Footer navigation links have a minimum width as well as height of 44px. The outline action class retained in the stylesheet is not an observed public-page primitive.
 
 ### Navigation
 
@@ -246,7 +246,7 @@ Without JavaScript, all process text remains visible in order and inactive contr
 
 ### Follow invitation and conditional email field
 
-The follow invitation uses a sky section or panel, an explicit primary link, and a quieter contact link. A newsletter field renders only when its endpoint is configured.
+The standalone follow invitation uses a sky section, an explicit primary link, and a quieter contact link. A newsletter field renders only when its endpoint is configured. Within articles, the invitation stays on paper after a thin divider: a 24px heading (23px on mobile), short supporting text, and a LinkedIn text link. One curated next read follows when selected; there is no generic recommendation fallback.
 
 The email field is white with an ink-muted border, a medium corner, a visible label, and a height (52px). It receives the common blue focus outline. Invalid state uses the functional red border plus a readable status message; the status region reserves height (20px). A submitting button becomes disabled with opacity (0.7) and a wait cursor. The design specimen does not submit to a service.
 

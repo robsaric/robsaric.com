@@ -1,12 +1,11 @@
 /** Approved personal positioning. Article bodies remain in their content collections. */
 export const EDITORIAL = {
   hero: {
-    heading: "I’m on the side of",
-    emphasis: 'small teams.',
-    lead: 'The people doing the work usually know what needs fixing. I build tools that help them do something about it.',
-    intro: 'I’m Rob Saric, a founder in Ottawa. I write about building companies, designing useful tools, and the parts of life we shouldn’t hand over to a screen.',
+    heading: 'The people',
+    emphasis: 'doing the work',
+    ending: 'know what needs fixing.',
+    lead: 'Small teams need tools that help them act on what they know. That’s what I build. But useful technology should also leave room for life, so I write about both: making better tools and knowing when to close the laptop.',
     portraitAlt: 'Rob Saric in a blue blazer',
-    caption: 'Rob Saric · Ottawa, Canada',
     read: 'Read my writing',
     follow: 'Find me on LinkedIn',
   },
@@ -16,8 +15,7 @@ export const EDITORIAL = {
     pageTitle: 'Writing',
     pageHeading: 'Thinking out loud.',
     pageIntro: 'Building companies has given me plenty to write about. So has being a parent, paying attention to design, and wondering what all this technology is doing to us.',
-    latest: 'Recent field notes',
-    latestIntro: 'Small-team tools, attention, and the things I’m learning while building. Each piece starts with a question I care about.',
+    latest: 'Latest writing',
     earlier: 'Earlier writing',
     earlierIntro: 'A few pieces from the archive. Kept as written, with their original dates. I don’t expect every opinion to age perfectly.',
     all: 'All writing',
@@ -96,9 +94,9 @@ export const EDITORIAL = {
     newsletterBody: 'Leave your email for new writing from me.',
   },
   article: {
-    heading: 'More to think about.',
-    followHeading: 'Keep thinking with me.',
-    followBody: 'I share what I’m building and learning on LinkedIn. I’d like to hear what you’re seeing, too.',
+    heading: 'Read next',
+    followHeading: 'More on small teams and useful technology.',
+    followBody: 'I share new writing and what I’m learning as I build on LinkedIn.',
     authorDetail: 'Founder, dad, champion of small teams.',
   },
   contact: {
@@ -119,3 +117,37 @@ export const EARLIER_WRITING = [
   { id: 'treat-contractors-well', summary: 'What client projects taught me about trust and treating contractors as part of the team.' },
   { id: 'great-systems-need-to-create-flow', summary: 'A design question I keep coming back to: how do people find their rhythm in a system?' },
 ] as const;
+
+// Ordered editorial choices. Later choices are used only when an earlier one
+// is unavailable in this build, including when the chosen essay is a draft.
+export const NEXT_READS: Record<string, readonly { href: string; reason: string }[]> = {
+  '/field-notes/2026-10-18-small-teams-deserve-their-time-back/': [
+    { href: '/field-notes/2026-10-18-building-with-ai-and-life-beyond-the-feed/', reason: 'Why giving people time back matters beyond the workday.' },
+    { href: '/archive/treat-contractors-well/', reason: 'Clear handoffs start with how we treat the people doing the work.' },
+  ],
+  '/field-notes/2026-10-18-building-with-ai-and-life-beyond-the-feed/': [
+    { href: '/field-notes/2026-10-18-small-teams-deserve-their-time-back/', reason: 'The same question at work: does the tool give a team its time back?' },
+    { href: '/archive/great-systems-need-to-create-flow/', reason: 'An earlier look at designing for flow, and what makes an experience worth having.' },
+  ],
+  '/field-notes/2026-08-18-unbooked-at-the-desk/': [
+    { href: '/field-notes/2026-08-19-i-took-my-own-number-down/', reason: 'How I decide which numbers belong in public.' },
+  ],
+  '/field-notes/2026-08-19-i-took-my-own-number-down/': [
+    { href: '/field-notes/2026-08-19-i-only-checked-the-widths-i-designed-for/', reason: 'What a number leaves out matters as much as what it shows.' },
+  ],
+  '/field-notes/2026-08-19-i-only-checked-the-widths-i-designed-for/': [
+    { href: '/field-notes/2026-08-18-unbooked-at-the-desk/', reason: 'A concrete example of the work a clean report can miss.' },
+  ],
+  '/archive/building-a-startup-requires-self-awareness/': [
+    { href: '/field-notes/2026-10-18-small-teams-deserve-their-time-back/', reason: 'What I want to build next, and the test it has to pass.' },
+    { href: '/archive/treat-contractors-well/', reason: 'How the way you work with others shapes what you build.' },
+  ],
+  '/archive/treat-contractors-well/': [
+    { href: '/field-notes/2026-10-18-small-teams-deserve-their-time-back/', reason: 'Taking everyday team problems seriously, starting with the handoff.' },
+    { href: '/archive/great-systems-need-to-create-flow/', reason: 'Designing systems around the people who use them.' },
+  ],
+  '/archive/great-systems-need-to-create-flow/': [
+    { href: '/field-notes/2026-10-18-building-with-ai-and-life-beyond-the-feed/', reason: 'A question I’m asking now: when should a useful product let us leave?' },
+    { href: '/archive/building-a-startup-requires-self-awareness/', reason: 'Looking more closely at our own limits as builders.' },
+  ],
+};
