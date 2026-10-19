@@ -61,3 +61,9 @@ The existing conditional signup follows the writing selections. Label it “Get 
 ## October 19 push preparation
 
 Rob asked to choose between “Work is complicated enough” and “Work is hard enough” and authorized pushing the changes. Use “Work is hard enough. The tools should help.” for the more direct, human opening, keeping the visual treatment and supporting copy. Match the page title and sharing image to it. Push the redesign branch for review; preserve both essays as drafts and the conditional newsletter behavior.
+
+## October 19 final accents and small-team essay
+
+Rob asked for modest additional flair and a meaningful rewrite of the small-team note, using cause and effect rather than a list of assertions. Preserve the existing homepage and building page. Add one static yellow drawn underline below “help.” and reuse it in an original, text-first essay sketch. Keep the existing finite link feedback and reduced-motion behavior.
+
+The rewritten draft is “Small teams still have to answer the phone.” A clearly hypothetical studio case connects a stale date, a customer complaint and an inadequate automated summary to a concrete decision about ownership. AWS supplies the cited two-pizza ownership context; Daniel Bentes is credited as the reading prompt. His anecdotes, statistics and infographic are not reproduced. The URL and original date remain stable, an updated date is added, and the note stays draft.

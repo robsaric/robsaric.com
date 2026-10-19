@@ -46,20 +46,17 @@ Give the companies a mention only when the work helps explain the idea. SkillNav
 
 ### Small teams
 
-A small team shouldn’t need a department for everything.
+AI can help a small team launch something it couldn’t have afforded to build before. But once a customer depends on it, somebody still has to answer the phone.
 
-Take a client handoff. What was promised? What has already been decided? What is still missing? Who needs to do something next?
+A working demo can win the sale. It cannot tell you who will maintain the service, answer the awkward questions or cover when the person who built it takes a day off.
 
-Those are ordinary questions. I want to build tools that help a team answer them from its own material, show where the answer came from, and make it possible to correct.
+I want more people to have the chance to build a business. That is why AI interests me. It gives people with useful knowledge another way to put it to work.
 
-That is the starting point for SkillNav, which I’m developing as part of the direction for Togetheren.
+But every saved hour does not have to become another commitment. It could go toward fixing the recurring problem or making the existing service dependable enough to take a day off.
 
-It is early. The useful test will be whether somebody’s day gets better: less explaining the same thing again, a clearer handoff, fewer things falling between people.
+Before saying yes to the next project, ask who will look after it once a customer depends on it, and what they will stop doing to make room.
 
-I’m excited by what AI makes possible. I’m more interested in whether the result is worth having.
-
-The team should get its time back.
-
+Leave room to keep your promises.
 ### Analog life
 
 I want my analog life back.

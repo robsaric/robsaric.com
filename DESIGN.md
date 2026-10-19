@@ -366,6 +366,12 @@ The reusable standalone follow invitation on other routes retains its cool sky s
 
 The email field is white with an ink-muted border, a medium corner, a visible label, and a height (52px). It receives the common blue focus outline. Invalid state uses the functional red border plus a readable status message; the status region reserves height (20px). A submitting button becomes disabled with opacity (0.7) and a wait cursor. The design specimen does not submit to a service.
 
+### Drawn editorial accent and article sketch
+
+The homepage places a static yellow double stroke beneath “help.” using the shared `ink-underline` class. Its two SVG curves use the yellow token as a mask, sit below the lettering and do not change the text color, layout or interaction. This is a small editorial mark, not an entrance animation.
+
+The small-team essay includes a semantic `figure` comparing a prototype with the commitment to look after it. Two open text columns are joined by a blue drawn arrow; below 600px they stack and the arrow points down. Thin top and bottom rules separate the sketch from prose. A 14px caption keeps the example legible, and the diagram remains ordinary selectable text without JavaScript. It contains no measured outcome.
+
 ### Article body
 
 The continuous reading surface remains paper with ink text. Links stay visibly underlined. Quotations use a blue left rule, open space, and Manrope. Related writing reuses the same reading-entry component. Existing code blocks and archival images retain their local prose styles; they do not establish a new card family.

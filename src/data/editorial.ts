@@ -3,7 +3,8 @@ export const EDITORIAL = {
   hero: {
     identity: 'Founder · Writer · Ottawa',
     heading: 'Work is hard enough.',
-    emphasis: 'The tools should help.',
+    emphasis: 'The tools should',
+    markedWord: 'help.',
     lead: 'I build software for small teams and write about better work, useful AI, and what’s worth keeping human.',
     promise: 'The goal isn’t to fit more work into life. It’s to make more room for life outside it.',
     portraitAlt: 'Rob Saric in a blue blazer',
@@ -165,7 +166,7 @@ export const NEXT_READS: Record<string, readonly { href: string; reason: string 
     { href: '/archive/treat-contractors-well/', reason: 'Clear handoffs start with how we treat the people doing the work.' },
   ],
   '/field-notes/2026-10-18-building-with-ai-and-life-beyond-the-feed/': [
-    { href: '/field-notes/2026-10-18-small-teams-deserve-their-time-back/', reason: 'The same question at work: does the tool give a team its time back?' },
+    { href: '/field-notes/2026-10-18-small-teams-deserve-their-time-back/', reason: 'What happens when a prototype becomes a promise to a customer.' },
     { href: '/archive/great-systems-need-to-create-flow/', reason: 'An earlier look at designing for flow, and what makes an experience worth having.' },
   ],
   '/field-notes/2026-08-18-unbooked-at-the-desk/': [
@@ -182,7 +183,7 @@ export const NEXT_READS: Record<string, readonly { href: string; reason: string 
     { href: '/archive/treat-contractors-well/', reason: 'How the way you work with others shapes what you build.' },
   ],
   '/archive/treat-contractors-well/': [
-    { href: '/field-notes/2026-10-18-small-teams-deserve-their-time-back/', reason: 'Taking everyday team problems seriously, starting with the handoff.' },
+    { href: '/field-notes/2026-10-18-small-teams-deserve-their-time-back/', reason: 'Why a clear handoff matters after the customer says yes.' },
     { href: '/archive/great-systems-need-to-create-flow/', reason: 'Designing systems around the people who use them.' },
   ],
   '/archive/great-systems-need-to-create-flow/': [

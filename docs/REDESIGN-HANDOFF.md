@@ -37,6 +37,14 @@ No dependencies, package version, lockfile, backend newsletter handler, tracking
 
 ## Validation
 
+### October 19 editorial accents and small-team rewrite
+
+- Added a static yellow drawn underline beneath the homepage’s “help.” and reused it in an original, text-first article sketch. The existing layout, dark headline, portrait and finite arrow feedback remain. The sketch stacks on mobile and has no JavaScript or external asset requirement.
+- Rewrote the small-team draft as “Small teams still have to answer the phone.” Its clearly hypothetical studio story moves through a changed date, a customer complaint, an inadequate automated summary and a concrete ownership decision. The AWS two-pizza source is linked; Daniel Bentes is credited as the prompt. His infographic, statistics and executive anecdotes are not reused.
+- Updated the summary, revision date, related-reading reasons, draft share card and unsent LinkedIn draft. Kept the canonical URL, original date and draft flag. SkillNav remains explicitly in development. The Building page, published articles, newsletter provider and dependencies are unchanged.
+- Independent copy review passed after correcting a causal gap and removing internal planning language. Browser review covered homepage and essay at 1440, 900 and 390px, including the diagram and share image. No overflow, missing images or heading problems; article ending aligns with prose. Keyboard focus, reduced motion and no-JavaScript reading passed. Evidence: `.impeccable/review/small-team/`.
+- Final ordinary `corepack pnpm@10.27.0 gate` passed: 112 redirects, 11 notes and 84 layout checks. Existing Astro hints and three copy taste warnings remain. Generated-output checks passed across 50 production and 52 review HTML pages; both drafts stay excluded from production routes, links, RSS and sitemap, and review remains noindexed.
+- Opened the updated homepage and essay in the default browser. Update the existing redesign PR under the prior push authorization; no merge, production publication or subscriber write is included.
 ### October 19 final headline and push preparation
 
 - Chose “Work is hard enough. The tools should help.” after Rob asked for the stronger wording and authorized pushing. Updated the homepage, page title, share-card text/alt, generated site card and current documentation together.
