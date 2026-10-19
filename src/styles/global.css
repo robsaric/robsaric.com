@@ -1,5 +1,20 @@
 @import './tokens.css';
 
+::selection { background: var(--yellow); color: var(--ink); }
+html { scrollbar-color: var(--ink-muted) var(--paper); }
+input, textarea { caret-color: var(--blue); }
+[hidden] { display: none !important; }
+h1, h2, h3 { font-family: var(--font-display); letter-spacing: -.035em; line-height: 1.12; text-wrap: balance; }
+p { text-wrap: pretty; }
+.wrap { width: 100%; max-width: var(--max-page); padding-inline: var(--gutter-desktop); margin-inline: auto; }
+.text-link { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; font-weight: 600; text-decoration: none; }
+.text-link:hover { text-decoration: underline; text-underline-offset: 5px; }
+.action { display: inline-flex; justify-content: center; align-items: center; gap: 14px; min-height: 52px; padding: 14px 23px; border: 1px solid var(--blue); border-radius: 6px; background: var(--blue); color: var(--white); text-decoration: none; font-size: 15px; font-weight: 600; transition: background 180ms; }
+.action:hover { color: var(--white); background: var(--blue-deep); }
+.action--outline { color: var(--blue); background: transparent; }
+.action--outline:hover { color: var(--blue); background: var(--sky); }
+.section-title { margin: 0; font-size: var(--text-h2); }
+
 *,
 *::before,
 *::after {

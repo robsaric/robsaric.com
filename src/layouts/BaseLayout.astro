@@ -5,6 +5,7 @@ import Footer from '../components/Footer.astro';
 import { SITE } from '../data/site';
 import { UI } from '../data/ui';
 import { clampDescription } from '../lib/seo';
+import { isEditorialReview } from '../lib/notes';
 import '../styles/global.css';
 
 interface Props {
@@ -63,7 +64,7 @@ const serializedJsonLd = jsonLd
       title={`${SITE.name}${UI.meta.titleSeparator}${UI.nav.fieldNotes}`}
       href="/rss.xml"
     />
-    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {(noindex || isEditorialReview) && <meta name="robots" content="noindex, nofollow" />}
     <meta property="og:type" content={pageType} />
     <meta property="og:locale" content="en_CA" />
     <meta property="og:site_name" content={SITE.name} />
@@ -97,13 +98,14 @@ const serializedJsonLd = jsonLd
     <meta name="twitter:description" content={metaDescription} />
     <meta name="twitter:image" content={ogImageUrl.href} />
     <Font cssVariable="--font-inter" preload />
-    <Font cssVariable="--font-instrument-serif" />
+    <Font cssVariable="--font-manrope" preload />
     {jsonLd && (
       <script type="application/ld+json" set:html={serializedJsonLd}></script>
     )}
   </head>
   <body>
     <a class="skip-link" href="#main">{UI.skipLink}</a>
+    {isEditorialReview && <p class="review-notice">{UI.editorialReview}</p>}
     <Nav />
     <main id="main">
       <slot />
@@ -113,6 +115,7 @@ const serializedJsonLd = jsonLd
 </html>
 
 <style>
+  .review-notice { margin: 0; padding: 12px 24px; text-align: center; background: var(--yellow); color: var(--ink); font-size: 13px; line-height: 1.5; }
   .skip-link {
     position: fixed;
     z-index: 100;

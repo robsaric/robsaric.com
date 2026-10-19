@@ -1,0 +1,35 @@
+---
+import Arrow from './Arrow.astro';
+import { EDITORIAL as E } from '../data/editorial';
+import { formatNoteDate } from '../lib/notes';
+import type { ReadingItem } from '../lib/editorial';
+interface Props { items: ReadingItem[]; compact?: boolean; }
+const { items, compact = false } = Astro.props;
+---
+<ol class:list={['reading-list', { compact }]}>
+  {items.map(item => <li>
+    <div class="reading-date"><time datetime={item.date.toISOString()}>{formatNoteDate(item.date)}</time>{item.earlier && <span>{E.writing.earlier}</span>}</div>
+    <div class="reading-copy"><h3><a href={item.href}>{item.title}<Arrow diagonal /></a></h3><p>{item.summary}</p></div>
+  </li>)}
+</ol>
+<style>
+.reading-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+li { display: grid; grid-template-columns: 154px minmax(0,1fr); gap: 32px; border-bottom: 1px solid var(--rule); padding: 30px 0; }
+.reading-date { padding-top: 7px; color: var(--ink-muted); font-size: 13px; display: flex; flex-direction: column; gap: 6px; font-variant-numeric: tabular-nums; }
+.reading-date span { font-size: 12px; }
+h3 { margin: 0; font-size: 27px; }
+h3 a { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; color: var(--ink); text-decoration: none; line-height: 1.25; min-height: 44px; }
+h3 a:hover { color: var(--blue); }
+h3 :global(.arrow) { margin-top: 6px; color: var(--blue); }
+p { margin: 10px 0 0; max-width: 68ch; font-size: 16px; line-height: 1.65; color: var(--ink-muted); }
+.compact li { grid-template-columns: minmax(0,1fr); gap: 12px; padding: 26px 0; }
+.compact .reading-date { flex-direction: row; gap: 14px; padding: 0; }
+.compact h3 { font-size: 24px; }
+@media (max-width: 767.98px) {
+ li { grid-template-columns: minmax(0,1fr); gap: 12px; padding: 26px 0; }
+ .reading-date { flex-direction: row; gap: 14px; padding: 0; }
+ h3, .compact h3 { font-size: 23px; }
+ h3 a { gap: 16px; }
+ p { font-size: 16px; }
+}
+</style>

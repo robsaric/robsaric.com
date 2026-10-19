@@ -4,9 +4,9 @@ Rules for any agent working in this repo (Claude Code, Codex, or a person). `CLA
 
 ## What this is
 
-Rob Saric's personal site and field-notes blog, rebuilt on Astro from the 2009 to 2019 WordPress site. Design source: `docs/design-reference/site-directions-turn8.dc.html` (desktop 8a at 1440, mobile 8b at 390). Structural transcription: `docs/DESIGN-SPEC.md`. Every word: `docs/COPY.md`. Legacy URLs and redirects: `docs/MIGRATION.md`.
+Rob Saric's personal site and writing, rebuilt on Astro from the 2009 to 2019 WordPress site. Current product authority: `PRODUCT.md`. Current visual authority: `DESIGN.md` and `src/styles/tokens.css`, following the user-approved 2026-10-18 direction in `docs/personal-site-direction.md`. The old artboards and `docs/DESIGN-SPEC.md` remain historical references, not the current layout contract. Current personal-site copy lives in `src/data/editorial.ts`; `docs/COPY.md` retains the copy law and verified historical facts. Legacy URLs and redirects: `docs/MIGRATION.md`.
 
-Roles on this project: **Claude (Fable) orchestrates and reviews; Codex builds.** Codex runs read-only on this machine and emits complete files as `===FILE=== <path>` … `===END===` blocks; Claude applies them, runs the gates, and resumes the Codex thread with results. Nobody pushes to a remote without Rob.
+Roles on this project: **Claude (Fable) orchestrates and reviews; Codex builds.** The usual read-only handoff uses complete `===FILE=== <path>` … `===END===` blocks for Claude to apply. For the 2026-10-18 redesign, Rob explicitly authorized Codex to build and validate in an isolated checkout; that authorization does not permit publishing. Nobody pushes to a remote or deploys without Rob's explicit approval.
 
 Codex also reviews copy. Every field note goes through it before shipping (`rs-note` step 8, prompt in `.claude/skills/rs-note/codex-review.md`), read-only, latest model, fast tier:
 
@@ -21,8 +21,8 @@ It checks the note against copy law, the identified-is-not-collected boundary, t
 
 - Astro 7 (static output, Vercel adapter, `trailingSlash: 'always'`), TypeScript strict, pnpm, Node 22.
 - Content collections (`src/content.config.ts`): `notes` (field notes) and `archive` (legacy posts). Section data in `src/data/*.ts`. Site config in `src/data/site.ts`.
-- Plain CSS with custom properties (`src/styles/tokens.css`, `src/styles/global.css`) and Astro scoped styles. No Tailwind, no UI library, no icon library (inline SVG), no client framework. Vanilla `<script>` for the four interactive bits (nav toggle, evidence stepper, stage disclosure, note filters, newsletter validation).
-- Fonts through Astro's Fonts API (self-hosted at build): `--font-inter`, `--font-serif`. Mono is the system stack.
+- Plain CSS with custom properties (`src/styles/tokens.css`, `src/styles/global.css`) and Astro scoped styles. No Tailwind, UI library, icon library, or client framework. Inline SVG and small vanilla scripts handle the menu, working sketch, and optional newsletter validation; legacy components remain for retained routes.
+- Fonts through Astro's Fonts API (self-hosted at build): Inter (`--font-inter`) and Manrope (`--font-manrope`). The display token is `--font-display`; the old serif token is a compatibility alias. Mono is the system stack.
 - Images through `astro:assets` `<Image>` from `src/assets/images/`.
 
 ## Commands
@@ -45,8 +45,8 @@ Never run `pnpm build | tail`; piping hides the exit code. Run the command bare.
 
 1. **Copy law is a gate.** `docs/COPY.md` "Copy law" applies to every string in components, pages, data, content, and meta. No em dashes. No chatbot tone. No hype adjectives or empty verbs. `pnpm lint:copy` must exit 0. Copy lives in `docs/COPY.md`, `src/data/*.ts` (`.mjs` when a Node script must import it, like `og-card.mjs`), or a content entry, never inline in a component or a script (structural strings like "Skip to content" go in `src/data/site.ts` or a `ui.ts`).
 2. **The credential is locked.** Short form `50+ clinics, firsthand`. Never "advised", "audited", "by hand", "ex-DSO", "the books". Long forms in `docs/COPY.md` item 7.
-3. **Do not invent facts.** Now items, notes, numbers, biography lines marked `[VERIFY]` or `[DRAFT]` stay flagged. Drafts carry `draft: true` and are hidden in production (`SHOW_DRAFTS` in `src/data/now.ts`; collections filter `data.draft` unless `import.meta.env.DEV`).
-4. **Layout follows the artboard.** Desktop 8a and mobile 8b are both first-class; mobile is "edited, not stacked" (some elements are dropped or shortened on mobile, per `docs/DESIGN-SPEC.md`). Between them, 768 to 1150 runs the desktop layout with its two-column blocks stacked and its page chrome reduced; it drops nothing. There is no artboard for that range and it does not get its own design. Tokens only; no new colours, radii, or fonts. Lime is never text on a light background.
+3. **Do not invent facts.** Now items, notes, numbers, biography lines marked `[VERIFY]` or `[DRAFT]` stay flagged. Drafts carry `draft: true` and are hidden in ordinary production. Development shows drafts. Explicit `editorial-review` mode includes only the two proposed October 18 essays, carries a preview notice and noindex, and writes to a separate output directory (see README). RSS excludes drafts in every mode. SkillNav remains in development; Togetheren is its intended home. Do not invent outcomes or affiliations, or expose the children's private experiences.
+4. **Layout follows the current design system.** Read `DESIGN.md` and the direction contract. Desktop, intermediate widths, and mobile are first-class. Preserve readable writing selections on mobile and the same perspective-before-projects sequence. Use the current tokens; do not restore the superseded green/lime artboard or clinic-only framing. Yellow is an accent or background, never low-contrast text on paper.
 5. **Accessibility is not optional.** One `<h1>` per page. Focus visible everywhere. 44px minimum targets on mobile. Buttons for actions, links for navigation, `aria-pressed`/`aria-expanded` where the spec says. `prefers-reduced-motion` respected. Everything works without JS in a degraded but usable state.
 6. **Legacy URLs are permanent.** `src/data/legacy-redirects.mjs` is append-only. Archive posts are kept as written (their content is exempt from the copy lint by path).
 7. **No secrets, no third-party runtime requests** beyond the newsletter endpoint (env `PUBLIC_NEWSLETTER_ENDPOINT`). No analytics until Rob chooses one.
@@ -56,23 +56,23 @@ Never run `pnpm build | tail`; piping hides the exit code. Run the command bare.
 
 ```
 src/
-  assets/images/        rob-portrait-caretrics.png (hero) rob-portrait.jpg rob-hero.jpg rob-family.png rob-avatar.png rob-sketch.png rob-signature.png
-  components/           Nav, Hero, NowStrip, Evidence, OperatorProof, Stages, Principles, FieldNotes, NoteCard, About, WriteToMe, Footer, Button, Eyebrow, SectionLabel, Seo
+  assets/images/        rob-portrait.jpg (hero) rob-hiking.jpg; legacy assets retained
+  components/           Nav, Footer, Arrow, ReadingList, WorkingSketch, Connect; legacy components retained
   layouts/              BaseLayout.astro (head, skip link, nav, footer), ArticleLayout.astro
   pages/                index, field-notes/{index,[slug]}, principles, about, how-i-counted, archive/{index,[slug]}, contact, 404, rss.xml.ts
   content/notes/        field notes (md/mdx)
   content/archive/      imported legacy posts
-  data/                 site.ts evidence-steps.ts stages.ts principles.ts filters.ts now.ts legacy-redirects.mjs og-card.mjs
-  styles/               tokens.css global.css
+  data/                 editorial.ts ui.ts site.ts evidence-steps.ts stages.ts principles.ts filters.ts now.ts legacy-redirects.mjs og-card.mjs
+  styles/               tokens.css global.css prose.css
 scripts/                lint-copy.mjs import-legacy.mjs check-redirects.mjs check-notes.mjs check-layout.mjs generate-og.mjs og-card-template.mjs lib/{chrome,frontmatter}.mjs
-docs/                   DESIGN-SPEC.md COPY.md MIGRATION.md design-reference/
+docs/                   personal-site-direction.md AUDIENCE-AND-PUBLISHING.md REDESIGN-HANDOFF.md COPY.md MIGRATION.md; historical design references
 ```
 
 ## Review checklist (before any commit)
 
 - `pnpm gate` exits 0.
-- Screenshots at 1440 and 390 match the artboard section by section (order, backgrounds, spacing rhythm, type sizes, what is dropped on mobile).
-- Look at 900 too. 1440 and 390 are the artboards, and for a while they were also the only two widths anything was checked at, which is exactly why 768 to 1150 shipped broken. `pnpm check:layout` now fails on overflow, but it cannot tell you the mid range looks right.
+- Inspect screenshots at 1440 and 390 against the current direction contract: hierarchy, backgrounds, spacing, readable titles, and complete writing selections.
+- Inspect 900 too. Earlier work checked only the outer widths, and 768 to 1150 shipped broken. `pnpm check:layout` fails on overflow but cannot judge intermediate composition.
 - Keyboard pass: tab through the whole homepage; every control reachable and visibly focused; Escape closes the mobile menu.
 - No horizontal scroll at any width (`pnpm check:layout` covers 320, 390, 768, 900, 1024, 1280, 1440).
-- `pnpm lint:copy` clean; then read the copy once more as a clinic owner would.
+- `pnpm lint:copy` exits 0; then read the copy as a small-business owner or builder encountering Rob for the first time. Preserve the exact qualifications when an article discusses clinic results.

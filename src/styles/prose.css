@@ -3,7 +3,8 @@
   max-width: 68ch;
   color: var(--ink);
   font-size: 18px;
-  line-height: 1.6;
+  line-height: 1.75;
+  overflow-wrap: break-word;
 }
 
 .prose > :first-child { margin-top: 0; }
@@ -42,9 +43,9 @@
   padding-left: 20px;
   font-family: var(--font-serif);
   font-size: 24px;
-  font-style: italic;
+  font-style: normal;
   line-height: 1.4;
-  border-left: 3px solid var(--forest-500);
+  border-left: 1px solid var(--blue);
 }
 
 .prose blockquote > :last-child { margin-bottom: 0; }

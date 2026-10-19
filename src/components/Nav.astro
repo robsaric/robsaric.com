@@ -1,299 +1,67 @@
 ---
-import { Image } from 'astro:assets';
-import Button from './Button.astro';
-import avatar from '../assets/images/rob-avatar.png';
 import { SITE } from '../data/site';
 import { UI } from '../data/ui';
-
+import { EDITORIAL } from '../data/editorial';
+import Arrow from './Arrow.astro';
 const links = [
   { label: UI.nav.fieldNotes, href: '/field-notes/' },
   { label: UI.nav.about, href: '/about/' },
-  { label: UI.nav.writeToMe, href: '/contact/' },
+  { label: UI.nav.work, href: '/#work' },
 ];
-
-/* Section-level wayfinding: a link is current on its own page and anywhere
-   inside its section (/field-notes/ covers every note). Nothing matches on
-   the homepage, which is correct: home is the wordmark. */
-const path = Astro.url.pathname;
-const isCurrent = (href: string) => path === href || path.startsWith(href);
+const current = (href: string) => Astro.url.pathname.startsWith(href);
 ---
-
 <header class="site-nav">
   <div class="site-nav__inner">
-    <a class="site-nav__wordmark" href="/" aria-label={UI.nav.wordmarkLabel}>
-      <Image
-        class="site-nav__mark"
-        src={avatar}
-        alt={UI.nav.markAlt}
-        width={28}
-        height={28}
-        densities={[1, 2]}
-        loading="eager"
-      />
-      <span>{SITE.name}</span>
-    </a>
-
-    <nav class="site-nav__desktop" aria-label={UI.nav.primaryLabel}>
-      {links.map((link) => (
-        <a
-          class="site-nav__link"
-          href={link.href}
-          aria-current={isCurrent(link.href) ? 'page' : undefined}
-        >{link.label}</a>
-      ))}
-      <Button href={SITE.caretricsUrl} icon="arrow-up-right" external>
-        {UI.nav.caretrics}
-      </Button>
+    <a class="wordmark" href="/" aria-label={UI.nav.wordmarkLabel}>{SITE.name}<span aria-hidden="true">.</span></a>
+    <nav class="desktop-nav" aria-label={UI.nav.primaryLabel}>
+      {links.map(link => <a href={link.href} aria-current={current(link.href) ? 'page' : undefined}>{link.label}</a>)}
+      <a class="nav-follow" href={SITE.links.linkedin} target="_blank" rel="noopener">{EDITORIAL.connect.follow}<Arrow diagonal /></a>
     </nav>
-
-    <div class="site-nav__mobile">
-      <Button href={SITE.caretricsUrl} external>{UI.nav.caretrics}</Button>
-      <details class="site-nav__menu" data-nav-menu>
-        <summary
-          aria-label={UI.nav.openMenu}
-          aria-expanded="false"
-          aria-controls="mobile-menu"
-          data-open-label={UI.nav.openMenu}
-          data-close-label={UI.nav.closeMenu}
-        >
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path class="site-nav__menu-line site-nav__menu-line--top" d="M4 7h16" />
-            <path class="site-nav__menu-line site-nav__menu-line--mid" d="M4 12h16" />
-            <path class="site-nav__menu-line site-nav__menu-line--low" d="M4 17h16" />
-          </svg>
-        </summary>
-        <nav id="mobile-menu" class="site-nav__panel" aria-label={UI.nav.primaryLabel}>
-          {links.map((link) => (
-            <a
-              class="site-nav__link"
-              href={link.href}
-              aria-current={isCurrent(link.href) ? 'page' : undefined}
-            >{link.label}</a>
-          ))}
-        </nav>
-      </details>
-    </div>
+    <details class="mobile-menu" data-nav-menu>
+      <summary aria-controls="mobile-menu" data-open-label={UI.nav.openMenu} data-close-label={UI.nav.closeMenu} aria-label={UI.nav.openMenu}>
+        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8h18M3 16h18" stroke="currentColor" stroke-width="1.7" /></svg>
+      </summary>
+      <nav id="mobile-menu" aria-label={UI.nav.primaryLabel}>
+        {links.map(link => <a href={link.href} aria-current={current(link.href) ? 'page' : undefined}>{link.label}</a>)}
+        <a href={SITE.links.linkedin} target="_blank" rel="noopener">{EDITORIAL.connect.follow}<Arrow diagonal /></a>
+        <a href="/contact/">{UI.nav.writeToMe}</a>
+      </nav>
+    </details>
   </div>
 </header>
-
 <script>
-  const navMenus = document.querySelectorAll<HTMLDetailsElement>('[data-nav-menu]');
-
-  navMenus.forEach((menu) => {
-    if (menu.dataset.ready === 'true') return;
-    menu.dataset.ready = 'true';
-
-    const summary = menu.querySelector<HTMLElement>('summary');
-    const links = menu.querySelectorAll<HTMLAnchorElement>('.site-nav__link');
-
-    const syncMenuState = () => {
-      if (!summary) return;
-      summary.setAttribute('aria-expanded', String(menu.open));
-      summary.setAttribute(
-        'aria-label',
-        menu.open
-          ? summary.dataset.closeLabel ?? ''
-          : summary.dataset.openLabel ?? '',
-      );
+  document.querySelectorAll<HTMLDetailsElement>('[data-nav-menu]').forEach(menu => {
+    const summary = menu.querySelector('summary');
+    const sync = () => {
+      summary?.setAttribute('aria-expanded', String(menu.open));
+      summary?.setAttribute('aria-label', menu.open ? summary.dataset.closeLabel ?? '' : summary.dataset.openLabel ?? '');
     };
-
-    menu.addEventListener('toggle', syncMenuState);
-    links.forEach((link) => link.addEventListener('click', () => {
-      menu.open = false;
-    }));
-
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && menu.open) {
-        menu.open = false;
-        summary?.focus();
-      }
+    sync();
+    menu.addEventListener('toggle', sync);
+    menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { menu.open = false; }));
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && menu.open) { menu.open = false; summary?.focus(); }
     });
   });
 </script>
-
 <style>
-  .site-nav {
-    position: sticky;
-    z-index: 20;
-    top: 0;
-    height: var(--nav-h-desktop);
-    /* A tonal step off --cream so the bar separates from the page it sits on.
-       --wash is the only light token that is not the page ground. Safe here:
-       it is also the outline-button hover fill, and the nav carries no outline
-       button (Caretrics is the dark variant, the toggle is transparent). */
-    background: var(--wash);
-    border-bottom: 1px solid var(--rule);
-  }
-
-  .site-nav__inner {
-    width: 100%;
-    max-width: var(--max-page);
-    height: 100%;
-    margin: 0 auto;
-    padding: 0 var(--gutter-desktop);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .site-nav__wordmark {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--forest-500);
-    font-size: 17px;
-    font-weight: 700;
-    letter-spacing: -0.015em;
-    text-decoration: none;
-  }
-
-  /* Raster, not SVG: the mark is an illustration with no vector source, so an
-     SVG would only be a base64 PNG in a wrapper, larger and unoptimizable. */
-  .site-nav__mark {
-    width: 28px;
-    height: 28px;
-    display: block;
-    border-radius: 50%;
-    flex: 0 0 auto;
-  }
-
-  .site-nav__desktop {
-    display: flex;
-    align-items: center;
-    gap: 32px;
-  }
-
-  .site-nav__link {
-    min-height: var(--tap-min);
-    display: inline-flex;
-    align-items: center;
-    color: var(--ink);
-    font-size: var(--text-ui);
-    font-weight: 500;
-    text-decoration: none;
-  }
-
-  .site-nav__link:hover {
-    text-decoration: underline;
-    text-underline-offset: 4px;
-  }
-
-  .site-nav__link[aria-current='page'] {
-    color: var(--forest-500);
-    font-weight: 600;
-  }
-
-  .site-nav__mobile { display: none; }
-
-  /* The bar gains its shadow only once content has scrolled beneath it.
-     Scroll-driven CSS, no JavaScript; browsers without support (and the
-     reduced-motion block in tokens.css, which kills the animation) keep the
-     constant hairline, which is the complete treatment they had before. */
-  @supports (animation-timeline: scroll()) {
-    .site-nav {
-      animation-name: rs-nav-elevate;
-      animation-duration: auto;
-      animation-timing-function: linear;
-      animation-fill-mode: both;
-      animation-timeline: scroll(root);
-      animation-range: 0px 48px;
-    }
-  }
-
-  @keyframes rs-nav-elevate {
-    to { box-shadow: var(--shadow-nav); }
-  }
-
-  @media (max-width: 767.98px) {
-    .site-nav { height: var(--nav-h-mobile); }
-    .site-nav__inner { padding-inline: var(--gutter-mobile); }
-    .site-nav__wordmark { font-size: 16px; gap: 8px; }
-    .site-nav__mark { width: 24px; height: 24px; }
-    .site-nav__desktop { display: none; }
-
-    .site-nav__mobile {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .site-nav__menu > summary {
-      width: var(--tap-min);
-      height: var(--tap-min);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--forest-500);
-      background: transparent;
-      border: 0;
-      list-style: none;
-      cursor: pointer;
-    }
-
-    .site-nav__menu > summary::-webkit-details-marker { display: none; }
-
-    .site-nav__menu > summary svg {
-      width: 22px;
-      height: 22px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 1.75;
-      stroke-linecap: round;
-    }
-
-    /* The toggle morphs to a close state, so the icon itself says which of
-       its two jobs it is doing. transform-origin is the icon centre; rotate
-       before translate in the written order so the strokes cross centred. */
-    .site-nav__menu-line {
-      transform-origin: 12px 12px;
-      transition:
-        transform var(--dur-short) var(--ease-out),
-        opacity var(--dur-short) var(--ease-out);
-    }
-
-    .site-nav__menu[open] .site-nav__menu-line--top {
-      transform: rotate(45deg) translateY(5px);
-    }
-
-    .site-nav__menu[open] .site-nav__menu-line--mid { opacity: 0; }
-
-    .site-nav__menu[open] .site-nav__menu-line--low {
-      transform: rotate(-45deg) translateY(-5px);
-    }
-
-    .site-nav__panel {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      padding-inline: var(--gutter-mobile);
-      background: var(--wash);
-      border-bottom: 1px solid var(--rule);
-    }
-
-    /* Entrance only. Closing stays instant on purpose: exits should be
-       faster than entrances. Opacity lives only inside the keyframes (the
-       rs-panel-enter contract), so reduced-motion users always see this. */
-    .site-nav__menu[open] .site-nav__panel {
-      animation: rs-menu-enter var(--dur-short) var(--ease-out);
-    }
-
-    .site-nav__menu[open] .site-nav__panel .site-nav__link {
-      animation: rs-menu-enter var(--dur-short) var(--ease-out) both;
-    }
-
-    .site-nav__menu[open] .site-nav__panel .site-nav__link:nth-child(1) { animation-delay: 40ms; }
-    .site-nav__menu[open] .site-nav__panel .site-nav__link:nth-child(2) { animation-delay: 80ms; }
-    .site-nav__menu[open] .site-nav__panel .site-nav__link:nth-child(3) { animation-delay: 120ms; }
-
-    .site-nav__panel .site-nav__link {
-      width: 100%;
-      border-top: 1px solid var(--rule);
-    }
-  }
-
-  @keyframes rs-menu-enter {
-    from { opacity: 0; transform: translateY(-6px); }
-    to { opacity: 1; transform: none; }
-  }
+.site-nav { position: relative; z-index: 20; border-bottom: 1px solid var(--rule); background: var(--paper); }
+.site-nav__inner { max-width: var(--max-page); margin: auto; padding: 0 var(--gutter-desktop); height: var(--nav-h-desktop); display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.wordmark { display: inline-flex; align-items: baseline; min-height: 44px; padding-block: 8px; font: 750 25px/1.1 var(--font-display); letter-spacing: -.04em; color: var(--ink); text-decoration: none; white-space: nowrap; }
+.wordmark span { color: var(--blue); }
+.desktop-nav { display: flex; align-items: center; gap: 32px; }
+nav a { min-height: 44px; display: inline-flex; align-items: center; gap: 12px; color: var(--ink); text-decoration: none; font-size: 15px; font-weight: 500; }
+nav a:hover, nav a[aria-current] { color: var(--blue); text-decoration: underline; text-underline-offset: 7px; }
+nav .nav-follow { padding-left: 30px; border-left: 1px solid var(--rule); color: var(--blue); }
+.mobile-menu { display: none; }
+@media (max-width: 767.98px) {
+  .site-nav__inner { height: var(--nav-h-mobile); }
+  .desktop-nav { display: none; }
+  .mobile-menu { display: block; }
+  summary { width: 44px; height: 44px; display: grid; place-items: center; cursor: pointer; list-style: none; }
+  summary::-webkit-details-marker { display: none; }
+  .mobile-menu nav { position: absolute; top: 100%; left: 0; right: 0; display: grid; padding: 12px 24px 24px; border-bottom: 1px solid var(--rule); background: var(--paper); box-shadow: var(--shadow-nav); }
+  .mobile-menu nav a { padding: 12px 0; border-bottom: 1px solid var(--rule); }
+  .mobile-menu[open] nav { animation: rs-panel-enter 200ms var(--ease-out); }
+}
 </style>

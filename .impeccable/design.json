@@ -1,0 +1,387 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-19T03:23:14.446Z",
+  "title": "Design System: Rob Saric",
+  "extensions": {
+    "colorMeta": {
+      "blue": {
+        "role": "primary",
+        "displayName": "Working Blue",
+        "tonalRamp": [
+          "oklch(15.00% 0.1929 264.76)",
+          "oklch(26.43% 0.1929 264.76)",
+          "oklch(37.86% 0.1929 264.76)",
+          "oklch(49.29% 0.1929 264.76)",
+          "oklch(60.71% 0.1929 264.76)",
+          "oklch(72.14% 0.1929 264.76)",
+          "oklch(83.57% 0.1929 264.76)",
+          "oklch(95.00% 0.1929 264.76)"
+        ]
+      },
+      "blue-deep": {
+        "role": "primary",
+        "displayName": "Deep Blue",
+        "tonalRamp": [
+          "oklch(15.00% 0.1574 264.80)",
+          "oklch(26.43% 0.1574 264.80)",
+          "oklch(37.86% 0.1574 264.80)",
+          "oklch(49.29% 0.1574 264.80)",
+          "oklch(60.71% 0.1574 264.80)",
+          "oklch(72.14% 0.1574 264.80)",
+          "oklch(83.57% 0.1574 264.80)",
+          "oklch(95.00% 0.1574 264.80)"
+        ]
+      },
+      "yellow": {
+        "role": "secondary",
+        "displayName": "Sketch Yellow",
+        "tonalRamp": [
+          "oklch(15.00% 0.1254 88.61)",
+          "oklch(26.43% 0.1254 88.61)",
+          "oklch(37.86% 0.1254 88.61)",
+          "oklch(49.29% 0.1254 88.61)",
+          "oklch(60.71% 0.1254 88.61)",
+          "oklch(72.14% 0.1254 88.61)",
+          "oklch(83.57% 0.1254 88.61)",
+          "oklch(95.00% 0.1254 88.61)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Cool Paper",
+        "tonalRamp": [
+          "oklch(15.00% 0.0051 247.88)",
+          "oklch(26.43% 0.0051 247.88)",
+          "oklch(37.86% 0.0051 247.88)",
+          "oklch(49.29% 0.0051 247.88)",
+          "oklch(60.71% 0.0051 247.88)",
+          "oklch(72.14% 0.0051 247.88)",
+          "oklch(83.57% 0.0051 247.88)",
+          "oklch(95.00% 0.0051 247.88)"
+        ]
+      },
+      "sky": {
+        "role": "neutral",
+        "displayName": "Sky",
+        "tonalRamp": [
+          "oklch(15.00% 0.0145 244.72)",
+          "oklch(26.43% 0.0145 244.72)",
+          "oklch(37.86% 0.0145 244.72)",
+          "oklch(49.29% 0.0145 244.72)",
+          "oklch(60.71% 0.0145 244.72)",
+          "oklch(72.14% 0.0145 244.72)",
+          "oklch(83.57% 0.0145 244.72)",
+          "oklch(95.00% 0.0145 244.72)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Deep Ink",
+        "tonalRamp": [
+          "oklch(15.00% 0.0366 244.76)",
+          "oklch(26.43% 0.0366 244.76)",
+          "oklch(37.86% 0.0366 244.76)",
+          "oklch(49.29% 0.0366 244.76)",
+          "oklch(60.71% 0.0366 244.76)",
+          "oklch(72.14% 0.0366 244.76)",
+          "oklch(83.57% 0.0366 244.76)",
+          "oklch(95.00% 0.0366 244.76)"
+        ]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Quiet Ink",
+        "tonalRamp": [
+          "oklch(15.00% 0.0325 243.61)",
+          "oklch(26.43% 0.0325 243.61)",
+          "oklch(37.86% 0.0325 243.61)",
+          "oklch(49.29% 0.0325 243.61)",
+          "oklch(60.71% 0.0325 243.61)",
+          "oklch(72.14% 0.0325 243.61)",
+          "oklch(83.57% 0.0325 243.61)",
+          "oklch(95.00% 0.0325 243.61)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "tonalRamp": [
+          "oklch(15.00% 0.0173 242.46)",
+          "oklch(26.43% 0.0173 242.46)",
+          "oklch(37.86% 0.0173 242.46)",
+          "oklch(49.29% 0.0173 242.46)",
+          "oklch(60.71% 0.0173 242.46)",
+          "oklch(72.14% 0.0173 242.46)",
+          "oklch(83.57% 0.0173 242.46)",
+          "oklch(95.00% 0.0173 242.46)"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "White",
+        "tonalRamp": [
+          "oklch(15.00% 0.0000 0)",
+          "oklch(26.43% 0.0000 0)",
+          "oklch(37.86% 0.0000 0)",
+          "oklch(49.29% 0.0000 0)",
+          "oklch(60.71% 0.0000 0)",
+          "oklch(72.14% 0.0000 0)",
+          "oklch(83.57% 0.0000 0)",
+          "oklch(95.00% 0.0000 0)"
+        ]
+      },
+      "on-dark-78": {
+        "role": "neutral",
+        "displayName": "Dark-surface Supporting Text",
+        "tonalRamp": [
+          "oklch(15.00% 0.0298 262.54)",
+          "oklch(26.43% 0.0298 262.54)",
+          "oklch(37.86% 0.0298 262.54)",
+          "oklch(49.29% 0.0298 262.54)",
+          "oklch(60.71% 0.0298 262.54)",
+          "oklch(72.14% 0.0298 262.54)",
+          "oklch(83.57% 0.0298 262.54)",
+          "oklch(95.00% 0.0298 262.54)"
+        ]
+      },
+      "on-dark-28": {
+        "role": "neutral",
+        "displayName": "Dark-surface Rule",
+        "tonalRamp": [
+          "oklch(15.00% 0.0051 247.88 / 28%)",
+          "oklch(26.43% 0.0051 247.88 / 28%)",
+          "oklch(37.86% 0.0051 247.88 / 28%)",
+          "oklch(49.29% 0.0051 247.88 / 28%)",
+          "oklch(60.71% 0.0051 247.88 / 28%)",
+          "oklch(72.14% 0.0051 247.88 / 28%)",
+          "oklch(83.57% 0.0051 247.88 / 28%)",
+          "oklch(95.00% 0.0051 247.88 / 28%)"
+        ]
+      },
+      "status-critical-text": {
+        "role": "functional",
+        "displayName": "Invalid Field Text",
+        "tonalRamp": [
+          "oklch(15.00% 0.1667 25.53)",
+          "oklch(26.43% 0.1667 25.53)",
+          "oklch(37.86% 0.1667 25.53)",
+          "oklch(49.29% 0.1667 25.53)",
+          "oklch(60.71% 0.1667 25.53)",
+          "oklch(72.14% 0.1667 25.53)",
+          "oklch(83.57% 0.1667 25.53)",
+          "oklch(95.00% 0.1667 25.53)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Home statement",
+        "purpose": "Short, emphatic home headline with blue emphasis."
+      },
+      "headline": {
+        "displayName": "Section headline",
+        "purpose": "Recurring fluid headings for major editorial sections."
+      },
+      "title": {
+        "displayName": "Writing title",
+        "purpose": "Linked writing-list titles; compact and mobile variants are smaller."
+      },
+      "article-title": {
+        "displayName": "Article title",
+        "purpose": "Long-form article headings with their own fluid size."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "The home introduction; other page introductions use a more relaxed line height."
+      },
+      "body": {
+        "displayName": "Reading body",
+        "purpose": "Long-form reading within 68ch; 17px on mobile."
+      },
+      "label": {
+        "displayName": "Action label",
+        "purpose": "Plain-language controls and actions."
+      },
+      "meta": {
+        "displayName": "Supporting metadata",
+        "purpose": "Dates, captions, and secondary statuses."
+      }
+    },
+    "shadows": [
+      {
+        "name": "shadow-nav",
+        "value": "0 6px 16px rgb(25 43 58 / 7%)",
+        "purpose": "Only the open mobile navigation overlay."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Mobile menu entrance and deliberate working-sketch responses."
+      },
+      {
+        "name": "action-hover",
+        "value": "180ms",
+        "purpose": "Primary-action background transition."
+      },
+      {
+        "name": "nav-enter",
+        "value": "200ms",
+        "purpose": "Open mobile navigation, opacity and 4px vertical translation."
+      },
+      {
+        "name": "sketch-panel",
+        "value": "320ms",
+        "purpose": "Deliberate panel change, opacity and 6px vertical translation."
+      },
+      {
+        "name": "sketch-path-select",
+        "value": "650ms",
+        "purpose": "Finite path redraw on an explicit step selection."
+      },
+      {
+        "name": "sketch-path-first-view",
+        "value": "1100ms",
+        "purpose": "One path reveal when the sketch first enters view."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "none",
+        "purpose": "CSS transitions and animations stop; sketch script also skips Web Animations. Content and states remain available."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "mobile-max",
+        "value": "767.98px"
+      },
+      {
+        "name": "article-author-rail-max",
+        "value": "1023px"
+      },
+      {
+        "name": "home-intermediate-min",
+        "value": "768px"
+      },
+      {
+        "name": "home-intermediate-max",
+        "value": "1050px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary action",
+      "kind": "button",
+      "refersTo": "action",
+      "description": "The existing blue link action used for reading and following. It stays flat; hover deepens blue and keyboard focus remains visible.",
+      "html": "<a class=\"ds-action\" href=\"/field-notes/\">Read my writing <svg class=\"ds-arrow\" viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 12h15M12 5l7 7-7 7\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></a>",
+      "css": ".ds-action{display:inline-flex;justify-content:center;align-items:center;gap:14px;min-height:52px;padding:14px 23px;border:1px solid var(--blue,#244fc7);border-radius:6px;background:var(--blue,#244fc7);color:var(--white,#ffffff);text-decoration:none;font-family:var(--font-sans, 'Inter', system-ui, sans-serif);font-size:15px;font-weight:600;transition:background 180ms}.ds-action:hover{background:var(--blue-deep,#183996);color:var(--white,#ffffff)}.ds-action:focus-visible{outline:2px solid var(--blue,#244fc7);outline-offset:2px}.ds-arrow{flex:0 0 auto;vertical-align:middle}.ds-arrow-diagonal{transform:rotate(-45deg)}@media(prefers-reduced-motion:reduce){.ds-action{transition:none}}"
+    },
+    {
+      "name": "Text action",
+      "kind": "button",
+      "refersTo": "text-link",
+      "description": "The quieter inline action, using a real SVG arrow and a visible hover underline.",
+      "html": "<a class=\"ds-text-link\" href=\"/contact/\">Or write to me <svg class=\"ds-arrow\" viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 12h15M12 5l7 7-7 7\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></a>",
+      "css": ".ds-text-link{display:inline-flex;align-items:center;gap:12px;min-height:44px;color:var(--blue,#244fc7);font-family:var(--font-sans, 'Inter', system-ui, sans-serif);font-size:16px;font-weight:600;text-decoration:none}.ds-text-link:hover{text-decoration:underline;text-underline-offset:5px}.ds-text-link:focus-visible{outline:2px solid var(--blue,#244fc7);outline-offset:2px}.ds-arrow{flex:0 0 auto;vertical-align:middle}.ds-arrow-diagonal{transform:rotate(-45deg)}"
+    },
+    {
+      "name": "Responsive navigation",
+      "kind": "nav",
+      "refersTo": "navigation",
+      "description": "Paper header with an ink wordmark, blue current state, and native mobile disclosure. Production adds Escape and accessible-label synchronization.",
+      "html": "<header class=\"ds-site-nav\"><div class=\"ds-nav-inner\"><a class=\"ds-wordmark\" href=\"/\" aria-label=\"Rob Saric, home\">Rob Saric<span>.</span></a><nav class=\"ds-desktop-nav\" aria-label=\"Primary\"><a href=\"/field-notes/\" aria-current=\"page\">Writing</a><a href=\"/about/\">About</a><a href=\"/#work\">Work</a><a class=\"ds-nav-follow\" href=\"https://www.linkedin.com/in/robertsaric/\">Follow on LinkedIn <svg class=\"ds-arrow ds-arrow-diagonal\" viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 12h15M12 5l7 7-7 7\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></a></nav><details class=\"ds-mobile-menu\"><summary aria-label=\"Open navigation\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" aria-hidden=\"true\"><path d=\"M3 8h18M3 16h18\" stroke=\"currentColor\" stroke-width=\"1.7\"/></svg></summary><nav aria-label=\"Mobile primary\"><a href=\"/field-notes/\" aria-current=\"page\">Writing</a><a href=\"/about/\">About</a><a href=\"/#work\">Work</a><a href=\"/contact/\">Write to me</a></nav></details></div></header>",
+      "css": ".ds-site-nav{position:relative;z-index:20;border-bottom:1px solid var(--rule,#cbd6df);background:var(--paper,#f4f7fa);font-family:var(--font-sans, 'Inter', system-ui, sans-serif);color:var(--ink,#192b3a)}.ds-nav-inner{max-width:1440px;margin:auto;padding:0 var(--gutter-desktop,clamp(32px,5vw,80px));height:88px;display:flex;align-items:center;justify-content:space-between;gap:24px}.ds-wordmark{display:inline-flex;align-items:baseline;min-height:44px;padding-block:8px;font:750 25px/1.1 var(--font-display, 'Manrope', 'Inter', system-ui, sans-serif);letter-spacing:-.04em;color:var(--ink,#192b3a);text-decoration:none;white-space:nowrap}.ds-wordmark span{color:var(--blue,#244fc7)}.ds-desktop-nav{display:flex;align-items:center;gap:32px}.ds-site-nav nav a{min-height:44px;display:inline-flex;align-items:center;gap:12px;color:var(--ink,#192b3a);text-decoration:none;font-size:15px;font-weight:500}.ds-site-nav nav a:hover,.ds-site-nav nav a[aria-current]{color:var(--blue,#244fc7);text-decoration:underline;text-underline-offset:7px}.ds-site-nav a:focus-visible,.ds-site-nav summary:focus-visible{outline:2px solid var(--blue,#244fc7);outline-offset:2px}.ds-site-nav nav .ds-nav-follow{padding-left:30px;border-left:1px solid var(--rule,#cbd6df);color:var(--blue,#244fc7)}.ds-mobile-menu{display:none}.ds-arrow{flex:0 0 auto;vertical-align:middle}.ds-arrow-diagonal{transform:rotate(-45deg)}@keyframes ds-nav-enter{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}@media(max-width:767.98px){.ds-nav-inner{height:72px;padding-inline:24px}.ds-desktop-nav{display:none}.ds-mobile-menu{display:block}.ds-mobile-menu summary{width:44px;height:44px;display:grid;place-items:center;cursor:pointer;list-style:none}.ds-mobile-menu summary::-webkit-details-marker{display:none}.ds-mobile-menu nav{position:absolute;top:100%;left:0;right:0;display:grid;padding:12px 24px 24px;border-bottom:1px solid var(--rule,#cbd6df);background:var(--paper,#f4f7fa);box-shadow:0 6px 16px rgb(25 43 58 / 7%)}.ds-mobile-menu nav a{padding:12px 0;border-bottom:1px solid var(--rule,#cbd6df)}.ds-mobile-menu[open] nav{animation:ds-nav-enter 200ms var(--ease-out,cubic-bezier(.16,1,.3,1))}}@media(prefers-reduced-motion:reduce){.ds-mobile-menu[open] nav{animation:none}}"
+    },
+    {
+      "name": "Reading entry",
+      "kind": "custom",
+      "refersTo": "reading-entry",
+      "description": "The canonical open writing row: date, linked title, summary, and thin rules. It stacks on mobile.",
+      "html": "<ol class=\"ds-reading-list\"><li><div class=\"ds-reading-date\"><time datetime=\"2019-02-01\">Feb 2019</time><span>Earlier writing</span></div><div class=\"ds-reading-copy\"><h3><a href=\"/archive/building-a-startup-requires-self-awareness/\">Building a Startup Requires Deep Self-Awareness <svg class=\"ds-arrow ds-arrow-diagonal\" viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 12h15M12 5l7 7-7 7\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></a></h3><p>On persistence, personal limits, and getting to know the person building the company: you.</p></div></li></ol>",
+      "css": ".ds-reading-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule,#cbd6df);font-family:var(--font-sans, 'Inter', system-ui, sans-serif)}.ds-reading-list li{display:grid;grid-template-columns:154px minmax(0,1fr);gap:32px;border-bottom:1px solid var(--rule,#cbd6df);padding:30px 0}.ds-reading-date{padding-top:7px;color:var(--ink-muted,#526473);font-size:13px;display:flex;flex-direction:column;gap:6px;font-variant-numeric:tabular-nums}.ds-reading-date span{font-size:12px}.ds-reading-copy h3{margin:0;font-family:var(--font-display, 'Manrope', 'Inter', system-ui, sans-serif);font-size:27px;font-weight:700;letter-spacing:-.035em;line-height:1.12;text-wrap:balance}.ds-reading-copy h3 a{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;color:var(--ink,#192b3a);text-decoration:none;line-height:1.25;min-height:44px}.ds-reading-copy h3 a:hover{color:var(--blue,#244fc7)}.ds-reading-copy h3 a:focus-visible{outline:2px solid var(--blue,#244fc7);outline-offset:2px}.ds-reading-copy .ds-arrow{margin-top:6px;color:var(--blue,#244fc7)}.ds-reading-copy p{margin:10px 0 0;max-width:68ch;font-size:16px;line-height:1.65;color:var(--ink-muted,#526473);text-wrap:pretty}.ds-arrow{flex:0 0 auto;vertical-align:middle}.ds-arrow-diagonal{transform:rotate(-45deg)}@media(max-width:767.98px){.ds-reading-list li{grid-template-columns:minmax(0,1fr);gap:12px;padding:26px 0}.ds-reading-date{flex-direction:row;gap:14px;padding:0}.ds-reading-copy h3{font-size:23px}.ds-reading-copy h3 a{gap:16px}}"
+    },
+    {
+      "name": "Featured writing panel",
+      "kind": "card",
+      "refersTo": "featured-writing",
+      "description": "A square sky panel for the featured reading selection; only its title is a link. Example copy comes from an existing published note.",
+      "html": "<article class=\"ds-featured\"><h3><a href=\"/field-notes/2026-08-19-i-took-my-own-number-down/\">If a vendor needs a week, you are looking at a claim <svg class=\"ds-arrow ds-arrow-diagonal\" viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 12h15M12 5l7 7-7 7\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></a></h3><p>I took my own identified $127,000 off the homepage until I could publish the breakdown. Five days later, I put it back with the evidence.</p><div class=\"ds-featured-date\"><time datetime=\"2026-08-19\">Aug 2026</time></div></article>",
+      "css": ".ds-featured{background:var(--sky,#e4edf5);color:var(--ink,#192b3a);padding:40px;display:flex;flex-direction:column;align-items:flex-start;font-family:var(--font-sans, 'Inter', system-ui, sans-serif)}.ds-featured h3{font-family:var(--font-display, 'Manrope', 'Inter', system-ui, sans-serif);font-size:clamp(1.8rem,3vw,2.75rem);font-weight:700;letter-spacing:-.035em;margin:0 0 24px;line-height:1.16;text-wrap:balance}.ds-featured h3 a{color:var(--blue,#244fc7);text-decoration:none}.ds-featured h3 a:hover{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px}.ds-featured h3 a:focus-visible{outline:2px solid var(--blue,#244fc7);outline-offset:2px}.ds-featured .ds-arrow{margin-left:8px}.ds-featured p{max-width:36ch;font-size:18px;line-height:1.6;margin:0 0 30px;text-wrap:pretty}.ds-featured-date{font-size:13px;margin-top:auto;color:var(--ink-muted,#526473)}.ds-arrow{flex:0 0 auto;vertical-align:middle}.ds-arrow-diagonal{transform:rotate(-45deg)}@media(max-width:1050px){.ds-featured{padding:28px}}@media(max-width:767.98px){.ds-featured h3{font-size:29px}.ds-featured p{font-size:17px}}"
+    },
+    {
+      "name": "Project status tag",
+      "kind": "chip",
+      "refersTo": "status-tag",
+      "description": "The actual noninteractive development status beside SkillNav. It communicates state and is not a filter control.",
+      "html": "<h4 class=\"ds-project-label\">SkillNav <span class=\"ds-status-tag\">In development</span></h4>",
+      "css": ".ds-project-label{display:flex;flex-wrap:wrap;align-items:center;gap:12px;font:700 20px var(--font-display, 'Manrope', 'Inter', system-ui, sans-serif);color:var(--ink,#192b3a);margin:0 0 12px}.ds-status-tag{font:400 12px var(--font-sans, 'Inter', system-ui, sans-serif);padding:5px 8px;border-radius:3px;background:var(--sky,#e4edf5);color:var(--ink,#192b3a)}"
+    },
+    {
+      "name": "Conditional email field",
+      "kind": "input",
+      "refersTo": "email-field",
+      "description": "Newsletter field from Connect, rendered publicly only when an endpoint exists. This specimen has no form or submission action. Setting aria-invalid=true displays the real error treatment.",
+      "html": "<div class=\"ds-email\"><label for=\"ds-newsletter-email\">Email address</label><input id=\"ds-newsletter-email\" type=\"email\" name=\"email\" autocomplete=\"email\" placeholder=\"you@example.com\" aria-describedby=\"ds-newsletter-status\"/><span id=\"ds-newsletter-status\" class=\"ds-email-status\" aria-live=\"polite\"></span></div>",
+      "css": ".ds-email{display:flex;flex-direction:column;align-items:flex-start;gap:10px;font-family:var(--font-sans, 'Inter', system-ui, sans-serif);color:var(--ink,#192b3a)}.ds-email label{font-size:14px}.ds-email input{width:100%;height:52px;padding:12px 14px;border:1px solid var(--ink-muted,#526473);border-radius:6px;background:var(--white,#ffffff);color:var(--ink,#192b3a);font-family:var(--font-sans, 'Inter', system-ui, sans-serif);font-size:16px;caret-color:var(--blue,#244fc7)}.ds-email input::placeholder{color:var(--ink-muted,#526473)}.ds-email input:focus-visible{outline:2px solid var(--blue,#244fc7);outline-offset:2px}.ds-email input[aria-invalid=true]{border-color:var(--status-critical-text,#a42124)}.ds-email-status{min-height:20px;font-size:14px;color:var(--status-critical-text,#a42124)}"
+    },
+    {
+      "name": "Working sketch controls and path",
+      "kind": "custom",
+      "refersTo": "sketch-step",
+      "description": "Real selected and unselected step controls with the existing native SVG path and reading panel. This is a visual state specimen; WorkingSketch.astro owns switching, finite animation, and the all-text no-JavaScript fallback.",
+      "html": "<div class=\"ds-sketch-surface\"><div class=\"ds-sketch-controls\" aria-label=\"How I try to work\"><button type=\"button\" aria-pressed=\"true\">Listen</button><button type=\"button\" aria-pressed=\"false\">Make</button><button type=\"button\" aria-pressed=\"false\">Learn</button></div><svg class=\"ds-sketch-line\" viewBox=\"0 0 600 64\" fill=\"none\" aria-hidden=\"true\"><path class=\"ds-thread\" d=\"M20 34C65 10 98 58 146 34S234 10 282 34 370 58 418 34 505 10 566 34\" stroke=\"currentColor\" stroke-width=\"2\" pathLength=\"1\"/><path d=\"m550 20 18 14-20 10\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg><div class=\"ds-sketch-panels\"><h3>Find the friction.</h3><p>Watch the work. Ask what gets repeated, what falls between people, and what they’ve already tried.</p><p class=\"ds-sketch-note\">“Why do we keep explaining this?”</p></div><p class=\"ds-sketch-caption\">How I try to work. Select a step.</p></div>",
+      "css": ".ds-sketch-surface{background:var(--blue,#244fc7);color:var(--white,#ffffff);font-family:var(--font-sans, 'Inter', system-ui, sans-serif);padding:8px 0 0}.ds-sketch-controls{display:flex;justify-content:space-between;gap:12px}.ds-sketch-controls button{padding:12px 18px;min-height:48px;border:1px solid var(--on-dark-28,rgb(244 247 250 / 28%));border-radius:100px;color:var(--white,#ffffff);background:transparent;cursor:pointer;font-family:var(--font-sans, 'Inter', system-ui, sans-serif);font-size:16px;font-weight:600;transition:background 200ms,color 200ms}.ds-sketch-controls button:hover{border-color:var(--white,#ffffff)}.ds-sketch-controls button[aria-pressed=true]{background:var(--yellow,#f2cc69);color:var(--ink,#192b3a);border-color:var(--yellow,#f2cc69)}.ds-sketch-controls button:focus-visible{outline:2px solid var(--yellow,#f2cc69);outline-offset:5px}.ds-sketch-line{width:100%;height:68px;margin:12px 0 22px;color:var(--yellow,#f2cc69);overflow:visible}.ds-thread{stroke-dasharray:1}.ds-sketch-panels{min-height:215px}.ds-sketch-panels h3{font:700 30px/1.12 var(--font-display, 'Manrope', 'Inter', system-ui, sans-serif);letter-spacing:-.035em;margin:0 0 16px;text-wrap:balance}.ds-sketch-panels p{max-width:45ch;font-size:18px;line-height:1.65;margin:0}.ds-sketch-panels .ds-sketch-note{margin:22px 0 0;color:var(--yellow,#f2cc69);font-size:15px}.ds-sketch-caption{margin:28px 0 0;font-size:13px;color:var(--on-dark-78,#d6e1f5);border-top:1px solid var(--on-dark-28,rgb(244 247 250 / 28%));padding-top:16px}@media(max-width:767.98px){.ds-sketch-controls button{padding:11px 15px;font-size:15px}.ds-sketch-panels h3{font-size:26px}.ds-sketch-panels p{font-size:17px}.ds-sketch-panels{min-height:235px}}@media(prefers-reduced-motion:reduce){.ds-sketch-controls button{transition:none}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "A person with a view",
+    "overview": "The site feels like a personal editorial space: direct, generous, and interested in the people doing the work. Large geometric headings give the writing conviction; cool paper, open margins, and quiet reading text keep the experience approachable. Existing solo portraits put the author beside the ideas.\n\nAsymmetry establishes the larger compositions, while thin rules and aligned text give the writing structure. Blue makes a confident statement in headings, links, and the working sketch. Yellow provides a small human accent in that sketch and in keyboard feedback. The system is grounded in the approved personal-site direction and the implemented public pages, rather than the superseded clinic-focused artboards.",
+    "keyCharacteristics": [
+      "Expressive Manrope headings paired with steady Inter reading text.",
+      "Cool paper, deep ink, vivid blue, and occasional yellow.",
+      "Open editorial lists and projects, with selective flat sky panels.",
+      "Arched solo portraits and a finite hand-drawn SVG process line.",
+      "Responsive stacking, visible keyboard focus, and complete content without JavaScript."
+    ],
+    "rules": [
+      {
+        "name": "The Contrast Rule",
+        "body": "Use blue focus on light surfaces and yellow focus on blue or ink. Yellow carries ink text when it becomes a control surface.",
+        "section": "colors"
+      },
+      {
+        "name": "The Reading Measure Rule",
+        "body": "Keep continuous prose within 68ch. Express hierarchy through size, weight, space, and real headings; do not add decorative eyebrow text above them.",
+        "section": "typography"
+      },
+      {
+        "name": "The Open Structure Rule",
+        "body": "Use aligned text and thin rules for repeated writing and project entries. Reserve sky panels for a deliberately featured idea or invitation.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat Surface Rule",
+        "body": "Use tonal changes and rules for depth; reserve the existing shadow for the mobile navigation overlay.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** use the existing blue, paper, ink, sky, and yellow roles with their source values.",
+      "**Do** keep the Manrope and Inter pairing and the 68ch maximum reading measure.",
+      "**Do** use thin rules, aligned text, and open spacing for repeated entries.",
+      "**Do** preserve visible keyboard focus, source-order mobile stacking, and usable native controls.",
+      "**Do** keep all process text available without JavaScript and preserve state when reduced motion is requested.",
+      "**Do** use the approved solo portraits and outdoor image with the implemented crops."
+    ],
+    "donts": [
+      "**Don't** inherit legacy eyebrow styling or invented kickers into new surfaces.",
+      "**Don't** replace the real SVG arrows or working-sketch path with Unicode glyph icons.",
+      "**Don't** add floating-card shadows, hover lifts, or offset decorative slabs to this flat editorial world.",
+      "**Don't** add continuous animation, scroll traps, custom cursors, or content that depends on an entrance reveal to become visible.",
+      "**Don't** turn the editorial-review notice into a public brand component or treat old clinic-focused artboards as current visual authority."
+    ]
+  }
+}

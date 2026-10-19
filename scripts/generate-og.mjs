@@ -30,7 +30,7 @@ const DIST = join(ROOT, 'dist', 'client');
 const NOTES_DIR = join(ROOT, 'src', 'content', 'notes');
 const TOKENS = join(ROOT, 'src', 'styles', 'tokens.css');
 const AVATAR = join(ROOT, 'src', 'assets', 'images', 'rob-avatar.png');
-const SITE_PHOTO = join(ROOT, 'src', 'assets', 'images', 'rob-portrait-caretrics.png');
+const SITE_PHOTO = join(ROOT, 'src', 'assets', 'images', 'rob-portrait.jpg');
 const OUT_DIR = join(ROOT, 'public', 'og', 'notes');
 const SITE_CARD_OUT = join(ROOT, 'public', 'og-default.png');
 

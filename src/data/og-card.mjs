@@ -20,8 +20,8 @@ export const OG_CARD = {
  * old line.
  */
 export const OG_SITE_CARD = {
-  eyebrow: 'Founder and builder',
-  heading: 'I build software that helps good people run better businesses.',
+  eyebrow: 'Founder. Dad. Builder.',
+  heading: 'I’m on the side of small teams.',
   author: 'Rob Saric',
   site: 'robsaric.com',
 };
