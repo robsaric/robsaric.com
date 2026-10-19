@@ -1,10 +1,10 @@
 /** Approved personal positioning. Article bodies remain in their content collections. */
 export const EDITORIAL = {
   hero: {
-    identity: 'Founder · Ottawa',
+    identity: 'Founder · Writer · Ottawa',
     heading: 'Work is complicated enough.',
     emphasis: 'The tools should help.',
-    lead: 'I’m Rob Saric. I build software for small teams and write about making work simpler: what to fix, where AI can help, and what’s better left human.',
+    lead: 'I build software for small teams and write about better work, useful AI, and what’s worth keeping human.',
     promise: 'The goal isn’t to fit more work into life. It’s to make more room for life outside it.',
     portraitAlt: 'Rob Saric in a blue blazer',
     read: 'Read my writing',
@@ -128,9 +128,9 @@ export const EDITORIAL = {
     newsletterBody: 'Leave your email for new writing from me.',
   },
   homeNewsletter: {
-    heading: 'Notes on making work better.',
+    heading: 'Get my notes.',
     body: 'What I’m learning about small teams, useful AI, and making room for life outside work.',
-    action: 'Send me the notes',
+    action: 'Get my notes',
   },
   article: {
     heading: 'Read next',

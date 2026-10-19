@@ -49,3 +49,11 @@ Production build; copy checks; existing note, redirect and responsive gates; des
 Rob confirmed Grill Q14: a dedicated What I’m building page, led by opportunity, ownership and independence, with a personal why and projects as expressions of the ambition. The confirmed contract is `docs/building-direction.md`.
 
 The homepage and `/building/` now use dark headlines. Blue primarily marks links and actions on these two surfaces. The homepage keeps its approved headline, portrait and writing selections; its full project list becomes a compact invitation to `/building/`. Navigation and the hero work link lead there directly. Legacy `/work` and `/mission` redirects are unchanged; homepage `#work` and `#caretrics` both reach the invitation.
+
+## October 19 homepage copy refinement
+
+Rob supplied a Perplexity critique and screenshot, explicitly saying he disliked its style but preferred some of the copy. Treat it as an editorial reference, not an approved visual replacement. Keep the warm identity, dark headline, rectangular unbranded portrait, current button shapes and writing-first hierarchy. The building page remains unchanged.
+
+Use “Founder · Writer · Ottawa” and the tighter introduction: “I build software for small teams and write about better work, useful AI, and what’s worth keeping human.” Preserve the exact existing promise about making more room for life outside work. Give that promise charcoal text and medium weight while keeping its current scale and spacing.
+
+The existing conditional signup follows the writing selections. Label it “Get my notes” when configured. The local review checkout has no newsletter endpoint or provider credentials; it does not show a working signup. Production configuration is unverified. This refinement adds no publishing cadence, provider setup or subscriber writes.

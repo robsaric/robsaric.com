@@ -37,6 +37,15 @@ No dependencies, package version, lockfile, backend newsletter handler, tracking
 
 ## Validation
 
+### October 19 homepage copy refinement
+
+- User supplied a Perplexity critique as a copy reference and explicitly rejected its styling. Kept the existing visual composition, portrait, dark headline, button shapes and two-action hierarchy; the building page is unchanged.
+- Tightened the introduction, changed the identity to Founder · Writer · Ottawa, and preserved the exact life-outside-work sentence with darker text and medium weight. Conditional signup heading/action now says Get my notes; its position and provider behavior are unchanged.
+- `corepack pnpm@10.27.0 gate`: passed, including all 84 layout checks, 112 redirect checks and 11 notes. Existing Astro hints and copy taste warnings remain; no new errors.
+- Review build passed. All six homepage full-page/viewport captures inspected at 1440, 900 and 390px. Keyboard focus, finite hover feedback, reduced motion and no-JavaScript reading links passed. Evidence: `.impeccable/review/home-copy/`.
+- The first writing title is fully visible inside a 900px-high viewport at each reviewed width. No new form, subscription, cadence promise or production configuration change was introduced. The local preview has no newsletter endpoint; production signup configuration remains unverified.
+- Changed application files: `src/data/editorial.ts` and `src/pages/index.astro`. No article, building-page, navigation, provider, dependency or lockfile change. In-app homepage opening was queued; use the local URL above to review.
+
 ### October 19 mission page
 
 - `corepack pnpm@10.27.0 gate`: passed. Astro zero errors and 25 existing hints; copy lint zero errors and three existing taste warnings; 112 redirect checks; 11 notes; 84 responsive checks across 12 routes and seven widths.

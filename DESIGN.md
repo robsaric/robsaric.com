@@ -60,7 +60,7 @@ typography:
   home-promise:
     fontFamily: "Inter, system-ui, sans-serif"
     fontSize: "18px"
-    fontWeight: 400
+    fontWeight: 500
     lineHeight: 1.6
   home-identity:
     fontFamily: "Inter, system-ui, sans-serif"
@@ -226,7 +226,7 @@ Asymmetry establishes the larger compositions, while thin rules and aligned text
 - An unbranded rectangular homepage portrait; the About portrait retains its arch.
 - Responsive stacking, visible keyboard focus, and complete content without JavaScript.
 
-This is a scan of the implemented source: `src/styles/tokens.css`, `global.css`, `prose.css`, the current page layouts and components, and `scripts/og-card-template.mjs`. Homepage and Building page evidence is in `.impeccable/review/building/`: full-page and viewport captures at 1440px, 900px, and 390px, with `verification.json` recording the route, color, link, keyboard, motion, and no-JavaScript checks. The YAML primitives are normative; `.impeccable/design.json` adds state examples, motion, and responsive metadata. Existing `home-*` color names now document the shared `:root[data-theme="warm"]` overrides; component and typography prefixes identify their observed surface. These names are not new CSS custom properties. Historical compatibility aliases are implementation support, not additional palette families. The editorial-review notice is preview chrome and is excluded from the public component vocabulary. Surface strategy and reading order remain in `docs/personal-site-direction.md` and `docs/building-direction.md`.
+This is a scan of the implemented source: `src/styles/tokens.css`, `global.css`, `prose.css`, the current page layouts and components, and `scripts/og-card-template.mjs`. The latest homepage copy and promise treatment are recorded in `.impeccable/review/home-copy/` through full-page and viewport captures at 1440px, 900px, and 390px, plus `verification.json`. Homepage and Building page evidence is in `.impeccable/review/building/`: full-page and viewport captures at 1440px, 900px, and 390px, with `verification.json` recording the route, color, link, keyboard, motion, and no-JavaScript checks. The YAML primitives are normative; `.impeccable/design.json` adds state examples, motion, and responsive metadata. Existing `home-*` color names now document the shared `:root[data-theme="warm"]` overrides; component and typography prefixes identify their observed surface. These names are not new CSS custom properties. Historical compatibility aliases are implementation support, not additional palette families. The editorial-review notice is preview chrome and is excluded from the public component vocabulary. Surface strategy and reading order remain in `docs/personal-site-direction.md` and `docs/building-direction.md`.
 
 ## Colors
 
@@ -270,7 +270,7 @@ The functional `status-critical-text` color is reserved for the conditional news
 Both families are self-hosted through Astro's font build. Manrope supplies compact, geometric headings; Inter keeps paragraphs, controls, and dates quiet. The scale is role-based and fluid rather than a single mathematical ratio.
 
 ### Hierarchy
-- **Display:** the default display token remains available to existing surfaces. The homepage uses the separate `home-display` and `home-display-mobile` roles. Both sentences are charcoal; the second starts a new block, both wrap naturally, and the headline has no fixed character measure. The small founder/Ottawa identity line sits above it, followed by the lead and a quieter closing thought. The Building page uses `building-display` and `building-display-mobile` for its charcoal mission heading, capped at (19ch).
+- **Display:** the default display token remains available to existing surfaces. The homepage uses the separate `home-display` and `home-display-mobile` roles. Both sentences are charcoal; the second starts a new block, both wrap naturally, and the headline has no fixed character measure. The small founder/writer/Ottawa identity line sits above it, followed by the lead and a charcoal, medium-weight closing thought. The Building page uses `building-display` and `building-display-mobile` for its charcoal mission heading, capped at (19ch).
 - **Headline:** recurring section headings use the fluid headline role. Balancing is applied to headings, with reading-section headings allowed to wrap naturally.
 - **Title:** writing-list titles use the title role; compact entries use a slightly smaller size (24px), then (23px) on mobile.
 - **Article title:** the separate article-title role fits long titles without forcing the home's short measure. Mobile articles use `clamp(2.1rem, 7.7vw, 3rem)`.
@@ -281,7 +281,7 @@ Both families are self-hosted through Astro's font build. Manrope supplies compa
 
 Article subheads are (26px) and (20px), with a line height (1.25); their mobile sizes are (24px) and (19px). Article quotations use Manrope (24px, 1.4), reducing to (22px) on mobile. The code font is the existing `ui-monospace, Menlo, Consolas, monospace` stack and remains confined to code and retained archive formatting.
 
-**The Reading Measure Rule.** Keep continuous prose within 68ch. Express hierarchy through size, weight, space, and real headings. The approved founder/Ottawa identity line is a homepage exception to the avoidance of decorative eyebrow text; it is ordinary sentence-case metadata, not a new global kicker style.
+**The Reading Measure Rule.** Keep continuous prose within 68ch. Express hierarchy through size, weight, space, and real headings. The approved founder/writer/Ottawa identity line is a homepage exception to the avoidance of decorative eyebrow text; it is ordinary sentence-case metadata, not a new global kicker style.
 
 ## Layout
 
@@ -336,7 +336,7 @@ The mobile menu is native `details/summary`, so opening and closing still work w
 
 ### Homepage introduction and reading entries
 
-The homepage introduction combines the approved identity line, a two-sentence charcoal heading, one lead, a quieter closing thought, and the unbranded portrait. Its primary action goes to `#start-here`, with a text action to `/building/`. The three dated selections use the shared reading-entry component; there is no featured card. Their review and production content follow the visibility rules in `docs/personal-site-direction.md`.
+The homepage introduction combines the approved identity line, a two-sentence charcoal heading, one lead, a charcoal, medium-weight closing thought, and the unbranded portrait. Its primary action goes to `#start-here`, with a text action to `/building/`. The three dated selections use the shared reading-entry component; there is no featured card. Their review and production content follow the visibility rules in `docs/personal-site-direction.md`.
 
 Reading entries are open ruled rows. The linked title carries the interaction, with blue on hover and visible keyboard focus; supporting text stays muted. Dates and the optional earlier-writing indicator remain close to the title.
 
@@ -360,7 +360,7 @@ Without JavaScript, all process text remains visible in order and inactive contr
 
 ### Follow invitation and conditional email field
 
-On the homepage, `Connect newsletterOnly` renders a warm-wash signup section only when its endpoint is configured. With no endpoint, the entire section is absent. The newsletter-only layout is centered within a (720px) column, with no side divider or inner padding; its section padding is (80px) vertically and (56px) on mobile. The homepage omits the repeated follow invitation; LinkedIn remains in navigation and footer.
+On the homepage, `Connect newsletterOnly` renders a warm-wash signup section headed “Get my notes.” with the action “Get my notes” only when its endpoint is configured. With no endpoint, the entire section is absent. The newsletter-only layout is centered within a (720px) column, with no side divider or inner padding; its section padding is (80px) vertically and (56px) on mobile. The homepage omits the repeated follow invitation; LinkedIn remains in navigation and footer.
 
 The reusable standalone follow invitation on other routes retains its cool sky section, explicit primary link, and quieter contact link. Within articles, the invitation stays on cool paper after a thin divider: a 24px heading (23px on mobile), short supporting text, and a LinkedIn text link. One curated next read follows when selected; there is no generic recommendation fallback.
 
@@ -379,7 +379,7 @@ The continuous reading surface remains paper with ink text. Links stay visibly u
 - **Do** preserve visible keyboard focus, source-order mobile stacking, and usable native controls.
 - **Do** keep all process text available without JavaScript and preserve state when reduced motion is requested.
 - **Do** use the approved unbranded rectangular homepage portrait and outdoor crop while preserving About's existing image shapes.
-- **Do** preserve the homepage founder/Ottawa identity line as the approved scoped exception to the eyebrow guidance.
+- **Do** preserve the homepage founder/writer/Ottawa identity line as the approved scoped exception to the eyebrow guidance.
 
 ### Don't:
 - **Don't** inherit legacy eyebrow styling or invent kickers for new surfaces; this does not remove the approved homepage identity line.
