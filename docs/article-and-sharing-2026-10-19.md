@@ -1,0 +1,17 @@
+# Dashboard article and sharing previews
+
+Rob requested publication of the article revision with the Attio and Sequoia thinking, the new visual, a consistent one-reader perspective, and suitable Open Graph previews for each shared URL.
+
+The article now follows you through the hypothetical renovation-company example. Attio supplies the argument for shared context, permissions and system rules; Sequoia supplies the business thesis about selling completed work. Their pages were checked on October 19, 2026. The essay distinguishes those claims from demonstrated performance and keeps the earlier primary Gumloop, n8n and Power BI links. The conclusion and the shorter LinkedIn draft both ask what counts as finished, including partial failures and decisions that belong to you.
+
+The approved social illustration is adapted as a responsive, selectable-text `DashboardNextJob` figure. It stacks its labels and records on a phone, works without JavaScript and links to the downloadable 1200x1500 PNG at `/images/dashboard-next-job.png`. Independent copy review clarified that the workflow executes and the dashboard shows the outcome. The PNG is an original HTML/CSS graphic using the existing site fonts and colors; its editable source and rendering script are retained in the adjacent `dashboard-linkedin` task artifact folder. No stock imagery or generated raster illustration is used. The existing portrait and outdoor photo are reused for share cards.
+
+Every sitemap route now has a unique 1200x630 PNG. Home retains the headline and portrait; the dashboard essay uses its quote/outcome diagram; the analog-life essay uses the outdoor photo. Other routes use their own actual page heading. Archive cards retain their historical titles and publication years; archive prose is unchanged. `BaseLayout` supplies page-specific OG and Twitter image URLs and alt text, MIME type and dimensions. Article structured data references the same image. Image URLs carry a new version so the replacement family is distinguishable from earlier cards.
+
+The generator reads canonical routes and headings from the build, waits for the site's actual fonts and images, and checks title fit. The new `check:social` gate verifies all 49 public URLs, unique image content, 1200x630 dimensions, size below 5 MB, image files, OG/Twitter parity, alt text and canonical URL mapping. README documents the build → generate → gate sequence. No dependencies or lockfiles changed.
+
+Validation passed: Astro check, copy lint, production build, 112 redirects, nine notes, 49 social previews and 84 responsive layout checks. The focused browser check passed nine route/width combinations at 1440, 900 and 390, 21 keyboard stops, reduced motion, no-JavaScript rendering and local links. Evidence and the 49-card gallery are in `.impeccable/review/article-sharing/`. Existing deprecation hints remain non-blocking. LinkedIn's cached rendering is a separate platform state; origin metadata/image checks do not prove its cache has refreshed.
+
+MCP compatibility: not applicable to this static personal-site content and share metadata. No sign-up, tracking or product behavior changed.
+
+The independent finish review returned `ship` with no material corrections after reviewing the article and figures at all three widths, the 49-card gallery, the downloadable image and representative long-title cards. The review did not test LinkedIn's own cached previews.

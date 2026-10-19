@@ -15,7 +15,7 @@ Rob Saric's personal site and field notes. Astro 7, static output with on-demand
 ```
 pnpm install
 pnpm dev             # http://localhost:4321
-pnpm gate            # astro check + copy lint + build + redirect check
+pnpm gate            # types, copy, build, redirects, notes, share cards and responsive layout
 ```
 
 Draft content (`draft: true`) shows in `pnpm dev` and is hidden in production builds.
@@ -29,6 +29,8 @@ pnpm build --mode editorial-review --outDir .impeccable/review/site
 Serve `.impeccable/review/site/client` locally. This output has a visible preview notice and `noindex`; drafts stay excluded. Keep it local. Ordinary `pnpm build` and `pnpm gate` produce the deployable version. Run the ordinary build last before any authorized deployment because the Vercel adapter also writes its output directory during review builds.
 
 After Rob approves an essay's wording and publication, change its `draft` flag to `false`, run `pnpm generate:og` after a build, then run the gate again. Do not treat approval of the redesign as approval to publish the proposed essays.
+
+Every sitemap page has its own warm 1200x630 share image, including archive entries. After changing a heading or adding a public page, run `pnpm build`, `pnpm generate:og`, then `pnpm gate`; commit the generated PNGs. The renderer uses each built page's actual heading and the site's self-hosted fonts. The homepage, dashboard essay and analog-life essay have their own compositions. `pnpm check:social` verifies every public URL's metadata and image. When replacing an existing card family, update `SOCIAL_IMAGE_VERSION` in `src/lib/social.mjs` so crawlers see a new image URL. Existing platform caches may still need a refresh through LinkedIn's Post Inspector.
 
 Rob approved publication of both October 18 essays and the dashboard replacement on October 19. The three retired clinic notes are kept outside the content collection in `docs/retired-notes/`; their old URLs return 404, and they are absent from navigation, RSS and the sitemap. See `docs/publishing-2026-10-19.md` for the research and publication decisions.
 

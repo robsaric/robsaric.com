@@ -1,0 +1,37 @@
+---
+import { DASHBOARD_NEXT_JOB as D } from '../data/dashboard-sketch';
+---
+<figure class="dashboard-next-job">
+  <div class="visual-title">{D.heading}</div>
+  <p class="visual-intro">{D.intro}</p>
+  <div class="step"><p class="step-label">{D.reportLabel}</p><div class="record report"><strong>{D.report}</strong><p>{D.handoff}</p></div></div>
+  <div class="connector" aria-hidden="true"><svg width="24" height="60" viewBox="0 0 24 60"><path d="M12 0v48m-8-8 8 8 8-8" fill="none" stroke="currentColor" stroke-width="1.5" /></svg></div>
+  <div class="step"><p class="step-label">{D.outcomeLabel}</p><div class="record outcome"><strong>{D.outcome}</strong><p class="evidence">{D.evidence}</p></div></div>
+  <p class="closing">{D.closing}</p>
+  <figcaption>{D.caption} <a href="/images/dashboard-next-job.png" download>{D.download}</a></figcaption>
+</figure>
+<style>
+.dashboard-next-job { margin: 40px 0; padding-block: 32px; border-block: 1px solid var(--rule); }
+.visual-title { font: 800 36px/1.15 var(--font-display); letter-spacing: -.035em; }
+.dashboard-next-job .visual-intro { margin: 14px 0 30px; color: var(--ink-muted); font-size: 19px; }
+.step { display: grid; grid-template-columns: 130px minmax(0,1fr); gap: 24px; }
+.dashboard-next-job .step-label { margin: 18px 0 0; font-size: 15px; line-height: 1.45; }
+.record { padding: 24px; border: 1px solid var(--blue); }
+.record strong { display: block; font: 700 26px/1.25 var(--font-display); letter-spacing: -.025em; max-width: 23ch; }
+.dashboard-next-job .record p { margin: 16px 0 0; font-size: 16px; line-height: 1.5; }
+.report { background: var(--yellow); border-color: var(--yellow); }
+.outcome strong { color: var(--blue); }
+.dashboard-next-job .evidence { padding-top: 16px; border-top: 1px solid var(--rule); }
+.connector { margin-left: 178px; height: 60px; color: var(--ink-muted); }
+.dashboard-next-job .closing { font: 600 23px/1.4 var(--font-display); letter-spacing: -.02em; margin: 30px 0 18px; max-width: 36ch; }
+figcaption { color: var(--ink-muted); font-size: 14px; line-height: 1.6; }
+figcaption a { display: inline-flex; align-items: center; min-height: 44px; }
+@media (max-width: 600px) {
+ .visual-title { font-size: 29px; }
+ .step { grid-template-columns: 1fr; gap: 12px; }
+ .dashboard-next-job .step-label { margin: 0; }
+ .connector { margin-left: 24px; height: 52px; }
+ .connector svg { height: 52px; }
+ .record strong { font-size: 25px; }
+}
+</style>

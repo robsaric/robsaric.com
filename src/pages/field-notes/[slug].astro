@@ -5,6 +5,7 @@ import { STAGES } from '../../data/stages';
 import { SITE } from '../../data/site';
 import { UI } from '../../data/ui';
 import { clampDescription } from '../../lib/seo';
+import { SOCIAL_IMAGE_VERSION } from '../../lib/social.mjs';
 import {
   formatNoteDate,
   getPublishedNotes,
@@ -47,7 +48,7 @@ const jsonLd = {
   dateModified: (entry.data.updated ?? entry.data.date).toISOString(),
   url: pageUrl,
   mainEntityOfPage: pageUrl,
-  image: new URL(`/og/notes/${entry.id}.png`, Astro.site ?? SITE.url).href,
+  image: new URL(`/og/notes/${entry.id}.png?v=${SOCIAL_IMAGE_VERSION}`, Astro.site ?? SITE.url).href,
   author: {
     '@type': 'Person',
     name: SITE.author.name,

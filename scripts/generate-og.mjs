@@ -1,209 +1,59 @@
 #!/usr/bin/env node
 /**
- * Renders the OG share card for every published field note.
- *
- * How: builds each card as an HTML page (scripts/og-card-template.mjs), paints
- * it in headless Chrome at 1200x630 with the real site tokens and the real
- * built fonts, screenshots it, and writes public/og/notes/<note-id>.png. The
- * PNGs are committed; Vercel never runs this (its build image has no Chrome),
- * it just copies public/ like any other static file.
- *
- * Fonts come from the production build: the Fonts API inlines @font-face CSS
- * into every built page with hashed /_astro/fonts/ URLs, so this script lifts
- * that CSS from dist/client/index.html and serves dist/client for the files.
- * That is why `astro build` must run first.
- *
- * Run: pnpm generate:og   (after a build; then commit the PNGs)
- * The gate's check-notes fails any published note whose PNG is missing.
+ * Render a warm, page-specific 1200x630 share card for every indexable route.
+ * Build first to supply canonical routes, real headings and self-hosted fonts.
+ * Commit the generated PNGs, then rebuild so dist contains the fresh images.
  */
 import { createServer } from 'node:http';
-import { readdirSync, readFileSync, existsSync, mkdirSync, writeFileSync, statSync } from 'node:fs';
-import { join, extname } from 'node:path';
+import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { resolve, join, extname, dirname, sep } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 import { MIME, launchChrome } from './lib/chrome.mjs';
-import { frontmatter, isDraft } from './lib/frontmatter.mjs';
 import { renderCard, renderSiteCard } from './og-card-template.mjs';
-import { OG_CARD, OG_SITE_CARD } from '../src/data/og-card.mjs';
+import { OG_CARD, OG_SITE_CARD, OG_EDITORIAL } from '../src/data/og-card.mjs';
+import { socialImagePath } from '../src/lib/social.mjs';
 
-const ROOT = new URL('..', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
-const DIST = join(ROOT, 'dist', 'client');
-const NOTES_DIR = join(ROOT, 'src', 'content', 'notes');
-const TOKENS = join(ROOT, 'src', 'styles', 'tokens.css');
-const AVATAR = join(ROOT, 'src', 'assets', 'images', 'rob-avatar.png');
-const SITE_PHOTO = join(ROOT, 'src', 'assets', 'images', 'rob-portrait.jpg');
-const OUT_DIR = join(ROOT, 'public', 'og', 'notes');
-const SITE_CARD_OUT = join(ROOT, 'public', 'og-default.png');
-
-/** Same shape as the article header date (Intl en-CA long, UTC). */
-const dateFormat = new Intl.DateTimeFormat('en-CA', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-  timeZone: 'UTC',
+const ROOT=resolve(dirname(fileURLToPath(import.meta.url)),'..');
+const DIST=join(ROOT,'dist/client');
+const built=readFileSync(join(DIST,'index.html'),'utf8');
+const fontCss=[...(built.match(/@font-face\{[^}]*\}/gu)??[]),...(built.match(/:root\{--font-[^}]*\}/gu)??[])].join('');
+if(!fontCss)throw new Error('Build first: self-hosted font CSS is missing.');
+const decode=(s)=>s.replace(/<[^>]*>/g,' ').replace(/&#(?:x([0-9a-f]+)|(\d+));/gi,(_,hex,n)=>String.fromCodePoint(parseInt(hex??n,hex?16:10))).replace(/&(amp|quot|apos|lt|gt|nbsp|rsquo|lsquo|rdquo|ldquo|ndash|mdash);/g,(_,e)=>({amp:'&',quot:'"',apos:"'",lt:'<',gt:'>',nbsp:' ',rsquo:'’',lsquo:'‘',rdquo:'”',ldquo:'“',ndash:'–',mdash:'—'}[e])).replace(/\s+/g,' ').trim();
+const urls=[...readFileSync(join(DIST,'sitemap-0.xml'),'utf8').matchAll(/<loc>(.*?)<\/loc>/g)].map(m=>m[1]);
+const cards=urls.map(url=>{
+ const path=new URL(url).pathname;
+ const html=readFileSync(join(DIST,path,'index.html'),'utf8');
+ const title=decode(html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1]??'');
+ if(!title)throw new Error('No heading for '+path);
+ const isArchive=path.startsWith('/archive/')&&path!='/archive/';
+ const section=isArchive?OG_EDITORIAL.archiveSection:path.startsWith('/field-notes/')?OG_EDITORIAL.essaySection:'';
+ const year=isArchive?html.match(/datetime="(\d{4})-/)?.[1]:undefined;
+ const kind=path.includes(OG_EDITORIAL.dashboardSlug)?'dashboard':path.includes(OG_EDITORIAL.analogSlug)?'analog':path==='/about/'?'about':'type';
+ return {path,out:join(ROOT,'public',socialImagePath(path)),html:path==='/'?renderSiteCard({...OG_SITE_CARD,fontCss}):renderCard({title,section: path==='/field-notes/'?OG_EDITORIAL.writingSection:section,...OG_CARD,fontCss,kind,copy:OG_EDITORIAL,year})};
 });
-
-/** The @font-face and :root{--font-*} CSS the Fonts API inlined into the build. */
-function builtFontCss() {
-  const html = readFileSync(join(DIST, 'index.html'), 'utf8');
-  const faces = html.match(/@font-face\{[^}]*\}/gu) ?? [];
-  const roots = html.match(/:root\{--font-[^}]*\}/gu) ?? [];
-  if (faces.length === 0 || roots.length === 0) {
-    throw new Error('no @font-face CSS in dist/client/index.html; run `astro build` first');
-  }
-  return [...faces, ...roots].join('');
-}
-
-/** Published notes only; drafts get their card when they are un-drafted. */
-function publishedNotes() {
-  return readdirSync(NOTES_DIR)
-    .filter((name) => /\.mdx?$/u.test(name))
-    .map((name) => ({ id: name.replace(/\.mdx?$/u, ''), data: frontmatter(readFileSync(join(NOTES_DIR, name), 'utf8')) }))
-    .filter(({ id, data }) => {
-      if (!data || !data.title || !data.date || !data.type) {
-        throw new Error(`${id}: missing title, date, or type frontmatter`);
-      }
-      // check-notes enforces the same rule; repeated here because this script
-      // runs before the gate and a misnamed PNG would 404 behind a green gate:
-      // the page's og:image path uses Astro's slugified entry.id, and only an
-      // already-clean stem is guaranteed to equal it.
-      if (!/^[a-z0-9-]+$/u.test(id)) {
-        throw new Error(`${id}: filename stem must be a clean slug (lowercase a-z, 0-9, hyphens); Astro's entry.id would diverge from it`);
-      }
-      return !isDraft(data);
-    })
-    .sort((a, b) => a.id.localeCompare(b.id));
-}
-
-/** Serves the card pages plus dist/client, which the cards need for fonts. */
-function serve(cards) {
-  const server = createServer((req, res) => {
-    const url = decodeURIComponent((req.url ?? '/').split('?')[0]);
-
-    if (cards.has(url)) {
-      res.writeHead(200, { 'content-type': MIME['.html'] });
-      res.end(cards.get(url));
-      return;
-    }
-    if (url === '/tokens.css') {
-      res.writeHead(200, { 'content-type': MIME['.css'] });
-      res.end(readFileSync(TOKENS));
-      return;
-    }
-    if (url === '/avatar.png') {
-      res.writeHead(200, { 'content-type': MIME['.png'] });
-      res.end(readFileSync(AVATAR));
-      return;
-    }
-    if (url === '/site-photo.png') {
-      res.writeHead(200, { 'content-type': MIME['.jpg'] });
-      res.end(readFileSync(SITE_PHOTO));
-      return;
-    }
-
-    let file = join(DIST, url);
-    try {
-      if (existsSync(file) && statSync(file).isDirectory()) file = join(file, 'index.html');
-      const body = readFileSync(file);
-      res.writeHead(200, { 'content-type': MIME[extname(file)] ?? 'application/octet-stream' });
-      res.end(body);
-    } catch {
-      res.writeHead(404, { 'content-type': 'text/plain' }).end('not found');
-    }
-  });
-
-  return new Promise((resolve) => {
-    server.listen(0, '127.0.0.1', () => resolve({ server, port: server.address().port }));
-  });
-}
-
-async function main() {
-  if (!existsSync(DIST)) {
-    console.error('generate-og: dist/client not found. Run `astro build` first.');
-    process.exit(1);
-  }
-
-  const fontCss = builtFontCss();
-  const notes = publishedNotes();
-  if (notes.length === 0) {
-    console.log('generate-og: no published notes.');
-    return;
-  }
-
-  const cards = new Map(notes.map(({ id, data }) => [
-    `/card/${id}/`,
-    renderCard({
-      title: data.title,
-      eyebrow: [data.type, dateFormat.format(new Date(`${data.date}T00:00:00Z`))].join(OG_CARD.separator),
-      author: OG_CARD.author,
-      site: OG_CARD.site,
-      stat: data.stat && data.statLabel
-        ? { value: data.stat, label: data.statLabel, context: data.statContext }
-        : null,
-      fontCss,
-    }),
-  ]));
-
-  cards.set('/card/__site__/', renderSiteCard({ ...OG_SITE_CARD, fontCss }));
-
-  const { server, port } = await serve(cards);
-  const browser = await launchChrome();
-  const cleanup = () => {
-    browser.close();
-    try { server.close(); } catch { /* already closed */ }
-  };
-  process.on('exit', cleanup);
-
-  const page = await browser.newPage();
-  await page.send('Emulation.setDeviceMetricsOverride', {
-    width: 1200,
-    height: 630,
-    deviceScaleFactor: 1,
-    mobile: false,
-  });
-
-  mkdirSync(OUT_DIR, { recursive: true });
-
-  for (const { id } of notes) {
-    const loaded = page.once('Page.loadEventFired');
-    await page.send('Page.navigate', { url: `http://127.0.0.1:${port}/card/${id}/` });
-    await loaded;
-    // The screenshot must wait for the webfonts, or it paints the fallback.
-    await page.send('Runtime.evaluate', {
-      expression: 'document.fonts.ready.then(() => true)',
-      awaitPromise: true,
-    });
-
-    const shot = await page.send('Page.captureScreenshot', { format: 'png' });
-    const png = await sharp(Buffer.from(shot.data, 'base64'))
-      .png({ compressionLevel: 9, palette: true })
-      .toBuffer();
-    const out = join(OUT_DIR, `${id}.png`);
-    writeFileSync(out, png);
-    console.log(`  og/notes/${id}.png  ${Math.round(png.length / 1024)}KB`);
-  }
-
-  {
-    const loaded = page.once('Page.loadEventFired');
-    await page.send('Page.navigate', { url: `http://127.0.0.1:${port}/card/__site__/` });
-    await loaded;
-    await page.send('Runtime.evaluate', {
-      expression: 'document.fonts.ready.then(() => true)',
-      awaitPromise: true,
-    });
-    const shot = await page.send('Page.captureScreenshot', { format: 'png' });
-    const png = await sharp(Buffer.from(shot.data, 'base64'))
-      .png({ compressionLevel: 9 })
-      .toBuffer();
-    writeFileSync(SITE_CARD_OUT, png);
-    console.log(`  og-default.png  ${Math.round(png.length / 1024)}KB (site card)`);
-  }
-
-  page.close();
-  cleanup();
-  console.log(`generate-og: ${notes.length} card(s) written to public/og/notes/`);
-}
-
-main().catch((error) => {
-  console.error(`generate-og: ${error.message}`);
-  process.exit(1);
+const pages=new Map(cards.map((card,i)=>['/card/'+i,card.html]));
+const special={'/tokens.css':'src/styles/tokens.css','/site-photo.png':'src/assets/images/rob-portrait.jpg','/hiking-photo.png':'src/assets/images/rob-hiking.jpg'};
+const server=createServer((req,res)=>{
+ const url=new URL(req.url,'http://localhost').pathname;
+ if(pages.has(url)){res.writeHead(200,{'content-type':MIME['.html']}).end(pages.get(url));return;}
+ const file=special[url]?resolve(ROOT,special[url]):resolve(DIST,'.'+decodeURIComponent(url));
+ if(!special[url]&&file!==DIST&&!file.startsWith(DIST+sep)){res.writeHead(403).end();return;}
+ try{res.writeHead(200,{'content-type':MIME[extname(file)]??'application/octet-stream'}).end(readFileSync(file));}catch{res.writeHead(404).end();}
 });
+await new Promise(r=>server.listen(0,'127.0.0.1',r));
+let browser;
+try{
+ browser=await launchChrome();const page=await browser.newPage();
+ await page.send('Emulation.setDeviceMetricsOverride',{width:1200,height:630,deviceScaleFactor:1,mobile:false});
+ for(const [i,card] of cards.entries()){
+  const loaded=page.once('Page.loadEventFired');await page.send('Page.navigate',{url:'http://127.0.0.1:'+server.address().port+'/card/'+i});await loaded;
+  const check=await page.send('Runtime.evaluate',{expression:`(async()=>{await document.fonts.ready;await Promise.all([...document.images].map(i=>i.decode()));const t=document.querySelector('.title'),m=document.querySelector('.main');let size=parseFloat(getComputedStyle(t).fontSize);while(t.scrollHeight>m.clientHeight-56&&size>44){size-=2;t.style.fontSize=size+'px'}return {size,overflow:t.scrollHeight>m.clientHeight-56||document.documentElement.scrollWidth>1200||document.documentElement.scrollHeight>630}})()`,awaitPromise:true,returnByValue:true});
+  if(check.result.value.overflow)throw new Error('Card overflow: '+card.path);
+  const shot=await page.send('Page.captureScreenshot',{format:'png'});
+  const png=await sharp(Buffer.from(shot.data,'base64')).png({compressionLevel:9}).toBuffer();
+  mkdirSync(dirname(card.out),{recursive:true});writeFileSync(card.out,png);
+ }
+ await page.send('Page.close');page.close();
+ console.log('generate-og: '+cards.length+' page-specific cards, 1200x630, fonts/images loaded, no overflow');
+}finally{browser?.close();server.close();}
