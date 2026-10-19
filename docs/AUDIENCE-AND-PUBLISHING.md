@@ -1,5 +1,7 @@
 # The audience this site should earn
 
+October 19 publication update: Rob approved both proposed essays and the dashboard replacement. The three current essays now lead on the production homepage. The three retired clinic notes are preserved outside the public collection. Draft boundaries and launch references below record the earlier review; see `publishing-2026-10-19.md` for current decisions.
+
 The through-line is Rob championing small teams and caring about what technology does to people's time. Togetheren, SkillNav and Caretrics give that view somewhere to become real. A reader should benefit from the writing even if they never become a customer.
 
 ## What changed in the review

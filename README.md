@@ -20,15 +20,17 @@ pnpm gate            # astro check + copy lint + build + redirect check
 
 Draft content (`draft: true`) shows in `pnpm dev` and is hidden in production builds.
 
-To review the complete redesign with its two proposed October 18 essays:
+To review a noindex copy of the published site locally:
 
 ```
 pnpm build --mode editorial-review --outDir .impeccable/review/site
 ```
 
-Serve `.impeccable/review/site/client` locally. This output has a visible preview notice and `noindex`; RSS still excludes drafts. Keep it local. Ordinary `pnpm build` and `pnpm gate` produce the deployable version without the essays. Run the ordinary build last before any authorized deployment because the Vercel adapter also writes its output directory during review builds.
+Serve `.impeccable/review/site/client` locally. This output has a visible preview notice and `noindex`; drafts stay excluded. Keep it local. Ordinary `pnpm build` and `pnpm gate` produce the deployable version. Run the ordinary build last before any authorized deployment because the Vercel adapter also writes its output directory during review builds.
 
 After Rob approves an essay's wording and publication, change its `draft` flag to `false`, run `pnpm generate:og` after a build, then run the gate again. Do not treat approval of the redesign as approval to publish the proposed essays.
+
+Rob approved publication of both October 18 essays and the dashboard replacement on October 19. The three retired clinic notes are kept outside the content collection in `docs/retired-notes/`; their old URLs return 404, and they are absent from navigation, RSS and the sitemap. See `docs/publishing-2026-10-19.md` for the research and publication decisions.
 
 ## Write a field note
 

@@ -169,14 +169,8 @@ export const NEXT_READS: Record<string, readonly { href: string; reason: string 
     { href: '/field-notes/2026-10-18-small-teams-deserve-their-time-back/', reason: 'What happens when a prototype becomes a promise to a customer.' },
     { href: '/archive/great-systems-need-to-create-flow/', reason: 'An earlier look at designing for flow, and what makes an experience worth having.' },
   ],
-  '/field-notes/2026-08-18-unbooked-at-the-desk/': [
-    { href: '/field-notes/2026-08-19-i-took-my-own-number-down/', reason: 'How I decide which numbers belong in public.' },
-  ],
-  '/field-notes/2026-08-19-i-took-my-own-number-down/': [
-    { href: '/field-notes/2026-08-19-i-only-checked-the-widths-i-designed-for/', reason: 'What a number leaves out matters as much as what it shows.' },
-  ],
-  '/field-notes/2026-08-19-i-only-checked-the-widths-i-designed-for/': [
-    { href: '/field-notes/2026-08-18-unbooked-at-the-desk/', reason: 'A concrete example of the work a clean report can miss.' },
+  '/field-notes/2026-10-19-are-dashboards-dead/': [
+    { href: '/field-notes/2026-10-18-small-teams-deserve-their-time-back/', reason: 'The work a small team takes on when a prototype becomes a promise.' },
   ],
   '/archive/building-a-startup-requires-self-awareness/': [
     { href: '/field-notes/2026-10-18-small-teams-deserve-their-time-back/', reason: 'What I want to build next, and the test it has to pass.' },

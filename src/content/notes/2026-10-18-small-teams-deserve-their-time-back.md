@@ -6,7 +6,7 @@ date: 2026-10-18
 updated: 2026-10-19
 tags: ["Founder notes"]
 stage: -1
-draft: true
+draft: false
 ---
 
 AI can help a small team launch something it couldn’t have afforded to build before. But once a customer depends on it, somebody still has to answer the phone.

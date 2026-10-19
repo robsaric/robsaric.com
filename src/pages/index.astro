@@ -10,12 +10,11 @@ import { EDITORIAL as E } from '../data/editorial';
 import { SITE } from '../data/site';
 import { getEarlierWriting, getRecentWriting } from '../lib/editorial';
 const [earlier, recent] = await Promise.all([getEarlierWriting(), getRecentWriting()]);
-// The review essays lead only in builds where they are visible. Published
-// archive selections give the same three entry points in ordinary production.
+// Three current essays introduce the work, the ambition and life beyond it.
 const selections = [
   recent.find(item => item.href.includes('small-teams-deserve-their-time-back')) ?? earlier[2],
   recent.find(item => item.href.includes('building-with-ai-and-life-beyond-the-feed')) ?? earlier[0],
-  earlier[1],
+  recent.find(item => item.href.includes('are-dashboards-dead')) ?? earlier[1],
 ].filter((item): item is NonNullable<typeof item> => Boolean(item));
 const personJsonLd = { '@context': 'https://schema.org', '@type': 'Person', name: SITE.name, url: SITE.url, jobTitle: SITE.author.jobTitle, sameAs: [SITE.links.linkedin, SITE.links.github] };
 ---

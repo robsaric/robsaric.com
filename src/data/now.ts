@@ -16,9 +16,9 @@ export interface NowItem {
 export const NOW_ITEMS: NowItem[] = [
   {
     kicker: 'Writing',
-    title: 'Unbooked at the desk, seventy percent never come back',
-    blurb: 'Two years of first visits at one clinic, and the one thing at the front desk that predicted whether a new patient came back.',
-    href: '/field-notes/2026-08-18-unbooked-at-the-desk/',
+    title: 'Are dashboards going the way of the dodo?',
+    blurb: 'Why a chart is only the start of helping a small team get the work done.',
+    href: '/field-notes/2026-10-19-are-dashboards-dead/',
   },
   {
     kicker: 'Building',
