@@ -10,9 +10,11 @@ The redesign makes the point of view explicit, shows readable titles and dates, 
 
 Two new proposed essays are included in the local preview. They express the views Rob gave during this conversation; they do not invent customer stories or private family scenes. Review these as Rob's first-person writing before any public release:
 - A small team shouldn’t need a department for everything
-- I build with AI. I still want a childhood beyond the feed.
+- I want my analog life back.
 
-The second essay links to the official [Unplugged Canada website](https://www.unpluggedcanada.com/), checked on 2026-10-18. It names their public purpose without implying Rob holds a role there.
+The second essay was revised on 2026-10-19 at Rob's request to include adult analog life, a verified short quote from Cory Doctorow's *The Reverse Centaur's Guide to Life After AI*, and a specific critique of Meta's advertising incentives. The Doctorow quotation is from the actual [book introduction on the publisher's site](https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/), not a review or marketing blurb. Meta's quotation and the explanation of ad impressions/actions are from its [2025 annual report](https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm). The implications for Rob's work and personal time are his editorial argument, not claims attributed to Doctorow. The handoff scenario is explicitly hypothetical; no new personal anecdote or shipped product behavior is claimed.
+
+The essay also links to the official [Unplugged Canada website](https://www.unpluggedcanada.com/), checked again on 2026-10-19. It names their public purpose without implying Rob holds a role there. The URL and draft boundary stay unchanged.
 
 ## Three recurring subjects
 
@@ -56,23 +58,21 @@ I’m excited by what AI makes possible. I’m more interested in whether the re
 
 The team should get its time back.
 
-### Attention
+### Analog life
 
-I build with AI. I also want children to have a life beyond the feed.
+I want my analog life back.
 
-That creates a responsibility for me as a builder.
+I build with AI because I want it to take work off people’s plates. I want the time back, including my own.
 
-Infinite scroll. Autoplay. Another notification asking someone to come back. I want to question those choices before treating them as the obvious way to grow a product.
+But generating a client handoff faster means very little if someone spends the afternoon repairing what it got wrong. We still have to count the cleanup.
 
-Would we still call the product a success if someone finished sooner and left?
+Even when a tool does save time, someone can fill the gap with more assignments. The people doing the work should have some say in what happens next.
 
-Big Tech deserves scrutiny on that question. So do small companies, including the ones I’m building.
+I want a conversation without a notification competing with the person in front of me. I want to make something with my hands without turning it into content. Children need room for that kind of life, but so do adults.
 
-There is a tension in wanting to grow an audience here while questioning the platforms that mediate our attention. I don’t have a neat answer to it.
+Before adding the next AI tool, ask what work it will remove and who gets to decide what happens to the time it saves.
 
-I can try to make what I share worth your time. And I can build tools that let people finish the work and put the device down.
-
-A useful product can be one you spend less time in.
+I want the work finished and the afternoon back.
 
 ## Check whether it is working
 

@@ -37,6 +37,15 @@ No dependencies, package version, lockfile, backend newsletter handler, tracking
 
 ## Validation
 
+### October 19 analog-life essay revision
+
+- Rewrote the proposed AI/attention essay as **I want my analog life back.** Adult analog life now leads; childhood remains part of the argument. The title, summary, draft sharing image, and companion LinkedIn draft agree. The canonical URL, date, and draft flag are unchanged.
+- Verified the short Cory Doctorow quotation against the actual book introduction on Macmillan's website and the Meta quotation against its 2025 SEC annual report. Sources are linked in the essay. The client-handoff example is explicitly hypothetical; no personal story, product capability, or organizational affiliation was invented.
+- A separate copy review supplied four cuts, all applied before validation. The revised essay removes the generic Big Tech passage and ends with a concrete reader action.
+- Explicit editorial-review build and the final pinned `pnpm gate` passed. Redirects: 112 URLs, zero misses. Content: 11 notes. Layout: 77 checks, no overflow. Generated-output checks passed for all 49 production and 51 review pages, including draft exclusions and valid next-read links.
+- Fresh browser checks passed for homepage, writing index, and essay at 1440, 900, and 390px. Inspected the revised essay at desktop and mobile widths and its 1200x630 sharing image. Keyboard feedback, reduced motion, and no-JavaScript checks also passed.
+- Changed files for this revision: the one draft essay, its sharing image, `docs/AUDIENCE-AND-PUBLISHING.md`, and this handoff. No layout, dependency, lockfile, or published article changed. The revised essay remains a local review draft.
+
 ### October 19 refinement validation
 
 - Final `corepack pnpm@10.27.0 gate`: passed after the sharing-image update. Astro: zero errors; copy lint: zero errors and the same three existing taste warnings. Content: 11 notes. Redirects: 112 URLs with zero misses. Responsive gate: 77 checks across 11 routes and seven widths.
