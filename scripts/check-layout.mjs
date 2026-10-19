@@ -115,8 +115,7 @@ const PROBE = `(() => {
 
 /** Catch homepage content hidden by CSS and browser scripts that failed to run. */
 const HOMEPAGE_PROBE = `(() => {
-  const mobile = matchMedia('(max-width: 767.98px)').matches;
-  const body = document.querySelector(mobile ? '.about__body--mobile' : '.about__body--desktop');
+  const body = document.querySelector('[data-personal-copy]');
   const rect = body?.getBoundingClientRect();
   const style = body ? getComputedStyle(body) : null;
   const newsletter = document.querySelector('[data-write-to-me]');
@@ -132,7 +131,7 @@ const HOMEPAGE_PROBE = `(() => {
   }
   return {
     aboutCopyVisible: Boolean(rect && rect.width > 0 && rect.height > 0 && style.display !== 'none' && style.visibility !== 'hidden'),
-    newsletterScriptReady: newsletter?.dataset.ready === 'true',
+    newsletterScriptReady: !newsletter || newsletter.dataset.ready === 'true',
     newsletterValidationWorks,
   };
 })()`;

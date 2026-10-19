@@ -27,3 +27,6 @@ pnpm-debug.log*
 
 # editor workspace
 *.code-workspace
+
+# Local review renders and browser evidence; keep design.json versioned.
+.impeccable/review/

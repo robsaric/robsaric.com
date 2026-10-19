@@ -1,40 +1,42 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import FieldNotes from '../../components/FieldNotes.astro';
-import { getPublishedNotes } from '../../lib/notes';
-import { COPY } from '../../data/copy';
-
-const notes = await getPublishedNotes();
+import ReadingList from '../../components/ReadingList.astro';
+import Connect from '../../components/Connect.astro';
+import Arrow from '../../components/Arrow.astro';
+import { EDITORIAL as E } from '../../data/editorial';
+import { getEarlierWriting, getRecentWriting } from '../../lib/editorial';
+const earlier = await getEarlierWriting();
+const recent = await getRecentWriting();
 ---
-
-<BaseLayout
-  title={COPY.pages.fieldNotes.title}
-  description={COPY.pages.fieldNotes.description}
->
-  <header class="page-header">
-    <h1>{COPY.pages.fieldNotes.title}</h1>
-    <p>{COPY.pages.fieldNotes.intro}</p>
-  </header>
-  <FieldNotes notes={notes} />
+<BaseLayout title={E.writing.pageTitle} description={E.writing.pageIntro}>
+  <div class="wrap writing-page">
+    <header><h1>{E.writing.pageHeading}</h1><p>{E.writing.pageIntro}</p></header>
+    <section aria-labelledby="recent-title"><div class="section-intro"><h2 id="recent-title">{E.writing.latest}</h2></div><ReadingList items={recent} /></section>
+    <section class="earlier" aria-labelledby="earlier-title"><div class="section-intro"><h2 id="earlier-title">{E.writing.earlier}</h2><p>{E.writing.earlierIntro}</p></div><ReadingList items={earlier} /><a class="text-link archive-link" href="/archive/">{E.writing.archive}<Arrow /></a></section>
+    <aside class="afterword"><h2>{E.writing.topics}</h2><p>{E.writing.afterword}</p></aside>
+  </div>
+  <Connect />
 </BaseLayout>
-
 <style>
-  .page-header {
-    width: 100%;
-    max-width: var(--max-page);
-    margin: 0 auto;
-    padding: 96px var(--gutter-desktop);
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  h1 { margin: 0; font-size: 48px; line-height: 1.1; letter-spacing: -0.028em; }
-  p { max-width: 58ch; margin: 0; font-size: 18px; line-height: var(--lh-body); }
-
-  @media (max-width: 767.98px) {
-    .page-header { padding: 44px var(--gutter-mobile); }
-    h1 { font-size: 34px; }
-    p { font-size: 17px; }
-  }
+.writing-page { padding-block: 76px 80px; }
+header { max-width: 960px; margin-bottom: 72px; }
+h1 { font-size: clamp(3rem, 7vw, 6rem); margin: 0 0 28px; font-weight: 800; color: var(--blue); }
+header p { font-size: 21px; line-height: 1.65; max-width: 56ch; margin: 0; }
+section { margin-top: 64px; }
+.section-intro { display: grid; grid-template-columns: 1fr 1.6fr; gap: 64px; margin-bottom: 32px; }
+.section-intro h2 { margin: 0; font-size: 34px; }
+.section-intro p { font-size: 17px; line-height: 1.65; margin: 0; max-width: 60ch; color: var(--ink-muted); }
+.archive-link { margin-top: 22px; }
+.afterword { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-top: 72px; border-top: 1px solid var(--rule); padding-top: 44px; }
+.afterword h2 { font-size: 30px; margin: 0; max-width: 20ch; }
+.afterword p { font-size: 17px; line-height: 1.7; margin: 0; }
+@media (max-width: 767.98px) {
+ .writing-page { padding-block: 44px 56px; }
+ header { margin-bottom: 48px; }
+ header p { font-size: 18px; }
+ .section-intro, .afterword { grid-template-columns: minmax(0,1fr); gap: 20px; }
+ .section-intro h2 { font-size: 28px; }
+ section { margin-top: 44px; }
+ .afterword { margin-top: 48px; }
+}
 </style>

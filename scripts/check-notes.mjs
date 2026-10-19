@@ -142,6 +142,21 @@ for (const name of noteFiles) {
       fail(where, `OG card is ${size.width}x${size.height}, must be 1200x630. Re-run \`pnpm generate:og\`.`);
     }
   }
+
+  // Review mode has a separate output directory. The deployable build must
+  // never contain a draft route or advertise one in the homepage/index/feed.
+  if (isDraft(data) && existsSync(DIST)) {
+    const href = `/field-notes/${stem}/`;
+    if (existsSync(join(DIST, 'field-notes', stem, 'index.html'))) {
+      fail(where, 'draft route is present in the production build');
+    }
+    for (const surface of ['index.html', 'field-notes/index.html', 'rss.xml', 'sitemap-0.xml']) {
+      const file = join(DIST, surface);
+      if (existsSync(file) && readFileSync(file, 'utf8').includes(href)) {
+        fail(where, `draft is linked from production ${surface}`);
+      }
+    }
+  }
 }
 
 // ---- Now strip -------------------------------------------------------------

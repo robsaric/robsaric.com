@@ -1,0 +1,557 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-19T05:43:31.596Z",
+  "title": "Design System: Rob Saric",
+  "extensions": {
+    "colorMeta": {
+      "blue": {
+        "role": "primary",
+        "displayName": "Working Blue",
+        "tonalRamp": [
+          "oklch(15.00% 0.1929 264.76)",
+          "oklch(26.43% 0.1929 264.76)",
+          "oklch(37.86% 0.1929 264.76)",
+          "oklch(49.29% 0.1929 264.76)",
+          "oklch(60.71% 0.1929 264.76)",
+          "oklch(72.14% 0.1929 264.76)",
+          "oklch(83.57% 0.1929 264.76)",
+          "oklch(95.00% 0.1929 264.76)"
+        ]
+      },
+      "blue-deep": {
+        "role": "primary",
+        "displayName": "Deep Blue",
+        "tonalRamp": [
+          "oklch(15.00% 0.1574 264.80)",
+          "oklch(26.43% 0.1574 264.80)",
+          "oklch(37.86% 0.1574 264.80)",
+          "oklch(49.29% 0.1574 264.80)",
+          "oklch(60.71% 0.1574 264.80)",
+          "oklch(72.14% 0.1574 264.80)",
+          "oklch(83.57% 0.1574 264.80)",
+          "oklch(95.00% 0.1574 264.80)"
+        ]
+      },
+      "yellow": {
+        "role": "secondary",
+        "displayName": "Sketch Yellow",
+        "tonalRamp": [
+          "oklch(15.00% 0.1254 88.61)",
+          "oklch(26.43% 0.1254 88.61)",
+          "oklch(37.86% 0.1254 88.61)",
+          "oklch(49.29% 0.1254 88.61)",
+          "oklch(60.71% 0.1254 88.61)",
+          "oklch(72.14% 0.1254 88.61)",
+          "oklch(83.57% 0.1254 88.61)",
+          "oklch(95.00% 0.1254 88.61)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Cool Paper",
+        "tonalRamp": [
+          "oklch(15.00% 0.0051 247.88)",
+          "oklch(26.43% 0.0051 247.88)",
+          "oklch(37.86% 0.0051 247.88)",
+          "oklch(49.29% 0.0051 247.88)",
+          "oklch(60.71% 0.0051 247.88)",
+          "oklch(72.14% 0.0051 247.88)",
+          "oklch(83.57% 0.0051 247.88)",
+          "oklch(95.00% 0.0051 247.88)"
+        ]
+      },
+      "sky": {
+        "role": "neutral",
+        "displayName": "Sky",
+        "tonalRamp": [
+          "oklch(15.00% 0.0145 244.72)",
+          "oklch(26.43% 0.0145 244.72)",
+          "oklch(37.86% 0.0145 244.72)",
+          "oklch(49.29% 0.0145 244.72)",
+          "oklch(60.71% 0.0145 244.72)",
+          "oklch(72.14% 0.0145 244.72)",
+          "oklch(83.57% 0.0145 244.72)",
+          "oklch(95.00% 0.0145 244.72)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Deep Ink",
+        "tonalRamp": [
+          "oklch(15.00% 0.0366 244.76)",
+          "oklch(26.43% 0.0366 244.76)",
+          "oklch(37.86% 0.0366 244.76)",
+          "oklch(49.29% 0.0366 244.76)",
+          "oklch(60.71% 0.0366 244.76)",
+          "oklch(72.14% 0.0366 244.76)",
+          "oklch(83.57% 0.0366 244.76)",
+          "oklch(95.00% 0.0366 244.76)"
+        ]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Quiet Ink",
+        "tonalRamp": [
+          "oklch(15.00% 0.0325 243.61)",
+          "oklch(26.43% 0.0325 243.61)",
+          "oklch(37.86% 0.0325 243.61)",
+          "oklch(49.29% 0.0325 243.61)",
+          "oklch(60.71% 0.0325 243.61)",
+          "oklch(72.14% 0.0325 243.61)",
+          "oklch(83.57% 0.0325 243.61)",
+          "oklch(95.00% 0.0325 243.61)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "tonalRamp": [
+          "oklch(15.00% 0.0173 242.46)",
+          "oklch(26.43% 0.0173 242.46)",
+          "oklch(37.86% 0.0173 242.46)",
+          "oklch(49.29% 0.0173 242.46)",
+          "oklch(60.71% 0.0173 242.46)",
+          "oklch(72.14% 0.0173 242.46)",
+          "oklch(83.57% 0.0173 242.46)",
+          "oklch(95.00% 0.0173 242.46)"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "White",
+        "tonalRamp": [
+          "oklch(15.00% 0.0000 0)",
+          "oklch(26.43% 0.0000 0)",
+          "oklch(37.86% 0.0000 0)",
+          "oklch(49.29% 0.0000 0)",
+          "oklch(60.71% 0.0000 0)",
+          "oklch(72.14% 0.0000 0)",
+          "oklch(83.57% 0.0000 0)",
+          "oklch(95.00% 0.0000 0)"
+        ]
+      },
+      "on-dark-78": {
+        "role": "neutral",
+        "displayName": "Dark-surface Supporting Text",
+        "tonalRamp": [
+          "oklch(15.00% 0.0298 262.54)",
+          "oklch(26.43% 0.0298 262.54)",
+          "oklch(37.86% 0.0298 262.54)",
+          "oklch(49.29% 0.0298 262.54)",
+          "oklch(60.71% 0.0298 262.54)",
+          "oklch(72.14% 0.0298 262.54)",
+          "oklch(83.57% 0.0298 262.54)",
+          "oklch(95.00% 0.0298 262.54)"
+        ]
+      },
+      "on-dark-28": {
+        "role": "neutral",
+        "displayName": "Dark-surface Rule",
+        "tonalRamp": [
+          "oklch(15.00% 0.0051 247.88 / 28%)",
+          "oklch(26.43% 0.0051 247.88 / 28%)",
+          "oklch(37.86% 0.0051 247.88 / 28%)",
+          "oklch(49.29% 0.0051 247.88 / 28%)",
+          "oklch(60.71% 0.0051 247.88 / 28%)",
+          "oklch(72.14% 0.0051 247.88 / 28%)",
+          "oklch(83.57% 0.0051 247.88 / 28%)",
+          "oklch(95.00% 0.0051 247.88 / 28%)"
+        ]
+      },
+      "status-critical-text": {
+        "role": "functional",
+        "displayName": "Invalid Field Text",
+        "tonalRamp": [
+          "oklch(15.00% 0.1667 25.53)",
+          "oklch(26.43% 0.1667 25.53)",
+          "oklch(37.86% 0.1667 25.53)",
+          "oklch(49.29% 0.1667 25.53)",
+          "oklch(60.71% 0.1667 25.53)",
+          "oklch(72.14% 0.1667 25.53)",
+          "oklch(83.57% 0.1667 25.53)",
+          "oklch(95.00% 0.1667 25.53)"
+        ]
+      },
+      "home-paper": {
+        "role": "neutral",
+        "displayName": "Warm Paper",
+        "tonalRamp": [
+          "oklch(15.00% 0.0082 91.48)",
+          "oklch(26.43% 0.0082 91.48)",
+          "oklch(37.86% 0.0082 91.48)",
+          "oklch(49.29% 0.0082 91.48)",
+          "oklch(60.71% 0.0082 91.48)",
+          "oklch(72.14% 0.0082 91.48)",
+          "oklch(83.57% 0.0082 91.48)",
+          "oklch(95.00% 0.0082 91.48)"
+        ]
+      },
+      "home-sky": {
+        "role": "neutral",
+        "displayName": "Warm Wash",
+        "tonalRamp": [
+          "oklch(15.00% 0.0067 115.71)",
+          "oklch(26.43% 0.0067 115.71)",
+          "oklch(37.86% 0.0067 115.71)",
+          "oklch(49.29% 0.0067 115.71)",
+          "oklch(60.71% 0.0067 115.71)",
+          "oklch(72.14% 0.0067 115.71)",
+          "oklch(83.57% 0.0067 115.71)",
+          "oklch(95.00% 0.0067 115.71)"
+        ]
+      },
+      "home-ink": {
+        "role": "neutral",
+        "displayName": "Charcoal",
+        "tonalRamp": [
+          "oklch(15.00% 0.0194 236.15)",
+          "oklch(26.43% 0.0194 236.15)",
+          "oklch(37.86% 0.0194 236.15)",
+          "oklch(49.29% 0.0194 236.15)",
+          "oklch(60.71% 0.0194 236.15)",
+          "oklch(72.14% 0.0194 236.15)",
+          "oklch(83.57% 0.0194 236.15)",
+          "oklch(95.00% 0.0194 236.15)"
+        ]
+      },
+      "home-ink-muted": {
+        "role": "neutral",
+        "displayName": "Warm Quiet Ink",
+        "tonalRamp": [
+          "oklch(15.00% 0.0089 241.79)",
+          "oklch(26.43% 0.0089 241.79)",
+          "oklch(37.86% 0.0089 241.79)",
+          "oklch(49.29% 0.0089 241.79)",
+          "oklch(60.71% 0.0089 241.79)",
+          "oklch(72.14% 0.0089 241.79)",
+          "oklch(83.57% 0.0089 241.79)",
+          "oklch(95.00% 0.0089 241.79)"
+        ]
+      },
+      "home-rule": {
+        "role": "neutral",
+        "displayName": "Warm Rule",
+        "tonalRamp": [
+          "oklch(15.00% 0.0033 197.10)",
+          "oklch(26.43% 0.0033 197.10)",
+          "oklch(37.86% 0.0033 197.10)",
+          "oklch(49.29% 0.0033 197.10)",
+          "oklch(60.71% 0.0033 197.10)",
+          "oklch(72.14% 0.0033 197.10)",
+          "oklch(83.57% 0.0033 197.10)",
+          "oklch(95.00% 0.0033 197.10)"
+        ]
+      },
+      "home-on-dark-78": {
+        "role": "neutral",
+        "displayName": "Warm Dark-surface Supporting Text",
+        "tonalRamp": [
+          "oklch(15.00% 0.0077 241.67)",
+          "oklch(26.43% 0.0077 241.67)",
+          "oklch(37.86% 0.0077 241.67)",
+          "oklch(49.29% 0.0077 241.67)",
+          "oklch(60.71% 0.0077 241.67)",
+          "oklch(72.14% 0.0077 241.67)",
+          "oklch(83.57% 0.0077 241.67)",
+          "oklch(95.00% 0.0077 241.67)"
+        ]
+      },
+      "home-on-dark-28": {
+        "role": "neutral",
+        "displayName": "Warm Dark-surface Rule",
+        "tonalRamp": [
+          "oklch(15.00% 0.0082 91.48 / 28%)",
+          "oklch(26.43% 0.0082 91.48 / 28%)",
+          "oklch(37.86% 0.0082 91.48 / 28%)",
+          "oklch(49.29% 0.0082 91.48 / 28%)",
+          "oklch(60.71% 0.0082 91.48 / 28%)",
+          "oklch(72.14% 0.0082 91.48 / 28%)",
+          "oklch(83.57% 0.0082 91.48 / 28%)",
+          "oklch(95.00% 0.0082 91.48 / 28%)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Default display",
+        "purpose": "Existing display scale retained alongside the homepage and Building page typography."
+      },
+      "headline": {
+        "displayName": "Section headline",
+        "purpose": "Recurring fluid headings for major editorial sections."
+      },
+      "title": {
+        "displayName": "Writing title",
+        "purpose": "Linked writing-list titles; compact and mobile variants are smaller."
+      },
+      "article-title": {
+        "displayName": "Article title",
+        "purpose": "Long-form article headings with their own fluid size."
+      },
+      "lead": {
+        "displayName": "Reading-page lead",
+        "purpose": "Reading-page introductions retain this size with a relaxed 1.65 line height."
+      },
+      "body": {
+        "displayName": "Reading body",
+        "purpose": "Long-form reading within 68ch; 17px on mobile."
+      },
+      "label": {
+        "displayName": "Action label",
+        "purpose": "Plain-language controls and actions."
+      },
+      "meta": {
+        "displayName": "Supporting metadata",
+        "purpose": "Dates, captions, and secondary statuses."
+      },
+      "home-display": {
+        "displayName": "Homepage statement",
+        "purpose": "Approved two-sentence charcoal heading; the second sentence starts a new block."
+      },
+      "home-display-mobile": {
+        "displayName": "Mobile homepage statement",
+        "purpose": "Homepage headline below 768px."
+      },
+      "home-lead": {
+        "displayName": "Homepage lead",
+        "purpose": "Homepage introduction within 58ch; 17px on mobile."
+      },
+      "home-promise": {
+        "displayName": "Homepage closing thought",
+        "purpose": "Charcoal closing thought in medium weight within 56ch; 16px on mobile."
+      },
+      "home-identity": {
+        "displayName": "Homepage identity",
+        "purpose": "Approved sentence-case founder/writer/Ottawa metadata above the headline."
+      },
+      "building-display": {
+        "displayName": "Building page mission statement",
+        "purpose": "Charcoal mission heading, fluid within 19ch."
+      },
+      "building-display-mobile": {
+        "displayName": "Mobile Building page mission statement",
+        "purpose": "Building page headline below 768px, retaining the 19ch maximum."
+      }
+    },
+    "shadows": [
+      {
+        "name": "shadow-nav",
+        "value": "0 6px 16px rgb(25 43 58 / 7%)",
+        "purpose": "Open mobile navigation on default reading routes."
+      },
+      {
+        "name": "shadow-nav-warm",
+        "value": "0 6px 16px rgb(41 52 59 / 7%)",
+        "purpose": "Open mobile navigation on the warm homepage and Building page; maps to their --shadow-nav override."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Shared link-arrow feedback and mobile menu entrance; also used by the retained process component."
+      },
+      {
+        "name": "action-hover",
+        "value": "180ms",
+        "purpose": "Primary-action background transition."
+      },
+      {
+        "name": "nav-enter",
+        "value": "200ms",
+        "purpose": "Open mobile navigation, opacity and 4px vertical translation."
+      },
+      {
+        "name": "sketch-panel",
+        "value": "320ms",
+        "purpose": "Deliberate panel change, opacity and 6px vertical translation. Retained component only; not mounted on the homepage."
+      },
+      {
+        "name": "sketch-path-select",
+        "value": "650ms",
+        "purpose": "Finite path redraw on an explicit step selection. Retained component only; not mounted on the homepage."
+      },
+      {
+        "name": "sketch-path-first-view",
+        "value": "1100ms",
+        "purpose": "One path reveal when the sketch first enters view. Retained component only; not mounted on the homepage."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "none",
+        "purpose": "CSS transitions and animations stop; sketch script also skips Web Animations. Content and states remain available."
+      },
+      {
+        "name": "link-arrow",
+        "value": "200ms",
+        "purpose": "Existing 3px forward or 2px diagonal arrow movement on keyboard focus and hover-capable devices; reduced motion keeps position fixed."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "mobile-max",
+        "value": "767.98px"
+      },
+      {
+        "name": "article-author-rail-max",
+        "value": "1023px"
+      },
+      {
+        "name": "warm-pages-intermediate-min",
+        "value": "768px"
+      },
+      {
+        "name": "warm-pages-intermediate-max",
+        "value": "1050px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary action",
+      "kind": "button",
+      "refersTo": "action",
+      "description": "Shared blue action on cool reading pages and the warm homepage and Building page. Hover and focus deepen blue; the existing arrow response remains 200ms.",
+      "html": "<a class=\"ds-action\" href=\"/field-notes/\">Read my writing <svg class=\"ds-arrow\" viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 12h15M12 5l7 7-7 7\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></a>",
+      "css": ".ds-action{display:inline-flex;justify-content:center;align-items:center;gap:14px;min-height:52px;padding:14px 23px;border:1px solid var(--blue,#244fc7);border-radius:6px;background:var(--blue,#244fc7);color:var(--white,#ffffff);text-decoration:none;font-family:var(--font-sans, 'Inter', system-ui, sans-serif);font-size:15px;font-weight:600;transition:background 180ms}.ds-action:hover,.ds-action:focus-visible{background:var(--blue-deep,#183996);color:var(--white,#ffffff)}.ds-action:focus-visible{outline:2px solid var(--blue,#244fc7);outline-offset:2px}.ds-arrow{flex:0 0 auto;vertical-align:middle}.ds-arrow-diagonal{transform:rotate(-45deg)}@media(prefers-reduced-motion:reduce){.ds-action{transition:none}}.ds-arrow{transition:transform var(--dur-short,200ms) var(--ease-out,cubic-bezier(.16,1,.3,1))}@media(prefers-reduced-motion:no-preference){a:focus-visible>.ds-arrow{transform:translateX(3px)}a:focus-visible>.ds-arrow-diagonal{transform:translate(2px,-2px) rotate(-45deg)}}@media(hover:hover) and (prefers-reduced-motion:no-preference){a:hover>.ds-arrow{transform:translateX(3px)}a:hover>.ds-arrow-diagonal{transform:translate(2px,-2px) rotate(-45deg)}}@media(prefers-reduced-motion:reduce){.ds-arrow{transition:none}}"
+    },
+    {
+      "name": "Text action",
+      "kind": "button",
+      "refersTo": "text-link",
+      "description": "The quieter inline action, using a real SVG arrow and a visible hover underline.",
+      "html": "<a class=\"ds-text-link\" href=\"/contact/\">Or write to me <svg class=\"ds-arrow\" viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 12h15M12 5l7 7-7 7\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></a>",
+      "css": ".ds-text-link{display:inline-flex;align-items:center;gap:12px;min-height:44px;color:var(--blue,#244fc7);font-family:var(--font-sans, 'Inter', system-ui, sans-serif);font-size:16px;font-weight:600;text-decoration:none}.ds-text-link:hover{text-decoration:underline;text-underline-offset:5px}.ds-text-link:focus-visible{outline:2px solid var(--blue,#244fc7);outline-offset:2px}.ds-arrow{flex:0 0 auto;vertical-align:middle}.ds-arrow-diagonal{transform:rotate(-45deg)}.ds-arrow{transition:transform var(--dur-short,200ms) var(--ease-out,cubic-bezier(.16,1,.3,1))}@media(prefers-reduced-motion:no-preference){a:focus-visible>.ds-arrow{transform:translateX(3px)}a:focus-visible>.ds-arrow-diagonal{transform:translate(2px,-2px) rotate(-45deg)}}@media(hover:hover) and (prefers-reduced-motion:no-preference){a:hover>.ds-arrow{transform:translateX(3px)}a:hover>.ds-arrow-diagonal{transform:translate(2px,-2px) rotate(-45deg)}}@media(prefers-reduced-motion:reduce){.ds-arrow{transition:none}}"
+    },
+    {
+      "name": "Responsive navigation",
+      "kind": "nav",
+      "refersTo": "navigation",
+      "description": "Shared paper header with Writing, About, What I’m building, and LinkedIn. What I’m building links to /building/ and uses the same active-page treatment. The homepage and Building page use the warm theme; reading routes retain cool paper. Native mobile disclosure remains usable without JavaScript.",
+      "html": "<header class=\"ds-site-nav\"><div class=\"ds-nav-inner\"><a class=\"ds-wordmark\" href=\"/\" aria-label=\"Rob Saric, home\">Rob Saric<span>.</span></a><nav class=\"ds-desktop-nav\" aria-label=\"Primary\"><a href=\"/field-notes/\" aria-current=\"page\">Writing</a><a href=\"/about/\">About</a><a href=\"/building/\">What I’m building</a><a class=\"ds-nav-follow\" href=\"https://www.linkedin.com/in/robertsaric/\">Follow on LinkedIn <svg class=\"ds-arrow ds-arrow-diagonal\" viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 12h15M12 5l7 7-7 7\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></a></nav><details class=\"ds-mobile-menu\"><summary aria-label=\"Open navigation\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" aria-hidden=\"true\"><path d=\"M3 8h18M3 16h18\" stroke=\"currentColor\" stroke-width=\"1.7\"/></svg></summary><nav aria-label=\"Mobile primary\"><a href=\"/field-notes/\" aria-current=\"page\">Writing</a><a href=\"/about/\">About</a><a href=\"/building/\">What I’m building</a><a href=\"/contact/\">Write to me</a></nav></details></div></header>",
+      "css": ".ds-site-nav{position:relative;z-index:20;border-bottom:1px solid var(--rule,#cbd6df);background:var(--paper,#f4f7fa);font-family:var(--font-sans, 'Inter', system-ui, sans-serif);color:var(--ink,#192b3a)}.ds-nav-inner{max-width:1440px;margin:auto;padding:0 var(--gutter-desktop,clamp(32px,5vw,80px));height:88px;display:flex;align-items:center;justify-content:space-between;gap:24px}.ds-wordmark{display:inline-flex;align-items:baseline;min-height:44px;padding-block:8px;font:750 25px/1.1 var(--font-display, 'Manrope', 'Inter', system-ui, sans-serif);letter-spacing:-.04em;color:var(--ink,#192b3a);text-decoration:none;white-space:nowrap}.ds-wordmark span{color:var(--blue,#244fc7)}.ds-desktop-nav{display:flex;align-items:center;gap:32px}.ds-site-nav nav a{min-height:44px;display:inline-flex;align-items:center;gap:12px;color:var(--ink,#192b3a);text-decoration:none;font-size:15px;font-weight:500}.ds-site-nav nav a:hover,.ds-site-nav nav a[aria-current]{color:var(--blue,#244fc7);text-decoration:underline;text-underline-offset:7px}.ds-site-nav a:focus-visible,.ds-site-nav summary:focus-visible{outline:2px solid var(--blue,#244fc7);outline-offset:2px}.ds-site-nav nav .ds-nav-follow{padding-left:30px;border-left:1px solid var(--rule,#cbd6df);color:var(--blue,#244fc7)}.ds-mobile-menu{display:none}.ds-arrow{flex:0 0 auto;vertical-align:middle}.ds-arrow-diagonal{transform:rotate(-45deg)}@keyframes ds-nav-enter{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}@media(max-width:767.98px){.ds-nav-inner{height:72px;padding-inline:24px}.ds-desktop-nav{display:none}.ds-mobile-menu{display:block}.ds-mobile-menu summary{width:44px;height:44px;display:grid;place-items:center;cursor:pointer;list-style:none}.ds-mobile-menu summary::-webkit-details-marker{display:none}.ds-mobile-menu nav{position:absolute;top:100%;left:0;right:0;display:grid;padding:12px 24px 24px;border-bottom:1px solid var(--rule,#cbd6df);background:var(--paper,#f4f7fa);box-shadow:var(--shadow-nav,0 6px 16px rgb(25 43 58 / 7%))}.ds-mobile-menu nav a{padding:12px 0;border-bottom:1px solid var(--rule,#cbd6df)}.ds-mobile-menu[open] nav{animation:ds-nav-enter 200ms var(--ease-out,cubic-bezier(.16,1,.3,1))}}@media(prefers-reduced-motion:reduce){.ds-mobile-menu[open] nav{animation:none}}.ds-arrow{transition:transform var(--dur-short,200ms) var(--ease-out,cubic-bezier(.16,1,.3,1))}@media(prefers-reduced-motion:no-preference){a:focus-visible>.ds-arrow{transform:translateX(3px)}a:focus-visible>.ds-arrow-diagonal{transform:translate(2px,-2px) rotate(-45deg)}}@media(hover:hover) and (prefers-reduced-motion:no-preference){a:hover>.ds-arrow{transform:translateX(3px)}a:hover>.ds-arrow-diagonal{transform:translate(2px,-2px) rotate(-45deg)}}@media(prefers-reduced-motion:reduce){.ds-arrow{transition:none}}"
+    },
+    {
+      "name": "Reading entry",
+      "kind": "custom",
+      "refersTo": "reading-entry",
+      "description": "The canonical open writing row: date, linked title, summary, and thin rules. It stacks on mobile.",
+      "html": "<ol class=\"ds-reading-list\"><li><div class=\"ds-reading-date\"><time datetime=\"2019-02-01\">Feb 2019</time><span>Earlier writing</span></div><div class=\"ds-reading-copy\"><h3><a href=\"/archive/building-a-startup-requires-self-awareness/\">Building a Startup Requires Deep Self-Awareness <svg class=\"ds-arrow ds-arrow-diagonal\" viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 12h15M12 5l7 7-7 7\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></a></h3><p>On persistence, personal limits, and getting to know the person building the company: you.</p></div></li></ol>",
+      "css": ".ds-reading-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule,#cbd6df);font-family:var(--font-sans, 'Inter', system-ui, sans-serif)}.ds-reading-list li{display:grid;grid-template-columns:154px minmax(0,1fr);gap:32px;border-bottom:1px solid var(--rule,#cbd6df);padding:30px 0}.ds-reading-date{padding-top:7px;color:var(--ink-muted,#526473);font-size:13px;display:flex;flex-direction:column;gap:6px;font-variant-numeric:tabular-nums}.ds-reading-date span{font-size:12px}.ds-reading-copy h3{margin:0;font-family:var(--font-display, 'Manrope', 'Inter', system-ui, sans-serif);font-size:27px;font-weight:700;letter-spacing:-.035em;line-height:1.12;text-wrap:balance}.ds-reading-copy h3 a{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;color:var(--ink,#192b3a);text-decoration:none;line-height:1.25;min-height:44px}.ds-reading-copy h3 a:hover{color:var(--blue,#244fc7)}.ds-reading-copy h3 a:focus-visible{outline:2px solid var(--blue,#244fc7);outline-offset:2px}.ds-reading-copy .ds-arrow{margin-top:6px;color:var(--blue,#244fc7)}.ds-reading-copy p{margin:10px 0 0;max-width:68ch;font-size:16px;line-height:1.65;color:var(--ink-muted,#526473);text-wrap:pretty}.ds-arrow{flex:0 0 auto;vertical-align:middle}.ds-arrow-diagonal{transform:rotate(-45deg)}@media(max-width:767.98px){.ds-reading-list li{grid-template-columns:minmax(0,1fr);gap:12px;padding:26px 0}.ds-reading-date{flex-direction:row;gap:14px;padding:0}.ds-reading-copy h3{font-size:23px}.ds-reading-copy h3 a{gap:16px}}.ds-arrow{transition:transform var(--dur-short,200ms) var(--ease-out,cubic-bezier(.16,1,.3,1))}@media(prefers-reduced-motion:no-preference){a:focus-visible>.ds-arrow{transform:translateX(3px)}a:focus-visible>.ds-arrow-diagonal{transform:translate(2px,-2px) rotate(-45deg)}}@media(hover:hover) and (prefers-reduced-motion:no-preference){a:hover>.ds-arrow{transform:translateX(3px)}a:hover>.ds-arrow-diagonal{transform:translate(2px,-2px) rotate(-45deg)}}@media(prefers-reduced-motion:reduce){.ds-arrow{transition:none}}"
+    },
+    {
+      "name": "Building page project and nested status",
+      "kind": "custom",
+      "refersTo": "building-project-entry",
+      "description": "Ruled project entry on warm paper: project name and plain supporting line beside prose. SkillNav nests within Togetheren below a thin rule, with plain muted In development text beneath its heading. This replaces the former homepage status-tag specimen.",
+      "html": "<article class=\"ds-building-project\"><div class=\"ds-project-name\"><h3>Togetheren</h3><p>The direction I’m building toward</p></div><div class=\"ds-project-detail\"><p>I’m building toward Togetheren as a home for tools that help small teams turn what they know into useful, repeatable ways of working. The ambition is to make starting and running a business more achievable, without needing a large team to hold it together.</p><section class=\"ds-skillnav\" aria-labelledby=\"ds-skillnav-title\"><h4 id=\"ds-skillnav-title\">SkillNav</h4><p class=\"ds-project-status\">In development</p><p>I’m developing SkillNav within that direction, beginning with client and project handoffs: what has been agreed, what the next person needs to know, and what happens next.</p><p>I want a team’s experience to stay useful when the work moves between people.</p></section><a class=\"ds-text-link\" href=\"/contact/\">Talk with me about it <svg class=\"ds-arrow\" viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 12h15M12 5l7 7-7 7\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></a></div></article>",
+      "css": ".ds-building-project{--paper:#faf8f2;--ink:#29343b;--ink-muted:#61666a;--rule:#d6d9d9;background:var(--paper);color:var(--ink);font-family:var(--font-sans,Inter,system-ui,sans-serif);border-top:1px solid var(--rule);padding:40px 0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:80px}.ds-building-project p{font-size:18px;line-height:1.75;margin:0 0 20px;max-width:68ch;text-wrap:pretty}.ds-project-name h3{font-family:var(--font-display,Manrope,Inter,system-ui,sans-serif);font-size:32px;line-height:1.12;letter-spacing:-.035em;margin:0 0 12px;text-wrap:balance}.ds-project-name p{font-size:14px;line-height:1.6;color:var(--ink-muted)}.ds-skillnav{padding-top:28px;margin:28px 0 20px;border-top:1px solid var(--rule)}.ds-skillnav h4{margin:0 0 6px;font-family:var(--font-display,Manrope,Inter,system-ui,sans-serif);font-size:24px;font-weight:700;letter-spacing:-.025em}.ds-skillnav .ds-project-status{font-size:13px;color:var(--ink-muted);margin-bottom:18px}.ds-skillnav p:last-child{margin-bottom:0}.ds-text-link{display:inline-flex;align-items:center;gap:12px;min-height:44px;color:var(--blue,#244fc7);font-family:var(--font-sans, 'Inter', system-ui, sans-serif);font-size:16px;font-weight:600;text-decoration:none}.ds-text-link:hover{text-decoration:underline;text-underline-offset:5px}.ds-text-link:focus-visible{outline:2px solid var(--blue,#244fc7);outline-offset:2px}.ds-arrow{flex:0 0 auto;vertical-align:middle}.ds-arrow-diagonal{transform:rotate(-45deg)}.ds-arrow{transition:transform var(--dur-short,200ms) var(--ease-out,cubic-bezier(.16,1,.3,1))}@media(prefers-reduced-motion:no-preference){a:focus-visible>.ds-arrow{transform:translateX(3px)}a:focus-visible>.ds-arrow-diagonal{transform:translate(2px,-2px) rotate(-45deg)}}@media(hover:hover) and (prefers-reduced-motion:no-preference){a:hover>.ds-arrow{transform:translateX(3px)}a:hover>.ds-arrow-diagonal{transform:translate(2px,-2px) rotate(-45deg)}}@media(prefers-reduced-motion:reduce){.ds-arrow{transition:none}}@media(min-width:768px) and (max-width:1050px){.ds-building-project{grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr);gap:36px}}@media(max-width:767.98px){.ds-building-project{grid-template-columns:minmax(0,1fr);gap:12px;padding:28px 0}.ds-building-project p{font-size:17px}.ds-project-name h3{font-size:28px;margin-bottom:8px}.ds-project-name p{font-size:14px;margin-bottom:8px}.ds-skillnav{margin-top:24px;padding-top:24px}.ds-skillnav .ds-project-status{font-size:13px}}"
+    },
+    {
+      "name": "Conditional email field",
+      "kind": "input",
+      "refersTo": "email-field",
+      "description": "Newsletter field from Connect, rendered publicly only when an endpoint exists. This specimen has no form or submission action. Setting aria-invalid=true displays the real error treatment.",
+      "html": "<div class=\"ds-email\"><label for=\"ds-newsletter-email\">Email address</label><input id=\"ds-newsletter-email\" type=\"email\" name=\"email\" autocomplete=\"email\" placeholder=\"you@example.com\" aria-describedby=\"ds-newsletter-status\"/><span id=\"ds-newsletter-status\" class=\"ds-email-status\" aria-live=\"polite\"></span></div>",
+      "css": ".ds-email{display:flex;flex-direction:column;align-items:flex-start;gap:10px;font-family:var(--font-sans, 'Inter', system-ui, sans-serif);color:var(--ink,#192b3a)}.ds-email label{font-size:14px}.ds-email input{width:100%;height:52px;padding:12px 14px;border:1px solid var(--ink-muted,#526473);border-radius:6px;background:var(--white,#ffffff);color:var(--ink,#192b3a);font-family:var(--font-sans, 'Inter', system-ui, sans-serif);font-size:16px;caret-color:var(--blue,#244fc7)}.ds-email input::placeholder{color:var(--ink-muted,#526473)}.ds-email input:focus-visible{outline:2px solid var(--blue,#244fc7);outline-offset:2px}.ds-email input[aria-invalid=true]{border-color:var(--status-critical-text,#a42124)}.ds-email-status{min-height:20px;font-size:14px;color:var(--status-critical-text,#a42124)}"
+    },
+    {
+      "name": "Working sketch controls and path",
+      "kind": "custom",
+      "refersTo": "sketch-step",
+      "description": "Retained WorkingSketch.astro specimen, not mounted on the current homepage. Source owns switching, finite animation, and the all-text no-JavaScript fallback; this example shows the existing selected and unselected states.",
+      "html": "<div class=\"ds-sketch-surface\"><div class=\"ds-sketch-controls\" aria-label=\"How I try to work\"><button type=\"button\" aria-pressed=\"true\">Listen</button><button type=\"button\" aria-pressed=\"false\">Make</button><button type=\"button\" aria-pressed=\"false\">Learn</button></div><svg class=\"ds-sketch-line\" viewBox=\"0 0 600 64\" fill=\"none\" aria-hidden=\"true\"><path class=\"ds-thread\" d=\"M20 34C65 10 98 58 146 34S234 10 282 34 370 58 418 34 505 10 566 34\" stroke=\"currentColor\" stroke-width=\"2\" pathLength=\"1\"/><path d=\"m550 20 18 14-20 10\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg><div class=\"ds-sketch-panels\"><h3>Find the friction.</h3><p>Watch the work. Ask what gets repeated, what falls between people, and what they’ve already tried.</p><p class=\"ds-sketch-note\">“Why do we keep explaining this?”</p></div><p class=\"ds-sketch-caption\">How I try to work. Select a step.</p></div>",
+      "css": ".ds-sketch-surface{background:var(--blue,#244fc7);color:var(--white,#ffffff);font-family:var(--font-sans, 'Inter', system-ui, sans-serif);padding:8px 0 0}.ds-sketch-controls{display:flex;justify-content:space-between;gap:12px}.ds-sketch-controls button{padding:12px 18px;min-height:48px;border:1px solid var(--on-dark-28,rgb(244 247 250 / 28%));border-radius:100px;color:var(--white,#ffffff);background:transparent;cursor:pointer;font-family:var(--font-sans, 'Inter', system-ui, sans-serif);font-size:16px;font-weight:600;transition:background 200ms,color 200ms}.ds-sketch-controls button:hover{border-color:var(--white,#ffffff)}.ds-sketch-controls button[aria-pressed=true]{background:var(--yellow,#f2cc69);color:var(--ink,#192b3a);border-color:var(--yellow,#f2cc69)}.ds-sketch-controls button:focus-visible{outline:2px solid var(--yellow,#f2cc69);outline-offset:5px}.ds-sketch-line{width:100%;height:68px;margin:12px 0 22px;color:var(--yellow,#f2cc69);overflow:visible}.ds-thread{stroke-dasharray:1}.ds-sketch-panels{min-height:215px}.ds-sketch-panels h3{font:700 30px/1.12 var(--font-display, 'Manrope', 'Inter', system-ui, sans-serif);letter-spacing:-.035em;margin:0 0 16px;text-wrap:balance}.ds-sketch-panels p{max-width:45ch;font-size:18px;line-height:1.65;margin:0}.ds-sketch-panels .ds-sketch-note{margin:22px 0 0;color:var(--yellow,#f2cc69);font-size:15px}.ds-sketch-caption{margin:28px 0 0;font-size:13px;color:var(--on-dark-78,#d6e1f5);border-top:1px solid var(--on-dark-28,rgb(244 247 250 / 28%));padding-top:16px}@media(max-width:767.98px){.ds-sketch-controls button{padding:11px 15px;font-size:15px}.ds-sketch-panels h3{font-size:26px}.ds-sketch-panels p{font-size:17px}.ds-sketch-panels{min-height:235px}}@media(prefers-reduced-motion:reduce){.ds-sketch-controls button{transition:none}}"
+    },
+    {
+      "name": "Homepage introduction typography",
+      "kind": "custom",
+      "refersTo": "home-introduction",
+      "description": "Text portion of the approved warm homepage introduction, with its scoped identity line, dark two-sentence headline, writing action, and /building/ link. Production places the unbranded rectangular portrait beside it: 5/6 crop and 12px corners, then 66px wide with 10/11 crop and 8px corners beside the identity on mobile. A static yellow drawn underline beneath help. adds a restrained editorial accent.",
+      "html": "<section class=\"ds-home-intro\"><p class=\"ds-home-identity\">Founder · Writer · Ottawa</p><h1>Work is hard enough. <span>The tools should <span class=\"ink-underline\">help.</span></span></h1><p class=\"ds-home-lead\">I build software for small teams and write about better work, useful AI, and what’s worth keeping human.</p><p class=\"ds-home-promise\">The goal isn’t to fit more work into life. It’s to make more room for life outside it.</p><div class=\"ds-home-actions\"><a class=\"ds-action\" href=\"#start-here\">Read my writing <svg class=\"ds-arrow\" viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 12h15M12 5l7 7-7 7\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></a><a class=\"ds-text-link\" href=\"/building/\">What I’m building <svg class=\"ds-arrow\" viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 12h15M12 5l7 7-7 7\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></a></div></section>",
+      "css": ".ds-home-intro{--paper:#faf8f2;--ink:#29343b;--ink-muted:#61666a;background:var(--paper);color:var(--ink);padding:48px 0 56px;font-family:var(--font-sans,Inter,system-ui,sans-serif)}.ds-home-identity{color:var(--ink-muted);font-size:14px;margin:0 0 18px}.ds-home-intro h1{font-family:var(--font-display,Manrope,Inter,system-ui,sans-serif);font-size:clamp(2.75rem,4.45vw,4rem);font-weight:800;line-height:1.1;letter-spacing:-.035em;margin:0 0 24px;text-wrap:initial}.ds-home-intro h1>span{display:block}.ds-home-lead{max-width:58ch;font-size:19px;line-height:1.6;margin:0;text-wrap:pretty}.ds-home-promise{max-width:56ch;font-size:18px;font-weight:500;line-height:1.6;margin:16px 0 0;color:var(--ink);text-wrap:pretty}.ds-home-actions{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;margin-top:26px}.ds-action{display:inline-flex;justify-content:center;align-items:center;gap:14px;min-height:52px;padding:14px 23px;border:1px solid var(--blue,#244fc7);border-radius:6px;background:var(--blue,#244fc7);color:var(--white,#ffffff);text-decoration:none;font-family:var(--font-sans, 'Inter', system-ui, sans-serif);font-size:15px;font-weight:600;transition:background 180ms}.ds-action:hover,.ds-action:focus-visible{background:var(--blue-deep,#183996);color:var(--white,#ffffff)}.ds-action:focus-visible{outline:2px solid var(--blue,#244fc7);outline-offset:2px}.ds-arrow{flex:0 0 auto;vertical-align:middle}.ds-arrow-diagonal{transform:rotate(-45deg)}@media(prefers-reduced-motion:reduce){.ds-action{transition:none}}.ds-arrow{transition:transform var(--dur-short,200ms) var(--ease-out,cubic-bezier(.16,1,.3,1))}@media(prefers-reduced-motion:no-preference){a:focus-visible>.ds-arrow{transform:translateX(3px)}a:focus-visible>.ds-arrow-diagonal{transform:translate(2px,-2px) rotate(-45deg)}}@media(hover:hover) and (prefers-reduced-motion:no-preference){a:hover>.ds-arrow{transform:translateX(3px)}a:hover>.ds-arrow-diagonal{transform:translate(2px,-2px) rotate(-45deg)}}@media(prefers-reduced-motion:reduce){.ds-arrow{transition:none}}.ds-text-link{display:inline-flex;align-items:center;gap:12px;min-height:44px;color:var(--blue,#244fc7);font-family:var(--font-sans, 'Inter', system-ui, sans-serif);font-size:16px;font-weight:600;text-decoration:none}.ds-text-link:hover{text-decoration:underline;text-underline-offset:5px}.ds-text-link:focus-visible{outline:2px solid var(--blue,#244fc7);outline-offset:2px}.ds-arrow{flex:0 0 auto;vertical-align:middle}.ds-arrow-diagonal{transform:rotate(-45deg)}.ds-arrow{transition:transform var(--dur-short,200ms) var(--ease-out,cubic-bezier(.16,1,.3,1))}@media(prefers-reduced-motion:no-preference){a:focus-visible>.ds-arrow{transform:translateX(3px)}a:focus-visible>.ds-arrow-diagonal{transform:translate(2px,-2px) rotate(-45deg)}}@media(hover:hover) and (prefers-reduced-motion:no-preference){a:hover>.ds-arrow{transform:translateX(3px)}a:hover>.ds-arrow-diagonal{transform:translate(2px,-2px) rotate(-45deg)}}@media(prefers-reduced-motion:reduce){.ds-arrow{transition:none}}.ds-home-actions .ds-text-link{font-size:15px}@media(max-width:767.98px){.ds-home-intro{padding:24px 0 32px}.ds-home-identity{min-height:72px;display:flex;align-items:center;max-width:calc(100% - 92px)}.ds-home-intro h1{font-size:clamp(2rem,8.2vw,3.5rem);margin-bottom:20px}.ds-home-lead{font-size:17px}.ds-home-promise{font-size:16px;margin-top:14px}.ds-home-actions{gap:8px 12px;margin-top:20px}.ds-home-actions .ds-action{padding-inline:12px;font-size:14px;gap:10px}.ds-home-actions .ds-text-link{font-size:14px}}\n.ink-underline {\n  position: relative;\n  display: inline-block;\n  white-space: nowrap;\n}\n.ink-underline::after {\n  content: \"\";\n  position: absolute;\n  left: -2%;\n  bottom: -.12em;\n  width: 104%;\n  height: .18em;\n  min-height: 6px;\n  background: var(--yellow);\n  mask: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 12' preserveAspectRatio='none'%3E%3Cpath d='M3 8C30 3 72 3 117 5M10 10C48 6 88 7 111 8' fill='none' stroke='black' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E\") center / 100% 100% no-repeat;\n  pointer-events: none;\n}"
+    },
+    {
+      "name": "Homepage reading entry",
+      "kind": "custom",
+      "refersTo": "home-reading-entry",
+      "description": "Start here uses three shared dated reading rows in the warm palette. The date stacks above the title at 768–1050px as well as on mobile; production selections exclude drafts.",
+      "html": "<ol class=\"ds-reading-list\"><li><div class=\"ds-reading-date\"><time datetime=\"2019-02-01\">Feb 2019</time><span>Earlier writing</span></div><div class=\"ds-reading-copy\"><h3><a href=\"/archive/building-a-startup-requires-self-awareness/\">Building a Startup Requires Deep Self-Awareness <svg class=\"ds-arrow ds-arrow-diagonal\" viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 12h15M12 5l7 7-7 7\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></a></h3><p>On persistence, personal limits, and getting to know the person building the company: you.</p></div></li></ol>",
+      "css": ".ds-reading-list{--paper:#faf8f2;--ink:#29343b;--ink-muted:#61666a;--rule:#d6d9d9;background:var(--paper)}.ds-reading-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule,#cbd6df);font-family:var(--font-sans, 'Inter', system-ui, sans-serif)}.ds-reading-list li{display:grid;grid-template-columns:154px minmax(0,1fr);gap:32px;border-bottom:1px solid var(--rule,#cbd6df);padding:30px 0}.ds-reading-date{padding-top:7px;color:var(--ink-muted,#526473);font-size:13px;display:flex;flex-direction:column;gap:6px;font-variant-numeric:tabular-nums}.ds-reading-date span{font-size:12px}.ds-reading-copy h3{margin:0;font-family:var(--font-display, 'Manrope', 'Inter', system-ui, sans-serif);font-size:27px;font-weight:700;letter-spacing:-.035em;line-height:1.12;text-wrap:balance}.ds-reading-copy h3 a{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;color:var(--ink,#192b3a);text-decoration:none;line-height:1.25;min-height:44px}.ds-reading-copy h3 a:hover{color:var(--blue,#244fc7)}.ds-reading-copy h3 a:focus-visible{outline:2px solid var(--blue,#244fc7);outline-offset:2px}.ds-reading-copy .ds-arrow{margin-top:6px;color:var(--blue,#244fc7)}.ds-reading-copy p{margin:10px 0 0;max-width:68ch;font-size:16px;line-height:1.65;color:var(--ink-muted,#526473);text-wrap:pretty}.ds-arrow{flex:0 0 auto;vertical-align:middle}.ds-arrow-diagonal{transform:rotate(-45deg)}@media(max-width:767.98px){.ds-reading-list li{grid-template-columns:minmax(0,1fr);gap:12px;padding:26px 0}.ds-reading-date{flex-direction:row;gap:14px;padding:0}.ds-reading-copy h3{font-size:23px}.ds-reading-copy h3 a{gap:16px}}.ds-arrow{transition:transform var(--dur-short,200ms) var(--ease-out,cubic-bezier(.16,1,.3,1))}@media(prefers-reduced-motion:no-preference){a:focus-visible>.ds-arrow{transform:translateX(3px)}a:focus-visible>.ds-arrow-diagonal{transform:translate(2px,-2px) rotate(-45deg)}}@media(hover:hover) and (prefers-reduced-motion:no-preference){a:hover>.ds-arrow{transform:translateX(3px)}a:hover>.ds-arrow-diagonal{transform:translate(2px,-2px) rotate(-45deg)}}@media(prefers-reduced-motion:reduce){.ds-arrow{transition:none}}@media(min-width:768px) and (max-width:1050px){.ds-reading-list li{grid-template-columns:minmax(0,1fr);gap:10px}.ds-reading-date{flex-direction:row;gap:14px;padding:0}}"
+    },
+    {
+      "name": "Homepage conditional newsletter",
+      "kind": "custom",
+      "refersTo": "home-newsletter",
+      "description": "Connect with newsletterOnly: the entire warm-wash section exists only with a configured endpoint, between Start here and the compact mission invitation. The production action is Get my notes. Centered 720px column, no divider. This visual specimen has no form action or submission.",
+      "html": "<section class=\"ds-home-newsletter\"><div class=\"ds-home-newsletter-inner\"><h2>Get my notes.</h2><p>What I’m learning about small teams, useful AI, and making room for life outside work.</p><div class=\"ds-email\"><label for=\"ds-newsletter-email\">Email address</label><input id=\"ds-newsletter-email\" type=\"email\" name=\"email\" autocomplete=\"email\" placeholder=\"you@example.com\" aria-describedby=\"ds-newsletter-status\"/><span id=\"ds-newsletter-status\" class=\"ds-email-status\" aria-live=\"polite\"></span></div></div></section>",
+      "css": ".ds-home-newsletter{--sky:#f0f1ec;--ink:#29343b;--ink-muted:#61666a;background:var(--sky);color:var(--ink);padding:80px 0;font-family:var(--font-sans,Inter,system-ui,sans-serif)}.ds-home-newsletter-inner{max-width:720px;margin-inline:auto}.ds-home-newsletter h2{font-family:var(--font-display,Manrope,Inter,system-ui,sans-serif);font-size:clamp(2rem,3.8vw,3.5rem);font-weight:700;line-height:1.12;letter-spacing:-.035em;margin:0 0 24px}.ds-home-newsletter p{max-width:52ch;font-size:16px;line-height:1.65;margin:0 0 24px}.ds-email{display:flex;flex-direction:column;align-items:flex-start;gap:10px;font-family:var(--font-sans, 'Inter', system-ui, sans-serif);color:var(--ink,#192b3a)}.ds-email label{font-size:14px}.ds-email input{width:100%;height:52px;padding:12px 14px;border:1px solid var(--ink-muted,#526473);border-radius:6px;background:var(--white,#ffffff);color:var(--ink,#192b3a);font-family:var(--font-sans, 'Inter', system-ui, sans-serif);font-size:16px;caret-color:var(--blue,#244fc7)}.ds-email input::placeholder{color:var(--ink-muted,#526473)}.ds-email input:focus-visible{outline:2px solid var(--blue,#244fc7);outline-offset:2px}.ds-email input[aria-invalid=true]{border-color:var(--status-critical-text,#a42124)}.ds-email-status{min-height:20px;font-size:14px;color:var(--status-critical-text,#a42124)}@media(max-width:767.98px){.ds-home-newsletter{padding:56px 0}}"
+    },
+    {
+      "name": "Building page introduction typography",
+      "kind": "custom",
+      "refersTo": "building-introduction",
+      "description": "Warm-paper introduction with a fluid charcoal mission heading, lead, and native links to the personal story and project entries. The links sit beside the lead on desktop, form a row at intermediate widths, and stack on mobile. Production anchors are #why and #projects on /building/.",
+      "html": "<section class=\"ds-building-intro\"><h1>More people should get to build something of their own.</h1><div class=\"ds-building-intro-bottom\"><p class=\"ds-building-lead\">I want more people to be able to start, own and grow a business on their terms. I’m building tools that help small teams put their knowledge to work, with AI where it helps and people in control.</p><div class=\"ds-building-intro-links\"><a class=\"ds-text-link\" href=\"/building/#why\">Why I care <svg class=\"ds-arrow\" viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 12h15M12 5l7 7-7 7\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></a><a class=\"ds-text-link\" href=\"/building/#projects\">See what I’m building <svg class=\"ds-arrow\" viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 12h15M12 5l7 7-7 7\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></a></div></div></section>",
+      "css": ".ds-building-intro{--paper:#faf8f2;--ink:#29343b;background:var(--paper);color:var(--ink);font-family:var(--font-sans,Inter,system-ui,sans-serif);padding:64px clamp(32px,5vw,80px)}.ds-building-intro h1{font-family:var(--font-display,Manrope,Inter,system-ui,sans-serif);max-width:19ch;margin:0 0 36px;font-size:clamp(2.5rem,5.5vw,4.75rem);line-height:1.08;font-weight:800;letter-spacing:-.035em;text-wrap:balance}.ds-building-intro-bottom{display:grid;grid-template-columns:minmax(0,760px) minmax(210px,1fr);gap:64px;align-items:end}.ds-building-lead{margin:0;max-width:62ch;font-size:21px;line-height:1.65;text-wrap:pretty}.ds-building-intro-links{display:flex;flex-direction:column;align-items:flex-start}.ds-text-link{display:inline-flex;align-items:center;gap:12px;min-height:44px;color:var(--blue,#244fc7);font-family:var(--font-sans, 'Inter', system-ui, sans-serif);font-size:16px;font-weight:600;text-decoration:none}.ds-text-link:hover{text-decoration:underline;text-underline-offset:5px}.ds-text-link:focus-visible{outline:2px solid var(--blue,#244fc7);outline-offset:2px}.ds-arrow{flex:0 0 auto;vertical-align:middle}.ds-arrow-diagonal{transform:rotate(-45deg)}.ds-arrow{transition:transform var(--dur-short,200ms) var(--ease-out,cubic-bezier(.16,1,.3,1))}@media(prefers-reduced-motion:no-preference){a:focus-visible>.ds-arrow{transform:translateX(3px)}a:focus-visible>.ds-arrow-diagonal{transform:translate(2px,-2px) rotate(-45deg)}}@media(hover:hover) and (prefers-reduced-motion:no-preference){a:hover>.ds-arrow{transform:translateX(3px)}a:hover>.ds-arrow-diagonal{transform:translate(2px,-2px) rotate(-45deg)}}@media(prefers-reduced-motion:reduce){.ds-arrow{transition:none}}.ds-building-intro-links .ds-text-link{font-size:15px}@media(min-width:768px) and (max-width:1050px){.ds-building-intro-bottom{grid-template-columns:minmax(0,1fr);gap:24px}.ds-building-intro-links{flex-direction:row;flex-wrap:wrap;gap:12px 28px}}@media(max-width:767.98px){.ds-building-intro{padding:36px 24px 40px}.ds-building-intro h1{font-size:clamp(2.25rem,9vw,3.5rem);margin-bottom:24px}.ds-building-intro-bottom{grid-template-columns:minmax(0,1fr);gap:20px}.ds-building-lead{font-size:18px}.ds-building-intro-links{gap:2px}}"
+    },
+    {
+      "name": "Article commitment sketch",
+      "kind": "custom",
+      "refersTo": "commitment-sketch",
+      "description": "Semantic, text-first figure for the small-team essay: a prototype leads to a customer commitment. Open rules, a blue drawn arrow and the shared yellow mark; stacks vertically below 600px. No animation, data claim or external asset.",
+      "html": "<div class=\"prose\"><figure class=\"commitment-sketch\">\n  <div class=\"commitment-sketch-flow\">\n    <div>\n      <p class=\"sketch-question\">Can we build it?</p>\n      <p>A prototype we can try.</p>\n    </div>\n    <svg class=\"sketch-arrow\" viewBox=\"0 0 72 36\" width=\"72\" height=\"36\" fill=\"none\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M3 25C20 7 38 8 63 16M52 5L65 16L51 25\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>\n    <div>\n      <p class=\"sketch-question\">Can we <span class=\"ink-underline\">look after it?</span></p>\n      <p>A promise someone owns.</p>\n    </div>\n  </div>\n  <figcaption>A working demo answers the first question. Before selling it, answer the second.</figcaption>\n</figure></div>",
+      "css": ".ink-underline {\n  position: relative;\n  display: inline-block;\n  white-space: nowrap;\n}\n.ink-underline::after {\n  content: \"\";\n  position: absolute;\n  left: -2%;\n  bottom: -.12em;\n  width: 104%;\n  height: .18em;\n  min-height: 6px;\n  background: var(--yellow);\n  mask: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 12' preserveAspectRatio='none'%3E%3Cpath d='M3 8C30 3 72 3 117 5M10 10C48 6 88 7 111 8' fill='none' stroke='black' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E\") center / 100% 100% no-repeat;\n  pointer-events: none;\n}\n.prose .commitment-sketch {\n  margin: 2.5em 0;\n  padding-block: 28px 22px;\n  border-block: 1px solid var(--rule);\n}\n.commitment-sketch-flow {\n  display: grid;\n  grid-template-columns: minmax(0, 1fr) 64px minmax(0, 1fr);\n  gap: 20px;\n  align-items: center;\n}\n.commitment-sketch-flow .sketch-question {\n  font-family: var(--font-display);\n  font-size: 23px;\n  font-weight: 700;\n  line-height: 1.35;\n  margin: 0 0 10px;\n}\n.commitment-sketch-flow p { font-size: 15px; line-height: 1.6; margin: 0; }\n.sketch-arrow { width: 100%; color: var(--blue); }\n.commitment-sketch figcaption { margin-top: 24px; font-size: 14px; line-height: 1.65; color: var(--ink-muted); }\n.prose .essay-source { margin-top: 36px; font-size: 14px; line-height: 1.65; color: var(--ink-muted); }\n\n@media (max-width: 600px) {\n  .commitment-sketch-flow { grid-template-columns: minmax(0, 1fr); gap: 12px; }\n  .sketch-arrow { width: 54px; height: 44px; rotate: 90deg; margin-left: 12px; }\n  .commitment-sketch-flow .sketch-question { font-size: 22px; }\n}\n\n"
+    }
+  ],
+  "narrative": {
+    "northStar": "A person with a view",
+    "overview": "The site feels like a personal editorial space: direct, generous, and interested in the people doing the work. Large geometric headings give the writing conviction; open margins and quiet reading text keep the experience approachable. Reading routes retain cool paper and deep ink. The approved warm variant covers the homepage and `/building/`, with cream paper, charcoal headlines, and vivid blue primarily for links and actions. The homepage retains its unbranded rectangular portrait.\n\nAsymmetry establishes the larger compositions, while thin rules and aligned text give the writing structure. Blue provides shared interaction feedback across both palettes; reading routes retain their existing headline emphasis. Yellow remains a small accent for selection and dark-surface keyboard feedback. The system follows the approved personal-site direction and its October 19 homepage and Building page updates. The old clinic-focused artboards remain historical references; these warm surfaces do not restore their palette or composition.",
+    "keyCharacteristics": [
+      "Expressive Manrope headings paired with steady Inter reading text.",
+      "Cool reading pages and the warm homepage and Building page share vivid blue and occasional yellow.",
+      "Open editorial lists and projects, with selective flat tonal sections.",
+      "An unbranded rectangular homepage portrait; the About portrait retains its arch.",
+      "Responsive stacking, visible keyboard focus, and complete content without JavaScript."
+    ],
+    "rules": [
+      {
+        "name": "The Contrast Rule",
+        "body": "Use blue focus on light surfaces and yellow focus on blue or ink. Yellow carries ink text when it becomes a control surface.",
+        "section": "colors"
+      },
+      {
+        "name": "The Reading Measure Rule",
+        "body": "Keep continuous prose within 68ch. Express hierarchy through size, weight, space, and real headings. The approved founder/writer/Ottawa identity line is a homepage exception to the avoidance of decorative eyebrow text; it is ordinary sentence-case metadata, not a new global kicker style.",
+        "section": "typography"
+      },
+      {
+        "name": "The Open Structure Rule",
+        "body": "Use aligned text and thin rules for repeated writing and project entries. Use tonal sections selectively, as in follow invitations, the homepage personal introduction, and the Building page's standard section.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat Surface Rule",
+        "body": "Use tonal changes and rules for depth; reserve the existing shadow for the mobile navigation overlay.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** preserve the cool reading palette and use the approved warm theme on the homepage and Building page; blue and yellow remain shared.",
+      "**Do** keep the Manrope and Inter pairing and the 68ch maximum reading measure.",
+      "**Do** use thin rules, aligned text, and open spacing for repeated entries.",
+      "**Do** preserve visible keyboard focus, source-order mobile stacking, and usable native controls.",
+      "**Do** keep all process text available without JavaScript and preserve state when reduced motion is requested.",
+      "**Do** use the approved unbranded rectangular homepage portrait and outdoor crop while preserving About's existing image shapes.",
+      "**Do** preserve the homepage founder/writer/Ottawa identity line as the approved scoped exception to the eyebrow guidance."
+    ],
+    "donts": [
+      "**Don't** inherit legacy eyebrow styling or invent kickers for new surfaces; this does not remove the approved homepage identity line.",
+      "**Don't** restore the process sketch or repeated follow panel to the homepage, or render its newsletter section without a configured endpoint.",
+      "**Don't** replace the real SVG arrows or working-sketch path with Unicode glyph icons.",
+      "**Don't** add floating-card shadows, hover lifts, or offset decorative slabs to this flat editorial world.",
+      "**Don't** add continuous animation, scroll traps, custom cursors, or content that depends on an entrance reveal to become visible.",
+      "**Don't** turn the editorial-review notice into a public brand component or treat old clinic-focused artboards as current visual authority."
+    ]
+  }
+}

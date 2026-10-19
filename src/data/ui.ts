@@ -1,7 +1,8 @@
 export const UI = {
+  editorialReview: 'Design preview · Includes two proposed essays, awaiting Rob’s review.',
   meta: {
     titleSeparator: ' · ',
-    ogImageAlt: 'Rob Saric, founder of Caretrics',
+    ogImageAlt: 'Rob Saric: Work is hard enough. The tools should help.',
     /** Alt for a note's generated share card; type is the note's own. */
     noteOgImageAlt: (type: string, title: string) => `${type}: ${title}`,
   },
@@ -11,10 +12,11 @@ export const UI = {
   skipLink: 'Skip to content',
   nav: {
     primaryLabel: 'Primary navigation',
-    wordmarkLabel: 'Home',
+    wordmarkLabel: 'Rob Saric, home',
+    work: 'What I’m building',
     /** The mark is decorative: the wordmark beside it already names the site. */
     markAlt: '',
-    fieldNotes: 'My notes',
+    fieldNotes: 'Writing',
     about: 'About',
     /** Replaced Principles in the nav 2026-08-24; Principles moved to the footer. */
     writeToMe: 'Write to me',
@@ -37,7 +39,7 @@ export const UI = {
   },
   newsletter: {
     emailLabel: 'Email address',
-    emailPlaceholder: 'you@clinic.com',
+    emailPlaceholder: 'you@example.com',
     subscribe: 'Subscribe',
     subscribing: 'Subscribing…',
     invalidEmail: 'That does not look like an email address.',
@@ -47,11 +49,11 @@ export const UI = {
     methodNotAllowed: 'Method not allowed.',
   },
   article: {
-    backToFieldNotes: 'Back to my notes',
+    backToFieldNotes: 'Back to writing',
     backToArchive: 'Back to archive',
     /** Field-note byline; the name links to /about/. Archive posts carry none. */
     bylineBefore: 'By ',
-    bylineAfter: ' · Founder of Caretrics',
+    bylineAfter: ' · Founder and builder',
     updated: (date: string) => `Updated ${date}`,
   },
   archive: {
@@ -61,6 +63,7 @@ export const UI = {
     archive: 'Archive',
   },
   footer: {
+    rss: 'RSS',
     navigationLabel: 'Footer navigation',
     contact: 'Write to me',
     /** Joined the row 2026-08-24 when Principles left the nav. */

@@ -1,21 +1,22 @@
 # Rob Saric
 
-> Personal website and notes of Rob Saric, founder of Caretrics in Ottawa. Rob writes about clinic operations, building software and using AI in real work.
+> Rob Saric is a founder and dad in Ottawa, writing about useful tools for small teams, building companies and life beyond the screen.
 
-Rob Saric spent twenty years building software, including years as a systems architect inside large managed health-service organizations. He built Dentallytics, an analytics platform for dental service organizations, then went through twelve months of bookings, visits, and billing for 50+ allied health clinics, one clinic at a time, and found the same four gaps almost every time.
+Rob is building Caretrics and developing a broader small-team tools direction through Togetheren. SkillNav is in development as part of that direction, beginning with clearer client and project handoffs. This is not a claim of a launched SkillNav product.
 
 ## Pages
 
-- [Home](https://robsaric.com/): Rob's current work, Caretrics and an early invitation to discuss Clinic Operations, recent notes, personal motivation and contact.
-- [My notes](https://robsaric.com/field-notes/): dated notes on clinic operations, software, AI and decisions changed while building Caretrics. Types: Field note, Shipped, Changed my mind. RSS: https://robsaric.com/rss.xml
-- [Principles](https://robsaric.com/principles/): five principles for reviewing clinic operations: recover before you acquire; a signal without an owner is just another dashboard; AI must show its work; identified is not collected; billing problems usually start upstream.
-- [How I count](https://robsaric.com/how-i-counted/): how Rob checks clinic findings, separates records from estimates and distinguishes identified opportunities from collected money.
-- [About](https://robsaric.com/about/): Rob's background, current work and the creed: people who do good should do well.
-- [Archive](https://robsaric.com/archive/): 38 earlier posts on systems, flow, and leadership, 2009 to 2019, kept as written.
+- [Home](https://robsaric.com/): personal perspective, selected writing, current work and contact.
+- [Writing](https://robsaric.com/field-notes/): recent field notes and selected earlier essays. Original dates remain visible.
+- [About](https://robsaric.com/about/): background, building companies, parenting, mentoring and the questions behind Rob's work.
+- [Archive](https://robsaric.com/archive/): earlier writing from 2009 to 2019, kept as written.
 - [Contact](https://robsaric.com/contact/): rob@caretrics.com
+- [Clinic principles](https://robsaric.com/principles/): principles behind the clinic operations work.
+- [How I count](https://robsaric.com/how-i-counted/): methods and qualifications for the clinic findings.
+- [RSS](https://robsaric.com/rss.xml): published field notes.
 
 ## Elsewhere
 
-- Caretrics: https://caretrics.com
-- LinkedIn: https://www.linkedin.com/in/robertsaric/
-- GitHub: https://github.com/robsaric (this site's source: https://github.com/robsaric/robsaric.com)
+- [LinkedIn](https://www.linkedin.com/in/robertsaric/)
+- [Caretrics](https://caretrics.com)
+- [Site source](https://github.com/robsaric/robsaric.com)

@@ -5,14 +5,14 @@
  */
 export const SITE = {
   name: 'Rob Saric',
-  title: 'Rob Saric · Founder and builder',
+  title: 'Rob Saric · Work is hard enough. The tools should help.',
   description:
-    'Rob Saric is a founder in Ottawa building Caretrics and exploring how software and AI can help clinics and the people running them.',
+    'Rob Saric on building useful tools for small teams, starting companies, and making room for life beyond the screen. Founder and dad in Ottawa.',
   url: 'https://robsaric.com',
   locale: 'en',
   author: {
     name: 'Rob Saric',
-    jobTitle: 'Founder, Caretrics',
+    jobTitle: 'Founder and builder',
     location: 'Ottawa',
   },
   caretricsUrl: 'https://caretrics.com',
@@ -28,6 +28,7 @@ export const SITE = {
    */
   caretricsProductUrl: 'https://caretrics.com/product',
   togetherenUrl: 'https://togetheren.com',
+  unpluggedCanadaUrl: 'https://www.unpluggedcanada.com/',
   email: 'rob@caretrics.com',
   links: {
     linkedin: 'https://www.linkedin.com/in/robertsaric/',

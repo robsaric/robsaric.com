@@ -1,0 +1,17 @@
+---
+interface Props { diagonal?: boolean; }
+const { diagonal = false } = Astro.props;
+---
+<svg class:list={['arrow', { 'arrow--diagonal': diagonal }]} viewBox="0 0 24 24" width="24" height="24" fill="none" aria-hidden="true"><path d="M4 12h15M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+<style>
+.arrow { flex: 0 0 auto; vertical-align: middle; transition: transform var(--dur-short) var(--ease-out); }
+.arrow--diagonal { transform: rotate(-45deg); }
+@media (prefers-reduced-motion: no-preference) {
+  :global(a:focus-visible) > .arrow { transform: translateX(3px); }
+  :global(a:focus-visible) > .arrow--diagonal { transform: translate(2px, -2px) rotate(-45deg); }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  :global(a:hover) > .arrow { transform: translateX(3px); }
+  :global(a:hover) > .arrow--diagonal { transform: translate(2px, -2px) rotate(-45deg); }
+}
+</style>

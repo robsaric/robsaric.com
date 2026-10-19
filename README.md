@@ -2,9 +2,11 @@
 
 Rob Saric's personal site and field notes. Astro 7, static output with on-demand newsletter routes, deployed on Vercel.
 
-- Design: `docs/design-reference/site-directions-turn8.dc.html` (open in a browser; 8a desktop, 8b mobile)
-- Structure: `docs/DESIGN-SPEC.md`
-- Words: `docs/COPY.md` (includes the copy law and the launch verification table)
+- Product and audience: `PRODUCT.md`
+- Design: `DESIGN.md`, `.impeccable/design.json`, and `docs/personal-site-direction.md`
+- Current words: `src/data/editorial.ts`, `src/data/ui.ts`, and the content collections
+- Voice and historical facts: `docs/COPY.md` (copy law and earlier verification table)
+- Editorial plan and review: `docs/AUDIENCE-AND-PUBLISHING.md`, `docs/REDESIGN-HANDOFF.md`
 - Old site and redirects: `docs/MIGRATION.md`
 - Agent rules: `AGENTS.md`
 
@@ -17,6 +19,16 @@ pnpm gate            # astro check + copy lint + build + redirect check
 ```
 
 Draft content (`draft: true`) shows in `pnpm dev` and is hidden in production builds.
+
+To review the complete redesign with its two proposed October 18 essays:
+
+```
+pnpm build --mode editorial-review --outDir .impeccable/review/site
+```
+
+Serve `.impeccable/review/site/client` locally. This output has a visible preview notice and `noindex`; RSS still excludes drafts. Keep it local. Ordinary `pnpm build` and `pnpm gate` produce the deployable version without the essays. Run the ordinary build last before any authorized deployment because the Vercel adapter also writes its output directory during review builds.
+
+After Rob approves an essay's wording and publication, change its `draft` flag to `false`, run `pnpm generate:og` after a build, then run the gate again. Do not treat approval of the redesign as approval to publish the proposed essays.
 
 ## Write a field note
 

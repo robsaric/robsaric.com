@@ -63,8 +63,8 @@ export default defineConfig({
   ],
   // Self-hosted at build time through the Fonts API (no runtime Google requests).
   // Consumed in BaseLayout via <Font cssVariable="--font-inter" preload /> and
-  // <Font cssVariable="--font-instrument-serif" />; tokens.css aliases them as
-  // --font-sans / --font-serif (distinct names, so the aliases cannot self-reference).
+  // <Font cssVariable="--font-manrope" />; tokens.css aliases them as
+  // --font-sans / --font-display (distinct names prevent self-reference).
   fonts: [
     {
       provider: fontProviders.google(),
@@ -77,12 +77,12 @@ export default defineConfig({
     },
     {
       provider: fontProviders.google(),
-      name: 'Instrument Serif',
-      cssVariable: '--font-instrument-serif',
-      weights: [400],
-      styles: ['italic', 'normal'],
+      name: 'Manrope',
+      cssVariable: '--font-manrope',
+      weights: [500, 600, 700, 800],
+      styles: ['normal'],
       subsets: ['latin'],
-      fallbacks: ['Georgia', 'serif'],
+      fallbacks: ['system-ui', 'sans-serif'],
     },
   ],
   // 301s for the 2009 to 2019 WordPress URLs. Source: src/data/legacy-redirects.mjs.

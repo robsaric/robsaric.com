@@ -1,0 +1,127 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Arrow from '../components/Arrow.astro';
+import hiking from '../assets/images/rob-hiking.jpg';
+import { EDITORIAL as E } from '../data/editorial';
+import { SITE } from '../data/site';
+const B = E.building;
+---
+<BaseLayout title={B.title} description={B.description} theme="warm">
+  <section class="building-intro wrap" aria-labelledby="building-title">
+    <h1 id="building-title">{B.heading}</h1>
+    <div class="intro-bottom">
+      <p class="lead">{B.lead}</p>
+      <div class="intro-links">
+        <a class="text-link" href="#why">{B.whyLink}<Arrow /></a>
+        <a class="text-link" href="#projects">{B.projectsLink}<Arrow /></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="why" class="why wrap" aria-labelledby="why-title">
+    <div class="why-story">
+      <h2 id="why-title">{B.whyHeading}</h2>
+      {B.why.map(paragraph => <p>{paragraph}</p>)}
+      <a class="text-link" href="/archive/enjoy-the-little-things/">{B.storyLink}<Arrow /></a>
+    </div>
+    <figure><Image src={hiking} alt={E.about.hikingAlt} width={400} height={440} widths={[400, 800]} sizes="(max-width: 767px) calc(100vw - 48px), 32vw" loading="lazy" fit="cover" /></figure>
+  </section>
+
+  <section id="projects" class="projects wrap" aria-labelledby="projects-title">
+    <h2 id="projects-title">{B.projectsHeading}</h2>
+    <article class="project" aria-labelledby="togetheren-title">
+      <div class="project-name"><h3 id="togetheren-title">{E.work.togetheren.name}</h3><p>{B.togetheren.status}</p></div>
+      <div class="project-detail">
+        <p>{B.togetheren.body}</p>
+        <section class="skillnav" aria-labelledby="skillnav-title">
+          <h4 id="skillnav-title">{E.work.togetheren.child}</h4>
+          <p class="project-status">{E.work.togetheren.childStatus}</p>
+          <p>{B.togetheren.skillnavBody}</p>
+          <p>{B.togetheren.skillnavAim}</p>
+        </section>
+        <a class="text-link" href="/contact/">{E.work.togetheren.link}<Arrow /></a>
+      </div>
+    </article>
+    <article class="project" aria-labelledby="caretrics-title">
+      <div class="project-name"><h3 id="caretrics-title">{E.work.caretrics.name}</h3><p>{E.work.caretrics.status}</p></div>
+      <div class="project-detail"><p>{E.work.caretrics.body}</p><a class="text-link" href={SITE.caretricsUrl} target="_blank" rel="noopener">{E.work.caretrics.link}<Arrow diagonal /></a></div>
+    </article>
+  </section>
+
+  <section class="standard" aria-labelledby="standard-title">
+    <div class="wrap standard-layout">
+      <h2 id="standard-title">{B.standardHeading}</h2>
+      <div>{B.standard.map(paragraph => <p>{paragraph}</p>)}<a class="text-link" href="/field-notes/">{B.writingLink}<Arrow /></a></div>
+    </div>
+  </section>
+
+  <section class="invitation wrap" aria-labelledby="invitation-title">
+    <h2 id="invitation-title">{B.closingHeading}</h2>
+    <p>{B.closingBody}</p>
+    <div class="invitation-actions"><a class="action" href={SITE.links.linkedin} target="_blank" rel="noopener">{E.connect.follow}<Arrow diagonal /></a><a class="text-link" href="/contact/">{B.contactLink}<Arrow /></a></div>
+  </section>
+</BaseLayout>
+
+<style>
+.building-intro { padding-block: 64px 64px; }
+h1 { max-width: 19ch; margin: 0 0 36px; font-size: clamp(2.5rem, 5.5vw, 4.75rem); line-height: 1.08; font-weight: 800; }
+.intro-bottom { display: grid; grid-template-columns: minmax(0, 760px) minmax(210px, 1fr); gap: 64px; align-items: end; }
+.lead { margin: 0; max-width: 62ch; font-size: 21px; line-height: 1.65; }
+.intro-links { display: flex; flex-direction: column; align-items: flex-start; }
+.intro-links .text-link { font-size: 15px; }
+h2 { font-size: clamp(2rem, 3.2vw, 2.75rem); line-height: 1.15; margin: 0 0 28px; }
+p { font-size: 18px; line-height: 1.75; margin: 0 0 20px; max-width: 68ch; }
+.why { display: grid; grid-template-columns: minmax(0, 720px) minmax(240px, 400px); gap: 80px; align-items: center; padding-block: 72px 80px; border-top: 1px solid var(--rule); scroll-margin-top: 24px; }
+.why figure { margin: 0; }
+.why img { display: block; width: 100%; height: auto; border-radius: 12px; }
+.why .text-link { font-size: 16px; }
+.projects { padding-block: 16px 80px; scroll-margin-top: 24px; }
+.projects > h2 { max-width: 24ch; margin-bottom: 40px; }
+.project { border-top: 1px solid var(--rule); padding-block: 40px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 80px; }
+.project:last-child { padding-bottom: 0; }
+.project-name h3 { margin: 0 0 12px; font-size: 32px; }
+.project-name p { font-size: 14px; line-height: 1.6; color: var(--ink-muted); }
+.project-detail > p { margin-top: 0; }
+.skillnav { padding-top: 28px; margin-block: 28px 20px; border-top: 1px solid var(--rule); }
+.skillnav h4 { margin: 0 0 6px; font-family: var(--font-display); font-size: 24px; letter-spacing: -.025em; }
+.skillnav .project-status { font-size: 13px; color: var(--ink-muted); margin-bottom: 18px; }
+.skillnav p:last-child { margin-bottom: 0; }
+.standard { padding-block: 72px; background: var(--sky); }
+.standard-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 80px; }
+.standard h2 { max-width: 16ch; }
+.invitation { padding-block: 80px; }
+.invitation h2 { margin-bottom: 20px; }
+.invitation > p { max-width: 62ch; }
+.invitation-actions { display: flex; align-items: center; gap: 16px 32px; flex-wrap: wrap; margin-top: 28px; }
+@media (min-width: 768px) and (max-width: 1050px) {
+ .intro-bottom { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+ .intro-links { flex-direction: row; flex-wrap: wrap; gap: 12px 28px; }
+ .why { grid-template-columns: minmax(0, 1fr) minmax(200px, 28%); gap: 36px; }
+ .why figure { align-self: start; margin-top: 76px; }
+ .project, .standard-layout { grid-template-columns: minmax(0, .8fr) minmax(0, 1.4fr); gap: 36px; }
+}
+@media (max-width: 767.98px) {
+ .building-intro { padding-block: 36px 40px; }
+ h1 { font-size: clamp(2.25rem, 9vw, 3.5rem); margin-bottom: 24px; }
+ .intro-bottom { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+ .lead { font-size: 18px; line-height: 1.65; }
+ .intro-links { gap: 2px; }
+ h2 { font-size: 30px; margin-bottom: 24px; }
+ p { font-size: 17px; }
+ .why { grid-template-columns: minmax(0, 1fr); gap: 32px; padding-block: 40px 48px; }
+ .why img { aspect-ratio: 1.3; object-fit: cover; object-position: 50% 35%; }
+ .projects { padding-block: 8px 48px; }
+ .projects > h2 { margin-bottom: 28px; }
+ .project { grid-template-columns: minmax(0, 1fr); gap: 12px; padding-block: 28px; }
+ .project-name h3 { font-size: 28px; margin-bottom: 8px; }
+ .project-name p { margin-bottom: 8px; }
+ .skillnav { margin-top: 24px; padding-top: 24px; }
+ .standard { padding-block: 40px; }
+ .standard-layout { grid-template-columns: minmax(0, 1fr); gap: 0; }
+ .standard h2 { max-width: 20ch; }
+ .invitation { padding-block: 48px; }
+ .invitation-actions { align-items: flex-start; flex-direction: column; gap: 12px; margin-top: 24px; }
+ .invitation-actions .text-link { font-size: 15px; }
+}
+</style>
