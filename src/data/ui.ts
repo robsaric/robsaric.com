@@ -43,7 +43,7 @@ export const UI = {
     emailPlaceholder: 'you@example.com',
     subscribe: 'Subscribe',
     subscribing: 'Subscribing…',
-    invalidEmail: 'That does not look like an email address.',
+    invalidEmail: 'Enter a complete email address, like you@example.com.',
     fallback: 'Email me and I will add you.',
   },
   api: {
