@@ -85,3 +85,5 @@ After four weeks, decide which ideas generated worthwhile conversations and whic
 ## Before release
 
 Review the two first-person essays, open the site on Rob's own phone, and confirm the newsletter configuration in the intended hosting environment. The local preview deliberately has no live newsletter credentials. Publishing and posting remain separate authorized actions. Audience growth cannot be guaranteed by a redesign.
+
+The dedicated `/building/` page carries the larger mission: opportunity, ownership and independence through tools for small teams. A brief homepage invitation replaces the project list, keeping the reading path prominent. The mission page earns interest through already-public personal history, current work and a clear LinkedIn/contact invitation. No new subscriber, growth or product outcome claims are implied.

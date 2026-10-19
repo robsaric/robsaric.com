@@ -3,7 +3,7 @@
 Date: 2026-10-18. Supersedes the old Caretrics palette and clinic-only framing for the personal site. User explicitly approved implementation after the grill interview. Decisions appended to CAR-1171.
 
 ## Direction contract
-The October 19 homepage update below supersedes this initial composition for the homepage only. Other routes retain the established blue reading palette.
+The October 19 homepage update below supersedes this initial composition for the homepage. The later mission-page decision extends its warm identity to `/building/`; reading routes retain the established blue reading palette.
 
 - Home mode: Persuade, grounded in personal writing. Writing and articles: Read.
 - Thesis: I am on the side of small teams. Care and agency are the reason to build.
@@ -43,3 +43,9 @@ Rob also supplied “The Creed” as a framing reference, explicitly excluding i
 
 ## Acceptance
 Production build; copy checks; existing note, redirect and responsive gates; desktop/mobile visual inspection; keyboard menu and process controls; no-JS and reduced-motion check; actual metadata/share cards; no publication or newsletter submission during verification.
+
+## October 19 mission page
+
+Rob confirmed Grill Q14: a dedicated What I’m building page, led by opportunity, ownership and independence, with a personal why and projects as expressions of the ambition. The confirmed contract is `docs/building-direction.md`.
+
+The homepage and `/building/` now use dark headlines. Blue primarily marks links and actions on these two surfaces. The homepage keeps its approved headline, portrait and writing selections; its full project list becomes a compact invitation to `/building/`. Navigation and the hero work link lead there directly. Legacy `/work` and `/mission` redirects are unchanged; homepage `#work` and `#caretrics` both reach the invitation.

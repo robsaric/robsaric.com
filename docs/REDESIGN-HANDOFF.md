@@ -6,13 +6,13 @@ Prepared 2026-10-18; refined 2026-10-19 for Rob Saric. Repository: `robsaric/rob
 
 The homepage now leads with “Work is complicated enough. The tools should help.” Rob approved applying a supplied homepage critique on 2026-10-19 and then explicitly selected a warm background, blue accents, and the unbranded portrait. The smaller rectangular photo makes room for three real writing selections under “Start here.” Primary action leads to those selections; secondary action leads to current work. The supporting copy connects better tools to more room for life.
 
-Togetheren remains the intended home for SkillNav, visibly in development. Caretrics is one example of the work. The homepage sequence is introduction, writing, conditional email signup, current work, and a short personal introduction. The process demonstration and repeated follow panel are removed from this page. LinkedIn remains in navigation and footer. No email form appears without a configured endpoint, and no cadence or new service is promised.
+The dedicated `/building/` page leads with “More people should get to build something of their own.” It connects opportunity, ownership and independence to Rob’s already-public personal history, Togetheren, developing SkillNav and Caretrics. The homepage sequence is introduction, writing, conditional email signup, a short mission invitation, and a personal introduction. Navigation and the hero work link go directly to the new page. LinkedIn remains in navigation and footer and is the new page’s closing primary action. No email form appears without a configured endpoint, and no cadence or new service is promised.
 
-The writing index and articles retain their cool-paper reading palette, real titles, dates, and complete mobile selections. Article endings retain the quiet follow invitation and one deliberate next read. Shared arrow feedback respects reduced motion. The homepage's warm variant and updated default sharing image use the same blue and typefaces, so it has a personal identity without reverting to clinic-only framing. The “Creed” screenshot was a point-of-view reference, not approved copy or a request to make subscription primary.
+The writing index and articles retain their cool-paper reading palette, real titles, dates, and complete mobile selections. Article endings retain the quiet follow invitation and one deliberate next read. Shared arrow feedback respects reduced motion. The homepage, building page and updated default sharing image use warm paper and dark headlines; blue primarily identifies page links and actions. The “Creed” screenshot was a point-of-view reference, not approved copy or a request to make subscription primary.
 
 ## Review
 
-Local design preview: http://127.0.0.1:4327/ . Writing: http://127.0.0.1:4327/field-notes/ . These URLs require the local preview process to remain running; they are not public deployments.
+Local design preview: http://127.0.0.1:4327/ . Mission and work: http://127.0.0.1:4327/building/ . Writing: http://127.0.0.1:4327/field-notes/ . These URLs require the local preview process to remain running; they are not public deployments.
 
 Two proposed first-person essays remain `draft: true`:
 
@@ -36,6 +36,18 @@ Only explicit `editorial-review` mode includes these drafts, with a visible revi
 No dependencies, package version, lockfile, backend newsletter handler, tracking service, or legacy redirect mapping changed.
 
 ## Validation
+
+### October 19 mission page
+
+- `corepack pnpm@10.27.0 gate`: passed. Astro zero errors and 25 existing hints; copy lint zero errors and three existing taste warnings; 112 redirect checks; 11 notes; 84 responsive checks across 12 routes and seven widths.
+- Review build passed. Homepage and building-page captures inspected at 1440, 900 and 390px. One H1, loaded images, warm theme, dark headlines, no horizontal overflow, visible first reading title and correct active navigation.
+- Browser checks: 17 internal links/anchors resolve, all 23 building-page keyboard targets show focus, mobile Enter/Escape works, hover feedback respects reduced motion, and the full building page remains readable without JavaScript.
+- Generated output: 50 production and 52 review HTML pages checked, next reads valid, draft URLs absent from production and both RSS feeds. No article bodies or publication flags changed.
+- The default sharing image was regenerated with dark headline text. No dependencies, lockfiles, backend or tracking changes. This static page adds no loading, empty or error states; existing newsletter handling is unchanged.
+- New files: `src/pages/building.astro`, `docs/building-direction.md`. Updated: homepage, navigation, editorial data, OG template/image and product/design/direction documentation. Browser evidence: `.impeccable/review/building/`.
+- Independent Impeccable finish review: **ship**, with no material findings across source, all 12 desktop/intermediate/mobile captures and the sharing image. The launcher/detector was unavailable; direct source inspection and browser evidence were used.
+- Automatic approval review initially blocked the CAR-1171 append. Rob then explicitly authorized the destination and six-decision payload; the append succeeded, preserving prior issue history. The local record is `docs/building-direction.md`.
+- Homepage and building page opened in the default browser. In-app panel requests were queued. No push or deployment.
 
 ### October 19 homepage publication update
 

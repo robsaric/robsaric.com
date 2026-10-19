@@ -7,7 +7,7 @@ export function renderSiteCard({ heading, author, site, fontCss }) {
   return shell(fontCss, `
 .card{width:1200px;height:630px;padding:64px 76px;display:grid;grid-template-columns:1.35fr .8fr;gap:64px;background:var(--paper);color:var(--ink)}
 .copy{display:flex;flex-direction:column;justify-content:center}
-.heading{font:800 76px/1.06 var(--font-display);letter-spacing:-.04em;color:var(--blue)}
+.heading{font:800 76px/1.06 var(--font-display);letter-spacing:-.04em;color:var(--ink)}
 .foot{margin-top:42px;display:flex;flex-direction:column;gap:8px}
 .author{font:700 28px var(--font-display)}.site{font-size:20px;color:var(--ink-muted)}
 .photo{width:100%;height:430px;align-self:center;object-fit:cover;border-radius:12px}

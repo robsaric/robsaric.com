@@ -37,7 +37,8 @@ export const EDITORIAL = {
   },
   work: {
     heading: 'What I’m building.',
-    intro: 'Different projects. The same interest in helping people do good work without needing a big team behind them.',
+    intro: 'I want more people to have the chance to start, own and grow a business on their terms. Togetheren, SkillNav and Caretrics are how I’m working toward that.',
+    link: 'The work, and why it matters to me',
     togetheren: {
       name: 'Togetheren',
       status: 'The direction I’m building toward',
@@ -53,6 +54,38 @@ export const EDITORIAL = {
       body: 'Software for the people running clinics. It helps teams find missed follow-ups and revenue gaps, with the records behind each finding so someone can check it and act.',
       link: 'Explore Caretrics',
     },
+  },
+  building: {
+    title: 'What I’m building',
+    description: 'Why I’m building tools for small teams: more opportunity to start, own and grow a business. The ambition behind Togetheren, SkillNav and Caretrics.',
+    heading: 'More people should get to build something of their own.',
+    lead: 'I want more people to be able to start, own and grow a business on their terms. I’m building tools that help small teams put their knowledge to work, with AI where it helps and people in control.',
+    whyLink: 'Why I care',
+    projectsLink: 'See what I’m building',
+    whyHeading: 'Why I care.',
+    why: [
+      'I grew up in a blue-collar family in Windsor. My dad worked midnights and still made breakfast with me before school. In 2011, I wrote about what those ordinary moments meant to me. I still think a lot about what a life of work is supposed to make possible.',
+      'Building companies has also cured me of the idea that a useful product automatically makes a good business. Athlete Builder had customers in youth sports. I couldn’t make the economics work.',
+      'That is why the business matters as much to me as the tool. I want to help people turn their experience into work that supports them, and build companies that can keep doing it.',
+    ],
+    storyLink: 'What I learned from my dad',
+    projectsHeading: 'Where that ambition becomes work.',
+    togetheren: {
+      status: 'The direction I’m building toward',
+      body: 'I’m building toward Togetheren as a home for tools that help small teams turn what they know into useful, repeatable ways of working. The ambition is to make starting and running a business more achievable, without needing a large team to hold it together.',
+      skillnavBody: 'I’m developing SkillNav within that direction, beginning with client and project handoffs: what has been agreed, what the next person needs to know, and what happens next.',
+      skillnavAim: 'I want a team’s experience to stay useful when the work moves between people.',
+    },
+    standardHeading: 'The team should stay in control.',
+    standard: [
+      'AI can make a small team more capable. But if using it means checking an endless stream of questionable work, we’ve moved the burden rather than removed it.',
+      'I want tools that help people do something they could not do before, let them inspect and change the result, and make it possible to finish for the day.',
+      'That’s also why I write about life off-screen. A business worth building should leave room for the people building it.',
+    ],
+    writingLink: 'Read my writing',
+    closingHeading: 'Building something of your own?',
+    closingBody: 'I share the work as it develops: decisions, mistakes, useful discoveries. Follow along, or tell me about a problem your team knows too well.',
+    contactLink: 'Tell me what you’re working on',
   },
   personal: {
     heading: 'A little about me.',
