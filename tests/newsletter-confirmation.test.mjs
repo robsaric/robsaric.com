@@ -135,13 +135,14 @@ test('confirmation requires a form POST and rejects cross-site and oversized for
   const url = 'https://robsaric.com/api/confirm/';
   assert.ok(trustedFormRequest(new Request(url, { headers: { origin: 'https://robsaric.com' } })));
   assert.ok(!trustedFormRequest(new Request(url, { headers: { origin: 'https://other.example' } })));
+  assert.ok(!trustedFormRequest(new Request(url, { headers: { origin: 'null' } })));
   assert.ok(!trustedFormRequest(new Request(url, { headers: { 'sec-fetch-site': 'cross-site' } })));
   assert.ok(!trustedFormRequest(new Request(url, { headers: { 'content-length': '5000' } })));
   const result = newsletterResult(new Request(url), 'ok');
   assert.equal(result.status, 303);
   assert.equal(result.headers.get('Location'), '/subscribed/?status=ok');
   assert.equal(result.headers.get('Cache-Control'), 'no-store');
-  assert.equal(result.headers.get('Referrer-Policy'), 'no-referrer');
+  assert.equal(result.headers.get('Referrer-Policy'), 'strict-origin');
   const failure = newsletterResult(new Request(url, { headers: { accept: 'application/json' } }), 'error');
   assert.equal(failure.status, 503);
   assert.deepEqual(await failure.json(), { status: 'error' });

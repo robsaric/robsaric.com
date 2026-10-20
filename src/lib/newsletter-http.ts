@@ -8,7 +8,9 @@ const codes: Record<NewsletterStatus, number> = {
 export function privateHeaders(): Headers {
   return new Headers({
     'Cache-Control': 'no-store',
-    'Referrer-Policy': 'no-referrer',
+    // Keep token paths out of referrers while preserving Origin on native form POSTs.
+    // `no-referrer` makes that Origin null, which Astro correctly rejects.
+    'Referrer-Policy': 'strict-origin',
     'X-Robots-Tag': 'noindex, nofollow',
   });
 }
