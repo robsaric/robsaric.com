@@ -42,16 +42,17 @@ test('a new reader opts into personal writing and out of every other topic, acro
 test('existing readers receive only targeted writes, preserving other choices and global state', async () => {
   const { run, calls } = fixture([
     [200, { id: 'existing-reader', unsubscribed: false }],
+    [200, { data: [{ id: 'other-segment' }], has_more: false }],
     [200, { id: 'existing-reader' }],
     [200, { id: 'personal-segment' }],
   ]);
   assert.equal(await run(), 'ok');
-  assert.equal(calls[1].method, 'PATCH');
-  assert.deepEqual(calls[1].body, [{ id: 'personal-topic', subscription: 'opt_in' }]);
-  assert.match(calls[2].url, /\/segments\/personal-segment$/);
-  assert.equal(calls[2].body, undefined);
+  assert.equal(calls[2].method, 'PATCH');
+  assert.deepEqual(calls[2].body, [{ id: 'personal-topic', subscription: 'opt_in' }]);
+  assert.match(calls[3].url, /\/segments\/personal-segment$/);
+  assert.equal(calls[3].body, undefined);
   assert.ok(calls.every(call => !call.body || !('unsubscribed' in call.body)));
-  assert.equal(calls.length, 3);
+  assert.equal(calls.length, 4);
 });
 
 test('a global unsubscribe is preserved without any writes', async () => {
@@ -71,15 +72,17 @@ for (const status of [401, 429, 500]) {
 test('a failed preference write cannot produce success or add segment membership', async () => {
   const { run, calls } = fixture([
     [200, { id: 'reader', unsubscribed: false }],
+    [200, { data: [], has_more: false }],
     [500, { message: 'Failed' }],
   ]);
   await assert.rejects(run, /500/);
-  assert.equal(calls.length, 2);
+  assert.equal(calls.length, 3);
 });
 
 test('a failed segment write is reported even if the preference was saved', async () => {
   const { run } = fixture([
     [200, { id: 'reader', unsubscribed: false }],
+    [200, { data: [], has_more: false }],
     [200, { id: 'reader' }],
     [409, { message: 'Already something else' }],
   ]);
@@ -118,3 +121,17 @@ test('a create conflict is a failure, not an unverified subscription', async () 
   ]);
   await assert.rejects(run, /409/);
 });
+
+for (const preference of ['opt_in', 'opt_out']) {
+  test(`repeated confirmation preserves an existing personal ${preference} without writes`, async () => {
+    const { run, calls } = fixture([
+      [200, { id: 'reader', unsubscribed: false }],
+      [200, { data: [{ id: 'unrelated' }], has_more: true }],
+      [200, { data: [{ id: 'personal-segment' }], has_more: false }],
+      [200, { data: [{ id: 'personal-topic', subscription: preference }], has_more: false }],
+    ]);
+    assert.equal(await run(), preference === 'opt_in' ? 'exists' : 'unsubscribed');
+    assert.ok(calls.every(call => call.method === 'GET'));
+    assert.match(calls[2].url, /after=unrelated/);
+  });
+}

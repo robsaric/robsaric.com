@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import { NEWSLETTER as N } from '../data/newsletter';
+import { EDITORIAL as E } from '../data/editorial';
+import { readConfirmationToken } from '../lib/newsletter-confirmation';
+import { privateHeaders } from '../lib/newsletter-http';
+
+export const prerender = false;
+for (const [name, value] of privateHeaders()) Astro.response.headers.set(name, value);
+const token = Astro.url.searchParams.get('token') ?? '';
+let valid = false;
+let unavailable = false;
+try {
+  const secret = import.meta.env.NEWSLETTER_CONFIRMATION_SECRET?.trim();
+  if (!secret) throw new Error('Missing confirmation configuration.');
+  valid = readConfirmationToken(token, secret) !== null;
+} catch {
+  unavailable = true;
+}
+const state = valid ? N.confirmation : unavailable ? N.unavailable : N.invalid;
+if (!valid) Astro.response.status = unavailable ? 503 : 400;
+---
+<BaseLayout title={state.heading} description={state.body} noindex>
+  <section class="confirmation">
+    <h1>{state.heading}</h1>
+    <p>{state.body}</p>
+    {valid && <form method="post" action="/api/confirm/" data-confirmation-form>
+      <input type="hidden" name="token" value={token} />
+      <button class="action" type="submit" data-loading-label={N.confirmation.loading}>{N.confirmation.action}</button>
+      <p class="confirmation-small">{N.confirmation.privacy}</p>
+    </form>}
+    {!valid && !unavailable && <Newsletter id="confirmation-retry" recovery />}
+    <a class="reading-link" href={E.newsletter.sampleHref}>{N.read}</a>
+  </section>
+</BaseLayout>
+<script>
+  const form = document.querySelector<HTMLFormElement>('[data-confirmation-form]');
+  const button = form?.querySelector<HTMLButtonElement>('button[type=submit]');
+  if (form && button) {
+    const label = button.textContent;
+    form.addEventListener('submit', () => {
+      button.disabled = true;
+      button.textContent = button.dataset.loadingLabel ?? label;
+    });
+    window.addEventListener('pageshow', () => {
+      button.disabled = false;
+      button.textContent = label;
+    });
+  }
+</script>
+<style>
+  .confirmation { max-width: 760px; margin-inline: auto; padding: 80px var(--gutter-desktop) 96px; }
+  h1 { font-size: clamp(2rem, 5vw, 3.25rem); line-height: 1.15; margin: 0 0 24px; }
+  p { font-size: 18px; line-height: 1.7; max-width: 58ch; margin: 0 0 28px; }
+  form { margin: 8px 0 28px; }
+  button { cursor: pointer; }
+  button:disabled { cursor: wait; opacity: .7; }
+  .confirmation-small { font-size: 14px; color: var(--ink-muted); margin: 16px 0 0; }
+  .reading-link { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; }
+  @media (max-width: 767.98px) {
+    .confirmation { padding: 48px var(--gutter-mobile) 64px; }
+    button { width: 100%; }
+  }
+</style>

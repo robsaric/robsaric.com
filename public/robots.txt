@@ -3,6 +3,7 @@ User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /subscribed/
+Disallow: /confirm/
 
 # Search and user-requested retrieval. Specific groups repeat the shared exclusions.
 User-agent: OAI-SearchBot
@@ -12,6 +13,7 @@ User-agent: PerplexityBot
 Allow: /
 Disallow: /api/
 Disallow: /subscribed/
+Disallow: /confirm/
 
 # Training crawlers retain the site's existing allow policy.
 User-agent: GPTBot
@@ -20,5 +22,6 @@ User-agent: anthropic-ai
 Allow: /
 Disallow: /api/
 Disallow: /subscribed/
+Disallow: /confirm/
 
 Sitemap: https://robsaric.com/sitemap-index.xml

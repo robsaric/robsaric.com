@@ -1,8 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { COPY } from '../data/copy';
+import { NEWSLETTER as N } from '../data/newsletter';
+import { EDITORIAL as E } from '../data/editorial';
+import Newsletter from '../components/Newsletter.astro';
+import { privateHeaders } from '../lib/newsletter-http';
 
 export const prerender = false;
+for (const [name, value] of privateHeaders()) Astro.response.headers.set(name, value);
 
 type SubscribedStatus =
   keyof typeof COPY.subscribed.states;
@@ -17,7 +22,7 @@ const status: SubscribedStatus =
     requestedStatus,
   )
     ? requestedStatus as SubscribedStatus
-    : 'ok';
+    : 'pending';
 
 const state = COPY.subscribed.states[status];
 const description = [
@@ -43,8 +48,11 @@ const description = [
       {state.body.afterLink}
     </p>
 
-    <a class="subscribed__back" href="/field-notes/">
-      {COPY.subscribed.backLink}
+    {status === 'pending' && <p class="subscribed__help">{COPY.subscribed.pendingHelp}</p>}
+    {(status === 'invalid' || status === 'invalidlink' || status === 'error') && <Newsletter id="signup-retry" recovery />}
+
+    <a class="subscribed__back" href={E.newsletter.sampleHref}>
+      {N.read}
     </a>
   </div>
 </BaseLayout>
@@ -52,7 +60,7 @@ const description = [
 <style>
   .subscribed {
     width: 100%;
-    max-width: var(--max-page);
+    max-width: 880px;
     margin: 0 auto;
     padding: var(--section-pad-desktop) var(--gutter-desktop);
     display: flex;
@@ -85,6 +93,7 @@ const description = [
     font-size: 16px;
     font-weight: 600;
   }
+  .subscribed__help { font-size: 15px; color: var(--ink-muted); }
 
   @media (max-width: 767.98px) {
     .subscribed {
