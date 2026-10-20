@@ -245,10 +245,18 @@ export const COPY = {
   },
   subscribed: {
     states: {
-      ok: {
-        heading: 'You are on the list.',
+      pending: {
+        heading: 'Check your inbox.',
         body: {
-          beforeLink: 'You are on the list for my occasional notes. You can reply to any of them.',
+          beforeLink: 'I’ve sent you a confirmation link. Open the email from Rob Saric, then confirm on the next page to join my list.',
+          link: '',
+          afterLink: '',
+        },
+      },
+      ok: {
+        heading: 'You’re in. Thanks for being here.',
+        body: {
+          beforeLink: 'I’ll send you my next essay when it’s ready. It will come from me, and you can always hit reply. In the meantime, here’s something to read.',
           link: '',
           afterLink: '',
         },
@@ -274,18 +282,27 @@ export const COPY = {
         body: {
           beforeLink: 'Go back and try again, or ',
           link: 'email me',
-          afterLink: ' and I will add you myself.',
+          afterLink: ' if you need a hand.',
+        },
+      },
+      invalidlink: {
+        heading: 'That confirmation link has expired.',
+        body: {
+          beforeLink: 'It may also be incomplete. Enter your email again below to request a fresh link.',
+          link: '',
+          afterLink: '',
         },
       },
       error: {
         heading: 'That did not go through.',
         body: {
-          beforeLink: 'Something failed on my side, not yours. ',
+          beforeLink: 'Please try again in a few minutes, or reopen your confirmation link if you already have one. ',
           link: 'Email me',
-          afterLink: ' and I will add you myself.',
+          afterLink: ' if you’re still stuck.',
         },
       },
     },
+    pendingHelp: 'If it hasn’t arrived, give it a few minutes and check your spam folder. If you tried twice, use the first email.',
     backLink: 'Back to my notes →',
   },
   footer: {

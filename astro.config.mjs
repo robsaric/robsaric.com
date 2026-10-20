@@ -54,9 +54,9 @@ export default defineConfig({
        * /how-i-counted/ stays in (docs/COPY.md, V5). /subscribed/ comes out
        * 2026-08-29: it renders `noindex, nofollow` and is Disallow'd in
        * robots.txt, so submitting it made Search Console report the page as
-       * both blocked and noindexed. Nothing else is excluded.
+       * both blocked and noindexed. Confirmation links also stay private.
        */
-      filter: (page) => !page.includes('/subscribed/'),
+      filter: (page) => !page.includes('/subscribed/') && !page.includes('/confirm/'),
     }),
     mdx(),
     vercelSlashTolerantRedirects(),

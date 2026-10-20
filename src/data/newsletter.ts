@@ -1,0 +1,32 @@
+export const NEWSLETTER = {
+  sender: 'Rob Saric <rob@robsaric.com>',
+  replyTo: 'rob@hwarp.com',
+  subject: 'Confirm your email for my essays',
+  preheader: 'One quick confirmation, then I’ll send you my next essay.',
+  greeting: 'Hi,',
+  introduction: 'Thanks for making room for my writing. Before I send you the next essay, please confirm this is your email address.',
+  promise: 'I write about building small companies, where AI actually helps, and what’s worth keeping human.',
+  invitation: 'I send these occasionally, when I have something worth sharing. If a note gets you thinking, hit reply. I’d like to hear it.',
+  signoff: 'Rob',
+  emailAction: 'Confirm my email',
+  fallback: 'If the button doesn’t work, open this link:',
+  ignore: 'Didn’t ask for this? You can ignore this email. You won’t be added to my list.',
+  expiry: 'This link expires in 24 hours. You can unsubscribe from any essay.',
+  confirmation: {
+    heading: 'Confirm your email.',
+    body: 'Confirm below and I’ll send you my next essay when it’s ready. You can reply to any of them.',
+    action: 'Yes, send me your essays',
+    loading: 'Confirming…',
+    privacy: 'Occasional emails. Unsubscribe whenever you like.',
+  },
+  invalid: {
+    heading: 'That confirmation link has expired.',
+    body: 'It may also be incomplete. Enter your email again to request a new link.',
+  },
+  unavailable: {
+    heading: 'I couldn’t confirm your email just now.',
+    body: 'Please try the link again in a few minutes. If it still doesn’t work, write to me and I’ll help.',
+  },
+  retry: 'Send a new confirmation',
+  read: 'Read an essay while you’re here',
+} as const;

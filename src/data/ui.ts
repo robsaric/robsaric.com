@@ -42,7 +42,7 @@ export const UI = {
     emailLabel: 'Email address',
     emailPlaceholder: 'you@example.com',
     subscribe: 'Subscribe',
-    subscribing: 'Subscribing…',
+    subscribing: 'Sending confirmation…',
     invalidEmail: 'Enter a complete email address, like you@example.com.',
     fallback: 'Email me and I will add you.',
   },

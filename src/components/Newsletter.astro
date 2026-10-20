@@ -2,6 +2,7 @@
 import { EDITORIAL as E } from '../data/editorial';
 import { SITE } from '../data/site';
 import { UI } from '../data/ui';
+import { NEWSLETTER as N } from '../data/newsletter';
 import Arrow from './Arrow.astro';
 
 interface Props {
@@ -10,22 +11,23 @@ interface Props {
   headingLevel?: 2 | 3;
   showSample?: boolean;
   showLinkedIn?: boolean;
+  recovery?: boolean;
 }
-const { id, prominent = false, headingLevel = 2, showSample = false, showLinkedIn = false } = Astro.props;
+const { id, prominent = false, headingLevel = 2, showSample = false, showLinkedIn = false, recovery = false } = Astro.props;
 const endpoint = import.meta.env.PUBLIC_NEWSLETTER_ENDPOINT?.trim();
 const Heading = headingLevel === 3 ? 'h3' : 'h2';
 ---
 {endpoint && <section class:list={['newsletter', { prominent }]} aria-labelledby={`${id}-title`} data-write-to-me data-invalid-email={UI.newsletter.invalidEmail}>
-  <Heading id={`${id}-title`}>{E.newsletter.heading}</Heading>
-  <p class="newsletter-intro">{E.newsletter.body}</p>
+  <Heading id={`${id}-title`} class:list={{ 'visually-hidden': recovery }}>{recovery ? N.retry : E.newsletter.heading}</Heading>
+  {!recovery && <p class="newsletter-intro">{E.newsletter.body}</p>}
   <form method="post" action={endpoint} data-newsletter-form>
     <div class="visually-hidden" aria-hidden="true"><input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" /></div>
     <label for={`${id}-email`}>{UI.newsletter.emailLabel}</label>
     <input id={`${id}-email`} type="email" name="email" required autocomplete="email" placeholder={UI.newsletter.emailPlaceholder} aria-describedby={`${id}-cadence ${id}-status`} data-newsletter-email />
     <span id={`${id}-status`} class="newsletter-status" aria-live="polite" data-newsletter-status></span>
-    <button class="action" type="submit" data-newsletter-submit data-loading-label={UI.newsletter.subscribing}>{E.newsletter.action}<Arrow /></button>
+    <button class="action" type="submit" data-newsletter-submit data-loading-label={UI.newsletter.subscribing}>{recovery ? N.retry : E.newsletter.action}<Arrow /></button>
   </form>
-  <p id={`${id}-cadence`} class="cadence">{E.newsletter.cadence}</p>
+  <p id={`${id}-cadence`} class="cadence">{recovery ? N.confirmation.privacy : E.newsletter.cadence}</p>
   {(showSample || showLinkedIn) && <div class="newsletter-links">
     {showSample && <a class="text-link" href={E.newsletter.sampleHref}>{E.newsletter.sample}<Arrow /></a>}
     {showLinkedIn && <a class="text-link" href={SITE.links.linkedin} target="_blank" rel="noopener">{E.newsletter.follow}<Arrow diagonal /></a>}
@@ -38,6 +40,11 @@ const Heading = headingLevel === 3 ? 'h3' : 'h2';
     const status = root.querySelector<HTMLElement>('[data-newsletter-status]');
     const submit = root.querySelector<HTMLButtonElement>('[data-newsletter-submit]');
     if (!form || !email || !status || !submit) return;
+    const buttonContent = submit.innerHTML;
+    window.addEventListener('pageshow', () => {
+      submit.disabled = false;
+      submit.innerHTML = buttonContent;
+    });
     root.dataset.ready = 'true';
     form.noValidate = true;
     email.addEventListener('input', () => {

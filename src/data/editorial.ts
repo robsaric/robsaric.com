@@ -140,7 +140,7 @@ export const EDITORIAL = {
     heading: 'Build a business that leaves room for a life.',
     body: 'I write about the decisions behind building small companies, where AI actually helps, and what’s worth keeping human. Get new essays by email, with ideas to bring to your own work.',
     action: 'Send me the next essay',
-    cadence: 'Occasional essays, sent when I have something worth sharing.',
+    cadence: 'Confirm your email, then get occasional essays when I have something worth sharing. Unsubscribe whenever you like.',
     sample: 'Read an essay first',
     sampleHref: '/field-notes/2026-10-19-are-dashboards-dead/',
     follow: 'Or follow on LinkedIn',

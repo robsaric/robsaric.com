@@ -60,6 +60,7 @@ Copy `.env.example` to `.env` for local development. Set the same values in the 
 - `RESEND_API_KEY`: server-only Resend API key. Create a Full access key named `robsaric.com subscribe`.
 - `RESEND_SEGMENT_ID`: server-only identifier copied from the Resend segment URL.
 - `RESEND_TOPIC_ID`: required server-only personal newsletter topic identifier copied from the Resend topic URL.
+- `NEWSLETTER_CONFIRMATION_SECRET`: 32 cryptographically random bytes encoded as 64 hexadecimal characters, stored as a sensitive server-only variable. Rotating it invalidates outstanding confirmation links.
 
 Only `PUBLIC_NEWSLETTER_ENDPOINT` uses the `PUBLIC_` prefix. The Resend key and identifiers must remain server-only.
 
@@ -67,8 +68,16 @@ When `PUBLIC_NEWSLETTER_ENDPOINT` is unset, the homepage hides the form and show
 
 ## Newsletter
 
-The shared signup form posts to `/api/subscribe/`. For new contacts, the endpoint explicitly opts into the personal topic and out of every other current topic, overriding shared-workspace defaults. For existing contacts, it adds only the personal topic and segment, preserving other preferences. A prior global unsubscribe remains in place and displays a recovery message. Missing configuration, incomplete provider responses and failed writes never produce a success confirmation.
+The shared form posts to `/api/subscribe/`, which sends a confirmation email from `Rob Saric <rob@robsaric.com>`, with replies directed to Rob's monitored inbox. It does not create contacts or change subscriptions. Email copy lives in `src/data/newsletter.ts`; the HTML and plain-text versions share that copy.
+
+An authenticated, encrypted link expires after 24 hours. `/confirm/` validates the link without changing anything, so an email scanner's GET does not subscribe the reader. A deliberate form POST to `/api/confirm/` completes the subscription. Confirmation pages and responses are no-store, no-referrer, noindex, and excluded from the sitemap. Addresses are encrypted inside links, never logged by the application.
+
+New contacts explicitly opt into the personal topic and out of every other current topic. Existing contacts outside the personal segment receive only the personal topic and segment. Existing personal readers are checked without writes, including on repeat confirmation; personal topic opt-outs and global unsubscribes remain in place and show a recovery message. Keep former readers in the personal segment: its membership is the replay guard, so manually removing it (or deleting the contact) removes that guard for an unexpired link. No existing subscribers receive a reconfirmation campaign.
+
+Resend idempotency limits repeat sends for the same email to one per UTC calendar day (up to two across a day boundary). A repeat request keeps the first email valid. This is a duplicate-send control, not an IP-wide bot limiter; the honeypot and same-origin checks remain, and a distributed attack across many addresses needs a provider/WAF rate rule. Missing configuration, incomplete provider responses and failed writes never produce a successful subscription. The confirmation email is the only automatic email; there is no second welcome message.
 
 The new-contact path uses a provider lookup followed by creation. Resend's ordinary create endpoint is an upsert, so simultaneous creation of the same email by another integration remains a provider concurrency limitation. The provider does not offer conditional creation on this endpoint.
 
 Field notes are sent through Resend Broadcasts scoped to the configured segment and topic.
+
+Rollback: revert the confirmation commit and redeploy the previous release. The previous release subscribes immediately, so disable the public form instead if confirmation must remain mandatory. The new secret can remain unused. No data migration is needed.
