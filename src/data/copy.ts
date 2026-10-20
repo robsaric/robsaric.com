@@ -261,6 +261,14 @@ export const COPY = {
           afterLink: '',
         },
       },
+      unsubscribed: {
+        heading: 'Your unsubscribe is still in place.',
+        body: {
+          beforeLink: 'You previously unsubscribed from emails. To receive my essays again, ',
+          link: 'email me',
+          afterLink: ' and I will help you update your preferences.',
+        },
+      },
       invalid: {
         heading: 'That does not look like an email address.',
         body: {

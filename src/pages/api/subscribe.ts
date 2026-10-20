@@ -3,6 +3,7 @@ import type {
   APIRoute,
 } from 'astro';
 import { UI } from '../../data/ui';
+import { subscribeToNotes } from '../../lib/subscribe';
 
 export const prerender = false;
 
@@ -10,11 +11,11 @@ type SubscribeStatus =
   | 'ok'
   | 'exists'
   | 'invalid'
+  | 'unsubscribed'
   | 'error';
 
 type Redirect = APIContext['redirect'];
 
-const RESEND_CONTACTS_URL = 'https://api.resend.com/contacts';
 const EMAIL_PATTERN =
   /^[a-z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)+$/i;
 
@@ -22,6 +23,7 @@ const STATUS_CODES: Record<SubscribeStatus, number> = {
   ok: 200,
   exists: 200,
   invalid: 400,
+  unsubscribed: 409,
   error: 500,
 };
 
@@ -29,6 +31,7 @@ const STATUS_PATHS: Record<SubscribeStatus, string> = {
   ok: '/subscribed/',
   exists: '/subscribed/?status=exists',
   invalid: '/subscribed/?status=invalid',
+  unsubscribed: '/subscribed/?status=unsubscribed',
   error: '/subscribed/?status=error',
 };
 
@@ -89,7 +92,7 @@ function logMissingConfiguration(): void {
   if (missingConfigurationLogged) return;
   missingConfigurationLogged = true;
   console.error(
-    'Newsletter subscription is missing RESEND_API_KEY or RESEND_SEGMENT_ID.',
+    'Newsletter subscription is missing its server configuration.',
   );
 }
 
@@ -133,74 +136,20 @@ export const POST: APIRoute = async ({
   const segmentId = import.meta.env.RESEND_SEGMENT_ID?.trim();
   const topicId = import.meta.env.RESEND_TOPIC_ID?.trim();
 
-  if (!apiKey || !segmentId) {
+  if (!apiKey || !segmentId || !topicId) {
     logMissingConfiguration();
     return resultResponse(request, redirect, 'error');
-  }
-
-  const payload: {
-    email: string;
-    unsubscribed: boolean;
-    segments: { id: string }[];
-    topics?: {
-      id: string;
-      subscription: 'opt_in';
-    }[];
-  } = {
-    email,
-    unsubscribed: false,
-    segments: [{ id: segmentId }],
-  };
-
-  if (topicId) {
-    payload.topics = [{
-      id: topicId,
-      subscription: 'opt_in',
-    }];
   }
 
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 8_000);
 
   try {
-    const response = await fetch(RESEND_CONTACTS_URL, {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payload),
+    const status = await subscribeToNotes({
+      email, apiKey, segmentId, topicId,
       signal: controller.signal,
     });
-
-    if (response.ok) {
-      return resultResponse(request, redirect, 'ok');
-    }
-
-    let message = '';
-
-    if (response.status >= 400 && response.status < 500) {
-      try {
-        const responseBody = await response.json();
-        if (typeof responseBody?.message === 'string') {
-          message = responseBody.message;
-        }
-      } catch {
-        message = '';
-      }
-    }
-
-    if (
-      response.status === 409
-      || message.toLowerCase().includes('already')
-    ) {
-      return resultResponse(request, redirect, 'exists');
-    }
-
-    console.error(
-      `Resend contacts request failed with status ${response.status}.`,
-    );
-    return resultResponse(request, redirect, 'error');
+    return resultResponse(request, redirect, status);
   } catch (error) {
     const errorName =
       error instanceof Error ? error.name : 'UnknownError';

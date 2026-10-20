@@ -59,7 +59,7 @@ Copy `.env.example` to `.env` for local development. Set the same values in the 
 - `PUBLIC_NEWSLETTER_ENDPOINT`: public form action exposed to the browser. Use `/api/subscribe/`.
 - `RESEND_API_KEY`: server-only Resend API key. Create a Full access key named `robsaric.com subscribe`.
 - `RESEND_SEGMENT_ID`: server-only identifier copied from the Resend segment URL.
-- `RESEND_TOPIC_ID`: optional server-only identifier copied from the Resend topic URL.
+- `RESEND_TOPIC_ID`: required server-only personal newsletter topic identifier copied from the Resend topic URL.
 
 Only `PUBLIC_NEWSLETTER_ENDPOINT` uses the `PUBLIC_` prefix. The Resend key and identifiers must remain server-only.
 
@@ -67,6 +67,8 @@ When `PUBLIC_NEWSLETTER_ENDPOINT` is unset, the homepage hides the form and show
 
 ## Newsletter
 
-The homepage form posts to `/api/subscribe/`. The endpoint validates the address, creates or updates the Resend contact, adds it to the configured segment, opts it into the configured topic when present, then sends the browser to `/subscribed/`.
+The shared signup form posts to `/api/subscribe/`. For new contacts, the endpoint explicitly opts into the personal topic and out of every other current topic, overriding shared-workspace defaults. For existing contacts, it adds only the personal topic and segment, preserving other preferences. A prior global unsubscribe remains in place and displays a recovery message. Missing configuration, incomplete provider responses and failed writes never produce a success confirmation.
+
+The new-contact path uses a provider lookup followed by creation. Resend's ordinary create endpoint is an upsert, so simultaneous creation of the same email by another integration remains a provider concurrency limitation. The provider does not offer conditional creation on this endpoint.
 
 Field notes are sent through Resend Broadcasts scoped to the configured segment and topic.
