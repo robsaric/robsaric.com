@@ -15,14 +15,13 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Person', name: SITE
   <div class="wrap about-page">
     <header class="about-heading"><div><h1>{E.about.heading}</h1><p>{E.about.intro}</p></div><Image src={portrait} alt={E.hero.portraitAlt} width={340} height={410} widths={[340,680]} sizes="(max-width: 767px) calc(100vw - 48px), 30vw" loading="eager" /></header>
     <section class="story"><h2>{E.about.backgroundHeading}</h2><div>{E.about.background.map(p => <p>{p}</p>)}</div></section>
-    <section class="story"><h2>{E.about.missionHeading}</h2><div>{E.about.mission.map(p => <p>{p}</p>)}<a class="text-link" href="/#work">{E.work.heading}<Arrow /></a></div></section>
+    <section class="story"><h2>{E.about.missionHeading}</h2><div>{E.about.mission.map(p => <p>{p}</p>)}<a class="text-link" href="/building/">{E.work.heading}<Arrow /></a></div></section>
     <section class="story"><h2>{E.about.lifeHeading}</h2><div>{E.about.life.map(p => <p>{p}</p>)}<a class="text-link" href={SITE.unpluggedCanadaUrl} target="_blank" rel="noopener">{E.about.unpluggedLink}<Arrow diagonal /></a></div></section>
     <div class="personal-photos">
       <figure class="family-photo"><Image src={family} alt={E.about.photos.familyAlt} width={1381} height={1139} widths={[400,600,900,1381]} sizes="(max-width: 767px) calc(100vw - 48px), 43vw" loading="lazy" /><figcaption>{E.about.photos.familyCaption}</figcaption></figure>
       <figure><Image src={together} alt={E.about.photos.togetherAlt} width={500} height={500} widths={[200,300,500]} sizes="(max-width: 767px) calc((100vw - 64px) / 2), 22vw" loading="lazy" /><figcaption>{E.about.photos.togetherCaption}</figcaption></figure>
       <figure><Image src={hiking} alt={E.about.hikingAlt} width={1264} height={848} widths={[300,500,800,1264]} sizes="(max-width: 767px) calc((100vw - 64px) / 2), 30vw" loading="lazy" /><figcaption>{E.about.photos.hikingCaption}</figcaption></figure>
     </div>
-    <div class="standard"><p>{E.about.closing}</p><span>{E.about.closingBody}</span></div>
   </div>
   <Connect />
 </BaseLayout>
@@ -40,9 +39,6 @@ h1 { font-size: clamp(2.8rem, 5.5vw, 5rem); margin: 0 0 28px; max-width: 14ch; f
 .personal-photos figure { min-width: 0; margin: 0; }
 .personal-photos img { width: 100%; height: auto; display: block; border-radius: 4px; }
 .personal-photos figcaption { margin-top: 12px; font-size: 14px; line-height: 1.5; color: var(--ink-muted); }
-.standard { border-top: 1px solid var(--rule); padding-top: 56px; margin-top: 24px; }
-.standard p { font: 700 clamp(2.4rem,5vw,4.5rem)/1.13 var(--font-display); color: var(--blue); letter-spacing: -.035em; max-width: 17ch; margin: 0 0 24px; }
-.standard span { font-size: 17px; }
 @media (max-width: 1023px) { .about-heading { gap: 44px; } .story { gap: 40px; } }
 @media (max-width: 767.98px) {
  .about-page { padding-block: 44px 56px; }
@@ -54,6 +50,5 @@ h1 { font-size: clamp(2.8rem, 5.5vw, 5rem); margin: 0 0 28px; max-width: 14ch; f
  .story p { font-size: 17px; }
  .personal-photos { grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 28px 16px; margin: 16px 0 40px; }
  .family-photo { grid-column: 1 / -1; }
- .standard { padding-top: 32px; }
 }
 </style>

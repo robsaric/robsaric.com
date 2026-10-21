@@ -26,7 +26,7 @@ const newsletterEndpoint = import.meta.env.PUBLIC_NEWSLETTER_ENDPOINT?.trim();
     <article>
       <header class="article-header">
         <h1>{title}</h1>
-        <div class="article-meta"><time datetime={date.toISOString()}>{dateFormat.format(date)}</time>{modifiedTime && <time datetime={modifiedTime.toISOString()}>{UI.article.updated(dateFormat.format(modifiedTime))}</time>}{showByline && <a href="/about/">{SITE.name}</a>}</div>
+        <div class="article-meta"><time datetime={date.toISOString()}>{dateFormat.format(date)}</time>{modifiedTime && <time datetime={modifiedTime.toISOString()}>{UI.article.updated(dateFormat.format(modifiedTime))}</time>}{showByline && <a href="/about/">{SITE.name}</a>}{newsletterEndpoint && <a href="#article-newsletter-title">{E.article.subscribe}</a>}</div>
         {notice && <p class="article-notice">{notice}</p>}
       </header>
       <div class="article-body">
