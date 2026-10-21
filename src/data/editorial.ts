@@ -18,6 +18,9 @@ export const EDITORIAL = {
     pageDescription: 'Essays by Rob Saric on small teams, useful AI, building companies and making room for life beyond the screen.',
     featuredHref: '/field-notes/2026-10-19-are-dashboards-dead/',
     readEssay: 'Read the essay',
+    changeHeading: 'What I’d change',
+    changeIntro: 'A recurring look at a task, what gets in the way, and the choices behind a better tool.',
+    changeLink: 'See my dashboard design notes',
     pageHeading: 'Thinking out loud.',
     pageIntro: 'Building companies has given me plenty to write about. So has being a parent, paying attention to design, and wondering what all this technology is doing to us.',
     latest: 'Latest writing',
@@ -101,7 +104,7 @@ export const EDITORIAL = {
     title: 'About',
     heading: 'I care about the people doing the work.',
     intro: 'I’m Rob. A founder, a dad, and someone who tends to ask one more question about why a thing works the way it does.',
-    backgroundHeading: 'From Windsor to building things.',
+    backgroundHeading: 'What shaped how I work.',
     background: [
       'I grew up in a blue-collar family in Windsor and now live in Ottawa. My career has included leadership roles at Trend Micro, Pythian and Mitel, years in software and systems architecture, and the messier education of building companies.',
       'Some ideas worked better than others. Athlete Builder found customers in youth sports, but I couldn’t make the economics work. That experience is part of how I think about building now.',
@@ -127,8 +130,6 @@ export const EDITORIAL = {
       hikingCaption: 'Time on the trail.',
     },
     unpluggedLink: 'The conversation at Unplugged Canada',
-    closing: 'People who do good should do well.',
-    closingBody: 'That’s a standard I want my work to live up to.',
   },
   connect: {
     heading: 'Let’s keep the conversation going.',
@@ -146,6 +147,7 @@ export const EDITORIAL = {
     follow: 'Or follow on LinkedIn',
   },
   article: {
+    subscribe: 'Get the next essay',
     heading: 'Read next',
     followHeading: 'More on small teams and useful technology.',
     followBody: 'I share new writing and what I’m learning as I build on LinkedIn.',
@@ -157,7 +159,6 @@ export const EDITORIAL = {
   },
   footer: {
     line: 'Good work. More room for life.',
-    small: 'Built with care in Ottawa.',
     archive: 'Earlier writing',
     principles: 'What I believe',
     source: 'Site source',
