@@ -1,9 +1,9 @@
 ---
 import { DASHBOARD_SKETCH as D } from '../data/dashboard-sketch';
-interface Props { complete?: boolean; }
-const { complete = false } = Astro.props;
+interface Props { complete?: boolean; compact?: boolean; }
+const { complete = false, compact = false } = Astro.props;
 ---
-<figure class:list={['dashboard-sketch', { complete }]}>
+<figure class:list={['dashboard-sketch', { complete, compact }]}>
   <div class="sketch-heading">{D.heading}</div>
   <div class="split-record">
     <div class="record original">
@@ -56,6 +56,13 @@ figcaption { font-size: 13px; line-height: 1.6; color: var(--ink-muted); margin-
  .stuck { display: block; }
  .stuck svg { display: none; }
  .sketch-heading { font-size: 22px; }
+ .compact { padding: 20px 16px; }
+ .compact .sketch-heading { font-size: 18px; }
+ .compact .split-record { margin-top: 16px; }
+ .compact .record { padding: 12px 10px; min-height: 112px; gap: 10px; }
+ .compact .record-lines { display: none; }
+ .compact .working { transform: translateY(8px); }
+ .compact figcaption { margin-top: 24px; }
 }
 @media (max-width: 360px) {
  .dashboard-sketch, .complete { padding-inline: 14px; }

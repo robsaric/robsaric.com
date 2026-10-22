@@ -37,3 +37,23 @@ Strengths: warm paper and dark typography; blue links with visible focus; one fe
 Heuristic scores from the independent design review (0–4): status 4, real-world language 3, control 3, consistency 3, recognition 4, efficiency 3, minimalist design 3. Error prevention and recovery were not scored because no input flow was assessed; help was not applicable to this reading index. Total 23/28. These are qualitative review judgements, not measured conversion results.
 
 Questions skipped: two priority issues; this request asks for recommendations, and the removal is already authorized. Names, layout and URL recommendations remain unapplied.
+
+## Approved implementation
+
+Rob approved both refinements in the next reply, with the homepage CTA and all URLs unchanged. The Writing index now uses “Writing” and “Essays on building companies, making sense of AI, and life outside work.” The smaller, top-aligned introduction leads directly into the featured essay; the repeated “Latest writing” label stays available to assistive technology without occupying another visual row.
+
+The Writing-only compact feature aligns the essay and diagram at the top. On phones, reduced diagram padding and record height remove excess space; all explanatory text remains. The homepage retains its existing feature proportions.
+
+The repeated afterword and split follow/signup ending are replaced by the existing newsletter component in one column, with LinkedIn as a secondary text link. The existing form, validation, confirmation flow and copy are reused. With no newsletter endpoint configured, the existing LinkedIn follow invitation is shown instead. No new motion, dependencies, analytics or provider writes are added.
+
+The Writing share card is regenerated for the new title. The cache version changes while page and image paths stay stable. This is a local preview; publication requires separate authorization.
+
+### Implementation validation
+
+The full `pnpm gate` passed on this refinement: 25 subscription fixtures, zero Astro errors/warnings (25 existing hints), copy lint, build, 112 redirects, three notes, 49 share cards and 84 layout checks. The regenerated Writing card was visually inspected. Built HTML/CSS confirms the new heading, top alignment, compact mobile diagram rules and single newsletter component. The homepage CTA and all route definitions are unchanged.
+
+Final interactive visual verification remains incomplete. The first browser pass displayed stale development styles; the local server was restarted and verified to return HTTP 200, but the Codex browser transport then disconnected. The request to open `/field-notes/` is queued in this chat. Earlier screenshots in `.impeccable/review/writing-refinement/` show the stale styles and are not final evidence. Do not treat the final desktop/mobile appearance or keyboard pass as verified. No email was submitted, and this refinement has not been committed or published.
+
+### Follow-up verification completed
+
+The October 22 dashboard interview revision restored browser access and verified the current Writing page at 1440, 900 and 390 pixels. The compact introduction, top-aligned feature, both supporting essays, archive list and single newsletter ending render correctly. The featured article and diagram now match “What should a dashboard do?” The mobile menu closes with Escape; the homepage's keyboard route has visible focus throughout. The full site gate passed again. Current screenshots are in `.impeccable/review/dashboard-interview/`; they supersede the stale screenshots above. The Writing refinement remains local and uncommitted.
