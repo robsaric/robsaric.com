@@ -1,0 +1,86 @@
+---
+import { UI } from '../data/ui';
+import { runnerFrame, runnerParts } from '../lib/start-runner.mjs';
+import '../styles/start-runner.css';
+---
+<div class="start-runner" data-start-runner>
+  <svg class="runner-scene" width="280" height="81" viewBox="0 0 320 92" fill="none" aria-hidden="true">
+    <path class="runner-track" d="M8 79h304" />
+    <path class="runner-start" d="m60 84 7-13" />
+    <g class="runner-person" data-runner-person set:html={runnerParts(runnerFrame(0))} />
+  </svg>
+  <button class="runner-toggle" data-runner-toggle type="button" aria-label={UI.runner.pause} title={UI.runner.pause} hidden>
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path class="runner-pause-icon" d="M5 3v10M11 3v10" stroke="currentColor" stroke-width="2" />
+      <path class="runner-play-icon" d="m5 3 8 5-8 5Z" fill="currentColor" />
+    </svg>
+  </button>
+</div>
+<script>
+  import { UI } from '../data/ui';
+  import { RUN_DURATION, REST_DURATION, runnerFrame } from '../lib/start-runner.mjs';
+  const scene = document.querySelector<HTMLElement>('[data-start-runner]');
+  const person = scene?.querySelector<SVGGElement>('[data-runner-person]');
+  const button = scene?.querySelector<HTMLButtonElement>('[data-runner-toggle]');
+  if (scene && person && button) {
+    const preference = matchMedia('(prefers-reduced-motion: reduce)');
+    const parts = [...person.querySelectorAll<SVGPathElement>('[data-part]')];
+    const cycle = RUN_DURATION + REST_DURATION;
+    let raf = 0;
+    let timer = 0;
+    let started = 0;
+    let elapsed = 0;
+    let running = false;
+    let paused = false;
+    let visible = false;
+    const draw = (progress: number) => {
+      const frame = runnerFrame(progress);
+      person.setAttribute('opacity', String(frame.opacity));
+      for (const part of parts) part.setAttribute('d', String(frame[part.dataset.part as keyof typeof frame]));
+    };
+    const stop = () => {
+      if (running) elapsed = (elapsed + performance.now() - started) % cycle;
+      running = false;
+      cancelAnimationFrame(raf);
+      clearTimeout(timer);
+    };
+    const tick = (now: number) => {
+      if (!running) return;
+      const current = (elapsed + now - started) % cycle;
+      draw(Math.min(current / RUN_DURATION, 1));
+      if (current < RUN_DURATION) raf = requestAnimationFrame(tick);
+      // No frame work during the quiet interval.
+      else timer = window.setTimeout(() => { raf = requestAnimationFrame(tick); }, cycle - current);
+    };
+    const sync = () => {
+      if (preference.matches || paused || document.hidden || !visible) stop();
+      else if (!running) {
+        started = performance.now();
+        running = true;
+        raf = requestAnimationFrame(tick);
+      }
+    };
+    const updatePreference = () => {
+      button.hidden = preference.matches;
+      if (preference.matches) { stop(); elapsed = 0; draw(0); }
+      sync();
+    };
+    button.addEventListener('click', () => {
+      paused = !paused;
+      const label = paused ? UI.runner.resume : UI.runner.pause;
+      button.setAttribute('aria-label', label);
+      button.title = label;
+      button.dataset.paused = String(paused);
+      sync();
+    });
+    preference.addEventListener('change', updatePreference);
+    document.addEventListener('visibilitychange', sync);
+    updatePreference();
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(entries => {
+        visible = entries[0].isIntersecting && entries[0].intersectionRatio >= .75;
+        sync();
+      }, { threshold: .75 }).observe(scene);
+    } else { visible = true; sync(); }
+  }
+</script>

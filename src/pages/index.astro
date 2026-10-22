@@ -4,6 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Arrow from '../components/Arrow.astro';
 import ReadingList from '../components/ReadingList.astro';
 import FeaturedEssay from '../components/FeaturedEssay.astro';
+import StartHereMark from '../components/StartHereMark.astro';
 import Connect from '../components/Connect.astro';
 import portrait from '../assets/images/rob-portrait.jpg';
 import hiking from '../assets/images/rob-hiking.jpg';
@@ -32,7 +33,7 @@ const personJsonLd = { '@context': 'https://schema.org', '@type': 'Person', name
     </figure>
   </section>
   <section id="start-here" class="writing wrap" aria-labelledby="writing-title">
-    <div class="section-heading"><h2 id="writing-title">{E.writing.title}</h2><a class="text-link" href="/field-notes/">{E.writing.all}<Arrow /></a></div>
+    <div class="section-heading"><div class="start-heading"><h2 id="writing-title">{E.writing.title}</h2><StartHereMark /></div><a class="text-link" href="/field-notes/">{E.writing.all}<Arrow /></a></div>
     <div class="writing-selections">
       {featured && <FeaturedEssay item={featured} />}
       <ReadingList items={selections} compact paired />
@@ -60,8 +61,10 @@ h1 > span { display: block; }
 .hero-portrait { margin: 0; }
 .hero-portrait img { display: block; width: 100%; height: auto; aspect-ratio: 5 / 6; object-fit: cover; object-position: 50% 35%; border-radius: 12px; }
 .writing { padding-block: 32px 56px; border-top: 1px solid var(--rule); scroll-margin-top: 24px; }
-.section-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; margin-bottom: 24px; }
+.section-heading { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 24px; }
 .section-heading h2 { font-size: 28px; margin: 0; }
+.start-heading { display: flex; align-items: center; gap: 14px; }
+.start-heading h2, .section-heading .text-link { white-space: nowrap; }
 .section-heading .text-link { font-size: 14px; }
 .work { padding-block: 64px 80px; border-top: 1px solid var(--rule); scroll-margin-top: 24px; }
 .work-heading { display: grid; grid-template-columns: 1fr 1.2fr; gap: 64px; align-items: start; scroll-margin-top: 24px; }
@@ -91,13 +94,20 @@ h1 > span { display: block; }
  .hero-portrait { position: absolute; top: 24px; right: var(--gutter-mobile); width: 66px; }
  .hero-portrait img { aspect-ratio: 10 / 11; border-radius: 8px; }
  .writing { padding-block: 28px 40px; }
- .section-heading { align-items: center; gap: 16px; margin-bottom: 20px; }
- .section-heading h2 { font-size: 28px; margin: 0; }
+ .section-heading { display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: center; gap: 4px 16px; margin-bottom: 20px; }
+ .section-heading h2 { font-size: 26px; margin: 0; }
+ .start-heading { display: contents; }
+ .section-heading .text-link { grid-column: 2; grid-row: 1; }
  .work { padding-block: 40px 48px; }
  .work-heading, .personal-layout { grid-template-columns: minmax(0,1fr); gap: 24px; }
  .work-heading { gap: 18px; }
  .work-heading p { font-size: 17px; }
  .personal { padding-block: 40px; }
  .personal img { aspect-ratio: 1.5; object-fit: cover; }
+}
+@media (max-width: 360px) {
+ .section-heading { column-gap: 10px; }
+ .section-heading h2 { font-size: 24px; }
+ .section-heading .text-link :global(svg) { display: none; }
 }
 </style>

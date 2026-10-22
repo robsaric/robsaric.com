@@ -1,3 +1,4 @@
+import { REVIEW_LOOP as R } from '../src/data/review-loop.mjs';
 const esc = (s) => String(s).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
 const shell = (fontCss, styles, body) => `<!doctype html><html lang="en" data-theme="warm"><head><meta charset="utf-8"><style>${fontCss}</style><link rel="stylesheet" href="/tokens.css"><style>
 *{box-sizing:border-box;margin:0}body{width:1200px;height:630px;overflow:hidden;font-family:var(--font-sans);background:var(--paper);color:var(--ink)}
@@ -15,15 +16,44 @@ const frame = ({author,site,section,title,aside='',foot='',styles='',fontCss}) =
 export function renderSiteCard({heading,author,site,fontCss}) {
  return frame({author,site,title:heading,section:'',fontCss,aside:'<img class="photo" src="/site-photo.png" alt="">',styles:'.title{font-size:69px;flex:1}',foot:''});
 }
-export function renderCard({title,section,author,site,fontCss,kind,copy,year}) {
+export function renderCard({title,section,author,site,fontCss,kind,year}) {
  let aside='', styles='';
  if(kind==='dashboard'){
-  aside=`<div class="sketch"><div class="report">${esc(copy.report)}</div><div class="arrow" aria-hidden="true"><svg width="24" height="42" viewBox="0 0 24 42"><path d="M12 4v30m-8-8 8 8 8-8" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></div><div class="outcome">${esc(copy.outcome)}<div class="evidence">${esc(copy.evidence)}</div></div></div>`;
-  styles='.title{font-size:61px;flex:1}.sketch{width:370px;flex:none;font:700 29px/1.2 var(--font-display);letter-spacing:-.02em}.report{background:var(--yellow);padding:22px 24px}.arrow{height:48px;color:var(--ink-muted);padding-left:24px;font:400 38px/48px var(--font-sans)}.outcome{border:2px solid var(--blue);color:var(--blue);padding:22px 24px}.evidence{border-top:1px solid var(--rule);margin-top:18px;padding-top:15px;font:400 19px/1.4 var(--font-sans);letter-spacing:0;color:var(--ink)}';
+  aside=`<div class="sketch"><ol>${R.steps.map((step,i)=>`<li><span>${i+1}</span>${esc(step.question)}</li>`).join('')}</ol><span class="return" aria-hidden="true"></span></div>`;
+  styles='.title{font-size:61px;flex:1}.sketch{width:425px;flex:none;padding:26px 38px 26px 26px;background:var(--sky);position:relative}.sketch ol{list-style:none;padding:0}.sketch li{display:flex;align-items:center;gap:16px;padding:17px 0;border-bottom:1px solid var(--rule);font:700 27px/1.3 var(--font-display);letter-spacing:-.02em}.sketch li:last-child{border:0}.sketch li span{display:grid;place-items:center;flex:none;width:32px;height:32px;border:1px solid var(--blue);border-radius:50%;font:600 18px var(--font-sans);color:var(--blue)}.sketch li:nth-child(3) span{background:var(--yellow);color:var(--ink);border-color:transparent}.return{position:absolute;top:60px;bottom:60px;right:17px;width:12px;border:1px solid var(--blue);border-left:0;border-radius:0 10px 10px 0}.return:before{content:"";position:absolute;left:0;top:-4px;width:6px;height:6px;border-left:1px solid var(--blue);border-bottom:1px solid var(--blue);transform:rotate(45deg)}';
  }
  if(kind==='analog'||kind==='about'){
   aside=`<img class="photo" src="/${kind==='analog'?'hiking-photo':'site-photo'}.png" alt="">`;
   styles='.title{flex:1;font-size:72px}';
  }
  return frame({title,section,author,site,fontCss,aside,styles,foot:year??''});
+}
+
+/** Portrait social edition: the same questions, example, type and colours as the site. */
+export function renderReviewLoopCard({fontCss,loopCss}) {
+ const styles=`
+ ${loopCss}
+ body,.card{width:1080px;height:1350px}
+ .card{padding:56px 64px}
+ .brand{font-size:24px;padding-bottom:24px}.author{font-size:30px}
+ .main{display:block;padding:36px 0 24px}
+ .review-loop{--loop-space:0px;--loop-heading:64px;--loop-label:27px;--loop-question:36px;--loop-body:28px;--loop-row:24px;--loop-number:44px;background:transparent}
+ .loop-heading{max-width:25ch;font-weight:800;line-height:1.12;text-wrap:initial}
+ .loop-example{margin:22px 0 36px}
+ .loop-track{padding-right:40px}
+ .loop-steps li{gap:24px}
+ .loop-steps p{margin-top:8px;max-width:42ch;line-height:1.4}
+ .loop-number{font-size:22px}
+ .loop-return{top:46px;bottom:62px;width:22px;border-width:2px;border-radius:0 18px 18px 0}
+ .loop-return:before{top:-6px;width:10px;height:10px;border-width:2px}
+ .loop-note{margin-top:24px;padding-top:24px;line-height:1.45;max-width:55ch;color:var(--ink)}
+ .foot{font-size:24px;padding-top:20px}
+ `;
+ return shell(fontCss,styles,`<div class="card">
+ <div class="brand"><span class="author">${esc(R.author)}<span class="dot">.</span></span><span class="section">${esc(R.collection)}</span></div>
+ <div class="main"><figure class="review-loop">
+ <h1 class="title loop-heading">${esc(R.heading)}</h1><p class="loop-example">${esc(R.example)}</p>
+ <div class="loop-track"><ol class="loop-steps">${R.steps.map((step,i)=>`<li><span class="loop-number" aria-hidden="true">${i+1}</span><div><strong>${esc(step.question)}</strong><p>${esc(step.detail)}</p></div></li>`).join('')}</ol><span class="loop-return" aria-hidden="true"></span></div>
+ <figcaption class="loop-note">${esc(R.note)}</figcaption></figure></div>
+ <div class="foot"><span class="site">${esc(R.site)}</span></div></div>`);
 }

@@ -1,0 +1,28 @@
+.start-runner {
+  display: flex; align-items: center; flex: none; width: 324px; max-width: 100%;
+}
+.runner-scene { display: block; width: calc(100% - 44px); height: auto; overflow: hidden; }
+.runner-toggle {
+  display: grid; place-items: center; flex: none; width: 44px; height: 44px; padding: 0;
+  border: 0; border-radius: 3px; background: transparent; color: var(--ink);
+  cursor: pointer; touch-action: manipulation;
+}
+.runner-toggle[hidden] { display: none; }
+.runner-toggle:hover { color: var(--blue); background: var(--sky); }
+.runner-toggle:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+.runner-play-icon, .runner-toggle[data-paused="true"] .runner-pause-icon { display: none; }
+.runner-toggle[data-paused="true"] .runner-play-icon { display: block; }
+.runner-track { stroke: var(--rule); stroke-width: 1; }
+.runner-start { stroke: var(--yellow); stroke-width: 4; stroke-linecap: butt; }
+.runner-person path { stroke-linecap: round; stroke-linejoin: round; fill: none; }
+.runner-person .runner-head { fill: var(--ink); }
+.runner-person .runner-torso { fill: var(--blue); }
+.runner-neck { stroke: var(--ink); stroke-width: 5; }
+.runner-legBack { stroke: var(--ink-muted); stroke-width: 6; }
+.runner-legFront { stroke: var(--ink); stroke-width: 6; }
+.runner-armBack { stroke: var(--ink-muted); stroke-width: 4.5; }
+.runner-armFront { stroke: var(--ink); stroke-width: 4.5; }
+.runner-footBack, .runner-footFront { stroke: var(--blue); stroke-width: 3.5; }
+@media (max-width: 767.98px) {
+  .start-runner { width: 100%; max-width: 324px; min-width: 0; grid-column: 1 / -1; grid-row: 2; }
+}

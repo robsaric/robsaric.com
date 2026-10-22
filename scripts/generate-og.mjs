@@ -10,7 +10,7 @@ import { resolve, join, extname, dirname, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 import { MIME, launchChrome } from './lib/chrome.mjs';
-import { renderCard, renderSiteCard } from './og-card-template.mjs';
+import { renderCard, renderSiteCard, renderReviewLoopCard } from './og-card-template.mjs';
 import { OG_CARD, OG_SITE_CARD, OG_EDITORIAL } from '../src/data/og-card.mjs';
 import { socialImagePath } from '../src/lib/social.mjs';
 
@@ -30,7 +30,13 @@ const cards=urls.map(url=>{
  const section=isArchive?OG_EDITORIAL.archiveSection:path.startsWith('/field-notes/')?OG_EDITORIAL.essaySection:'';
  const year=isArchive?html.match(/datetime="(\d{4})-/)?.[1]:undefined;
  const kind=path.includes(OG_EDITORIAL.dashboardSlug)?'dashboard':path.includes(OG_EDITORIAL.analogSlug)?'analog':path==='/about/'?'about':'type';
- return {path,out:join(ROOT,'public',socialImagePath(path)),html:path==='/'?renderSiteCard({...OG_SITE_CARD,fontCss}):renderCard({title,section: path==='/field-notes/'?OG_EDITORIAL.writingSection:section,...OG_CARD,fontCss,kind,copy:OG_EDITORIAL,year})};
+ return {path,out:join(ROOT,'public',socialImagePath(path)),html:path==='/'?renderSiteCard({...OG_SITE_CARD,fontCss}):renderCard({title,section: path==='/field-notes/'?OG_EDITORIAL.writingSection:section,...OG_CARD,fontCss,kind,year})};
+});
+cards.push({
+ path:'/social/dashboard-review-loop.png',
+ out:join(ROOT,'public/social/dashboard-review-loop.png'),
+ width:1080,height:1350,
+ html:renderReviewLoopCard({fontCss,loopCss:readFileSync(join(ROOT,'src/styles/review-loop.css'),'utf8')}),
 });
 const pages=new Map(cards.map((card,i)=>['/card/'+i,card.html]));
 const special={'/tokens.css':'src/styles/tokens.css','/site-photo.png':'src/assets/images/rob-portrait.jpg','/hiking-photo.png':'src/assets/images/rob-hiking.jpg'};
@@ -45,15 +51,16 @@ await new Promise(r=>server.listen(0,'127.0.0.1',r));
 let browser;
 try{
  browser=await launchChrome();const page=await browser.newPage();
- await page.send('Emulation.setDeviceMetricsOverride',{width:1200,height:630,deviceScaleFactor:1,mobile:false});
  for(const [i,card] of cards.entries()){
+  const width=card.width??1200,height=card.height??630;
+  await page.send('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:false});
   const loaded=page.once('Page.loadEventFired');await page.send('Page.navigate',{url:'http://127.0.0.1:'+server.address().port+'/card/'+i});await loaded;
-  const check=await page.send('Runtime.evaluate',{expression:`(async()=>{await document.fonts.ready;await Promise.all([...document.images].map(i=>i.decode()));const t=document.querySelector('.title'),m=document.querySelector('.main');let size=parseFloat(getComputedStyle(t).fontSize);while(t.scrollHeight>m.clientHeight-56&&size>44){size-=2;t.style.fontSize=size+'px'}return {size,overflow:t.scrollHeight>m.clientHeight-56||document.documentElement.scrollWidth>1200||document.documentElement.scrollHeight>630}})()`,awaitPromise:true,returnByValue:true});
+  const check=await page.send('Runtime.evaluate',{expression:`(async()=>{await document.fonts.ready;await Promise.all([...document.images].map(i=>i.decode()));const t=document.querySelector('.title'),m=document.querySelector('.main'),c=document.querySelector('.card');let size=parseFloat(getComputedStyle(t).fontSize);while(t.scrollHeight>m.clientHeight-56&&size>44){size-=2;t.style.fontSize=size+'px'}return {size,overflow:t.scrollHeight>m.clientHeight-56||c.scrollHeight>c.clientHeight||document.documentElement.scrollWidth>${width}||document.documentElement.scrollHeight>${height}}})()`,awaitPromise:true,returnByValue:true});
   if(check.result.value.overflow)throw new Error('Card overflow: '+card.path);
   const shot=await page.send('Page.captureScreenshot',{format:'png'});
   const png=await sharp(Buffer.from(shot.data,'base64')).png({compressionLevel:9}).toBuffer();
   mkdirSync(dirname(card.out),{recursive:true});writeFileSync(card.out,png);
  }
  await page.send('Page.close');page.close();
- console.log('generate-og: '+cards.length+' page-specific cards, 1200x630, fonts/images loaded, no overflow');
+ console.log('generate-og: '+(cards.length-1)+' share cards (1200x630) and review loop (1080x1350); fonts/images loaded, no overflow');
 }finally{browser?.close();server.close();}
