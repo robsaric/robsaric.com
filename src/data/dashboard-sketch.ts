@@ -1,17 +1,3 @@
-/** Illustrates the questions in Rob’s dashboard essay, not a product UI or measured result. */
-export const DASHBOARD_SKETCH = {
-  heading: 'From seeing a change to deciding what to do.',
-  record: 'Chart',
-  stale: 'What changed?',
-  spreadsheet: 'Conversation',
-  done: 'Why did it change?',
-  gap: 'Check the evidence',
-  after: 'Decide what to change.',
-  resolved: 'Your decision',
-  detail: 'Choose what needs to happen next.',
-  caption: 'Two ways to work with the same evidence. You decide what to change.',
-} as const;
-
 export const ACTION_REVIEW = {
   heading: 'Know which work is actually finished.',
   statusLabel: 'Status',

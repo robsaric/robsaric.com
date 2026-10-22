@@ -1,0 +1,56 @@
+/* Shared by the responsive illustration and its standalone social export. */
+.review-loop {
+  --loop-space: 28px;
+  --loop-heading: 25px;
+  --loop-label: 13px;
+  --loop-question: 17px;
+  --loop-body: 14px;
+  --loop-row: 14px;
+  --loop-number: 26px;
+  margin: 0; padding: var(--loop-space);
+  background: var(--sky); color: var(--ink);
+}
+.loop-heading {
+  max-width: 27ch; font: 700 var(--loop-heading)/1.2 var(--font-display);
+  letter-spacing: -.025em; text-wrap: balance;
+}
+.loop-example { margin: 12px 0 22px; font-size: var(--loop-label); line-height: 1.5; color: var(--ink-muted); }
+.loop-track { position: relative; padding-right: 20px; }
+.loop-steps { margin: 0; padding: 0; list-style: none; }
+.loop-steps li {
+  display: grid; grid-template-columns: var(--loop-number) 1fr; gap: 12px;
+  position: relative; padding: var(--loop-row) 0;
+  border-top: 1px solid var(--rule);
+}
+.loop-number {
+  display: grid; place-items: center; width: var(--loop-number); height: var(--loop-number);
+  border: 1px solid var(--blue); border-radius: 50%;
+  color: var(--blue); font-size: var(--loop-label); font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.loop-steps li:nth-child(3) .loop-number { background: var(--yellow); color: var(--ink); border-color: transparent; }
+.loop-steps strong { display: block; font: 700 var(--loop-question)/1.35 var(--font-display); letter-spacing: -.015em; }
+.loop-steps p { margin: 5px 0 0; font-size: var(--loop-body); line-height: 1.5; }
+.loop-return {
+  position: absolute; top: 27px; bottom: 24px; right: 0; width: 12px;
+  border: 1px solid var(--blue); border-left: 0; border-radius: 0 10px 10px 0;
+}
+.loop-return::before {
+  content: ''; position: absolute; top: -4px; left: 0; width: 6px; height: 6px;
+  border-left: 1px solid var(--blue); border-bottom: 1px solid var(--blue); transform: rotate(45deg);
+}
+.loop-note {
+  margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--rule);
+  font-size: var(--loop-label); line-height: 1.6; color: var(--ink-muted);
+}
+@media (max-width: 1050px) {
+  .review-loop { --loop-space: 22px; --loop-heading: 23px; }
+}
+@media (max-width: 767.98px) {
+  .review-loop { --loop-space: 22px; --loop-heading: 23px; }
+  .review-loop.compact { --loop-space: 20px; --loop-heading: 21px; --loop-row: 12px; }
+}
+@media (max-width: 360px) {
+  .review-loop { --loop-space: 16px; --loop-question: 16px; }
+  .loop-steps li { gap: 9px; }
+}

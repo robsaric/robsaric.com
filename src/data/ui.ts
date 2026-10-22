@@ -11,6 +11,10 @@ export const UI = {
     separator: ' · ',
   },
   skipLink: 'Skip to content',
+  runner: {
+    pause: 'Pause runner animation',
+    resume: 'Resume runner animation',
+  },
   nav: {
     primaryLabel: 'Primary navigation',
     wordmarkLabel: 'Rob Saric, home',
