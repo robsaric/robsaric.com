@@ -52,7 +52,7 @@ const B = E.building;
   <section class="standard" aria-labelledby="standard-title">
     <div class="wrap standard-layout">
       <h2 id="standard-title">{B.standardHeading}</h2>
-      <div>{B.standard.map(paragraph => <p>{paragraph}</p>)}<a class="text-link" href="/field-notes/">{B.writingLink}<Arrow /></a></div>
+      <div>{B.standard.map(paragraph => <p>{paragraph}</p>)}<a class="text-link" href="/writing/">{B.writingLink}<Arrow /></a></div>
     </div>
   </section>
 
@@ -65,7 +65,7 @@ const B = E.building;
 
 <style>
 .building-intro { padding-block: 64px 64px; }
-h1 { max-width: 19ch; margin: 0 0 36px; font-size: clamp(2.5rem, 5.5vw, 4.75rem); line-height: 1.08; font-weight: 800; }
+h1 { max-width: 22ch; margin: 0 0 36px; font-size: clamp(3rem, 5.5vw, 5rem); line-height: 1.08; }
 .intro-bottom { display: grid; grid-template-columns: minmax(0, 760px) minmax(210px, 1fr); gap: 64px; align-items: end; }
 .lead { margin: 0; max-width: 62ch; font-size: 21px; line-height: 1.65; }
 .intro-links { display: flex; flex-direction: column; align-items: flex-start; }
@@ -74,7 +74,7 @@ h2 { font-size: clamp(2rem, 3.2vw, 2.75rem); line-height: 1.15; margin: 0 0 28px
 p { font-size: 18px; line-height: 1.75; margin: 0 0 20px; max-width: 68ch; }
 .why { display: grid; grid-template-columns: minmax(0, 720px) minmax(240px, 400px); gap: 80px; align-items: center; padding-block: 72px 80px; border-top: 1px solid var(--rule); scroll-margin-top: 24px; }
 .why figure { margin: 0; }
-.why img { display: block; width: 100%; height: auto; border-radius: 12px; }
+.why img { display: block; width: 100%; height: auto; border-radius: 4px; }
 .why .text-link { font-size: 16px; }
 .projects { padding-block: 16px 80px; scroll-margin-top: 24px; }
 .projects > h2 { max-width: 24ch; margin-bottom: 40px; }

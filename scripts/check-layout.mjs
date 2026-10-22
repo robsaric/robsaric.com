@@ -40,6 +40,7 @@ function routes() {
     }
   };
   if (existsSync(join(DIST, 'index.html'))) found.push('/');
+  if (existsSync(join(DIST, '404.html'))) found.push('/404.html');
   walk(DIST, '/');
 
   const archive = found.filter((r) => r.startsWith('/archive/') && r !== '/archive/');

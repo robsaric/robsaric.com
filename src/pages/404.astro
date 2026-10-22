@@ -2,19 +2,22 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { COPY } from '../data/copy';
 import { UI } from '../data/ui';
+import CharacterMoment from '../components/CharacterMoment.astro';
 ---
 
 <BaseLayout
   title={COPY.pages.notFound.title}
   description={COPY.pages.notFound.body}
   noindex
+  footerStill
 >
   <div class="page">
+    <CharacterMoment variant="wrong-turn" />
     <h1>{COPY.pages.notFound.title}</h1>
     <p>{COPY.pages.notFound.body}</p>
     <div class="page__links">
-      <a href="/field-notes/">{UI.nav.fieldNotes}</a>
-      <a href="/archive/">{UI.pages.archive}</a>
+      <a class="action" href="/">{UI.nav.home}</a>
+      <a href="/writing/">{UI.nav.fieldNotes}</a>
     </div>
   </div>
 </BaseLayout>

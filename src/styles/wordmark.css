@@ -1,0 +1,8 @@
+.site-wordmark {
+  display: inline-block;
+  font: 400 32px/1.1 var(--font-editorial);
+  letter-spacing: -.02em;
+  word-spacing: .08em;
+  white-space: nowrap;
+}
+.site-wordmark__dot { color: var(--blue); letter-spacing: 0; word-spacing: 0; }

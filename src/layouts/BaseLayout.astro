@@ -11,6 +11,7 @@ import '../styles/global.css';
 
 interface Props {
   theme?: 'warm';
+  footerStill?: boolean;
   title?: string;
   description?: string;
   noindex?: boolean;
@@ -24,6 +25,7 @@ interface Props {
 
 const {
   theme = 'warm',
+  footerStill = false,
   title,
   description = SITE.description,
   noindex = false,
@@ -106,6 +108,7 @@ const serializedJsonLd = jsonLd
     <meta name="twitter:image:alt" content={ogImageAlt} />
     <Font cssVariable="--font-inter" preload />
     <Font cssVariable="--font-manrope" preload />
+    <Font cssVariable="--font-newsreader" preload />
     {jsonLd && (
       <script type="application/ld+json" set:html={serializedJsonLd}></script>
     )}
@@ -117,7 +120,7 @@ const serializedJsonLd = jsonLd
     <main id="main">
       <slot />
     </main>
-    <Footer />
+    <Footer quiet still={footerStill} />
   </body>
 </html>
 

@@ -3,12 +3,16 @@ import { SITE } from '../data/site';
 import { UI } from '../data/ui';
 import { EDITORIAL as E } from '../data/editorial';
 import Arrow from './Arrow.astro';
+import Wordmark from './Wordmark.astro';
+import CharacterMoment from './CharacterMoment.astro';
+interface Props { quiet?: boolean; still?: boolean; }
+const { quiet = false, still = false } = Astro.props;
 ---
-<footer class="site-footer">
+<footer class:list={['site-footer', { quiet }]}>
   <div class="wrap">
-    <div class="footer-top"><a class="footer-name" href="/">{SITE.name}</a><p>{E.footer.line}</p></div>
+    <div class="footer-top"><Wordmark /><div class="footer-signoff"><CharacterMoment variant="evening" still={still} /><p>{E.footer.line}</p></div></div>
     <nav aria-label={UI.footer.navigationLabel}>
-      <a href="/field-notes/">{E.writing.pageTitle}</a>
+      <a href="/writing/">{E.writing.pageTitle}</a>
       <a href="/about/">{E.about.title}</a>
       <a href="/contact/">{E.connect.email}</a>
       <a href={SITE.links.linkedin} target="_blank" rel="noopener">{UI.footer.linkedin}<Arrow diagonal /></a>
@@ -21,8 +25,8 @@ import Arrow from './Arrow.astro';
 </footer>
 <style>
 .site-footer { background: var(--ink); color: var(--paper); padding: 56px 0 28px; }
-.footer-top { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; }
-.footer-name { font: 700 32px/1.2 var(--font-display); letter-spacing: -.035em; text-decoration: none; }
+.footer-top { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.footer-signoff { display: flex; align-items: center; gap: 18px; }
 .footer-top p { font-size: 20px; margin: 0; color: var(--on-dark-78); }
 nav { display: flex; flex-wrap: wrap; gap: 12px 32px; padding: 32px 0 44px; }
 a { color: var(--paper); display: inline-flex; align-items: center; gap: 8px; min-height: 44px; }
@@ -32,7 +36,15 @@ nav a { text-decoration: none; min-width: var(--tap-min); }
 .footer-bottom { border-top: 1px solid var(--on-dark-28); padding-top: 20px; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 13px; color: var(--on-dark-78); }
 .footer-bottom div { display: flex; gap: 24px; flex-wrap: wrap; }
 .footer-bottom a { color: inherit; }
+.quiet { background: var(--paper); color: var(--ink); }
+.quiet a { color: var(--ink); }
+.quiet a:hover { color: var(--ink); }
+.quiet a:focus-visible { outline-color: var(--focus-ring); }
+.quiet .footer-top p, .quiet .footer-bottom { color: var(--ink-muted); }
+.quiet .footer-bottom { border-color: var(--rule); }
 @media (max-width: 767.98px) {
+  .footer-signoff { gap: 12px; }
+  .footer-top p { font-size: 18px; max-width: 13ch; line-height: 1.5; }
   .footer-top, .footer-bottom { align-items: flex-start; flex-direction: column; gap: 12px; }
   nav { gap: 4px 24px; padding: 24px 0; }
   .footer-bottom div { gap: 4px 20px; }

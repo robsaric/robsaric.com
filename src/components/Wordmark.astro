@@ -1,0 +1,9 @@
+---
+import { SITE } from '../data/site';
+import { UI } from '../data/ui';
+import '../styles/wordmark.css';
+---
+<a class="wordmark-link" href="/" aria-label={UI.nav.wordmarkLabel}><span class="site-wordmark">{SITE.name}<span class="site-wordmark__dot" aria-hidden="true">.</span></span></a>
+<style>
+.wordmark-link { display: inline-flex; align-items: center; min-height: 44px; padding-block: 6px; color: inherit; text-decoration: none; }
+</style>

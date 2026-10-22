@@ -12,17 +12,12 @@
  * Exit 1 on any miss.
  */
 import { readFile } from 'node:fs/promises';
-import { LEGACY_POST_SLUGS, LEGACY_PAGE_REDIRECTS } from '../src/data/legacy-redirects.mjs';
+import { buildSiteRedirects } from '../src/data/redirects.mjs';
+import assert from 'node:assert/strict';
 
-const expectations = [];
-for (const slug of LEGACY_POST_SLUGS) {
-  expectations.push({ from: `/${slug}/`, to: `/archive/${slug}/` });
-  expectations.push({ from: `/${slug}`, to: `/archive/${slug}/` });
-}
-for (const [from, to] of Object.entries(LEGACY_PAGE_REDIRECTS)) {
-  expectations.push({ from, to });
-  expectations.push({ from: `${from}/`, to });
-}
+const expectations = Object.entries(buildSiteRedirects()).flatMap(([from, { destination: to }]) => [
+  { from, to }, { from: from + '/', to },
+]);
 
 const base = process.argv[2];
 let failures = 0;
@@ -32,20 +27,37 @@ if (!base) {
   const routes = cfg.routes.filter((r) => r.src && r.status && r.headers?.Location);
   const resolve = (path, hops = 0) => {
     if (hops > 5) return { error: 'loop' };
+    const url = new URL(path, 'https://robsaric.com');
     for (const r of routes) {
-      const m = new RegExp(r.src).exec(path);
+      const m = new RegExp(r.src).exec(url.pathname);
       if (m) {
-        const loc = r.headers.Location.replace(/\$(\d)/g, (_, i) => m[Number(i)]);
-        if (r.status === 301) return { final: loc, hops: hops + 1 };
-        return resolve(loc, hops + 1);
+        const loc = new URL(r.headers.Location.replace(/\$(\d)/g, (_, i) => m[Number(i)]), url);
+        if (!loc.hash) loc.hash = url.hash;
+        return resolve(loc.pathname + loc.search + loc.hash, hops + 1);
       }
     }
-    return { final: null, hops };
+    return { final: hops ? url.pathname + url.search + url.hash : null, hops };
   };
   for (const { from, to } of expectations) {
     const res = resolve(from);
     const ok = res.final === to;
     if (!ok) { failures++; console.error(`MISS ${from} -> ${res.final ?? '404'} (expected ${to})`); }
+  }
+  const writing = await readFile(new URL('../dist/client/writing/index.html',import.meta.url),'utf8');
+  const sitemap = await readFile(new URL('../dist/client/sitemap-0.xml',import.meta.url),'utf8');
+  assert(writing.includes('rel="canonical" href="https://robsaric.com/writing/"'), 'Writing must self-canonicalize');
+  assert(writing.includes('property="og:url" content="https://robsaric.com/writing/"'), 'Writing OG URL must match');
+  assert(sitemap.includes('<loc>https://robsaric.com/writing/</loc>'));
+  assert(!sitemap.includes('<loc>https://robsaric.com/field-notes/</loc>'), 'Do not sitemap the old index');
+  assert.equal(resolve('/writing/').hops,0,'The new index must not redirect');
+  assert.equal(resolve('/field-notes/').final,'/writing/');
+  assert(resolve('/field-notes/').hops<=2,'Avoid redirect chains');
+  const publicUrls=[...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(match=>match[1]);
+  for (const url of publicUrls) {
+    const path=new URL(url).pathname;
+    const html=await readFile(new URL('../dist/client'+path+'index.html',import.meta.url),'utf8');
+    assert(!/href=["'](?:https:\/\/robsaric\.com)?\/field-notes\/?(?:[?#][^"']*)?["']/.test(html),path+' links to the retired index');
+    if (path.startsWith('/field-notes/')) assert(html.includes('rel="canonical" href="'+url+'"'),'Existing article canonical changed');
   }
   console.log(`check-redirects (local): ${expectations.length} URLs, ${failures} miss(es)`);
 } else {
