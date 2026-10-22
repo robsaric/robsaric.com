@@ -30,7 +30,7 @@ const cards=urls.map(url=>{
  const section=isArchive?OG_EDITORIAL.archiveSection:path.startsWith('/field-notes/')?OG_EDITORIAL.essaySection:'';
  const year=isArchive?html.match(/datetime="(\d{4})-/)?.[1]:undefined;
  const kind=path.includes(OG_EDITORIAL.dashboardSlug)?'dashboard':path.includes(OG_EDITORIAL.analogSlug)?'analog':path==='/about/'?'about':'type';
- return {path,out:join(ROOT,'public',socialImagePath(path)),html:path==='/'?renderSiteCard({...OG_SITE_CARD,fontCss}):renderCard({title,section: path==='/field-notes/'?OG_EDITORIAL.writingSection:section,...OG_CARD,fontCss,kind,year})};
+ return {path,out:join(ROOT,'public',socialImagePath(path)),html:path==='/'?renderSiteCard({...OG_SITE_CARD,fontCss}):renderCard({title,section: path==='/writing/'?OG_EDITORIAL.writingSection:section,...OG_CARD,fontCss,kind,year})};
 });
 cards.push({
  path:'/social/dashboard-review-loop.png',

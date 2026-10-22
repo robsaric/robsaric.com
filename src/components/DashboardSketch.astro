@@ -1,10 +1,10 @@
 ---
 import { REVIEW_LOOP as R } from '../data/review-loop.mjs';
 import '../styles/review-loop.css';
-interface Props { compact?: boolean; }
-const { compact = false } = Astro.props;
+interface Props { compact?: boolean; quiet?: boolean; }
+const { compact = false, quiet = false } = Astro.props;
 ---
-<figure class:list={['review-loop', { compact }]}>
+<figure class:list={['review-loop', { compact, quiet }]}>
   <div class="loop-heading">{R.heading}</div>
   <p class="loop-example">{R.example}</p>
   <div class="loop-track">

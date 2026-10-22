@@ -7,7 +7,7 @@ export const EDITORIAL = {
     markedWord: 'help.',
     lead: 'I build software for small teams. I write about making sense of AI, raising kids, and making time for the people in our lives.',
     portraitAlt: 'Rob Saric in a blue blazer',
-    read: 'Read my writing',
+    read: 'Start here',
     work: 'What I’m building',
   },
   writing: {
@@ -40,6 +40,19 @@ export const EDITORIAL = {
     heading: 'What I’m building.',
     intro: 'I want more people to have the chance to start, own and grow a business on their terms. Togetheren, SkillNav and Caretrics are how I’m working toward that.',
     link: 'The work, and why it matters to me',
+    example: {
+      heading: 'They want answers.',
+      story: 'Caretrics started with the problem of manual reporting. But do people want another dashboard? Do people want more reports? They want to be able to answer questions about how their business is doing.',
+      lesson: 'Understanding that changed our perspective on Caretrics. How do we help small teams accomplish more? How do we support their current bottlenecks and help incrementally move their business forward?',
+      caption: 'How our thinking changed at Caretrics',
+      steps: [
+        { label: 'Understand the data', body: 'Start with the problem of manual reporting.' },
+        { label: 'Find what needs attention', body: 'Give insights and recommendations on specific actions.' },
+        { label: 'Help someone act', body: 'Build workflows around the problems identified in the data.' },
+      ],
+      nextLabel: 'Where we’re going:',
+      next: 'Supportive agents for repetitive work, with a person reviewing the result and deciding what happens next.',
+    },
     togetheren: {
       name: 'Togetheren',
       status: 'The direction I’m building toward',
@@ -132,10 +145,10 @@ export const EDITORIAL = {
     email: 'Or write to me',
   },
   newsletter: {
-    heading: 'Build a business that leaves room for a life.',
-    body: 'I write about the decisions behind building small companies, where AI actually helps, and what’s worth keeping human. Get new essays by email, with ideas to bring to your own work.',
+    heading: 'Digital days. Analog nights.',
+    body: 'What I’m learning about building small companies, making sense of AI, and making time for the people in our lives. Get new essays by email.',
     action: 'Send me the next essay',
-    cadence: 'Confirm your email, then get occasional essays when I have something worth sharing. Unsubscribe whenever you like.',
+    cadence: 'Confirm your email, then hear from me when I have something worth sharing. Unsubscribe whenever you like.',
     sample: 'Read an essay first',
     sampleHref: '/field-notes/2026-10-19-are-dashboards-dead/',
     follow: 'Or follow on LinkedIn',
@@ -152,7 +165,7 @@ export const EDITORIAL = {
     body: 'A problem you keep coming back to, a different view on something I wrote, or an idea for working together. I’d like to hear it.',
   },
   footer: {
-    line: 'Good work. More room for life.',
+    line: 'Digital days. Analog nights.',
     archive: 'Earlier writing',
     principles: 'What I believe',
     source: 'Site source',

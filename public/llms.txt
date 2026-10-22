@@ -7,7 +7,7 @@ Rob is building Caretrics and developing a broader small-team tools direction th
 ## Pages
 
 - [Home](https://robsaric.com/): personal perspective, selected writing, current work and contact.
-- [Writing](https://robsaric.com/field-notes/): recent field notes and selected earlier essays. Original dates remain visible.
+- [Writing](https://robsaric.com/writing/): recent field notes and selected earlier essays. Original dates remain visible.
 - [What I'm building](https://robsaric.com/building/): opportunity, ownership and independence through tools for small teams.
 - [About](https://robsaric.com/about/): background, building companies, parenting, mentoring and the questions behind Rob's work.
 - [Archive](https://robsaric.com/archive/): earlier writing from 2009 to 2019, kept as written.

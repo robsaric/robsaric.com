@@ -1,5 +1,13 @@
 # robsaric.com copy deck
 
+## Local interview revision, 2026-10-22
+
+The current homepage opening is still "Work is hard enough. The tools should help." Current personal-site copy lives in `src/data/editorial.ts`; the historical clinic-first hero below is not the active positioning. The October 22 visual preview does not replace the opening or its writing-first call to action.
+
+The analog-life note retains its title "I want my analog life back.", original publication date October 18, and URL. Its updated summary is: "I want a conversation without a notification competing with the person in front of me. That is the analog life I want more of." The revised body is in `src/content/notes/2026-10-18-building-with-ai-and-life-beyond-the-feed.md`, assembled from Rob's Q35 interview and previously approved prose. It brings in paper note-taking, his iPad recollection, and QR codes in books, ending with his "Analog nights, digital days." These are local review changes, not a new publication record. No Now-strip change.
+
+The new homepage example, `EDITORIAL.work.example`, comes from Rob's Q36 account: Caretrics began with manual reporting; his perspective moved toward answers, recommendations and workflows. The final step is explicitly future direction: supportive agents with a person reviewing and deciding. No screenshot, customer result, autonomous capability or revenue recovery is invented. Current design preview contract: `docs/homepage-editorial-preview-2026-10-22.md`.
+
 ## Personal site v2, 2026-09-18
 
 This positioning supersedes the older homepage Hero, Now strip, Evidence, Caretrics walkthrough, Principles, Field notes, About and Write to me composition documented below. The older text remains as a record of prior approvals; its factual and credential rulings still apply where relevant. Current strings live in `src/data/copy.ts` and the approved implementation brief is `docs/planning/v2/02-PERSONAL-COPY.md`.

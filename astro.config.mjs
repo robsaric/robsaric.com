@@ -3,7 +3,7 @@ import { defineConfig, fontProviders } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
 import vercel from '@astrojs/vercel';
-import { buildLegacyRedirects } from './src/data/legacy-redirects.mjs';
+import { buildSiteRedirects } from './src/data/redirects.mjs';
 import { readFile, writeFile } from 'node:fs/promises';
 
 /**
@@ -47,6 +47,7 @@ export default defineConfig({
   site: 'https://robsaric.com',
   output: 'static',
   trailingSlash: 'always',
+  devToolbar: { enabled: false },
   adapter: vercel(),
   integrations: [
     sitemap({
@@ -68,6 +69,15 @@ export default defineConfig({
   fonts: [
     {
       provider: fontProviders.google(),
+      name: 'Newsreader',
+      cssVariable: '--font-newsreader',
+      weights: [400, 500],
+      styles: ['normal'],
+      subsets: ['latin'],
+      fallbacks: ['Georgia', 'serif'],
+    },
+    {
+      provider: fontProviders.google(),
       name: 'Inter',
       cssVariable: '--font-inter',
       weights: [400, 500, 600, 700],
@@ -86,5 +96,5 @@ export default defineConfig({
     },
   ],
   // 301s for the 2009 to 2019 WordPress URLs. Source: src/data/legacy-redirects.mjs.
-  redirects: buildLegacyRedirects(),
+  redirects: buildSiteRedirects(),
 });

@@ -1,0 +1,69 @@
+---
+import { momentFrame, momentPerson, momentProps, MOMENT_SCENERY } from '../lib/character-moments.mjs';
+import '../styles/start-runner.css';
+import '../styles/character-moment.css';
+interface Props { variant: 'evening' | 'wrong-turn'; still?: boolean; }
+const { variant, still = false } = Astro.props;
+const restingProgress = variant === 'evening' ? 1 : .66;
+const frame = momentFrame(variant, restingProgress);
+const width = variant === 'evening' ? 200 : 300;
+---
+<div class:list={['character-moment', `character-moment--${variant}`]} data-character-moment={variant} data-still={still ? '' : undefined} data-resting-progress={restingProgress} aria-hidden="true">
+  <svg width={width} height="120" viewBox={`0 0 ${width} 120`} fill="none" focusable="false">
+    <g set:html={MOMENT_SCENERY[variant]} />
+    <g class="runner-person" data-character-person set:html={momentPerson(frame)} />
+    <g data-character-props set:html={momentProps(frame)} />
+  </svg>
+</div>
+<script>
+  import { momentFrame, MOMENT_DURATION } from '../lib/character-moments.mjs';
+  document.querySelectorAll<HTMLElement>('[data-character-moment]').forEach(scene => {
+    if (scene.hasAttribute('data-still')) return;
+    const variant = scene.dataset.characterMoment as keyof typeof MOMENT_DURATION;
+    const preference = matchMedia('(prefers-reduced-motion: reduce)');
+    const person = [...scene.querySelectorAll<SVGPathElement>('[data-part]')];
+    const props = [...scene.querySelectorAll<SVGPathElement>('[data-prop]')];
+    const duration = MOMENT_DURATION[variant];
+    let elapsed=0, started=0, raf=0, visible=false, running=false, complete=false;
+    const draw = (progress: number) => {
+      const frame = momentFrame(variant,progress);
+      for (const part of person) part.setAttribute('d',String(frame.person[part.dataset.part as keyof typeof frame.person]));
+      for (const part of props) {
+        const prop=(frame.props as Record<string, { d: string; opacity?: number }>)[part.dataset.prop ?? ""];
+        if (prop) { part.setAttribute('d',prop.d); part.setAttribute('opacity',String('opacity' in prop ? prop.opacity : 1)); }
+      }
+    };
+    const stop = () => {
+      if (running) elapsed+=performance.now()-started;
+      running=false; cancelAnimationFrame(raf);
+    };
+    const tick = (now: number) => {
+      if (!running) return;
+      const progress=Math.min(1,(elapsed+now-started)/duration);
+      draw(progress);
+      if (progress===1) { complete=true; running=false; scene.dataset.state='complete'; }
+      else raf=requestAnimationFrame(tick);
+    };
+    const sync = () => {
+      if (preference.matches) {
+        stop(); draw(Number(scene.dataset.restingProgress)); complete=true; scene.dataset.state='reduced';
+      } else if (complete) return;
+      else if (!visible || document.hidden) { stop(); scene.dataset.state=elapsed ? 'paused' : 'idle'; }
+      else if (!running) { started=performance.now(); running=true; scene.dataset.state='playing'; raf=requestAnimationFrame(tick); }
+    };
+    if (!preference.matches) draw(0);
+    preference.addEventListener('change',sync);
+    document.addEventListener('visibilitychange',sync);
+    window.addEventListener('pagehide',stop);
+    window.addEventListener('pageshow',sync);
+    sync();
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(entries=>{
+        visible=entries[0].isIntersecting && entries[0].intersectionRatio>=.65;
+        sync();
+      },{threshold:.65}).observe(scene);
+    }
+    // Older browsers keep an intentional still pose rather than starting an unseen animation.
+    else { draw(Number(scene.dataset.restingProgress)); complete=true; }
+  });
+</script>

@@ -1,0 +1,18 @@
+.character-moment { flex: none; pointer-events: none; }
+.character-moment svg { display: block; width: 100%; height: auto; }
+.character-moment--evening { width: 156px; }
+.character-moment--wrong-turn { width: 300px; max-width: 100%; margin-bottom: 8px; }
+.character-moment path { stroke-linecap: round; stroke-linejoin: round; }
+.moment-ground { stroke: var(--rule); stroke-width: 1; }
+.moment-furniture { stroke: var(--ink-muted); stroke-width: 2; }
+.moment-sign { fill: var(--paper-inset); stroke: var(--ink-muted); stroke-width: 1.5; }
+.moment-sign-arrow { stroke: var(--ink); stroke-width: 1.8; }
+.moment-prop { stroke: var(--ink); stroke-width: 2; fill: none; }
+.moment-laptop { stroke: var(--ink-muted); stroke-width: 3; }
+.moment-bookLeft, .moment-bookRight, .moment-map { fill: var(--paper); stroke-width: 1.5; }
+.moment-bookSpine, .moment-bookLines { stroke: var(--ink-muted); stroke-width: 1; }
+.moment-mapRoute { stroke: var(--blue); stroke-width: 1.5; }
+@media (max-width: 767.98px) {
+  .character-moment--evening { width: 112px; }
+  .character-moment--wrong-turn { width: 264px; }
+}

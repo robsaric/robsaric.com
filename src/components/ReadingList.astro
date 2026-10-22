@@ -20,14 +20,14 @@ li { display: grid; grid-template-columns: 154px minmax(0,1fr); gap: 32px; borde
 h3 { margin: 0; font-size: 27px; }
 h3 a { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; color: var(--ink); text-decoration: none; line-height: 1.25; min-height: 44px; }
 h3 a:hover { color: var(--blue); }
-h3 :global(.arrow) { margin-top: 6px; color: var(--blue); }
+h3 :global(.arrow) { margin-top: 6px; color: var(--ink); }
 p { margin: 10px 0 0; max-width: 68ch; font-size: 16px; line-height: 1.65; color: var(--ink-muted); }
 .compact li { grid-template-columns: minmax(0,1fr); gap: 12px; padding: 26px 0; }
 .compact .reading-date { flex-direction: row; gap: 14px; padding: 0; }
 .compact h3 { font-size: 24px; }
 .paired { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); column-gap: 64px; }
 .paired li { padding-block: 28px; }
-.paired h3 { max-width: 28ch; }
+.paired h3 { max-width: 28ch; font-size: 28px; letter-spacing: -.015em; }
 @media (max-width: 767.98px) {
  li { grid-template-columns: minmax(0,1fr); gap: 12px; padding: 26px 0; }
  .reading-date { flex-direction: row; gap: 14px; padding: 0; }

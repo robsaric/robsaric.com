@@ -410,7 +410,7 @@ export const COPY = {
     },
     notFound: {
       title: 'Nothing here.',
-      body: 'The page moved or never existed. Try my notes or the archive.',
+      body: 'The page moved or never existed. Head home or find something to read.',
     },
   },
 } as const;

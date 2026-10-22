@@ -17,6 +17,7 @@ export const UI = {
   },
   nav: {
     primaryLabel: 'Primary navigation',
+    home: 'Back home',
     wordmarkLabel: 'Rob Saric, home',
     work: 'What I’m building',
     /** The mark is decorative: the wordmark beside it already names the site. */
@@ -28,6 +29,8 @@ export const UI = {
     caretrics: 'Caretrics',
     openMenu: 'Open menu',
     closeMenu: 'Close menu',
+    menu: 'Menu',
+    close: 'Close',
   },
   evidence: {
     nextStep: 'Next step',

@@ -5,7 +5,7 @@ export const NEWSLETTER = {
   preheader: 'One quick confirmation, then I’ll send you my next essay.',
   greeting: 'Hi,',
   introduction: 'Thanks for making room for my writing. Before I send you the next essay, please confirm this is your email address.',
-  promise: 'I write about building small companies, where AI actually helps, and what’s worth keeping human.',
+  promise: 'What I’m learning about building small companies, making sense of AI, and making time for the people in our lives.',
   invitation: 'I send these occasionally, when I have something worth sharing. If a note gets you thinking, hit reply. I’d like to hear it.',
   signoff: 'Rob',
   emailAction: 'Confirm my email',

@@ -44,11 +44,16 @@ export function runnerFrame(progress) {
     p=start.map((value,i)=>value+(finish[i]-value)*mix);
     if(t>.92) opacity=1-ease((t-.92)/.04);
   }
+  return { ...personFrame(p), opacity:n(opacity) };
+}
+
+/** The same drawn person can hold a quieter pose elsewhere on the site. */
+export function personFrame(p) {
   const dx=p[4]-p[2],dy=p[5]-p[3],length=Math.hypot(dx,dy);
   const px=-dy/length,py=dx/length;
   const torso=`M${n(p[2]+px*6)} ${n(p[3]+py*6)} L${n(p[4]+px*5)} ${n(p[5]+py*5)} L${n(p[4]-px*5)} ${n(p[5]-py*5)} L${n(p[2]-px*6)} ${n(p[3]-py*6)} Z`;
   return {
-    opacity:n(opacity),
+    opacity:1,
     head:`M${n(p[0]+6)} ${n(p[1])} a6 6 0 1 0-12 0 a6 6 0 1 0 12 0`,
     neck:path(p,0,1), torso,
     armBack:path(p,1,5,6), armFront:path(p,1,3,4),

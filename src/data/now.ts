@@ -24,14 +24,14 @@ export const NOW_ITEMS: NowItem[] = [
     kicker: 'Building',
     title: 'The Recovery Scan',
     blurb: 'What a first read of a clinic’s Jane account looks for, and what it deliberately leaves alone.',
-    href: '/field-notes/',
+    href: '/writing/',
     draft: true,
   },
   {
     kicker: 'From the field',
     title: 'What clinic operators keep asking about',
     blurb: 'The three questions that come up in almost every conversation, and my current answers.',
-    href: '/field-notes/',
+    href: '/writing/',
     draft: true,
   },
 ];

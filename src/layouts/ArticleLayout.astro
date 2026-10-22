@@ -46,7 +46,7 @@ const newsletterEndpoint = import.meta.env.PUBLIC_NEWSLETTER_ENDPOINT?.trim();
 <style>
 .article-shell { padding-block: 72px 80px; }
 .article-header { max-width: 1040px; margin-inline: auto; margin-bottom: 56px; }
-h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.12; margin: 0 0 28px; font-weight: 800; }
+h1 { font-size: clamp(2.75rem, 5.2vw, 4.75rem); line-height: 1.1; margin: 0 0 28px; }
 .article-meta { display: flex; flex-wrap: wrap; gap: 10px 24px; font-size: 13px; color: var(--ink-muted); align-items: center; font-variant-numeric: tabular-nums; }
 .article-meta a { min-height: 44px; display: inline-flex; align-items: center; }
 .article-notice { margin: 24px 0 0; font-size: 16px; line-height: 1.65; color: var(--ink-muted); padding-top: 20px; border-top: 1px solid var(--rule); max-width: 70ch; }
@@ -58,6 +58,7 @@ h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.12; margin: 0 0 28px;
 .author .author-follow { font-size: 13px; text-decoration: none; }
 .article-end { margin-top: 48px; }
 .article-end-content { grid-column: 2; border-top: 1px solid var(--rule); padding-top: 40px; }
+.article-end-content :global(.newsletter) { padding: 32px; background: var(--paper-inset); border: 1px solid var(--rule); border-radius: 12px; }
 .follow h2 { font-size: 24px; margin: 0 0 12px; max-width: 30ch; }
 .follow p { font-size: 17px; line-height: 1.65; margin: 0 0 12px; max-width: 55ch; }
 .related { margin-top: 40px; }
@@ -72,9 +73,10 @@ h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.12; margin: 0 0 28px;
 @media (max-width: 767.98px) {
  .article-shell { padding-block: 44px 56px; }
  .article-header { margin-bottom: 36px; }
- h1 { font-size: clamp(2.1rem, 7.7vw, 3rem); }
+ h1 { font-size: clamp(2.5rem, 9vw, 3.25rem); }
  .article-meta { gap: 6px 16px; }
  .article-end-content { padding-top: 32px; }
+ .article-end-content :global(.newsletter) { padding: 26px 22px; }
  .follow h2 { font-size: 23px; }
 }
 </style>
