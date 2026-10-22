@@ -48,3 +48,9 @@ Rob confirmed Grill Q27–29. This supersedes the earlier requirement to keep th
 The full site gate passed, including subscription fixtures, copy lint, Astro diagnostics, build, redirects, notes, share cards and layout checks. The article, homepage and Writing page were inspected at 1440, 900 and 390 pixels: one H1, no horizontal overflow and complete writing selections. Native expansion controls work with Enter and Space; the direct feature link opens the notes. Homepage controls have visible keyboard focus, and Escape closes the mobile menu.
 
 The independent editorial review found no material copy or source issues. Screenshots are saved locally under `.impeccable/review/shorter-dashboard/`. Native no-JavaScript behavior and existing reduced-motion rules were reviewed in source, without a new runtime simulation. No email was submitted or sent.
+
+## October 22 preview feedback: remove the unexplained feature
+
+Rob found “design notes” unclear and rejected keeping the extra explanation. This supersedes the optional-expansion decision above. The expansion and its homepage/Writing invitations are removed, while the three-row proposed view stays within the essay. The former `#what-id-change` fragment remains as an alias at that view so existing links still land on relevant content.
+
+Rob approved this homepage introduction: “I build software for small teams. I write about making sense of AI, raising kids, and making time for the people in our lives.” It replaces the previous introduction and separate goal line. The headline, portrait and primary actions stay as approved. These revisions remain local until publishing is authorized.

@@ -2,6 +2,7 @@
 import { ACTION_REVIEW as R } from '../data/dashboard-sketch';
 ---
 <figure class="action-review" id="see-what-happened-and-what-still-needs-you" aria-labelledby="review-heading">
+  <span id="what-id-change" aria-hidden="true"></span>
   <h2 id="review-heading">{R.heading}</h2>
   <div class="column-labels" aria-hidden="true"><span>{R.statusLabel}</span><span>{R.eventLabel}</span><span>{R.nextLabel}</span></div>
   <ul class="review-entries" role="list">

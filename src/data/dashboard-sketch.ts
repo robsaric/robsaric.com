@@ -14,36 +14,23 @@ export const DASHBOARD_SKETCH = {
 
 export const ACTION_REVIEW = {
   heading: 'Know which work is actually finished.',
-  introduction: 'A proposed daily view for this imagined company.',
   statusLabel: 'Status',
   eventLabel: 'What happened',
-  expandLabel: 'See my design notes',
-  seriesLabel: 'What I’d change',
-  viewLabel: 'What you would see',
-  notesLabel: 'Why I’d design it this way',
   nextLabel: 'What needs you',
   rows: [
     {
       status: 'Recorded', event: 'Customer declined.',
       next: 'Nothing. The quote is closed, with the message attached.',
-      noteHeading: 'Keep the evidence close.',
-      note: 'I’d put the customer’s reply beside the closed quote. You can check the reason without hunting through your inbox.',
     },
     {
       status: 'Your decision', event: 'Customer asked for a lower price.',
       next: 'Check the margin. Approve or edit the draft reply.',
-      noteHeading: 'Leave the price with you.',
-      note: 'The tool can prepare a reply. You know whether you can afford the discount. Nothing goes out until you decide.',
     },
     {
       status: 'Partly completed', event: 'Reply sent. Quote update failed.',
       next: 'Retry the record update without resending the email.',
-      noteHeading: 'Say which part failed.',
-      note: '“Try again” is too vague here. I’d offer to save the quote again, with the sent email left alone.',
     },
   ],
-  tradeoffHeading: 'The trade-off I’d accept',
-  tradeoff: 'This takes more space than a green tick. I’d accept that. You need enough detail to trust the work, and a way to open the full record when something looks wrong.',
   caption: 'Proposed view for this imagined company.',
 } as const;
 
