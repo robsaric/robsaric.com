@@ -1,0 +1,45 @@
+---
+import { ACTION_REVIEW as R } from '../data/dashboard-sketch';
+---
+<details class="design-notes" id="what-id-change">
+  <summary><span>{R.expandLabel}</span>{' '}<span class="series-name">{R.seriesLabel}</span></summary>
+  <div class="notes-body">
+    <p class="notes-intro">{R.introduction}</p>
+    <ul role="list">
+      {R.rows.map(row => <li>
+        <svg class="note-mark" aria-hidden="true" viewBox="0 0 44 26" fill="none"><path d="M42 4C26 2 21 20 4 16m7-7-7 7 9 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        <div><h3>{row.noteHeading}</h3><p>{row.note}</p></div>
+      </li>)}
+    </ul>
+    <div class="tradeoff"><h3>{R.tradeoffHeading}</h3><p>{R.tradeoff}</p></div>
+  </div>
+</details>
+<script>
+  // Open the optional notes when a homepage or Writing link targets them.
+  function revealLinkedNotes() {
+    if (window.location.hash !== '#what-id-change') return;
+    const notes = document.getElementById('what-id-change');
+    if (notes instanceof HTMLDetailsElement) notes.open = true;
+  }
+  revealLinkedNotes();
+  window.addEventListener('hashchange', revealLinkedNotes);
+</script>
+<style>
+.design-notes { margin: 32px 0 0; border-block: 1px solid var(--rule); scroll-margin-top: 32px; }
+summary { cursor: pointer; min-height: 56px; padding: 16px 4px; color: var(--blue); font-size: 16px; font-weight: 600; line-height: 1.5; }
+summary::marker { color: var(--blue); }
+summary:hover > span:first-child { text-decoration: underline; text-underline-offset: 4px; }
+summary:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
+.series-name { color: var(--ink-muted); font-size: 13px; font-weight: 400; margin-left: 16px; white-space: nowrap; }
+.notes-body { padding: 8px 0 24px; }
+.design-notes .notes-intro { font-size: 14px; color: var(--ink-muted); margin: 0 0 20px; }
+.design-notes ul { list-style: none; padding: 0; margin: 0; }
+.design-notes li { display: flex; gap: 14px; padding-block: 18px; border-top: 1px solid var(--rule); margin: 0; }
+.note-mark { width: 30px; height: 24px; flex: 0 0 30px; color: var(--ink-muted); }
+.design-notes h3 { font: 650 17px/1.5 var(--font-display); margin: 0 0 6px; letter-spacing: -.015em; }
+.design-notes li p, .tradeoff p { font-size: 16px; line-height: 1.65; margin: 0; }
+.tradeoff { padding-top: 20px; border-top: 1px solid var(--rule); }
+@media (max-width: 600px) {
+ .series-name { display: block; margin: 4px 0 0 18px; }
+}
+</style>

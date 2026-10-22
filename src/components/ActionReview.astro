@@ -2,55 +2,35 @@
 import { ACTION_REVIEW as R } from '../data/dashboard-sketch';
 ---
 <figure class="action-review" id="see-what-happened-and-what-still-needs-you" aria-labelledby="review-heading">
-  <header>
-    <h3 id="review-heading">{R.heading}</h3>
-    <p>{R.introduction}</p>
-  </header>
-  <div class="column-labels" aria-hidden="true"><span>{R.viewLabel}</span><span>{R.notesLabel}</span></div>
+  <h2 id="review-heading">{R.heading}</h2>
+  <div class="column-labels" aria-hidden="true"><span>{R.statusLabel}</span><span>{R.eventLabel}</span><span>{R.nextLabel}</span></div>
   <ul class="review-entries" role="list">
     {R.rows.map(row => <li class="review-entry">
-      <div class="proposed-record">
-        <span class="record-status">{row.status}</span>
-        <p class="record-event">{row.event}</p>
-        <dl><dt>{R.nextLabel}</dt><dd>{row.next}</dd></dl>
-      </div>
-      <aside class="design-note">
-        <svg class="note-mark" aria-hidden="true" viewBox="0 0 44 26" fill="none"><path d="M42 4C26 2 21 20 4 16m7-7-7 7 9 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
-        <div><h4>{row.noteHeading}</h4><p>{row.note}</p></div>
-      </aside>
+      <span class="record-status">{row.status}</span>
+      <p class="record-event">{row.event}</p>
+      <dl><dt>{R.nextLabel}</dt><dd>{row.next}</dd></dl>
     </li>)}
   </ul>
-  <div class="tradeoff"><h4>{R.tradeoffHeading}</h4><p>{R.tradeoff}</p></div>
   <figcaption>{R.caption}</figcaption>
 </figure>
 <style>
-.action-review { margin: 36px 0 40px; padding: 32px 0 24px; border-block: 1px solid var(--ink); scroll-margin-top: 32px; }
-.action-review header h3 { margin: 0; font: 750 clamp(1.6rem, 2.5vw, 2rem)/1.2 var(--font-display); letter-spacing: -.025em; max-width: 24ch; }
-.action-review header p { font-size: 15px; line-height: 1.6; color: var(--ink-muted); margin: 14px 0 28px; max-width: 48ch; }
-.column-labels, .review-entry { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 32px; }
-.column-labels { font-size: 12px; line-height: 1.5; color: var(--ink-muted); padding-bottom: 12px; }
+.action-review { margin: 32px 0; padding-block: 24px 20px; border-block: 1px solid var(--ink); scroll-margin-top: 32px; }
+.action-review h2 { margin: 0 0 24px; font: 750 24px/1.25 var(--font-display); letter-spacing: -.025em; max-width: 30ch; }
+.column-labels, .review-entry { display: grid; grid-template-columns: 130px minmax(0,1fr) minmax(0,1.2fr); gap: 20px; }
+.column-labels { font-size: 12px; line-height: 1.5; color: var(--ink-muted); padding-bottom: 10px; }
 .action-review .review-entries { padding: 0; margin: 0; list-style: none; }
-.action-review .review-entry { padding-block: 28px; border-top: 1px solid var(--rule); margin: 0; align-items: start; }
-.proposed-record { min-width: 0; }
-.record-status { display: inline; font-size: 13px; line-height: 1.6; font-weight: 650; background: var(--yellow); padding: 3px 7px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
-.action-review .record-event { font: 700 21px/1.35 var(--font-display); letter-spacing: -.02em; margin: 16px 0; }
+.action-review .review-entry { padding-block: 18px; border-top: 1px solid var(--rule); margin: 0; align-items: start; }
+.record-status { justify-self: start; font-size: 13px; line-height: 1.5; font-weight: 650; background: var(--yellow); padding: 3px 7px; }
+.action-review .record-event { font-size: 16px; line-height: 1.55; font-weight: 600; margin: 0; }
 dl { margin: 0; }
-dt { font-size: 12px; line-height: 1.5; color: var(--ink-muted); margin-bottom: 6px; }
+dt { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 dd { font-size: 15px; line-height: 1.65; margin: 0; }
-.design-note { display: flex; gap: 10px; padding-top: 4px; }
-.note-mark { width: 30px; height: 24px; flex: 0 0 30px; color: var(--ink-muted); }
-.action-review h4 { font: 650 16px/1.5 var(--font-display); letter-spacing: -.015em; margin: 0 0 8px; }
-.design-note p { font-size: 15px; line-height: 1.65; margin: 0; color: var(--ink-muted); }
-.tradeoff { border-top: 1px solid var(--rule); padding-top: 24px; }
-.tradeoff p { font-size: 16px; line-height: 1.7; margin: 0; max-width: 62ch; }
-figcaption { font-size: 13px; line-height: 1.65; color: var(--ink-muted); margin-top: 24px; max-width: 64ch; }
+figcaption { font-size: 13px; line-height: 1.65; color: var(--ink-muted); margin-top: 12px; }
 @media (max-width: 600px) {
- .action-review { padding-top: 24px; margin-block: 28px 32px; }
+ .action-review h2 { font-size: 22px; }
  .column-labels { display: none; }
- .action-review .review-entry { grid-template-columns: minmax(0, 1fr); gap: 24px; padding-block: 26px; }
- .record-event { max-width: 25ch; }
- .design-note { padding-top: 0; }
- .note-mark { transform: rotate(35deg); }
- .design-note p, dd { font-size: 16px; }
+ .action-review .review-entry { grid-template-columns: minmax(0,1fr); gap: 10px; padding-block: 18px; }
+ dt { position: static; width: auto; height: auto; overflow: visible; clip-path: none; font-size: 12px; color: var(--ink-muted); margin-bottom: 3px; }
+ dd { font-size: 16px; }
 }
 </style>
