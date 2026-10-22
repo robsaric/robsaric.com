@@ -1,95 +1,27 @@
 ---
-title: "Are dashboards going the way of the dodo?"
-summary: "Your dashboard can show you a problem and still leave you with the whole job. As software takes on more work, what should count as finished?"
-description: "Will AI replace dashboards? Attio, Sequoia and a small-business example point to a different job: helping you finish work and check what happened."
+title: "What should a dashboard do?"
+summary: "From numbers you show off to decisions you can act on. What I want from AI, and where I still want a person involved."
+description: "Rob Saric on dashboards that help you understand a change and decide what to do, with familiar screens, useful AI and people still involved."
 type: "Field note"
 date: 2026-10-19
+updated: 2026-10-22
 tags: ["AI and trust", "Founder notes"]
 stage: -1
 draft: false
 ---
 
-import DashboardNextJob from '../../components/DashboardNextJob.astro';
-import ActionReview from '../../components/ActionReview.astro';
+I remember creating a financial dashboard for a plastic surgery clinic. It became a tool for the owners to share with their buddies.
 
-Your dashboard can show you a problem and still leave you with the whole job.
+Even when dashboards helped highlight problems, you still had to go and figure out how to solve them. Now it’s less about, “Here’s the problem.” It’s more about, “Do you understand what’s happening? Here are the ways to fix it.”
 
-A quote needs attention. But you still have to find the customer’s message, decide what to do and update the record. The chart tells you where to look. You take it from there.
+[Attio](https://attio.com/architecture) describes connecting context with action. [Sequoia](https://sequoiacap.com/article/services-the-new-software) argues for selling work rather than tools. But getting there takes more than generating another screen. With AI, you can generate pretty much any UI, any dashboard with almost no friction. That makes it easy to skip customer discovery: what does someone actually need to do?
 
-That expectation is starting to change. Software can take on more of the work between noticing a problem and resolving it. But that raises a harder question: what should count as finished?
+<span id="what-id-change" aria-hidden="true"></span>
 
-I don’t think dashboards are going the way of the dodo. I think you’re going to need them for a different part of the job.
+Take a monthly review of accounts receivable. I prefer a chart or a familiar screen for a routine like this. You need evidence. You need to quickly see if anything has changed, dive deeper into it, and decide how you should tweak your operating procedures. A conversation with your data could help you investigate. The chart still gives you a familiar place to start.
 
-## You found the answer. Your colleague didn’t.
+For me, you don’t just have a conversational interface. You’ll have different ways to do the work. Meeting people where they’re at means designing for where their organization is, and where they are when it comes to technology adoption.
 
-Imagine you run a small renovation company. This is a hypothetical example: you check your outstanding quotes and see that fewer are turning into jobs.
+It also means knowing where automation should stop. One of the biggest things I encourage is a personal follow-up after a person comes for treatment. Someone at the front desk, a care coordinator, should call them and ask how the treatment was. That relationship matters. I don’t want to hand it to an automated caller.
 
-You read through the customer messages. One person wants a lower price. Another has already declined, but their quote is still open.
-
-So you export the list and add notes to a spreadsheet. You record the no, then move on to the price request. By the end of the afternoon, you know where things stand.
-
-But the quoting system has none of your notes. The next morning, your colleague sees the open quote and calls the customer who already declined.
-
-You can keep both places updated, or ask everyone to work from your spreadsheet. Either way, you’ve become the connection between the software and what actually happened.
-
-## Your customer’s reply should be enough to start
-
-You shouldn’t have to wait for a dashboard review to rediscover that message. A workflow could connect the reply to the quote, propose closing it, ask you if needed, and save the outcome where your colleague will see it.
-
-Tools such as Gumloop and n8n make parts of that possible. Gumloop’s [Agent Tasks can run on schedules or events in connected apps](https://www.gumloop.com/blog/introducing-agent-tasks), including an incoming email. Its [approval controls can pause an agent before a chosen action](https://www.gumloop.com/blog/human-in-the-loop). [n8n also supports approval before selected AI tool calls](https://docs.n8n.io/advanced-ai/human-in-the-loop-tools/).
-
-You still have to configure the workflow and check whether it handles your business correctly. But the starting point can be the customer’s reply, with software doing some of the work you would otherwise piece together yourself.
-
-## The context has to travel with the work
-
-[Attio’s architecture for people and agents](https://attio.com/architecture) makes a useful argument here: agents need access to the context behind a record, along with the system’s permissions and rules. An email, a call and a customer record need to belong to the same working picture.
-
-In your renovation company, the open quote is only half the picture. The customer’s refusal is in the email. Give an agent access to the quote without that reply and it could chase someone who has already answered you.
-
-That is why this goes deeper than adding a chat box. The software needs enough context to act, permission to make the particular change, and a record you can inspect afterwards. Attio’s page describes its approach to that architecture; it isn’t proof that any agent will get your workflow right.
-
-## “Done” is a bigger promise than “here’s a report”
-
-Sequoia’s [“Services: The New Software,” by Julien Bek](https://sequoiacap.com/article/services-the-new-software), makes the commercial argument: an AI business can sell completed work rather than access to a tool you operate yourself.
-
-If you’re buying the result, you should be able to expect more than a suggestion about what to do next. You need the agreed job finished, within the limits you set.
-
-I’m interested in what that could give you as a small-business owner: the ability to handle work that would otherwise eat your afternoon or require help you can’t yet afford. But I wouldn’t treat an investor’s thesis as a promise that every service is ready to run itself.
-
-The practical test is still your workflow. Did the software finish the job, or leave you a different mess to sort out?
-
-<DashboardNextJob />
-
-## A faster reply can still be the wrong reply
-
-Back at your renovation company, the other customer wants a lower price. Software could prepare a reply, but agreeing to a discount is a business decision. You may know that the job has almost no margin left.
-
-So a useful next step would put the request, the quote and a proposed reply in front of you. You decide what you’re willing to offer. Sending a confident answer sooner wouldn’t make it a good answer.
-
-There is a less exciting problem, too. The reply might go out while saving the updated quote fails. If the system just says “done,” you could repeat the work. Retry the whole sequence and you might send the customer a second email.
-
-Faster output hasn’t finished the job. It has left you checking whether the job was finished.
-
-## What I’d change
-
-If software handles a routine step, you shouldn’t need to watch it happen. You do need a way to inspect the result, spot a mistake and see why it stopped.
-
-I’d put the outcome beside the customer’s message, and make it clear whether you need to do anything. Here’s how I’d lay out that part of your daily view, with the reasons for each choice.
-
-<ActionReview />
-
-You still need the chart of quotes turning into jobs. It helps you see whether your business is improving, whether fewer customers are saying yes, or whether you’re solving the wrong problem efficiently.
-
-But alongside it, you need to see which work was completed, which changes couldn’t be saved and which decisions are waiting for you. Open an item and you should find the customer’s message and the action taken.
-
-A quieter screen only helps if it’s quiet because things were handled, rather than because failures were hidden.
-
-## You still need to trust the answer
-
-Asking “How are sales?” can be useful. But do you mean accepted quotes, invoices sent, or money in the bank? A confident sentence doesn’t settle the definition.
-
-[Microsoft’s guidance for preparing Power BI data for Copilot](https://learn.microsoft.com/en-us/power-bi/create-reports/copilot-prepare-data-ai-faq) includes defining business terms and configuring verified answers. Replacing filters with conversation doesn’t remove that work.
-
-I’m [building toward](/building/) tools that give you more capability without making you a full-time supervisor of your software. You should be able to get work off your plate, keep control of the decisions that matter, and trust the record you leave for the next person.
-
-Pick one number you check every week. Follow what you do after reading it. What could the software help finish? Where do you need to decide? And what would you need to see before you believed the job was done?
+So before choosing what to automate, ask: where is your bottleneck, and where do you need to be involved? Sophistication is in the simplicity of getting from A to B.

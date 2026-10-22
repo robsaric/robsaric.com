@@ -7,4 +7,4 @@ export function socialImagePath(pathname) {
 }
 
 /** New URLs let crawlers distinguish this editorial card family from the old blue cards. */
-export const SOCIAL_IMAGE_VERSION = 'editorial-20261019';
+export const SOCIAL_IMAGE_VERSION = 'editorial-20261022-decisions';

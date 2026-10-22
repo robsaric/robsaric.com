@@ -16,8 +16,8 @@ export interface NowItem {
 export const NOW_ITEMS: NowItem[] = [
   {
     kicker: 'Writing',
-    title: 'Are dashboards going the way of the dodo?',
-    blurb: 'Why a chart is only the start of helping a small team get the work done.',
+    title: 'What should a dashboard do?',
+    blurb: 'From seeing a change to deciding what to do, with people still involved.',
     href: '/field-notes/2026-10-19-are-dashboards-dead/',
   },
   {

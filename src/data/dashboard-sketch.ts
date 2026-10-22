@@ -1,46 +1,37 @@
-/** Illustrates the essay's hypothetical renovation-company example, not a product UI. */
+/** Illustrates the questions in Rob’s dashboard essay, not a product UI or measured result. */
 export const DASHBOARD_SKETCH = {
-  heading: 'The customer said no. The system still says follow up.',
-  record: 'Quoting system',
-  stale: 'Follow-up still due',
-  spreadsheet: 'Your spreadsheet',
-  done: 'Customer declined',
-  gap: 'Only saved here',
-  after: 'Save the outcome where the team works.',
-  resolved: 'Quote closed',
-  detail: 'Customer declined. No follow-up due.',
-  caption: 'One customer, two conflicting records. Without your update, a colleague may call again.',
+  heading: 'From seeing a change to deciding what to do.',
+  record: 'Chart',
+  stale: 'What changed?',
+  spreadsheet: 'Conversation',
+  done: 'Why did it change?',
+  gap: 'Check the evidence',
+  after: 'Decide what to change.',
+  resolved: 'Your decision',
+  detail: 'Choose what needs to happen next.',
+  caption: 'Two ways to work with the same evidence. You decide what to change.',
 } as const;
 
 export const ACTION_REVIEW = {
   heading: 'Know which work is actually finished.',
-  introduction: 'A proposed daily view for the renovation company in this essay.',
-  viewLabel: 'What you would see',
-  notesLabel: 'Why I’d design it this way',
+  statusLabel: 'Status',
+  eventLabel: 'What happened',
   nextLabel: 'What needs you',
   rows: [
     {
-      status: 'Recorded', event: 'The customer declined.',
+      status: 'Recorded', event: 'Customer declined.',
       next: 'Nothing. The quote is closed, with the message attached.',
-      noteHeading: 'Keep the evidence close.',
-      note: 'I’d put the customer’s reply beside the closed quote. You can check the reason without hunting through your inbox.',
     },
     {
-      status: 'Your decision', event: 'The customer asked for a lower price.',
-      next: 'Review the proposed reply. Nothing has been sent.',
-      noteHeading: 'Leave the price with you.',
-      note: 'The tool can prepare a reply. You know whether you can afford the discount. Nothing goes out until you decide.',
+      status: 'Your decision', event: 'Customer asked for a lower price.',
+      next: 'Check the margin. Approve or edit the draft reply.',
     },
     {
       status: 'Partly completed', event: 'Reply sent. Quote update failed.',
-      next: 'Check the saved quote. Retry the record update, not the email.',
-      noteHeading: 'Say which part failed.',
-      note: '“Try again” is too vague here. I’d offer to save the quote again, with the sent email left alone.',
+      next: 'Retry the record update without resending the email.',
     },
   ],
-  tradeoffHeading: 'The trade-off I’d accept',
-  tradeoff: 'This takes more space than a green tick. I’d accept that. You need enough detail to trust the work, and a way to open the full record when something looks wrong.',
-  caption: 'An illustrative design, using the hypothetical example above. These are proposed behaviours, not a working product or customer results.',
+  caption: 'Proposed view for this imagined company.',
 } as const;
 
 export const DASHBOARD_NEXT_JOB = {
