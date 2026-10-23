@@ -8,6 +8,10 @@
   --ink-muted: #526473;
   --rule: #cbd6df;
   --white: #ffffff;
+  --surface: #ffffff;
+  --action-text: #ffffff;
+  --selection-ink: #252525;
+  --control-border: #777770;
   --wash: var(--sky);
   --cream: var(--paper);
   /* Compatibility aliases keep the historical evidence routes in the same palette. */
@@ -22,7 +26,7 @@
   --on-dark-28: rgb(244 247 250 / 28%);
   --on-dark-05: rgb(244 247 250 / 5%);
   --bg-page: var(--paper);
-  --bg-card: var(--white);
+  --bg-card: var(--surface);
   --bg-band-dark: var(--blue);
   --bg-band-footer: var(--ink);
   --bg-band-write: var(--sky);
@@ -89,6 +93,7 @@
 }
 /* Warm paper throughout, approved in the October 19 editorial refinement. */
 :root[data-theme="warm"] {
+  color-scheme: light;
   --blue: #244fc7;
   --blue-deep: #183996;
   --paper: #faf8f2;
@@ -105,6 +110,25 @@
   --on-dark-28: rgb(250 248 242 / 28%);
   --on-dark-05: rgb(250 248 242 / 5%);
   --shadow-nav: 0 6px 16px rgb(41 52 59 / 7%);
+}
+/* Evening is a warm reading room; photographs and content are unchanged. */
+:root[data-theme="warm"][data-appearance="night"] {
+  color-scheme: dark;
+  --paper: #24211e;
+  --paper-inset: #2c2925;
+  --surface: #302d29;
+  --ink: #efe8dc;
+  --ink-muted: #bdb4a8;
+  --rule: #504b44;
+  --control-border: #92897e;
+  --blue: #a5b9ed;
+  --blue-deep: #c0cef2;
+  --yellow: #d8b77c;
+  --action-ink: #efe6d5;
+  --action-text: #24211e;
+  --action-hover: #fff8e9;
+  --status-critical-text: #ffb3aa;
+  --shadow-nav: 0 8px 20px rgb(0 0 0 / 18%);
 }
 @media (max-width: 767.98px) {
   :root { --gutter-desktop: var(--gutter-mobile); }

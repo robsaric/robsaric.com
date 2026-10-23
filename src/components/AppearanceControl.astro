@@ -1,0 +1,46 @@
+---
+import { UI } from '../data/ui';
+interface Props { id: string; }
+const { id } = Astro.props;
+---
+<label class="appearance-control" for={id} data-appearance-control hidden>
+  <span>{UI.appearance.label}</span>
+  <select id={id} aria-label={UI.appearance.label} title={UI.appearance.help}>
+    <option value="auto">{UI.appearance.auto}</option>
+    <option value="day">{UI.appearance.day}</option>
+    <option value="night">{UI.appearance.night}</option>
+  </select>
+</label>
+<script>
+  import { APPEARANCE_KEY, resolveAppearance } from '../lib/appearance.mjs';
+  const controls = [...document.querySelectorAll<HTMLElement>('[data-appearance-control]')];
+  const root = document.documentElement;
+  const sync = () => controls.forEach(control => {
+    const select = control.querySelector('select');
+    if (select) select.value = root.dataset.appearancePreference ?? 'auto';
+    control.hidden = false;
+  });
+  controls.forEach(control => control.querySelector('select')?.addEventListener('change', event => {
+    const preference = (event.target as HTMLSelectElement).value;
+    root.dataset.appearancePreference = preference;
+    root.dataset.appearance = resolveAppearance(preference, new Date().getHours());
+    try { localStorage.setItem(APPEARANCE_KEY, preference); } catch { /* The choice still works for this page. */ }
+    sync();
+    document.dispatchEvent(new Event('appearancechange'));
+  }));
+  window.addEventListener('pageshow', event => {
+    if (!event.persisted) return;
+    let preference = root.dataset.appearancePreference ?? 'auto';
+    try { preference = localStorage.getItem(APPEARANCE_KEY) ?? 'auto'; } catch { /* Keep this page's choice. */ }
+    if (!['day', 'night', 'auto'].includes(preference)) preference = 'auto';
+    root.dataset.appearancePreference = preference;
+    root.dataset.appearance = resolveAppearance(preference, new Date().getHours());
+    sync();
+    document.dispatchEvent(new Event('appearancechange'));
+  });
+  sync();
+</script>
+<style>
+.appearance-control { display: flex; align-items: center; gap: 10px; color: var(--ink-muted); font-size: 13px; }
+select { min-height: 44px; min-width: 88px; padding: 8px 26px 8px 10px; border: 1px solid var(--control-border); border-radius: 5px; background: var(--paper); color: var(--ink); font-size: 14px; cursor: pointer; }
+</style>

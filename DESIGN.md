@@ -197,7 +197,7 @@ components:
     backgroundColor: "{colors.home-paper}"
     textColor: "{colors.home-ink}"
     typography: "{typography.home-display}"
-    padding: 64px clamp(32px, 5vw, 80px) 80px
+    padding: 48px clamp(32px, 5vw, 80px) 56px
   home-navigation:
     backgroundColor: "{colors.home-paper}"
     textColor: "{colors.home-ink}"
@@ -339,8 +339,8 @@ The functional status-critical-text color belongs to newsletter invalid borders 
 Fonts are self-hosted through Astro's build pipeline and loaded by the shared BaseLayout. The font-display token now resolves to font-editorial, and the serif compatibility alias follows it. Newsreader (400) supplies public display headings. The shared wordmark uses Newsreader at 32px, weight 400, line height 1.1, letter spacing -0.02em and word spacing 0.08em. Its blue period is decorative. The font-interface token remains for source compatibility; body text, controls and diagrams use Inter.
 
 ### Hierarchy
-- **Homepage display:** the current two-sentence headline spans the available content width, with the second sentence on its own block. Its desktop size caps at (96px). Sentence-case identity metadata remains above it; the single introduction below begins beside the small avatar.
-- **Homepage lead:** the home-lead role is capped at (58ch); mobile uses (17px, 1.6).
+- **Homepage display:** the current two-sentence headline spans the available content width, with the second sentence on its own block. Its desktop size caps at (96px); only “help.” uses genuine Newsreader 400 italic, preloaded on the homepage. Sentence-case identity metadata remains above it; the single introduction below begins beside the small avatar. Hero padding is (48px) above and (56px) below on desktop, (24px) and (32px) on mobile. The headline-to-introduction gap is (28px), reducing to (24px) on mobile.
+- **Homepage lead:** the home-lead role is capped at (58ch); mobile uses (17px, 1.6). Caretrics and SkillNav context stays in this existing paragraph, with SkillNav described as in development; it adds no extra text tier or action.
 - **Homepage writing introduction:** the section retains a visually hidden Writing heading. The first essay follows the hero directly; there is no repeated Start here heading or All writing link.
 - **Featured title:** the shared featured-essay role sits within (18ch), relaxing to (22ch) with a (32px) size on mobile.
 - **Homepage supporting titles:** paired reading entries use Newsreader (28px), with linked text at line height (1.25); the mobile compact selector reduces them to (23px).
@@ -493,3 +493,15 @@ Share-card titles now use the shared Newsreader display face at (400), with the 
 The footer and custom 404 share the runner's SVG person and colours. The footer is a single transition into reading. The 404 character runs past a left-pointing sign, consults a paper map and heads back; it occupies 300px by 120px, reduced to 264px wide on phones. Recovery links remain available throughout, with Back home primary and Writing secondary.
 
 Both are decorative and hidden from assistive technology. Each plays once when at least 65% visible, pauses offscreen or when the tab is hidden, and stops doing frame work when complete. The 4.3-second footer and 4.7-second wrong turn are under five seconds and do not loop. Reduced motion and no JavaScript show an intentional still pose. On the 404, only the wrong-turn sequence animates. These additions do not change the approved looping homepage runner. See docs/character-moments-and-writing-url-2026-10-22.md.
+
+## Day and night: approved October 23, local preview
+
+Q40–45 extends the current paper design with a reader-controlled evening appearance. Auto reads local time on page entry: day from 07:00 to 18:59, night otherwise. Never switch while someone is reading. Native Appearance selects expose Auto, Day and Night in the desktop navigation and mobile menu, with a 44px minimum height. Remember explicit choices, tolerate blocked storage, and leave the complete day site available without scripts. Navigation uses its menu below 1100px to leave room for Toolbox and appearance controls.
+
+Evening roles: page #24211e, inset #2c2925, surface #302d29, text #efe8dc, supporting text #bdb4a8, fine rule #504b44, control border #92897e, link/focus blue #a5b9ed, small accent #d8b77c. Primary action is cream #efe6d5 with dark #24211e text; hover is #fff8e9. Keep literal white separate from surface and action-text. These roles apply to articles, About, Building, Writing, Toolbox, forms and shared illustrations. Do not invert photographs or make illustrations compete with actions. Share images stay in the light palette.
+
+The hero retains one action and the same reserved character space. In night appearance, a seated reader opens a book beside a small glass of wine, once over 3.2 seconds, then stays still. Respect visibility and reduced motion; suspend the daytime runner while hidden. The footer and 404 moments retain their existing behavior.
+
+Writing's All/Digital days/Analog nights controls use simple text, a selected underline and a polite result count. They filter current essays independently of appearance; some belong to both. Older writing remains available below. Without scripts, all current essays stay visible.
+
+Toolbox is one editorial guide, not a directory grid. The guide exposes its whole workflow, honest limits, visible copyable prompt and optional downloads. Existing typography, thin rules and continuous paper carry it; local example review is clearly labelled. See docs/day-night-toolbox-2026-10-23.md.

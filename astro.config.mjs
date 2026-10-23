@@ -72,7 +72,7 @@ export default defineConfig({
       name: 'Newsreader',
       cssVariable: '--font-newsreader',
       weights: [400, 500],
-      styles: ['normal'],
+      styles: ['normal', 'italic'],
       subsets: ['latin'],
       fallbacks: ['Georgia', 'serif'],
     },

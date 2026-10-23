@@ -21,7 +21,8 @@ const fontCss=[...(built.match(/@font-face\{[^}]*\}/gu)??[]),...(built.match(/:r
 if(!fontCss)throw new Error('Build first: self-hosted font CSS is missing.');
 const decode=(s)=>s.replace(/<[^>]*>/g,' ').replace(/&#(?:x([0-9a-f]+)|(\d+));/gi,(_,hex,n)=>String.fromCodePoint(parseInt(hex??n,hex?16:10))).replace(/&(amp|quot|apos|lt|gt|nbsp|rsquo|lsquo|rdquo|ldquo|ndash|mdash);/g,(_,e)=>({amp:'&',quot:'"',apos:"'",lt:'<',gt:'>',nbsp:' ',rsquo:'’',lsquo:'‘',rdquo:'”',ldquo:'“',ndash:'–',mdash:'—'}[e])).replace(/\s+/g,' ').trim();
 const urls=[...readFileSync(join(DIST,'sitemap-0.xml'),'utf8').matchAll(/<loc>(.*?)<\/loc>/g)].map(m=>m[1]);
-const cards=urls.map(url=>{
+const selectedRoutes=process.argv.slice(2);
+const cards=urls.filter(url=>!selectedRoutes.length||selectedRoutes.includes(new URL(url).pathname)).map(url=>{
  const path=new URL(url).pathname;
  const html=readFileSync(join(DIST,path,'index.html'),'utf8');
  const title=decode(html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1]??'');
@@ -32,7 +33,7 @@ const cards=urls.map(url=>{
  const kind=path.includes(OG_EDITORIAL.dashboardSlug)?'dashboard':path.includes(OG_EDITORIAL.analogSlug)?'analog':path==='/about/'?'about':'type';
  return {path,out:join(ROOT,'public',socialImagePath(path)),html:path==='/'?renderSiteCard({...OG_SITE_CARD,fontCss}):renderCard({title,section: path==='/writing/'?OG_EDITORIAL.writingSection:section,...OG_CARD,fontCss,kind,year})};
 });
-cards.push({
+if (!selectedRoutes.length) cards.push({
  path:'/social/dashboard-review-loop.png',
  out:join(ROOT,'public/social/dashboard-review-loop.png'),
  width:1080,height:1350,
@@ -62,5 +63,5 @@ try{
   mkdirSync(dirname(card.out),{recursive:true});writeFileSync(card.out,png);
  }
  await page.send('Page.close');page.close();
- console.log('generate-og: '+(cards.length-1)+' share cards (1200x630) and review loop (1080x1350); fonts/images loaded, no overflow');
+ console.log('generate-og: '+cards.length+' image(s); fonts/images loaded, no overflow');
 }finally{browser?.close();server.close();}

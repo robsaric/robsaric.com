@@ -5,7 +5,7 @@ export const EDITORIAL = {
     heading: 'Work is hard enough.',
     emphasis: 'The tools should',
     markedWord: 'help.',
-    lead: 'I build software for small teams. I write about making sense of AI, raising kids, and making time for the people in our lives.',
+    lead: 'I’m building Caretrics and developing SkillNav for small teams. I write about making sense of AI, raising kids, and making time for the people in our lives.',
     portraitAlt: 'Rob Saric in a blue blazer',
     read: 'Start here',
     work: 'What I’m building',

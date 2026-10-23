@@ -5,6 +5,7 @@ import Arrow from '../components/Arrow.astro';
 import ReadingList from '../components/ReadingList.astro';
 import FeaturedEssay from '../components/FeaturedEssay.astro';
 import StartHereMark from '../components/StartHereMark.astro';
+import NightReader from '../components/NightReader.astro';
 import Connect from '../components/Connect.astro';
 import portrait from '../assets/images/rob-portrait.jpg';
 import hiking from '../assets/images/rob-hiking.jpg';
@@ -24,12 +25,12 @@ const personJsonLd = { '@context': 'https://schema.org', '@type': 'Person', name
   <section class="hero wrap">
     <div class="hero-copy">
       <p class="hero-identity">{E.hero.identity}</p>
-      <h1>{E.hero.heading} <span>{E.hero.emphasis} {E.hero.markedWord}</span></h1>
+      <h1>{E.hero.heading} <span>{E.hero.emphasis} <em>{E.hero.markedWord}</em></span></h1>
       <div class="hero-introduction">
         <Image class="hero-avatar" src={portrait} alt={E.hero.portraitAlt} width={72} height={72} widths={[72,144]} sizes="(max-width: 767px) 52px, 72px" loading="eager" fit="cover" />
         <p class="hero-lead">{E.hero.lead}</p>
       </div>
-      <div class="hero-actions"><a class="action" href="#start-here">{E.hero.read}<Arrow /></a><StartHereMark /></div>
+      <div class="hero-actions"><a class="action" href="#start-here">{E.hero.read}<Arrow /></a><div class="hero-character"><div class="day-character"><StartHereMark /></div><div class="night-character"><NightReader /></div></div></div>
     </div>
   </section>
   <section id="start-here" class="writing wrap" aria-labelledby="writing-title">
@@ -59,16 +60,20 @@ const personJsonLd = { '@context': 'https://schema.org', '@type': 'Person', name
   </section>
 </BaseLayout>
 <style>
-.hero { padding-top: 64px; padding-bottom: 80px; }
+.hero { padding-top: 48px; padding-bottom: 56px; }
 .hero-identity { color: var(--ink-muted); font-size: 14px; margin: 0 0 18px; }
-h1 { font-family: var(--font-editorial); font-weight: 400; margin: 0 0 36px; font-size: clamp(3.5rem, 7.2vw, 6rem); line-height: 1.04; letter-spacing: -.025em; text-wrap: initial; }
+h1 { font-family: var(--font-editorial); font-weight: 400; margin: 0 0 28px; font-size: clamp(3.5rem, 7.2vw, 6rem); line-height: 1.04; letter-spacing: -.025em; text-wrap: initial; }
 h1 > span { display: block; }
+h1 em { font-weight: inherit; font-style: italic; }
 .hero-introduction { display: flex; align-items: center; gap: 22px; max-width: 780px; }
 .hero-avatar { display: block; flex: 0 0 72px; width: 72px; height: 72px; object-fit: cover; object-position: 50% 25%; border-radius: 50%; }
 .hero-lead { max-width: 58ch; font-size: 18px; line-height: 1.7; margin: 0; }
 .hero-actions { display: flex; gap: 20px; align-items: center; margin-top: 26px; }
 .hero-actions .action { flex: none; }
-.hero-actions :global(.start-runner) { flex: 0 1 324px; min-width: 0; }
+.hero-character { flex: 0 1 324px; min-width: 0; }
+.night-character { display: none; }
+:global(html[data-appearance="night"]) .day-character { display: none; }
+:global(html[data-appearance="night"]) .night-character { display: block; }
 .hero-actions .text-link { font-size: 15px; }
 .writing { padding-block: 0 56px; scroll-margin-top: 24px; }
 .work-heading h2, .work-story h3, .personal h2 { font-family: var(--font-editorial); font-weight: 400; letter-spacing: -.02em; }
@@ -80,7 +85,7 @@ h1 > span { display: block; }
 .work-example { display: grid; grid-template-columns: 1fr 1.2fr; gap: 64px; margin-top: 48px; padding-top: 40px; border-top: 1px solid var(--rule); align-items: start; }
 .work-story h3 { font-size: 30px; font-weight: 400; margin: 0 0 20px; }
 .work-story p { max-width: 43ch; font-size: 17px; line-height: 1.7; margin: 0 0 16px; }
-.work-evolution { margin: 0; padding: 28px 32px; background: var(--white); border: 1px solid var(--rule); border-radius: 10px; }
+.work-evolution { margin: 0; padding: 28px 32px; background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; }
 .work-evolution figcaption { font-size: 14px; color: var(--ink-muted); margin-bottom: 20px; }
 .work-evolution ol { list-style: none; padding: 0; margin: 0; }
 .work-evolution li { position: relative; padding: 0 0 22px 25px; border-left: 1px solid var(--rule); }
@@ -101,9 +106,9 @@ h1 > span { display: block; }
  .work-heading, .work-example, .personal-layout { gap: 36px; }
 }
 @media (max-width: 767.98px) {
- .hero { padding-top: 32px; padding-bottom: 40px; }
+ .hero { padding-top: 24px; padding-bottom: 32px; }
  .hero-identity { margin-bottom: 22px; }
- h1 { font-size: clamp(2.6rem, 10.8vw, 4.6rem); margin-bottom: 28px; }
+ h1 { font-size: clamp(2.6rem, 10.8vw, 4.6rem); margin-bottom: 24px; }
  .hero-introduction { align-items: flex-start; gap: 16px; }
  .hero-avatar { flex-basis: 52px; width: 52px; height: 52px; }
  .hero-lead { font-size: 17px; line-height: 1.6; }
