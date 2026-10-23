@@ -11,6 +11,22 @@ export const UI = {
     separator: ' · ',
   },
   skipLink: 'Skip to content',
+  appearance: {
+    label: 'Appearance',
+    day: 'Day',
+    night: 'Night',
+    auto: 'Auto',
+    help: 'Auto follows your local time: day from 7 a.m. to 7 p.m. Your choice stays with you.',
+  },
+  writingThreads: {
+    label: 'Explore the writing',
+    intro: 'Digital days for building and working. Analog nights for the life around it. Some writing belongs to both.',
+    all: 'All',
+    digital: 'Digital days',
+    analog: 'Analog nights',
+    empty: 'There is no writing in this thread yet.',
+    count: (count: number) => `${count} ${count === 1 ? 'essay' : 'essays'}`,
+  },
   runner: {
     pause: 'Pause runner animation',
     resume: 'Resume runner animation',
@@ -23,6 +39,7 @@ export const UI = {
     /** The mark is decorative: the wordmark beside it already names the site. */
     markAlt: '',
     fieldNotes: 'Writing',
+    toolbox: 'Toolbox',
     about: 'About',
     /** Replaced Principles in the nav 2026-08-24; Principles moved to the footer. */
     writeToMe: 'Write to me',

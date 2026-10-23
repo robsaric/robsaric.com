@@ -167,6 +167,10 @@ async function main() {
   const homeFailures = [];
   let checks = 0;
 
+  for (const appearance of ['day', 'night']) {
+    const initialization = await page.send('Page.addScriptToEvaluateOnNewDocument', {
+      source: `localStorage.setItem('rs-appearance', '${appearance}')`,
+    });
   for (const width of WIDTHS) {
     await page.send('Emulation.setDeviceMetricsOverride', {
       width,
@@ -180,6 +184,11 @@ async function main() {
       await page.send('Page.navigate', { url: `http://127.0.0.1:${port}${route}` });
       await loaded;
 
+      const appearanceCheck = await page.send('Runtime.evaluate', {
+        expression: `document.documentElement.dataset.appearance`, returnByValue: true,
+      });
+      if (appearanceCheck.result.value !== appearance) homeFailures.push(`${appearance} ${width}px ${route}: wrong appearance`);
+
       const { result } = await page.send('Runtime.evaluate', {
         expression: PROBE,
         returnByValue: true,
@@ -187,7 +196,7 @@ async function main() {
 
       checks += 1;
       const { overflow, culprits } = result.value;
-      if (overflow > 0) failures.push({ width, route, overflow, culprits });
+      if (overflow > 0) failures.push({ width, route: `${appearance} ${route}`, overflow, culprits });
 
       if (route === '/') {
         const home = await page.send('Runtime.evaluate', {
@@ -199,6 +208,8 @@ async function main() {
         if (!home.result.value.newsletterValidationWorks) homeFailures.push(`${width}px: newsletter email validation failed`);
       }
     }
+  }
+    await page.send('Page.removeScriptToEvaluateOnNewDocument', { identifier: initialization.identifier });
   }
 
   page.close();
@@ -221,7 +232,7 @@ async function main() {
   }
 
   console.log(
-    `check-layout: ${list.length} route(s) x ${WIDTHS.length} width(s),`
+    `check-layout: ${list.length} route(s) x ${WIDTHS.length} width(s) x 2 appearances,`
     + ` ${checks} checks, no horizontal overflow or homepage failures`,
   );
 }

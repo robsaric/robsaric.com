@@ -6,6 +6,7 @@ import Newsletter from '../../components/Newsletter.astro';
 import Arrow from '../../components/Arrow.astro';
 import { EDITORIAL as E } from '../../data/editorial';
 import { SITE } from '../../data/site';
+import { UI } from '../../data/ui';
 import { getEarlierWriting, getRecentWriting } from '../../lib/editorial';
 const earlier = await getEarlierWriting();
 const recent = await getRecentWriting();
@@ -16,7 +17,14 @@ const newsletterEndpoint = import.meta.env.PUBLIC_NEWSLETTER_ENDPOINT?.trim();
 <BaseLayout title={E.writing.pageTitle} description={E.writing.pageDescription}>
   <div class="wrap writing-page">
     <header><h1>{E.writing.pageHeading}</h1><p>{E.writing.pageIntro}</p></header>
-    <section class="recent" aria-labelledby="recent-title"><h2 id="recent-title" class="visually-hidden">{E.writing.latest}</h2>{featured && <FeaturedEssay item={featured} compact />}<ReadingList items={supporting} compact paired /></section>
+    <div class="thread-controls" data-thread-controls hidden>
+      <p>{UI.writingThreads.intro}</p>
+      <div class="thread-buttons" role="group" aria-label={UI.writingThreads.label}>
+        {(['all', 'digital', 'analog'] as const).map(thread => <button type="button" data-thread={thread} aria-pressed={thread === 'all'}>{UI.writingThreads[thread]}</button>)}
+        <span class="thread-count" data-thread-count role="status" aria-live="polite">{UI.writingThreads.count(recent.length)}</span>
+      </div>
+    </div>
+    <section class="recent" data-thread-results aria-labelledby="recent-title"><h2 id="recent-title" class="visually-hidden">{E.writing.latest}</h2>{featured && <FeaturedEssay item={featured} compact />}<ReadingList items={supporting} compact paired /><p data-thread-empty hidden>{UI.writingThreads.empty}</p></section>
     <section class="earlier" aria-labelledby="earlier-title"><div class="section-intro"><h2 id="earlier-title">{E.writing.earlier}</h2><p>{E.writing.earlierIntro}</p></div><ReadingList items={earlier} /><a class="text-link archive-link" href="/archive/">{E.writing.archive}<Arrow /></a></section>
   </div>
   <div class="writing-follow">
@@ -27,7 +35,34 @@ const newsletterEndpoint = import.meta.env.PUBLIC_NEWSLETTER_ENDPOINT?.trim();
     </div>
   </div>
 </BaseLayout>
+<script>
+  import { UI } from '../../data/ui';
+  const controls = document.querySelector<HTMLElement>('[data-thread-controls]');
+  const entries = [...document.querySelectorAll<HTMLElement>('[data-thread-results] [data-writing-entry]')];
+  if (controls) {
+    const buttons = [...controls.querySelectorAll<HTMLButtonElement>('[data-thread]')];
+    controls.hidden = false;
+    buttons.forEach(button => button.addEventListener('click', () => {
+      const selected = button.dataset.thread;
+      buttons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+      entries.forEach(entry => { entry.hidden = selected !== 'all' && !entry.dataset.threads?.split(' ').includes(selected ?? ''); });
+      const count = entries.filter(entry => !entry.hidden).length;
+      const status = controls.querySelector('[data-thread-count]');
+      if (status) status.textContent = UI.writingThreads.count(count);
+      const empty = document.querySelector<HTMLElement>('[data-thread-empty]');
+      if (empty) empty.hidden = count > 0;
+      document.querySelectorAll<HTMLElement>('[data-thread-results] .reading-list').forEach(list => { list.hidden = ![...list.children].some(item => !(item as HTMLElement).hidden); });
+    }));
+  }
+</script>
 <style>
+.thread-controls { margin: 0 0 20px; }
+.thread-controls p { max-width: 65ch; margin: 0 0 12px; color: var(--ink-muted); font-size: 15px; line-height: 1.6; }
+.thread-buttons { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 20px; }
+.thread-buttons button { min-height: 44px; min-width: 44px; padding: 8px 0; border: 0; border-bottom: 2px solid transparent; background: transparent; color: var(--ink-muted); cursor: pointer; font-size: 15px; }
+.thread-buttons button[aria-pressed="true"] { color: var(--ink); border-bottom-color: var(--ink); }
+.thread-buttons button:hover { color: var(--blue); }
+.thread-count { margin-left: auto; color: var(--ink-muted); font-size: 13px; }
 .writing-page { padding-block: 40px 56px; }
 header { margin-bottom: 28px; display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(24px,4vw,56px); align-items: start; }
 h1 { font-size: clamp(3rem, 5.2vw, 4.5rem); line-height: 1.1; margin: 0; }

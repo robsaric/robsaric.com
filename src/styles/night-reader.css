@@ -1,0 +1,10 @@
+.night-reader { width: 324px; max-width: 100%; min-width: 0; pointer-events: none; }
+.night-reader svg { display: block; width: calc(100% - 44px); height: auto; }
+.night-reader path { stroke-linecap: round; stroke-linejoin: round; }
+.night-reader__ground { stroke: var(--rule); stroke-width: 1; }
+.night-reader__chair, .night-reader__table { stroke: var(--ink-muted); stroke-width: 1.6; }
+.night-reader__glass { stroke: var(--ink-muted); stroke-width: 1.2; }
+.night-reader__wine { fill: var(--ink-muted); opacity: .45; }
+.night-reader__book path { fill: var(--paper-inset); stroke: var(--ink); stroke-width: 1.4; }
+.night-reader__book .night-reader__spine,
+.night-reader__book .night-reader__lines { fill: none; stroke: var(--ink-muted); stroke-width: .8; }

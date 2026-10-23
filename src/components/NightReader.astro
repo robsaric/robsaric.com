@@ -1,0 +1,93 @@
+---
+import { nightReaderFrame, nightReaderPerson } from '../lib/night-reader.mjs';
+import '../styles/start-runner.css';
+import '../styles/night-reader.css';
+const resting = nightReaderFrame(1);
+---
+<div class="night-reader" data-night-reader aria-hidden="true">
+  <svg width="324" height="93" viewBox="0 0 320 92" fill="none" focusable="false">
+    <path class="night-reader__ground" d="M18 81h270" />
+    <path class="night-reader__chair" d="M83 36v26h39 M87 63v16 M117 63v16" />
+    <path class="night-reader__table" d="M174 58h31 M189 59v20 M181 79h16" />
+    <path class="night-reader__wine" d="M179 37h14c0 6-2 10-7 10s-7-4-7-10Z" />
+    <path class="night-reader__glass" d="M178 32h16c0 8-1 15-8 15s-8-7-8-15Z M186 47v9 M181 56h10" />
+    <g class="runner-person" data-night-reader-person set:html={nightReaderPerson()} />
+    <g class="night-reader__book">
+      <path data-book-part="left" d={resting.book.left} />
+      <path data-book-part="right" d={resting.book.right} />
+      <path class="night-reader__spine" data-book-part="spine" d={resting.book.spine} />
+      <path class="night-reader__lines" data-book-part="lines" d={resting.book.lines} />
+    </g>
+  </svg>
+</div>
+<script>
+  import { NIGHT_READER_DURATION, nightReaderFrame } from '../lib/night-reader.mjs';
+
+  document.querySelectorAll<HTMLElement>('[data-night-reader]').forEach(scene => {
+    const preference = matchMedia('(prefers-reduced-motion: reduce)');
+    const person = [...scene.querySelectorAll<SVGPathElement>('[data-part]')];
+    const book = [...scene.querySelectorAll<SVGPathElement>('[data-book-part]')];
+    let elapsed = 0, started = 0, raf = 0;
+    let visible = false, running = false, complete = false, initialized = false;
+
+    const draw = (progress: number) => {
+      const frame = nightReaderFrame(progress);
+      for (const part of person) {
+        const name = part.dataset.part as keyof typeof frame.person;
+        part.setAttribute('d', String(frame.person[name]));
+      }
+      for (const part of book) {
+        const name = part.dataset.bookPart as 'left' | 'right' | 'spine' | 'lines';
+        part.setAttribute('d', frame.book[name]);
+        if (name === 'lines') part.setAttribute('opacity', String(frame.book.linesOpacity));
+      }
+    };
+    const stop = () => {
+      if (running) elapsed += performance.now() - started;
+      running = false;
+      cancelAnimationFrame(raf);
+    };
+    const tick = (now: number) => {
+      if (!running) return;
+      const progress = Math.min(1, (elapsed + now - started) / NIGHT_READER_DURATION);
+      draw(progress);
+      if (progress === 1) {
+        complete = true;
+        running = false;
+        scene.dataset.state = 'complete';
+      } else raf = requestAnimationFrame(tick);
+    };
+    const sync = () => {
+      if (preference.matches) {
+        stop(); draw(1); complete = true; scene.dataset.state = 'reduced';
+        return;
+      }
+      if (complete) return;
+      if (document.documentElement.dataset.appearance !== 'night' || document.hidden || !visible) {
+        stop(); scene.dataset.state = elapsed ? 'paused' : 'idle';
+        return;
+      }
+      if (!running) {
+        if (!initialized) { draw(0); initialized = true; }
+        started = performance.now(); running = true; scene.dataset.state = 'playing';
+        raf = requestAnimationFrame(tick);
+      }
+    };
+    preference.addEventListener('change', sync);
+    document.addEventListener('visibilitychange', sync);
+    document.addEventListener('appearancechange', sync);
+    window.addEventListener('pagehide', stop);
+    window.addEventListener('pageshow', sync);
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(entries => {
+        visible = entries[0].isIntersecting && entries[0].intersectionRatio >= .65;
+        sync();
+      }, { threshold: .65 }).observe(scene);
+      sync();
+    } else {
+      // The server-rendered reading pose is the intentional fallback.
+      complete = true;
+      scene.dataset.state = 'still';
+    }
+  });
+</script>

@@ -1,6 +1,7 @@
 import { getCollection } from 'astro:content';
 import { EARLIER_WRITING, NEXT_READS } from '../data/editorial';
 import { getPublishedNotes, noteHref } from './notes';
+import { WRITING_THREADS, type WritingThread } from '../data/writing-threads';
 
 export interface ReadingItem {
   title: string;
@@ -8,6 +9,7 @@ export interface ReadingItem {
   href: string;
   date: Date;
   earlier: boolean;
+  threads?: WritingThread[];
 }
 export async function getEarlierWriting(): Promise<ReadingItem[]> {
   const entries = await getCollection('archive', entry => !entry.data.draft);
@@ -20,6 +22,7 @@ export async function getRecentWriting(): Promise<ReadingItem[]> {
   return (await getPublishedNotes()).map(entry => ({
     title: entry.data.title, summary: entry.data.summary,
     href: noteHref(entry), date: entry.data.date, earlier: false,
+    threads: WRITING_THREADS[entry.id] ?? [],
   }));
 }
 

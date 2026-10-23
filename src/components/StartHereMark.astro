@@ -53,7 +53,7 @@ import '../styles/start-runner.css';
       else timer = window.setTimeout(() => { raf = requestAnimationFrame(tick); }, cycle - current);
     };
     const sync = () => {
-      if (preference.matches || paused || document.hidden || !visible) stop();
+      if (preference.matches || paused || document.hidden || !visible || document.documentElement.dataset.appearance === 'night') stop();
       else if (!running) {
         started = performance.now();
         running = true;
@@ -75,6 +75,7 @@ import '../styles/start-runner.css';
     });
     preference.addEventListener('change', updatePreference);
     document.addEventListener('visibilitychange', sync);
+    document.addEventListener('appearancechange', sync);
     updatePreference();
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(entries => {

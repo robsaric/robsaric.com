@@ -7,7 +7,7 @@ interface Props { items: ReadingItem[]; compact?: boolean; paired?: boolean; }
 const { items, compact = false, paired = false } = Astro.props;
 ---
 <ol class:list={['reading-list', { compact, paired }]}>
-  {items.map(item => <li>
+  {items.map(item => <li data-writing-entry data-threads={item.threads?.join(' ')}>
     <div class="reading-date"><time datetime={item.date.toISOString()}>{formatNoteDate(item.date)}</time>{item.earlier && <span>{E.writing.earlier}</span>}</div>
     <div class="reading-copy"><h3><a href={item.href}>{item.title}<Arrow diagonal /></a></h3><p>{item.summary}</p></div>
   </li>)}
