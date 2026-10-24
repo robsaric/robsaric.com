@@ -7,5 +7,6 @@ export function buildSiteRedirects() {
   const redirects = buildLegacyRedirects();
   delete redirects['/writing'];
   redirects['/field-notes'] = { status: 301, destination: '/writing/' };
+  redirects['/toolbox/interview-your-draft'] = { status: 301, destination: '/toolbox/interview-draft-edit/' };
   return redirects;
 }

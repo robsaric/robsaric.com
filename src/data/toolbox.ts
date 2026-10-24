@@ -1,4 +1,5 @@
 import chatPrompt from '../../public/downloads/interview-draft-edit/chat-prompt.txt?raw';
+import { INTERVIEW_METHOD } from './interview-method.mjs';
 
 const interviewTitle = 'Interview, Draft, Edit';
 const skillId = 'interview-draft-edit';
@@ -23,9 +24,9 @@ export const TOOLBOX = {
   feature: {
     title: interviewTitle,
     kind: 'AI skill · Free',
-    description: 'AI interviews you, drafts from your answers, and leaves the final edit to you.',
-    detail: 'Bring an idea, a rough draft or a spoken explanation. Use the prompt for one conversation, or install the skill to repeat the process.',
-    href: '/toolbox/interview-your-draft/',
+    description: 'Use AI to organize your thoughts. Keep your voice.',
+    detail: 'Start with what you want to say. AI asks questions to help you work through it, then organizes your answers into a draft. You make the final edit.',
+    href: INTERVIEW_METHOD.path,
     action: 'Read the guide',
     download: 'Download the skill',
     downloadHref: skillDownload,
@@ -61,12 +62,14 @@ export const TOOLBOX = {
 
 export const INTERVIEW_YOUR_DRAFT = {
   title: interviewTitle,
+  headline: INTERVIEW_METHOD.headline,
   skillNameLabel: 'Skill name:',
   skillName: skillId,
-  description: 'Write or speak an idea, answer AI’s questions, then edit the draft it builds from your answers. A free prompt and reusable skill for Claude or Codex.',
-  intro: 'Start with an idea, written or spoken. AI interviews you, drafts from your answers, and leaves the final edit to you.',
-  format: 'A writing skill for Claude or Codex, with a copyable prompt and voice template.',
-  opening: 'Before I had AI, I would spend five minutes getting a rough draft down. I still think that’s a useful place to start. You can write it or say it out loud. The point is to give AI your thinking, then let it ask about the parts you haven’t worked through. Your answers give it something to build a draft from.',
+  description: 'Start with your idea. Let AI interview you and organize your answers into a draft. You make the final edit. A free writing skill for Claude and Codex.',
+  intro: 'Start with what you want to say. AI asks questions to help you work through it, then organizes your answers into a draft. You make the final edit.',
+  format: 'Interview, Draft, Edit: a free writing skill for Claude or Codex, with a copyable prompt.',
+  why: 'The point is to help you work out your own answers. You bring the idea, your experience and your point of view. AI asks about what is missing or unclear, then helps put those thoughts in an order someone else can follow. The thinking stays with you.',
+  opening: 'Before I had AI, I would spend five minutes getting a rough draft down. I still think that’s a useful place to start. Write it or say it out loud, then let AI ask about the parts you haven’t worked through.',
   action: 'Use the prompt',
   skillAction: 'Use as a skill',
   availability: 'Free to use. No signup required.',
@@ -177,7 +180,7 @@ export const INTERVIEW_YOUR_DRAFT = {
   },
   closing: {
     heading: 'Try it on something you already started.',
-    body: 'An unfinished paragraph is enough. The useful test is whether the questions help you say something you mean.',
+    body: 'Bring an unfinished paragraph or speak your idea. After the interview, check the draft: does it say what you mean, use your actual examples and sound like something you would say? Keep editing until it does.',
     action: 'Back to the prompt',
     writing: 'Read my writing',
   },

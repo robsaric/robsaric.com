@@ -52,11 +52,22 @@ if (!base) {
   assert.equal(resolve('/writing/').hops,0,'The new index must not redirect');
   assert.equal(resolve('/field-notes/').final,'/writing/');
   assert(resolve('/field-notes/').hops<=2,'Avoid redirect chains');
+  const guidePath='/toolbox/interview-draft-edit/';
+  const retiredGuide='/toolbox/interview-your-draft/';
+  const guide=await readFile(new URL('../dist/client'+guidePath+'index.html',import.meta.url),'utf8');
+  assert(guide.includes('rel="canonical" href="https://robsaric.com'+guidePath+'"'),'Guide must self-canonicalize');
+  assert(guide.includes('property="og:url" content="https://robsaric.com'+guidePath+'"'),'Guide OG URL must match');
+  assert(sitemap.includes('<loc>https://robsaric.com'+guidePath+'</loc>'));
+  assert(!sitemap.includes('<loc>https://robsaric.com'+retiredGuide+'</loc>'),'Do not sitemap the retired guide');
+  assert.equal(resolve(guidePath).hops,0,'The current guide must not redirect');
+  assert.equal(resolve(retiredGuide+'#downloads').final,guidePath+'#downloads','Keep download fragments usable');
+  assert(resolve(retiredGuide).hops<=2,'Avoid guide redirect chains');
   const publicUrls=[...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(match=>match[1]);
   for (const url of publicUrls) {
     const path=new URL(url).pathname;
     const html=await readFile(new URL('../dist/client'+path+'index.html',import.meta.url),'utf8');
     assert(!/href=["'](?:https:\/\/robsaric\.com)?\/field-notes\/?(?:[?#][^"']*)?["']/.test(html),path+' links to the retired index');
+    assert(!/href=["'](?:https:\/\/robsaric\.com)?\/toolbox\/interview-your-draft\/?(?:[?#][^"']*)?["']/.test(html),path+' links to the retired guide');
     if (path.startsWith('/field-notes/')) assert(html.includes('rel="canonical" href="'+url+'"'),'Existing article canonical changed');
   }
   console.log(`check-redirects (local): ${expectations.length} URLs, ${failures} miss(es)`);
