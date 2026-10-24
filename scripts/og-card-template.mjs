@@ -1,4 +1,5 @@
 import { REVIEW_LOOP as R } from '../src/data/review-loop.mjs';
+import { INTERVIEW_METHOD as I } from '../src/data/interview-method.mjs';
 import { readFileSync } from 'node:fs';
 const wordmarkCss = readFileSync(new URL('../src/styles/wordmark.css', import.meta.url), 'utf8');
 const esc = (s) => String(s).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
@@ -30,6 +31,35 @@ export function renderCard({title,section,author,site,fontCss,kind,year}) {
   styles='.title{flex:1;font-size:72px}';
  }
  return frame({title,section,author,site,fontCss,aside,styles,foot:year??''});
+}
+
+/** One clear promise for a link preview; the method itself gets a portrait edition. */
+export function renderInterviewCard({author,site,fontCss}) {
+ return frame({author,site,fontCss,title:I.headline,section:I.label,foot:I.name,
+  styles:'.title{font-size:78px;max-width:24ch}.section{font-size:20px}.foot{font-size:21px}'});
+}
+
+export function renderInterviewMethodCard({author,site,fontCss}) {
+ return shell(fontCss,`
+ body,.card{width:1080px;height:1350px}
+ .card{padding:52px 64px}
+ .brand{font-size:24px;padding-bottom:24px}
+ .main{display:block;padding:34px 0 0}
+ .title{font-size:68px;max-width:24ch;line-height:1.04;text-wrap:balance}
+ .method{list-style:none;margin-top:30px}
+ .method li{display:grid;grid-template-columns:42px 1fr;gap:22px;position:relative;padding:20px 0 22px;border-bottom:1px solid var(--rule)}
+ .method li:last-child{border-bottom:0}
+ .number{font:400 25px/1.4 var(--font-sans);color:var(--ink-muted);padding-top:4px}
+ .step-title{font:500 36px/1.2 var(--font-sans);letter-spacing:-.025em}
+ .ai .step-title{color:var(--blue)}
+ .detail{font:400 25px/1.45 var(--font-sans);margin-top:8px}
+ .note{margin-top:22px;font:400 32px/1.25 var(--font-display)}
+ .foot{font-size:21px;padding-top:24px}
+ `,`<div class="card"><div class="brand"><span class="site-wordmark">${esc(author)}<span class="site-wordmark__dot">.</span></span><span class="section">${esc(I.name)}</span></div>
+ <div class="main"><h1 class="title">${esc(I.socialHeading)}</h1>
+ <ol class="method">${I.steps.map((step,i)=>`<li class="${step.role}"><span class="number">${i+1}</span><div><h2 class="step-title">${esc(step.title)}</h2><p class="detail">${esc(step.detail)}</p></div></li>`).join('')}</ol>
+ <p class="note">${esc(I.note)}</p></div>
+ <div class="foot"><span>${esc(I.label)}</span><span class="site">${esc(site)}</span></div></div>`);
 }
 
 /** Portrait social edition: the same questions, example, type and colours as the site. */

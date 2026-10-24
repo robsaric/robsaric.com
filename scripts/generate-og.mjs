@@ -10,7 +10,8 @@ import { resolve, join, extname, dirname, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 import { MIME, launchChrome } from './lib/chrome.mjs';
-import { renderCard, renderSiteCard, renderReviewLoopCard } from './og-card-template.mjs';
+import { renderCard, renderSiteCard, renderReviewLoopCard, renderInterviewCard, renderInterviewMethodCard } from './og-card-template.mjs';
+import { INTERVIEW_METHOD } from '../src/data/interview-method.mjs';
 import { OG_CARD, OG_SITE_CARD, OG_EDITORIAL } from '../src/data/og-card.mjs';
 import { socialImagePath } from '../src/lib/social.mjs';
 
@@ -31,13 +32,19 @@ const cards=urls.filter(url=>!selectedRoutes.length||selectedRoutes.includes(new
  const section=isArchive?OG_EDITORIAL.archiveSection:path.startsWith('/field-notes/')?OG_EDITORIAL.essaySection:'';
  const year=isArchive?html.match(/datetime="(\d{4})-/)?.[1]:undefined;
  const kind=path.includes(OG_EDITORIAL.dashboardSlug)?'dashboard':path.includes(OG_EDITORIAL.analogSlug)?'analog':path==='/about/'?'about':'type';
- return {path,out:join(ROOT,'public',socialImagePath(path)),html:path==='/'?renderSiteCard({...OG_SITE_CARD,fontCss}):renderCard({title,section: path==='/writing/'?OG_EDITORIAL.writingSection:section,...OG_CARD,fontCss,kind,year})};
+ return {path,out:join(ROOT,'public',socialImagePath(path)),html:path==='/'?renderSiteCard({...OG_SITE_CARD,fontCss}):path===INTERVIEW_METHOD.path?renderInterviewCard({...OG_CARD,fontCss}):renderCard({title,section: path==='/writing/'?OG_EDITORIAL.writingSection:section,...OG_CARD,fontCss,kind,year})};
 });
 if (!selectedRoutes.length) cards.push({
  path:'/social/dashboard-review-loop.png',
  out:join(ROOT,'public/social/dashboard-review-loop.png'),
  width:1080,height:1350,
  html:renderReviewLoopCard({fontCss,loopCss:readFileSync(join(ROOT,'src/styles/review-loop.css'),'utf8')}),
+});
+if (!selectedRoutes.length || selectedRoutes.includes(INTERVIEW_METHOD.path)) cards.push({
+ path:'/social/interview-draft-edit.png',
+ out:join(ROOT,'public/social/interview-draft-edit.png'),
+ width:1080,height:1350,
+ html:renderInterviewMethodCard({...OG_CARD,fontCss}),
 });
 const pages=new Map(cards.map((card,i)=>['/card/'+i,card.html]));
 const special={'/tokens.css':'src/styles/tokens.css','/site-photo.png':'src/assets/images/rob-portrait.jpg','/hiking-photo.png':'src/assets/images/rob-hiking.jpg'};

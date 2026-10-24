@@ -14,6 +14,7 @@ interface Props {
   theme?: 'warm';
   footerStill?: boolean;
   title?: string;
+  socialTitle?: string;
   description?: string;
   noindex?: boolean;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
@@ -28,6 +29,7 @@ const {
   theme = 'warm',
   footerStill = false,
   title,
+  socialTitle,
   description = SITE.description,
   noindex = false,
   jsonLd,
@@ -43,6 +45,7 @@ const documentTitle = title
   ? `${title}${UI.meta.titleSeparator}${SITE.name}`
   : SITE.title;
 const metaDescription = clampDescription(description);
+const shareTitle = socialTitle ?? documentTitle;
 const canonical = new URL(Astro.url.pathname, siteUrl);
 const ogImageUrl = new URL(ogImageSource, siteUrl);
 ogImageUrl.searchParams.set('v', SOCIAL_IMAGE_VERSION);
@@ -76,7 +79,7 @@ const serializedJsonLd = jsonLd
     <meta property="og:type" content={pageType} />
     <meta property="og:locale" content="en_CA" />
     <meta property="og:site_name" content={SITE.name} />
-    <meta property="og:title" content={documentTitle} />
+    <meta property="og:title" content={shareTitle} />
     <meta property="og:description" content={metaDescription} />
     <meta property="og:url" content={canonical.href} />
     <meta property="og:image" content={ogImageUrl.href} />
@@ -104,7 +107,7 @@ const serializedJsonLd = jsonLd
       />
     )}
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={documentTitle} />
+    <meta name="twitter:title" content={shareTitle} />
     <meta name="twitter:description" content={metaDescription} />
     <meta name="twitter:image" content={ogImageUrl.href} />
     <meta name="twitter:image:alt" content={ogImageAlt} />
