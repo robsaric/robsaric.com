@@ -1,7 +1,7 @@
 type Variant = 'runner' | 'evening' | 'reader' | 'wrong-turn';
 type Pose = { at: number; frame: number; travel: number; opacity?: number; lift?: number };
 const sequences: Record<Variant, { duration: number; count: number; resting: number; poses: Pose[] }> = {
-  runner: { duration: 8500, count: 14, resting: 0, poses: [
+  runner: { duration: 9380, count: 16, resting: 0, poses: [
     { at: 0, frame: 0, travel: 0 }, { at: 500, frame: 1, travel: .02 },
     { at: 680, frame: 2, travel: .06 }, { at: 860, frame: 3, travel: .1 },
     { at: 1040, frame: 4, travel: .14 }, { at: 1220, frame: 1, travel: .18 },
@@ -15,11 +15,14 @@ const sequences: Record<Variant, { duration: number; count: number; resting: num
     { at: 4150, frame: 9, travel: .48 }, { at: 4500, frame: 10, travel: .48 },
     { at: 4850, frame: 9, travel: .48 }, { at: 5200, frame: 10, travel: .48 },
     { at: 5550, frame: 11, travel: .48 },
-    { at: 6050, frame: 12, travel: .48 }, { at: 6290, frame: 13, travel: .42 },
-    { at: 6530, frame: 12, travel: .36 }, { at: 6770, frame: 13, travel: .3 },
-    { at: 7010, frame: 12, travel: .24 }, { at: 7250, frame: 13, travel: .18 },
-    { at: 7490, frame: 12, travel: .12 }, { at: 7730, frame: 13, travel: .06 },
-    { at: 7970, frame: 0, travel: 0 }, { at: 8500, frame: 0, travel: 0 },
+    // A brief look to the reader after recovery, then turn back before moving.
+    { at: 5750, frame: 14, travel: .48 }, { at: 5910, frame: 15, travel: .48 },
+    { at: 6590, frame: 14, travel: .48 }, { at: 6750, frame: 11, travel: .48 },
+    { at: 6930, frame: 12, travel: .48 }, { at: 7170, frame: 13, travel: .42 },
+    { at: 7410, frame: 12, travel: .36 }, { at: 7650, frame: 13, travel: .3 },
+    { at: 7890, frame: 12, travel: .24 }, { at: 8130, frame: 13, travel: .18 },
+    { at: 8370, frame: 12, travel: .12 }, { at: 8610, frame: 13, travel: .06 },
+    { at: 8850, frame: 0, travel: 0 }, { at: 9380, frame: 0, travel: 0 },
   ] },
   evening: { duration: 4300, count: 4, resting: 3, poses: [
     { at: 0, frame: 0, travel: 0 }, { at: 1200, frame: 1, travel: 0 },
@@ -63,7 +66,10 @@ export function initializeInkCharacters(labels: { pause: string; resume: string 
       const dusting = variant === 'runner' && (current.frame === 9 || current.frame === 10);
       const lift = (current.lift ?? 0) + ((next.lift ?? 0) - (current.lift ?? 0)) * fraction;
       pose.style.transform = `translate(${travel * runway}px, ${lift}px)`;
-      scene.dataset.beat = dusting ? 'dust-off' : variant === 'runner' && current.frame === 8 ? 'spring-up' : variant === 'runner' && current.frame >= 12 ? 'shuffle-back' : 'story';
+      scene.dataset.beat = dusting ? 'dust-off'
+        : variant === 'runner' && current.frame === 8 ? 'spring-up'
+        : variant === 'runner' && current.frame >= 14 ? 'viewer-glance'
+        : variant === 'runner' && current.frame >= 12 ? 'shuffle-back' : 'story';
       pose.style.opacity = String((current.opacity ?? 1) + ((next.opacity ?? 1) - (current.opacity ?? 1)) * fraction);
       scene.dataset.frame = String(current.frame);
     };
@@ -112,7 +118,8 @@ export function initializeInkCharacters(labels: { pause: string; resume: string 
     // No observer: retain the readable, server-rendered still rather than autoplay unseen.
     const preload = new Image();
     preload.onload = () => { ready = true; sync(); };
-    preload.src = `/illustrations/rob-ink/${variant === 'reader' ? 'evening' : variant}.webp`;
+    const artwork = variant === 'runner' ? 'runner-glance' : variant === 'reader' ? 'evening' : variant;
+    preload.src = `/illustrations/rob-ink/${artwork}.webp`;
     sync();
   });
 }
