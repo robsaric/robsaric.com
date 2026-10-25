@@ -3,25 +3,21 @@ import { UI } from '../data/ui';
 interface Props { id: string; }
 const { id } = Astro.props;
 ---
-<label class="appearance-control" for={id} data-appearance-control hidden>
-  <span>{UI.appearance.label}</span>
-  <select id={id} aria-label={UI.appearance.label} title={UI.appearance.help}>
-    <option value="auto">{UI.appearance.auto}</option>
-    <option value="day">{UI.appearance.day}</option>
-    <option value="night">{UI.appearance.night}</option>
-  </select>
-</label>
+<button id={id} class="appearance-control" type="button" role="switch" aria-checked="false" aria-label={UI.appearance.label} data-appearance-control hidden>
+  <span class="appearance-day" aria-hidden="true">{UI.appearance.day}</span>
+  <span class="appearance-track" aria-hidden="true"><span class="appearance-thumb"></span></span>
+  <span class="appearance-night" aria-hidden="true">{UI.appearance.night}</span>
+</button>
 <script>
   import { APPEARANCE_KEY, resolveAppearance } from '../lib/appearance.mjs';
-  const controls = [...document.querySelectorAll<HTMLElement>('[data-appearance-control]')];
+  const controls = [...document.querySelectorAll<HTMLButtonElement>('[data-appearance-control]')];
   const root = document.documentElement;
   const sync = () => controls.forEach(control => {
-    const select = control.querySelector('select');
-    if (select) select.value = root.dataset.appearancePreference ?? 'auto';
+    control.setAttribute('aria-checked', String(root.dataset.appearance === 'night'));
     control.hidden = false;
   });
-  controls.forEach(control => control.querySelector('select')?.addEventListener('change', event => {
-    const preference = (event.target as HTMLSelectElement).value;
+  controls.forEach(control => control.addEventListener('click', () => {
+    const preference = root.dataset.appearance === 'night' ? 'day' : 'night';
     root.dataset.appearancePreference = preference;
     root.dataset.appearance = resolveAppearance(preference, new Date().getHours());
     try { localStorage.setItem(APPEARANCE_KEY, preference); } catch { /* The choice still works for this page. */ }
@@ -41,6 +37,14 @@ const { id } = Astro.props;
   sync();
 </script>
 <style>
-.appearance-control { display: flex; align-items: center; gap: 10px; color: var(--ink-muted); font-size: 13px; }
-select { min-height: 44px; min-width: 88px; padding: 8px 26px 8px 10px; border: 1px solid var(--control-border); border-radius: 5px; background: var(--paper); color: var(--ink); font-size: 14px; cursor: pointer; }
+.appearance-control { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 6px 2px; border: 0; background: transparent; color: var(--ink-muted); font: inherit; font-size: 13px; cursor: pointer; }
+.appearance-control[hidden] { display: none; }
+.appearance-track { display: block; width: 36px; height: 22px; padding: 3px; border-radius: 20px; background: var(--ink); }
+.appearance-thumb { display: block; width: 16px; height: 16px; border-radius: 50%; background: var(--paper); transition: transform 160ms var(--ease-out); }
+.appearance-control[aria-checked="true"] .appearance-thumb { transform: translateX(14px); }
+.appearance-control[aria-checked="false"] .appearance-day,
+.appearance-control[aria-checked="true"] .appearance-night { color: var(--ink); font-weight: 600; }
+.appearance-control:hover .appearance-track { outline: 2px solid var(--control-border); outline-offset: 2px; }
+.appearance-control:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; border-radius: 4px; }
+@media (prefers-reduced-motion: reduce) { .appearance-thumb { transition: none; } }
 </style>

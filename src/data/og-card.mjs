@@ -21,7 +21,7 @@ export const OG_CARD = {
  */
 export const OG_SITE_CARD = {
   eyebrow: 'Founder. Dad. Builder.',
-  heading: 'Work is hard enough. The tools should help.',
+  heading: 'Work is hard enough. More effort isn’t always the answer.',
   author: 'Rob Saric',
   site: 'robsaric.com',
 };

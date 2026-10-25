@@ -1,5 +1,7 @@
 # What I’m building
 
+The page order and project hierarchy below are superseded by Q49–51 in [Homepage judgment and Building evidence](home-judgment-building-2026-10-23.md). Retained as the October 19 decision history.
+
 Confirmed by Rob on 2026-10-19 (Grill Q11–Q14). Mode: Persuade. Local review only.
 
 ## Decisions
