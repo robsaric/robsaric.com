@@ -1,13 +1,15 @@
 /** Approved personal positioning. Article bodies remain in their content collections. */
 export const EDITORIAL = {
   hero: {
-    identity: 'Founder · Writer · Ottawa',
+    identity: 'Founder of',
+    identityCompany: 'Caretrics',
+    identityContext: 'Writer · Ottawa',
     heading: 'Work is hard enough.',
     emphasis: 'More effort isn’t always the',
     markedWord: 'answer.',
-    lead: 'I’ve stayed with a business too long, convinced that working harder would make it work. I write about what I’m learning as a founder and a dad: choosing what deserves my time, using AI thoughtfully, and being present for the people I care about.',
+    lead: 'I’m building Caretrics to help small clinic teams understand what needs attention and what to do next. I write about building a business, where AI can take repetitive work off your hands, and making time for the people in our lives.',
     portraitAlt: 'Rob Saric in a blue blazer',
-    read: 'Start here',
+    read: 'Read my writing',
     work: 'What I’m building',
   },
   writing: {
