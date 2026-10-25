@@ -4,8 +4,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Arrow from '../components/Arrow.astro';
 import ReadingList from '../components/ReadingList.astro';
 import FeaturedEssay from '../components/FeaturedEssay.astro';
-import StartHereMark from '../components/StartHereMark.astro';
-import NightReader from '../components/NightReader.astro';
+import EditorialCharacter from '../components/EditorialCharacter.astro';
+
 import Connect from '../components/Connect.astro';
 import portrait from '../assets/images/rob-portrait.jpg';
 import hiking from '../assets/images/rob-hiking.jpg';
@@ -30,7 +30,7 @@ const personJsonLd = { '@context': 'https://schema.org', '@type': 'Person', name
         <Image class="hero-avatar" src={portrait} alt={E.hero.portraitAlt} width={72} height={72} widths={[72,144]} sizes="(max-width: 767px) 52px, 72px" loading="eager" fit="cover" />
         <p class="hero-lead">{E.hero.lead}</p>
       </div>
-      <div class="hero-actions"><a class="action" href="#start-here">{E.hero.read}<Arrow /></a><div class="hero-character"><div class="day-character"><StartHereMark /></div><div class="night-character"><NightReader /></div></div></div>
+      <div class="hero-actions"><a class="action" href="#start-here">{E.hero.read}<Arrow /></a><div class="hero-character"><div class="day-character"><EditorialCharacter variant="runner" /></div><div class="night-character"><EditorialCharacter variant="reader" /></div></div></div>
     </div>
   </section>
   <section id="start-here" class="writing wrap" aria-labelledby="writing-title">
@@ -63,7 +63,7 @@ const personJsonLd = { '@context': 'https://schema.org', '@type': 'Person', name
 .hero { padding-top: 48px; padding-bottom: 56px; }
 .hero-identity { color: var(--ink-muted); font-size: 14px; margin: 0 0 18px; }
 h1 { font-family: var(--font-editorial); font-weight: 400; margin: 0 0 28px; font-size: clamp(3.5rem, 7.2vw, 6rem); line-height: 1.04; letter-spacing: -.025em; text-wrap: initial; }
-h1 > span { display: block; }
+h1 > span { display: block; text-wrap: balance; }
 h1 em { font-weight: inherit; font-style: italic; }
 .hero-introduction { display: flex; align-items: center; gap: 22px; max-width: 780px; }
 .hero-avatar { display: block; flex: 0 0 72px; width: 72px; height: 72px; object-fit: cover; object-position: 50% 25%; border-radius: 50%; }

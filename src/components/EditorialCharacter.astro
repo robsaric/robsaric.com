@@ -1,0 +1,25 @@
+---
+import { UI } from '../data/ui';
+import '../styles/editorial-character.css';
+interface Props {
+  variant: 'runner' | 'evening' | 'reader' | 'wrong-turn';
+  still?: boolean;
+}
+const { variant, still = false } = Astro.props;
+const sheet = variant === 'reader' ? 'evening' : variant;
+const frames = sheet === 'runner' ? 8 : sheet === 'evening' ? 4 : 6;
+const resting = sheet === 'runner' ? 0 : sheet === 'evening' ? 3 : 2;
+---
+<div class:list={['ink-character', `ink-character--${variant}`]} data-ink-character={variant} data-still={still ? '' : undefined}>
+  <div class="ink-stage" aria-hidden="true">
+    <div class="ink-pose" style={`background-image:url('/illustrations/rob-ink/${sheet}.webp');background-size:${frames * 100}% 100%;background-position:${resting / (frames - 1) * 100}% 50%`} data-ink-pose></div>
+  </div>
+  {variant === 'runner' && <button class="ink-toggle" data-ink-toggle type="button" aria-label={UI.runner.pause} title={UI.runner.pause} hidden>
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path class="ink-pause" d="M5 3v10M11 3v10" stroke="currentColor" stroke-width="2"/><path class="ink-play" d="m5 3 8 5-8 5Z" fill="currentColor"/></svg>
+  </button>}
+</div>
+<script>
+  import { UI } from '../data/ui';
+  import { initializeInkCharacters } from '../lib/editorial-character';
+  initializeInkCharacters(UI.runner);
+</script>

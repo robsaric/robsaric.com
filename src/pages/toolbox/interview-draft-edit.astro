@@ -4,11 +4,11 @@ import Arrow from '../../components/Arrow.astro';
 import { TOOLBOX as T, INTERVIEW_YOUR_DRAFT as I } from '../../data/toolbox';
 ---
 
-<BaseLayout title={I.title} description={I.description}>
+<BaseLayout title={I.title} socialTitle={I.headline} description={I.description} ogImageAlt={I.headline}>
   <div class="wrap guide-page">
     <header class="guide-header">
       <a class="text-link back-link" href="/toolbox/">{T.title}</a>
-      <h1>{I.title}</h1>
+      <h1>{I.headline}</h1>
       <p class="guide-intro">{I.intro}</p>
       <p class="guide-format">{I.format}</p>
       <div class="guide-action">
@@ -24,7 +24,8 @@ import { TOOLBOX as T, INTERVIEW_YOUR_DRAFT as I } from '../../data/toolbox';
       </nav>
 
       <div class="guide-body">
-        <p class="opening">{I.opening}</p>
+        <p class="opening">{I.why}</p>
+        <p>{I.opening}</p>
 
         <section id="workflow" aria-labelledby="workflow-heading">
           <h2 id="workflow-heading">{I.workflow.heading}</h2>

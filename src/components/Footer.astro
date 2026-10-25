@@ -4,13 +4,13 @@ import { UI } from '../data/ui';
 import { EDITORIAL as E } from '../data/editorial';
 import Arrow from './Arrow.astro';
 import Wordmark from './Wordmark.astro';
-import CharacterMoment from './CharacterMoment.astro';
+import EditorialCharacter from './EditorialCharacter.astro';
 interface Props { quiet?: boolean; still?: boolean; }
 const { quiet = false, still = false } = Astro.props;
 ---
 <footer class:list={['site-footer', { quiet }]}>
   <div class="wrap">
-    <div class="footer-top"><Wordmark /><div class="footer-signoff"><CharacterMoment variant="evening" still={still} /><p>{E.footer.line}</p></div></div>
+    <div class="footer-top"><Wordmark /><div class="footer-signoff"><EditorialCharacter variant="evening" still={still} /><p>{E.footer.line}</p></div></div>
     <nav aria-label={UI.footer.navigationLabel}>
       <a href="/writing/">{E.writing.pageTitle}</a>
       <a href="/about/">{E.about.title}</a>

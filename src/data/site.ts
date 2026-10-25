@@ -5,9 +5,9 @@
  */
 export const SITE = {
   name: 'Rob Saric',
-  title: 'Rob Saric · Work is hard enough. The tools should help.',
+  title: 'Rob Saric · Work is hard enough. More effort isn’t always the answer.',
   description:
-    'Rob Saric on building useful tools for small teams, starting companies, and making room for life beyond the screen. Founder and dad in Ottawa.',
+    'Rob Saric on the decisions behind building a business: what’s worth building, where AI helps, and how to leave room for life outside work. Founder in Ottawa.',
   url: 'https://robsaric.com',
   locale: 'en',
   author: {

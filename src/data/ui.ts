@@ -2,7 +2,7 @@ export const UI = {
   editorialReview: 'Design preview · Local review copy.',
   meta: {
     titleSeparator: ' · ',
-    ogImageAlt: 'Rob Saric: Work is hard enough. The tools should help.',
+    ogImageAlt: 'Rob Saric: Work is hard enough. More effort isn’t always the answer.',
     pageOgImageAlt: (title: string) => `${title} · Rob Saric`,
     /** Alt for a note's generated share card; type is the note's own. */
     noteOgImageAlt: (type: string, title: string) => `${type}: ${title}`,
@@ -12,11 +12,10 @@ export const UI = {
   },
   skipLink: 'Skip to content',
   appearance: {
-    label: 'Appearance',
+    label: 'Night mode',
     day: 'Day',
     night: 'Night',
-    auto: 'Auto',
-    help: 'Auto follows your local time: day from 7 a.m. to 7 p.m. Your choice stays with you.',
+    help: 'Choose day or night. Your choice stays with you.',
   },
   writingThreads: {
     label: 'Explore the writing',

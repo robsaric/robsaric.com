@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { COPY } from '../data/copy';
 import { UI } from '../data/ui';
-import CharacterMoment from '../components/CharacterMoment.astro';
+import EditorialCharacter from '../components/EditorialCharacter.astro';
 ---
 
 <BaseLayout
@@ -12,7 +12,7 @@ import CharacterMoment from '../components/CharacterMoment.astro';
   footerStill
 >
   <div class="page">
-    <CharacterMoment variant="wrong-turn" />
+    <EditorialCharacter variant="wrong-turn" />
     <h1>{COPY.pages.notFound.title}</h1>
     <p>{COPY.pages.notFound.body}</p>
     <div class="page__links">
