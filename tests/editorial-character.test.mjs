@@ -45,16 +45,33 @@ test('quiet interval schedules a wake-up instead of drawing continually', () => 
     assert.equal([...f.timers.values()][0].ms,8000);
   } finally { f.close(); }
 });
-test('recovery holds three visible dust-off strokes before standing again', () => {
+test('recovery brushes three times, then shuffles back without fading or teleporting', () => {
   const f=setup(); try {
-    f.visible(true); f.frame(3000); assert.equal(f.scene.dataset.frame,'4');
-    for (const time of [4750,5550,6350]) {
+    f.visible(true); f.frame(2300); assert.equal(f.scene.dataset.frame,'6');
+    f.frame(2800); assert.equal(f.scene.dataset.frame,'7');
+    f.frame(3250); assert.equal(f.scene.dataset.beat,'spring-up');
+    f.frame(3430); assert.equal(f.scene.dataset.frame,'11');
+    for (const time of [3500,4200,4900]) {
       f.frame(time); assert.equal(f.scene.dataset.beat,'dust-off');
-      assert.ok(Number(f.pose.style['--dust-opacity']) > .6);
+      assert.equal(f.scene.dataset.frame,'9');
+      assert.equal(f.pose.style.opacity,'1');
+      f.frame(time+350); assert.equal(f.scene.dataset.frame,'10');
+    }
+    f.frame(5600); assert.equal(f.scene.dataset.frame,'11');
+    let previousX = Infinity;
+    const strides=[];
+    for (const time of [6100,6340,6580,6820,7060,7300,7540,7780]) {
+      f.frame(time); strides.push(f.scene.dataset.frame);
+      assert.equal(f.scene.dataset.beat,'shuffle-back');
+      const x = Number(f.pose.style.transform.match(/translate\(([-\d.]+)px/)[1]);
+      assert.ok(x < previousX); previousX=x;
       assert.equal(f.pose.style.opacity,'1');
     }
-    f.frame(6750); assert.equal(f.scene.dataset.frame,'7');
-    assert.equal(f.pose.style['--dust-opacity'],'0');
+    assert.deepEqual(strides,['12','13','12','13','12','13','12','13']);
+    f.frame(7970); assert.equal(f.scene.dataset.frame,'0');
+    assert.equal(f.pose.style.transform,'translate(0px, 0px)');
+    const restingTransform=f.pose.style.transform;
+    f.frame(8500); assert.equal(f.pose.style.transform,restingTransform);
   } finally { f.close(); }
 });
 test('hidden, offscreen and night-mode runner stops all scheduled work', () => {

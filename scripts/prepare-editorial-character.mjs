@@ -9,7 +9,7 @@ await mkdir(root, { recursive: true });
 if (!process.argv[2] || !process.argv[3]) throw new Error('Pass the source-sheet folder and the Newsreader TTF file.');
 const generated = resolve(process.argv[2]) + '/';
 const sheets = [
-  ['runner', 'exec-0b2f19f5-4cce-450b-9535-c270f700a62f.png', 4, 2],
+  ['runner', 'exec-1b8ef2ab-9238-4537-8a05-7b3ff630cd45.png', 4, 3],
   ['evening', 'exec-a05242fc-bd7f-4846-9105-0f9dfba543ef.png', 4, 1],
   ['wrong-turn', 'exec-8aa8c5e1-4466-48f0-b2a0-75312bdc6fca.png', 3, 2],
 ];
@@ -18,10 +18,25 @@ for (const [name, source, columns, rows] of sheets) {
   const { width, height } = await sharp(input).metadata();
   const cells = [];
   for (let y = 0; y < rows; y++) for (let x = 0; x < columns; x++) {
-    const left = Math.round(x * width / columns), top = Math.round(y * height / rows);
-    const w = Math.round((x + 1) * width / columns) - left;
-    const h = Math.round((y + 1) * height / rows) - top;
+    // The hand-drawn runner's rows are slightly uneven. Crop in the transparent
+    // gutters so the hop's head and the stumble's fingertips stay intact.
+    const xs = name === 'runner' ? [0, 362, 750, 1086, 1448] : Array.from({length: columns + 1}, (_, i) => Math.round(i * width / columns));
+    const ys = name === 'runner' ? [0, 380, 705, 1086] : Array.from({length: rows + 1}, (_, i) => Math.round(i * height / rows));
+    const left = xs[x], top = ys[y];
+    const w = xs[x + 1] - left, h = ys[y + 1] - top;
     cells.push(await sharp(input).extract({ left, top, width: w, height: h }).png().toBuffer());
+  }
+  if (name === 'runner') {
+    const recovery = generated + 'exec-837a9de9-6252-4809-8ebe-e870c638a57b.png';
+    for (const [column, frame] of [6, 8, 10].entries()) {
+      cells[frame] = await sharp(recovery).extract({ left: column * 724, top: 0, width: 724, height: 724 }).png().toBuffer();
+    }
+    const shuffle = generated + 'exec-c8f2aeb6-9343-4659-af50-f9766a45b76c.png';
+    const dimensions = await sharp(shuffle).metadata();
+    const half = dimensions.width / 2;
+    for (let column = 0; column < 2; column++) {
+      cells.push(await sharp(shuffle).extract({ left: column * half, top: 0, width: half, height: dimensions.height }).png().toBuffer());
+    }
   }
   // The evening sheet has generous transparent top/bottom margins. Use the
   // same crop for every cell so the chair stays registered between poses.

@@ -2,8 +2,7 @@
 .ink-stage { position: relative; width: 100%; height: 132px; overflow: hidden; pointer-events: none; }
 .ink-pose { position: absolute; bottom: 0; left: 0; width: min(128px, 100%); aspect-ratio: 1; background-repeat: no-repeat; }
 .ink-character--runner .ink-stage { width: calc(100% - 44px); }
-.ink-character--runner .ink-pose { transform-origin: 55% 92%; }
-.ink-character--runner .ink-pose::after { content: ''; position: absolute; left: 66%; top: 49%; width: 24px; height: 22px; background: radial-gradient(circle at 15% 25%, var(--ink) 0 1px, transparent 1.4px), radial-gradient(circle at 50% 55%, var(--ink) 0 1.3px, transparent 1.7px), radial-gradient(circle at 75% 15%, var(--ink) 0 1px, transparent 1.4px), radial-gradient(circle at 90% 85%, var(--ink) 0 1px, transparent 1.4px); opacity: var(--dust-opacity, 0); transform: translate(var(--dust-drift, 0), var(--dust-drift, 0)); }
+.ink-character--runner .ink-pose { transform-origin: 55% 92%; filter: grayscale(1); }
 .ink-character--runner .ink-stage::after { content: ''; position: absolute; width: 4px; height: 16px; left: 32px; bottom: 2px; background: var(--rule); transform: rotate(22deg); z-index: -1; }
 .ink-toggle { display: grid; place-items: center; flex: none; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 3px; background: transparent; color: var(--ink); cursor: pointer; touch-action: manipulation; }
 .ink-toggle[hidden] { display: none; }
@@ -22,6 +21,7 @@
 .ink-character--wrong-turn .ink-pose { width: 160px; height: 160px; left: 40px; }
 /* Keep the drawing's paper whites warm and comfortable in the night palette. */
 html[data-appearance='night'] .ink-pose { filter: sepia(.16) brightness(.9); }
+html[data-appearance='night'] .ink-character--runner .ink-pose { filter: grayscale(1) brightness(.9); }
 @media (max-width: 767.98px) {
   .ink-character--runner { width: 240px; }
   .ink-character--runner .ink-stage { height: 112px; }
