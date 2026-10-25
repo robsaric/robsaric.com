@@ -41,7 +41,7 @@ test('runner pauses and resumes without restarting its story', () => {
 });
 test('quiet interval schedules a wake-up instead of drawing continually', () => {
   const f=setup(); try {
-    f.visible(true); f.frame(8500); assert.equal(f.scene.dataset.state,'resting'); assert.equal(f.scheduled.size,0);
+    f.visible(true); f.frame(9380); assert.equal(f.scene.dataset.state,'resting'); assert.equal(f.scheduled.size,0);
     assert.equal([...f.timers.values()][0].ms,8000);
   } finally { f.close(); }
 });
@@ -60,7 +60,7 @@ test('recovery brushes three times, then shuffles back without fading or telepor
     f.frame(5600); assert.equal(f.scene.dataset.frame,'11');
     let previousX = Infinity;
     const strides=[];
-    for (const time of [6100,6340,6580,6820,7060,7300,7540,7780]) {
+    for (const time of [6980,7220,7460,7700,7940,8180,8420,8660]) {
       f.frame(time); strides.push(f.scene.dataset.frame);
       assert.equal(f.scene.dataset.beat,'shuffle-back');
       const x = Number(f.pose.style.transform.match(/translate\(([-\d.]+)px/)[1]);
@@ -68,10 +68,25 @@ test('recovery brushes three times, then shuffles back without fading or telepor
       assert.equal(f.pose.style.opacity,'1');
     }
     assert.deepEqual(strides,['12','13','12','13','12','13','12','13']);
-    f.frame(7970); assert.equal(f.scene.dataset.frame,'0');
+    f.frame(8850); assert.equal(f.scene.dataset.frame,'0');
     assert.equal(f.pose.style.transform,'translate(0px, 0px)');
     const restingTransform=f.pose.style.transform;
-    f.frame(8500); assert.equal(f.pose.style.transform,restingTransform);
+    f.frame(9380); assert.equal(f.pose.style.transform,restingTransform);
+  } finally { f.close(); }
+});
+test('viewer glance holds position and pauses before turning back into the shuffle', () => {
+  const f=setup(); try {
+    f.visible(true); f.frame(5600); const standing=f.pose.style.transform;
+    f.frame(5800); assert.equal(f.scene.dataset.frame,'14');
+    f.frame(6000); assert.equal(f.scene.dataset.frame,'15');
+    assert.equal(f.scene.dataset.beat,'viewer-glance');
+    assert.equal(f.pose.style.transform,standing);
+    f.click(); f.frame(9000); assert.equal(f.scene.dataset.frame,'15');
+    assert.equal(f.scheduled.size,0);
+    f.click(); f.frame(9500); assert.equal(f.scene.dataset.frame,'15');
+    f.frame(9620); assert.equal(f.scene.dataset.frame,'14');
+    f.frame(9800); assert.equal(f.scene.dataset.frame,'11');
+    f.frame(9980); assert.equal(f.scene.dataset.beat,'shuffle-back');
   } finally { f.close(); }
 });
 test('hidden, offscreen and night-mode runner stops all scheduled work', () => {

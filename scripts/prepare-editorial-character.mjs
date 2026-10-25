@@ -37,6 +37,11 @@ for (const [name, source, columns, rows] of sheets) {
     for (let column = 0; column < 2; column++) {
       cells.push(await sharp(shuffle).extract({ left: column * half, top: 0, width: half, height: dimensions.height }).png().toBuffer());
     }
+    // Registered head-turn poses: body height and baseline match the upright pose.
+    for (let column = 0; column < 2; column++) {
+      cells.push(await sharp('src/assets/illustrations/runner-glance.png')
+        .extract({ left: column * 256, top: 0, width: 256, height: 256 }).png().toBuffer());
+    }
   }
   // The evening sheet has generous transparent top/bottom margins. Use the
   // same crop for every cell so the chair stays registered between poses.
@@ -48,7 +53,7 @@ for (const [name, source, columns, rows] of sheets) {
   }));
   await sharp({ create: { width: size * cells.length, height: size, channels: 4, background: '#00000000' } })
     .composite(prepared.map((input, i) => ({ input, left: i * size, top: 0 })))
-    .webp({ quality: 84, alphaQuality: 100 }).toFile(resolve(root, name + '.webp'));
+    .webp({ quality: 84, alphaQuality: 100 }).toFile(resolve(root, (name === 'runner' ? 'runner-glance' : name) + '.webp'));
   console.log(`${name}: ${cells.length} frames, ${size}px cells`);
 }
 
