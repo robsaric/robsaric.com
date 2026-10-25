@@ -1,13 +1,25 @@
 type Variant = 'runner' | 'evening' | 'reader' | 'wrong-turn';
-type Pose = { at: number; frame: number; travel: number; opacity?: number };
+type Pose = { at: number; frame: number; travel: number; opacity?: number; lift?: number };
 const sequences: Record<Variant, { duration: number; count: number; resting: number; poses: Pose[] }> = {
-  runner: { duration: 8500, count: 8, resting: 0, poses: [
-    { at: 0, frame: 0, travel: 0 }, { at: 700, frame: 1, travel: .05 },
-    { at: 1100, frame: 2, travel: .2 }, { at: 1450, frame: 1, travel: .35 },
-    { at: 1800, frame: 2, travel: .5 }, { at: 2150, frame: 3, travel: .65 },
-    { at: 2600, frame: 4, travel: .72 }, { at: 3550, frame: 5, travel: .72 },
-    { at: 4350, frame: 6, travel: .72 }, { at: 6750, frame: 7, travel: .72 },
-    { at: 8050, frame: 7, travel: .72, opacity: 0 }, { at: 8500, frame: 0, travel: 0 },
+  runner: { duration: 8500, count: 14, resting: 0, poses: [
+    { at: 0, frame: 0, travel: 0 }, { at: 500, frame: 1, travel: .02 },
+    { at: 680, frame: 2, travel: .06 }, { at: 860, frame: 3, travel: .1 },
+    { at: 1040, frame: 4, travel: .14 }, { at: 1220, frame: 1, travel: .18 },
+    { at: 1400, frame: 2, travel: .22 }, { at: 1580, frame: 3, travel: .26 },
+    { at: 1760, frame: 4, travel: .3 }, { at: 1940, frame: 5, travel: .36 },
+    { at: 2220, frame: 6, travel: .42 }, { at: 2700, frame: 7, travel: .46 },
+    { at: 3040, frame: 8, travel: .48, lift: 0 },
+    { at: 3190, frame: 8, travel: .48, lift: -9 },
+    { at: 3410, frame: 11, travel: .48, lift: 0 },
+    { at: 3450, frame: 9, travel: .48 }, { at: 3800, frame: 10, travel: .48 },
+    { at: 4150, frame: 9, travel: .48 }, { at: 4500, frame: 10, travel: .48 },
+    { at: 4850, frame: 9, travel: .48 }, { at: 5200, frame: 10, travel: .48 },
+    { at: 5550, frame: 11, travel: .48 },
+    { at: 6050, frame: 12, travel: .48 }, { at: 6290, frame: 13, travel: .42 },
+    { at: 6530, frame: 12, travel: .36 }, { at: 6770, frame: 13, travel: .3 },
+    { at: 7010, frame: 12, travel: .24 }, { at: 7250, frame: 13, travel: .18 },
+    { at: 7490, frame: 12, travel: .12 }, { at: 7730, frame: 13, travel: .06 },
+    { at: 7970, frame: 0, travel: 0 }, { at: 8500, frame: 0, travel: 0 },
   ] },
   evening: { duration: 4300, count: 4, resting: 3, poses: [
     { at: 0, frame: 0, travel: 0 }, { at: 1200, frame: 1, travel: 0 },
@@ -47,21 +59,17 @@ export function initializeInkCharacters(labels: { pause: string; resume: string 
       const travel = current.travel + (next.travel - current.travel) * fraction;
       const runway = Math.max(0, stage.clientWidth - pose.clientWidth - (variant === 'wrong-turn' ? 40 : 0));
       pose.style.backgroundPosition = `${current.frame / (definition.count - 1) * 100}% 50%`;
-      // Give recovery its own beat: three deliberate brushes before standing tall.
-      const dusting = variant === 'runner' && current.frame === 6;
-      const brush = dusting ? ((time - current.at) % 800) / 800 : 0;
-      const stroke = Math.sin(brush * Math.PI * 2);
-      pose.style.transform = `translateX(${travel * runway}px)${dusting ? ` rotate(${stroke * 2}deg) translateY(${Math.abs(stroke) * 1.5}px)` : ''}`;
-      pose.style.setProperty('--dust-opacity', dusting ? String(Math.sin(brush * Math.PI) * .65) : '0');
-      pose.style.setProperty('--dust-drift', `${brush * 13}px`);
-      scene.dataset.beat = dusting ? 'dust-off' : 'story';
+      // Recovery ends upright; a backward shuffle returns to the same starting pose.
+      const dusting = variant === 'runner' && (current.frame === 9 || current.frame === 10);
+      const lift = (current.lift ?? 0) + ((next.lift ?? 0) - (current.lift ?? 0)) * fraction;
+      pose.style.transform = `translate(${travel * runway}px, ${lift}px)`;
+      scene.dataset.beat = dusting ? 'dust-off' : variant === 'runner' && current.frame === 8 ? 'spring-up' : variant === 'runner' && current.frame >= 12 ? 'shuffle-back' : 'story';
       pose.style.opacity = String((current.opacity ?? 1) + ((next.opacity ?? 1) - (current.opacity ?? 1)) * fraction);
       scene.dataset.frame = String(current.frame);
     };
     const rest = () => {
       pose.style.backgroundPosition = `${definition.resting / (definition.count - 1) * 100}% 50%`;
       pose.style.transform = ''; pose.style.opacity = '1';
-      pose.style.setProperty('--dust-opacity', '0');
       scene.dataset.frame = String(definition.resting);
     };
     const stop = () => {

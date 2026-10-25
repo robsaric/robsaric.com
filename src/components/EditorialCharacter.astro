@@ -7,7 +7,7 @@ interface Props {
 }
 const { variant, still = false } = Astro.props;
 const sheet = variant === 'reader' ? 'evening' : variant;
-const frames = sheet === 'runner' ? 8 : sheet === 'evening' ? 4 : 6;
+const frames = sheet === 'runner' ? 14 : sheet === 'evening' ? 4 : 6;
 const resting = sheet === 'runner' ? 0 : sheet === 'evening' ? 3 : 2;
 ---
 <div class:list={['ink-character', `ink-character--${variant}`]} data-ink-character={variant} data-still={still ? '' : undefined}>
