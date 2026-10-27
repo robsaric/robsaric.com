@@ -1,27 +1,63 @@
 ---
 title: "What should a dashboard do?"
-summary: "From numbers you show off to decisions you can act on. What I want from AI, and where I still want a person involved."
-description: "Rob Saric on dashboards that help you understand a change and decide what to do, with familiar screens, useful AI and people still involved."
+summary: "A dashboard should remember what you decided, help you follow through and give you something to learn from at the next review."
+description: "Rob Saric on dashboards that help small teams review evidence, decide what to do, follow through and improve their routines, with AI and human judgment."
 type: "Field note"
 date: 2026-10-19
-updated: 2026-10-22
+updated: 2026-10-26
 tags: ["AI and trust", "Founder notes"]
 stage: -1
 draft: false
 ---
 
-I remember creating a financial dashboard for a plastic surgery clinic. It became a tool for the owners to share with their buddies.
+import ReviewLoopDiagram from '../../components/ReviewLoopDiagram.astro';
 
-Even when dashboards helped highlight problems, you still had to go and figure out how to solve them. Now it’s less about, “Here’s the problem.” It’s more about, “Do you understand what’s happening? Here are the ways to fix it.”
+I remember creating a financial dashboard for a plastic surgery clinic. It became something the owners shared with their buddies. The numbers gave them plenty to talk about, but the dashboard wasn’t doing much to help them run the clinic.
 
-[Attio](https://attio.com/architecture) describes connecting context with action. [Sequoia](https://sequoiacap.com/article/services-the-new-software) argues for selling work rather than tools. But getting there takes more than generating another screen. With AI, you can generate pretty much any UI, any dashboard with almost no friction. That makes it easy to skip customer discovery: what does someone actually need to do?
+That experience has stayed with me. A dashboard can look impressive and accurately describe a business while leaving you with all the work of figuring out what to do next.
+
+I think we should expect more from it now. But I don’t think the answer is to replace every chart with a chat box.
+
+Take a monthly review of accounts receivable. You want to see what’s outstanding, how long it has been sitting and whether anything has changed. A familiar chart is useful here. You shouldn’t have to start a conversation with AI just to get the same overview you need every month.
+
+The more interesting question is what happens after you notice something.
 
 <span id="what-id-change" aria-hidden="true"></span>
 
-Take a monthly review of accounts receivable. I prefer a chart or a familiar screen for a routine like this. You need evidence. You need to quickly see if anything has changed, dive deeper into it, and decide how you should tweak your operating procedures. A conversation with your data could help you investigate. The chart still gives you a familiar place to start.
+## From seeing a change to making a decision
 
-For me, you don’t just have a conversational interface. You’ll have different ways to do the work. Meeting people where they’re at means designing for where their organization is, and where they are when it comes to technology adoption.
+Suppose more invoices are overdue than last month. That tells you where to look. It doesn’t tell you why. Perhaps the clinic was busier. Perhaps payments haven’t been recorded yet. Perhaps follow-up has slipped. Those explanations call for different responses.
 
-It also means knowing where automation should stop. One of the biggest things I encourage is a personal follow-up after a person comes for treatment. Someone at the front desk, a care coordinator, should call them and ask how the treatment was. That relationship matters. I don’t want to hand it to an automated caller.
+This is where I want AI to help: bring together the relevant records, show me what’s changed and let me ask questions without rebuilding the report each time. I should be able to check the evidence behind an answer, including how current it is. If the information is missing, I want to know that too.
 
-So before choosing what to automate, ask: where is your bottleneck, and where do you need to be involved? Sophistication is in the simplicity of getting from A to B.
+Once you understand the situation, you can decide what to do. Some invoices may need a follow-up. Others may need a correction or a conversation with someone who understands the history. You might decide to wait.
+
+The software should help you make that distinction and carry the decision forward. Who owns the next step? What have they already tried? When should they check again?
+
+Those are ordinary questions. But when the answers live in someone’s memory, an email thread or a separate spreadsheet, the team has to piece the situation together again every time.
+
+## What happens at the next review?
+
+When you return a month later, the dashboard should remember what you decided.
+
+You should be able to see which follow-ups happened, which are still waiting and where something went wrong. If an automated step failed, it should be clear what remains unfinished. You shouldn’t have to discover the failure by noticing that nothing changed.
+
+Then comes the question that matters: did your response help?
+
+A reminder being sent is different from an invoice being paid. Even if payment arrives, you can’t assume the reminder caused it. Still, keeping the action and the result together gives you something useful to review.
+
+Perhaps the same missing information keeps delaying payment. Chasing each invoice may be necessary, but you also have a reason to examine how that information gets collected in the first place. The next improvement could be a clearer intake step, a different handoff or a better weekly routine.
+
+<ReviewLoopDiagram alt="See what changed, decide what to do, do the work, and review what happened. Use what you learn to improve the routine, then repeat." />
+
+## Where AI fits
+
+[Attio connects context with actions](https://attio.com/architecture); [Sequoia argues for selling completed work](https://sequoiacap.com/article/services-the-new-software). Both raise the question of what people still need to decide.
+
+An agent can prepare the next step. That doesn’t mean it should make every decision or take over every conversation. Nor does a longer list of AI recommendations help if nobody has time to assess them.
+
+This shift has changed how I think about Caretrics. We started with the problem of manual reporting. Understanding the data mattered, but the questions went further: what needs attention, what should we do, and how do we make this easier next month?
+
+The dashboard I want brings those questions together. A chart when you need an overview. A conversation when you need to investigate. A clear next step when you’re ready to act. And a record you can return to.
+
+*What you learn from doing the work should help you improve how the work gets done.*

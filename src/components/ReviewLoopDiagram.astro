@@ -1,0 +1,16 @@
+---
+interface Props { alt: string }
+const { alt } = Astro.props;
+---
+<figure class="article-review-loop">
+  <picture>
+    <source media="(max-width: 600px)" srcset="/illustrations/dashboard-review-loop-mobile.svg" width="600" height="980" />
+    <img src="/illustrations/dashboard-review-loop.svg" width="1600" height="1000" alt={alt} loading="lazy" decoding="async" />
+  </picture>
+</figure>
+<style>
+  .article-review-loop { margin: 2em 0; }
+  .article-review-loop picture { display: block; }
+  .article-review-loop img { display: block; width: 100%; height: auto; aspect-ratio: 8 / 5; border: 1px solid var(--rule); border-radius: 4px; }
+  @media (max-width: 600px) { .article-review-loop img { aspect-ratio: 30 / 49; } }
+</style>
