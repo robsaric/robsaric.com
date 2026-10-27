@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Arrow from '../../components/Arrow.astro';
 import { TOOLBOX_INSTALLATION as S } from '../../data/toolbox-installation';
 import { TOOLBOX as T } from '../../data/toolbox';
+import { VALUE_STREAM as V } from '../../data/value-stream-mapping';
 ---
 
 <BaseLayout title={T.title} description={T.description}>
@@ -40,6 +41,10 @@ import { TOOLBOX as T } from '../../data/toolbox';
       <article class="dashboard-resource">
         <div><h3><a href={T.dashboard.href}>{T.dashboard.title}</a></h3><p class="resource-category">{T.dashboard.category}</p><p class="resource-kind">{T.dashboard.kind}</p></div>
         <div><p class="feature-description">{T.dashboard.description}</p><p class="feature-detail">{T.dashboard.detail}</p><p class="resource-kind">{T.dashboard.inputs}</p><div class="feature-actions"><a class="action" href={T.dashboard.href}>{T.dashboard.action}<Arrow /></a></div></div>
+      </article>
+      <article class="dashboard-resource">
+        <div><h3><a href="/toolbox/value-stream-mapping/">{V.title}</a></h3><p class="resource-category">{V.category}</p><p class="resource-kind">{V.formats}</p></div>
+        <div><p class="feature-description">{V.promise}</p><p class="feature-detail">{V.intro}</p><div class="feature-actions"><a class="action" href="/toolbox/value-stream-mapping/">{V.start}<Arrow /></a></div></div>
       </article>
     </section>
 

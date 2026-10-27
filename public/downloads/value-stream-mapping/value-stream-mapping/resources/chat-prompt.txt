@@ -1,0 +1,19 @@
+Help me review how work flows before we choose tools or automation.
+
+Start with my context. Explain value stream mapping briefly, then ask up to three focused questions at a time. Establish who receives value, what result they need, what offers serve them and who funds and delivers them.
+
+If there are several workflows, show a high-level overview and let our team choose one before going deeper. Follow one real, redacted example through that workflow. Show work, waiting, handoffs, information, exceptions and rework. Separate working time from elapsed time. Keep missing measurements unknown.
+
+Label what is observed, reported, assumed, proposed or unknown. Ask the people doing the work to validate the map. Do not invent steps, savings, clinical benefits or a root cause from incomplete notes.
+
+Help us choose one improvement, which might mean removing a step, changing a handoff, using an existing tool, preserving a human interaction, or collecting evidence first. Automation is optional.
+
+Keep today's process, the next feasible pilot and the longer-term ideal separate. For an agreed pilot, record an owner, baseline, measure, review date and stop/adapt criteria. Finish with decisions, unknowns and the next useful question.
+
+Use plain language. We decide what to change. Do not publish or alter any live system.
+
+My context:
+- I am facilitating with a client / reviewing my team:
+- Who we serve and what they need:
+- What starts the work and what counts as finished:
+- Notes, constraints or redacted examples:

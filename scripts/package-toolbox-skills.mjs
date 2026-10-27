@@ -5,6 +5,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 // Explicit public inventory: never scan internal agent folders into a release.
 export const SKILLS = [
+  { name: 'value-stream-mapping', files: ['SKILL.md', 'agents/openai.yaml', 'resources/chat-prompt.txt', 'resources/measurement.md', 'resources/templates.md', 'resources/installation.md'] },
   { name: 'dashboard-test', files: ['SKILL.md', 'agents/openai.yaml', 'resources/chat-prompt.txt', 'resources/checklist.md'] },
   { name: 'interview-draft-edit', files: ['SKILL.md', 'resources/chat-prompt.txt', 'resources/voice-profile.md'], aliases: ['interview-your-draft'] },
 ];
@@ -64,9 +65,25 @@ export function expectedDownloads(root = ROOT) {
   const license = readSource(root, 'skills/LICENSE');
   const instructions = readSource(root, 'skills/README.md');
   outputs.set('public/downloads/toolbox-skills.md', Buffer.from(instructions.toString().replaceAll('](dashboard-test/SKILL.md)', '](https://github.com/robsaric/robsaric.com/blob/main/skills/dashboard-test/SKILL.md)').replaceAll('](interview-draft-edit/SKILL.md)', '](https://github.com/robsaric/robsaric.com/blob/main/skills/interview-draft-edit/SKILL.md)').replace('see LICENSE.', 'see https://github.com/robsaric/robsaric.com/blob/main/skills/LICENSE.')));
+  const readme = outputs.get('public/downloads/toolbox-skills.md').toString();
+  outputs.set('public/downloads/toolbox-skills.md', Buffer.from(readme.replaceAll('](value-stream-mapping/SKILL.md)', '](https://github.com/robsaric/robsaric.com/blob/main/skills/value-stream-mapping/SKILL.md)')));
   for (const skill of SKILLS) {
     const source = new Map(skill.files.map(file => [file, readSource(root, `skills/${skill.name}/${file}`)]));
     source.set('LICENSE', license);
+    if (skill.name === 'value-stream-mapping') {
+      const starter = Buffer.from('# Start here: Value Stream Mapping\n\nAttach this file to a chat with your redacted context. Ask the AI to use this guide and begin with questions. This file contains the full method and templates; no local links need to be opened.\n\n'
+        + ['SKILL.md', 'resources/measurement.md', 'resources/templates.md'].map(file => source.get(file).toString().replace(/^---\n[\s\S]*?\n---\n/, '')).join('\n\n')
+        + '\n\n# Begin the conversation\n\n' + source.get('resources/chat-prompt.txt').toString());
+      const kit = new Map([
+        ['value-stream-mapping-kit/START-HERE.md', starter],
+        ['value-stream-mapping-kit/INSTALL.md', source.get('resources/installation.md')],
+        ['value-stream-mapping-kit/TEMPLATES.md', source.get('resources/templates.md')],
+        ['value-stream-mapping-kit/LICENSE', license],
+        ['value-stream-mapping-kit/value-stream-mapping.zip', zip(new Map([...source].map(([file, bytes]) => [skill.name + '/' + file, bytes])))],
+      ]);
+      outputs.set('public/downloads/value-stream-mapping/START-HERE.md', starter);
+      outputs.set('public/downloads/value-stream-mapping/value-stream-mapping-kit.zip', zip(kit));
+    }
     for (const route of [skill.name, ...(skill.aliases ?? [])]) {
       const base = `public/downloads/${route}`;
       const archive = new Map();

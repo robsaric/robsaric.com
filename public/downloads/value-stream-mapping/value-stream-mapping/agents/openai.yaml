@@ -1,0 +1,4 @@
+interface:
+  display_name: "Value Stream Mapping"
+  short_description: "Map how work flows and choose what to improve."
+  default_prompt: "Use $value-stream-mapping to help me review how work flows. Start with the context I provide and ask about what is missing."

@@ -6,10 +6,11 @@ accounts or make changes on your behalf.
 
 | Skill | Bring | Get | Guide |
 | --- | --- | --- | --- |
+| [Value Stream Mapping](https://github.com/robsaric/robsaric.com/blob/main/skills/value-stream-mapping/SKILL.md) | A process description, offers and audiences | A provisional map, evidence gaps and a team-chosen improvement to test. Separate current, next pilot and longer-term ideal views. | [Read the guide](https://robsaric.com/toolbox/value-stream-mapping/) |
 | [The Dashboard Test](https://github.com/robsaric/robsaric.com/blob/main/skills/dashboard-test/SKILL.md) | A redacted screenshot or description, the reader and their question | A provisional verdict, one main gap and one practical improvement. Keeping it or using no dashboard are valid outcomes. | [Read the guide](https://robsaric.com/toolbox/dashboard-test/) |
 | [Interview, Draft, Edit](https://github.com/robsaric/robsaric.com/blob/main/skills/interview-draft-edit/SKILL.md) | An idea, rough draft or spoken concept | Questions before a draft, your answers as the substance, and suggestions marked for your final edit. | [Read the guide](https://robsaric.com/toolbox/interview-draft-edit/) |
 
-Neither skill requires another skill, a knowledge graph or connected accounts.
+These skills require no other skill, knowledge graph or connected accounts.
 Writing samples and the voice template are optional. For a dashboard review,
 source dates and an example of what happens next help, but you can start without them.
 Use redacted material. A skill is guidance to an AI tool, not a guarantee of accuracy.
@@ -79,7 +80,7 @@ happened. Keep client records and personal information out of public issues.
 
 ## Maintaining this collection
 
-Edit the two folders in skills/. The resources folders hold the source prompts,
+Edit the named folders in skills/. The resources folders hold the source prompts,
 checklist and voice template. The website imports the prompt from that source.
 The public/downloads copies and ZIPs are generated; do not edit them directly.
 
@@ -94,7 +95,7 @@ changes cannot silently leave stale committed downloads. Existing download URLs,
 including interview-your-draft, remain available and deliver the current skill.
 The package inventory is explicit; internal project skills are not included.
 
-Before a release, validate both packages and try the skills on realistic cases.
+Before a release, validate the packages and try changed skills on realistic cases.
 Record the tool/version, input, observed response and any limits. Packaging tests
 alone do not establish that a model follows the method.
 
