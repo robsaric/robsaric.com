@@ -1,4 +1,4 @@
-import chatPrompt from '../../public/downloads/interview-draft-edit/chat-prompt.txt?raw';
+import chatPrompt from '../../skills/interview-draft-edit/resources/chat-prompt.txt?raw';
 import { INTERVIEW_METHOD } from './interview-method.mjs';
 
 const interviewTitle = 'Interview, Draft, Edit';
@@ -16,14 +16,15 @@ export const TOOLBOX = {
   explanation: 'Workflows to try, files to make your own, and tools worth understanding. Start with the job you want to do.',
   navigationLabel: 'Browse the Toolbox',
   sections: [
-    { href: '#workflows', label: 'Writing workflow' },
+    { href: '#workflows', label: 'Guides & skills' },
     { href: '#downloads', label: 'Downloads' },
     { href: '#tools', label: 'Tools & libraries' },
   ],
-  workflowHeading: 'Writing workflow',
+  workflowHeading: 'Guides & skills',
   feature: {
     title: interviewTitle,
-    kind: 'AI skill · Free',
+    category: 'Write & communicate',
+    kind: 'Guide · Prompt · Skill',
     description: 'Use AI to organize your thoughts. Keep your voice.',
     detail: 'Start with what you want to say. AI asks questions to help you work through it, then organizes your answers into a draft. You make the final edit.',
     href: INTERVIEW_METHOD.path,
@@ -37,23 +38,34 @@ export const TOOLBOX = {
       { title: 'You edit', body: 'You check the facts, change the wording and decide what to publish.' },
     ],
   },
+  dashboard: {
+    title: 'The Dashboard Test',
+    category: 'Review & decide',
+    kind: 'Checklist · Prompt · Skill',
+    description: 'Does your dashboard help you decide what to do?',
+    detail: 'Review one real decision. Find the main gap, choose one improvement, or decide you do not need a dashboard.',
+    href: '/toolbox/dashboard-test/',
+    action: 'Start the review',
+    inputs: 'Bring a screenshot or description and the question you need to answer. No other skills required.',
+  },
   downloads: {
     heading: 'Downloads',
-    intro: 'Two ways to get started with the writing method. No signup required.',
+    intro: 'Start a conversation or work through a checklist yourself. No signup required.',
     action: 'Download',
     items: [
+      { title: 'The Dashboard Test', format: 'Markdown checklist', description: 'Review who it serves, what it helps them decide and whether a smaller alternative would do.', href: '/downloads/dashboard-test/checklist.md' },
       { title: 'The interview prompt', format: 'Plain text', description: 'Paste it into a chat, then write or dictate your idea. Nothing to install.', href: promptDownload },
       { title: 'Your writing voice', format: 'Markdown template', description: 'Describe how you write, add a few approved samples and say what to avoid.', href: profileDownload },
     ],
   },
   resources: {
     heading: 'Tools & libraries',
-    intro: 'Places to run this workflow or learn how skills work. These are links to the makers’ documentation and repositories, not hands-on product reviews.',
+    intro: 'Places to run these workflows or learn how skills work. These are links to the makers’ documentation and repositories, not hands-on product reviews.',
     useLabel: 'Use it for',
     limitLabel: 'Keep in mind',
     items: [
-      { title: 'Claude', kind: 'Product', use: 'Run the interview in a chat. Upload the skill when you want to use it again.', limit: 'Custom skills need Code execution and file creation enabled.', href: 'https://support.claude.com/en/articles/12512180-use-skills-in-claude', action: 'Read the setup' },
-      { title: 'Codex', kind: 'Product', use: 'Use the writing skill in a project alongside your draft and reference files.', limit: 'For a quick conversation, the copyable prompt is a simpler starting point.', href: 'https://learn.chatgpt.com/docs/build-skills', action: 'Read the setup' },
+      { title: 'Claude', kind: 'Product', use: 'Try a workflow in a chat. Upload its skill when you want to use it again.', limit: 'Custom skills need Code execution and file creation enabled.', href: 'https://support.claude.com/en/articles/12512180-use-skills-in-claude', action: 'Read the setup' },
+      { title: 'Codex', kind: 'Product', use: 'Use a skill in a project alongside your draft, screenshot or reference files.', limit: 'For a quick conversation, the copyable prompt is a simpler starting point.', href: 'https://learn.chatgpt.com/docs/build-skills', action: 'Read the setup' },
       { title: 'Anthropic’s skill library', kind: 'GitHub library', use: 'See how reusable skills are written and organised, with working examples.', limit: 'The examples are for learning. Adapt and test them for your own task.', href: 'https://github.com/anthropics/skills', action: 'View the library' },
       { title: 'Vercel’s skills CLI', kind: 'GitHub tool', use: 'Install selected skills from a repository into Claude Code or Codex.', limit: 'This uses the terminal. You don’t need it to use the prompt or ZIP here.', href: 'https://github.com/vercel-labs/skills', action: 'View the tool' },
     ],
@@ -62,6 +74,8 @@ export const TOOLBOX = {
 
 export const INTERVIEW_YOUR_DRAFT = {
   title: interviewTitle,
+  category: 'Write & communicate',
+  formats: 'Guide · Prompt · Skill',
   headline: INTERVIEW_METHOD.headline,
   skillNameLabel: 'Skill name:',
   skillName: skillId,
@@ -83,6 +97,11 @@ export const INTERVIEW_YOUR_DRAFT = {
   workflow: {
     heading: 'How it works.',
     setup: 'Bring an idea, a rough draft or a spoken explanation. Know who you want to reach and what you want them to take away. A few samples of writing you still stand behind can help with the voice.',
+    inputs: [
+      { label: 'Bring this', body: 'An idea, rough draft or spoken explanation. Say who you want to reach and what you want them to take away. If that is unclear, start there.' },
+      { label: 'Helpful, not required', body: 'A few approved writing samples or a completed voice template. No other skills or knowledge library required.' },
+      { label: 'What you’ll leave with', body: 'A draft built from your answers, with AI additions marked for your review. You check the facts and make the final edit.' },
+    ],
     steps: [
       { title: 'You write or speak the starting idea.', body: 'Use your own words, even if the order is wrong. A paragraph or a spoken explanation is enough. Use your chat tool’s dictation, or paste a transcript. You don’t need to turn it into a finished draft first.' },
       { title: 'AI asks questions.', body: 'Ask it to read what you’ve shared and find the gaps. What actually happened? What do you believe? What connects these two thoughts? One question at a time gives you room to think.' },

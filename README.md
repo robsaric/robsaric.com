@@ -10,6 +10,14 @@ Rob Saric's personal site and field notes. Astro 7, static output with on-demand
 - Old site and redirects: `docs/MIGRATION.md`
 - Agent rules: `AGENTS.md`
 
+## Public Toolbox skills
+
+The reusable public workflows live in [skills/](skills/README.md). Edit those
+sources, then run `pnpm skills:build`. The website downloads are generated,
+including compatibility downloads at older URLs. `pnpm skills:check` detects drift.
+Only the skill instructions and resources are MIT licensed; other site materials
+are outside that licence.
+
 ## Run
 
 ```

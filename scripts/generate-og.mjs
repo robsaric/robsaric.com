@@ -14,6 +14,7 @@ import { renderCard, renderSiteCard, renderReviewLoopCard, renderInterviewCard, 
 import { INTERVIEW_METHOD } from '../src/data/interview-method.mjs';
 import { OG_CARD, OG_SITE_CARD, OG_EDITORIAL } from '../src/data/og-card.mjs';
 import { socialImagePath } from '../src/lib/social.mjs';
+import { renderToolboxSocial } from './toolbox-social-template.mjs';
 
 const ROOT=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const DIST=join(ROOT,'dist/client');
@@ -46,6 +47,13 @@ if (!selectedRoutes.length || selectedRoutes.includes(INTERVIEW_METHOD.path)) ca
  width:1080,height:1350,
  html:renderInterviewMethodCard({...OG_CARD,fontCss}),
 });
+for (const [kind, file] of [['dashboard','dashboard-test'], ['interview','interview-draft-edit-overview']]) {
+ const path=`/social/${file}.png`;
+ if (!selectedRoutes.length || selectedRoutes.includes(path)) cards.push({
+  path, out:join(ROOT,'public',path), width:1080,height:1350,
+  html:renderToolboxSocial({kind,fontCss,diagramCss:readFileSync(join(ROOT,'src/styles/toolbox-diagram.css'),'utf8')}),
+ });
+}
 const pages=new Map(cards.map((card,i)=>['/card/'+i,card.html]));
 const special={'/tokens.css':'src/styles/tokens.css','/site-photo.png':'src/assets/images/rob-portrait.jpg','/hiking-photo.png':'src/assets/images/rob-hiking.jpg'};
 const server=createServer((req,res)=>{

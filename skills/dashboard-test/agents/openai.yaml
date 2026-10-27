@@ -1,0 +1,4 @@
+interface:
+  display_name: "The Dashboard Test"
+  short_description: "Check whether a dashboard helps a real decision"
+  default_prompt: "Use $dashboard-test to review this dashboard with me, find the main gap and suggest one improvement, including whether I need a dashboard at all."
