@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Arrow from '../../components/Arrow.astro';
+import ToolboxDiagram from '../../components/ToolboxDiagram.astro';
+import ToolboxSkillSource from '../../components/ToolboxSkillSource.astro';
 import { TOOLBOX as T, INTERVIEW_YOUR_DRAFT as I } from '../../data/toolbox';
 ---
 
@@ -9,6 +11,7 @@ import { TOOLBOX as T, INTERVIEW_YOUR_DRAFT as I } from '../../data/toolbox';
     <header class="guide-header">
       <a class="text-link back-link" href="/toolbox/">{T.title}</a>
       <h1>{I.headline}</h1>
+      <p class="guide-kind"><strong>{I.category}</strong><span>{I.formats}</span></p>
       <p class="guide-intro">{I.intro}</p>
       <p class="guide-format">{I.format}</p>
       <div class="guide-action">
@@ -29,7 +32,8 @@ import { TOOLBOX as T, INTERVIEW_YOUR_DRAFT as I } from '../../data/toolbox';
 
         <section id="workflow" aria-labelledby="workflow-heading">
           <h2 id="workflow-heading">{I.workflow.heading}</h2>
-          <p>{I.workflow.setup}</p>
+          <ToolboxDiagram kind="interview" />
+          <dl class="guide-inputs">{I.workflow.inputs.map(item => <div><dt>{item.label}</dt><dd>{item.body}</dd></div>)}</dl>
           <ol class="workflow-steps">
             {I.workflow.steps.map(step => <li><h3>{step.title}</h3><p>{step.body}</p></li>)}
           </ol>
@@ -63,6 +67,7 @@ import { TOOLBOX as T, INTERVIEW_YOUR_DRAFT as I } from '../../data/toolbox';
           <div class="download-references">
             <a href={I.downloads.sourceHref}>{I.downloads.source}</a>
           </div>
+          <ToolboxSkillSource name="interview-draft-edit" />
           <h3>{I.downloads.setupHeading}</h3>
           <div class="skill-setups">
             {I.downloads.setups.map(setup => <details>
@@ -150,6 +155,12 @@ import { TOOLBOX as T, INTERVIEW_YOUR_DRAFT as I } from '../../data/toolbox';
 </script>
 
 <style>
+  .guide-kind { display: flex; flex-wrap: wrap; gap: 4px 20px; color: var(--ink-muted); font: 14px/1.6 var(--font-sans); margin: 0 0 24px; }
+  .guide-kind strong { color: var(--ink); font-weight: 600; }
+  .guide-inputs { margin: 24px 0 36px; }
+  .guide-inputs div + div { margin-top: 20px; }
+  .guide-inputs dt { font: 600 14px/1.6 var(--font-sans); margin-bottom: 6px; }
+  .guide-inputs dd { margin: 0; font-size: 17px; line-height: 1.7; }
   .guide-page { padding-block: 28px 96px; }
   .guide-header { max-width: 980px; padding-bottom: 52px; }
   .back-link { color: var(--ink-muted); margin-bottom: 22px; }

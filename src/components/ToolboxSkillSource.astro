@@ -1,0 +1,21 @@
+---
+import { TOOLBOX_INSTALLATION as S } from '../data/toolbox-installation';
+interface Props { name: 'dashboard-test' | 'interview-draft-edit' }
+const { name } = Astro.props;
+---
+<details class="skill-source">
+  <summary>{S.heading}</summary>
+  <div>
+    <p>{S.intro}</p>
+    <p><a href={S.repo + '/' + name} target="_blank" rel="noopener noreferrer">{S.source}</a></p>
+    <p><a href={S.instructionsHref}>{S.instructions}</a></p>
+    <p>{S.updates}</p>
+  </div>
+</details>
+<style>
+  .skill-source { border-block: 1px solid var(--rule); margin-top: 24px; }
+  summary { min-height: 44px; padding: 14px 0; cursor: pointer; font: 600 16px/1.5 var(--font-sans); }
+  .skill-source div { padding: 4px 0 12px; }
+  .skill-source p { font: 16px/1.65 var(--font-sans); margin: 0 0 12px; }
+  a { overflow-wrap: anywhere; text-underline-offset: 4px; }
+</style>

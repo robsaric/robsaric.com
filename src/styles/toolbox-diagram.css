@@ -1,0 +1,22 @@
+.toolbox-diagram { margin: 28px 0 36px; padding: clamp(20px, 4vw, 36px); background: var(--paper-inset); color: var(--ink); }
+.toolbox-diagram figcaption { font: 400 clamp(1.5rem, 3vw, 2rem)/1.2 var(--font-display); margin-bottom: 28px; }
+.toolbox-diagram .toolbox-flow-arrow { display: block; width: 26px; height: 26px; flex-shrink: 0; color: var(--ink-muted); }
+.toolbox-review { display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
+.toolbox-review p { margin: 0; font: 400 18px/1.5 var(--font-sans); max-width: 30ch; }
+.toolbox-review .toolbox-review-question { font-weight: 600; }
+.toolbox-review > .toolbox-flow-arrow { transform: rotate(90deg); }
+.toolbox-review-outcomes { display: grid; grid-template-columns: 1fr 1fr 1.5fr; list-style: none; margin: 0; padding: 0; width: 100%; border-top: 1px solid var(--rule); }
+.toolbox-review-outcomes li { font: 600 17px/1.5 var(--font-sans); padding: 18px 8px 0; }
+.toolbox-review-outcomes li + li { border-left: 1px solid var(--rule); }
+.toolbox-diagram .toolbox-diagram-note { margin: 28px 0 0; font: 400 14px/1.6 var(--font-sans); color: var(--ink-muted); }
+.toolbox-writing { display: flex; list-style: none; padding: 0; margin: 0; gap: 12px; }
+.toolbox-writing li { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex: 1; font: 600 17px/1.4 var(--font-sans); }
+.toolbox-writing li:last-child { flex: .7; }
+@media (max-width: 600px) {
+  .toolbox-writing { flex-direction: column; gap: 16px; }
+  .toolbox-writing li { justify-content: flex-start; flex-direction: column; align-items: flex-start; gap: 16px; }
+  .toolbox-writing .toolbox-flow-arrow { transform: rotate(90deg); }
+  .toolbox-review-outcomes { grid-template-columns: 1fr; }
+  .toolbox-review-outcomes li { padding: 12px 0; }
+  .toolbox-review-outcomes li + li { border-left: 0; border-top: 1px solid var(--rule); }
+}

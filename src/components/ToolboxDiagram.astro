@@ -1,0 +1,7 @@
+---
+import { renderToolboxDiagram } from '../lib/toolbox-diagram.mjs';
+import '../styles/toolbox-diagram.css';
+interface Props { kind: 'dashboard' | 'interview'; }
+const { kind } = Astro.props;
+---
+<Fragment set:html={renderToolboxDiagram(kind)} />
