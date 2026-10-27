@@ -1,0 +1,76 @@
+.toolbox-guide { padding-block:24px 64px; }
+.toolbox-guide .guide-header { max-width:980px; padding-block:16px 32px; }
+.toolbox-guide .back-link { font-size:14px; color:var(--ink-muted); }
+.toolbox-guide h1 { font-size:clamp(2.8rem,6vw,5.3rem); line-height:1.08; margin:28px 0 20px; text-wrap:balance; }
+.toolbox-guide .guide-question { font:400 clamp(1.6rem,3vw,2.3rem)/1.3 var(--font-display); margin:0 0 18px; }
+.toolbox-guide .guide-intro { font-size:18px; line-height:1.7; max-width:64ch; margin:0 0 16px; }
+.toolbox-guide .guide-kind { display:flex; flex-wrap:wrap; gap:4px 20px; font-size:13px; line-height:1.6; color:var(--ink-muted); margin:16px 0 8px; }
+.toolbox-guide .guide-format { font-size:14px; line-height:1.6; color:var(--ink-muted); margin:8px 0; }
+.toolbox-guide .guide-action { display:flex; flex-wrap:wrap; align-items:center; gap:12px 24px; margin-top:24px; }
+.toolbox-guide .guide-action span { font-size:14px; color:var(--ink-muted); }
+.toolbox-guide .guide-contents { display:flex; flex-wrap:wrap; gap:0 28px; border-block:1px solid var(--rule); padding-block:8px; }
+.toolbox-guide .guide-contents a { min-height:44px; display:inline-flex; align-items:center; font-size:14px; text-underline-offset:4px; }
+.toolbox-guide > section:not(.guide-outcomes) { border-top:1px solid var(--rule); padding-block:48px; scroll-margin-top:28px; }
+.toolbox-guide > #examples, .toolbox-guide > #example, .toolbox-guide > #workflow, .toolbox-guide > #checklist, .toolbox-guide > #prompt, .toolbox-guide > #downloads { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.5fr); gap:clamp(32px,6vw,80px); }
+.toolbox-guide h2 { font-size:clamp(1.9rem,3vw,2.5rem); line-height:1.2; margin:0 0 20px; }
+.toolbox-guide h3 { font:600 18px/1.5 var(--font-sans); margin:28px 0 8px; }
+.toolbox-guide section p, .toolbox-guide dd { font-size:16px; line-height:1.75; margin:0 0 20px; }
+.toolbox-guide .section-lead { max-width:45ch; }
+.toolbox-guide .section-content { min-width:0; }
+.toolbox-guide .small-note, .toolbox-guide .version, .toolbox-guide .skill-name, .toolbox-guide .download-updates { font-size:14px; line-height:1.6; color:var(--ink-muted); }
+.toolbox-guide .guide-inputs, .toolbox-guide .bring { margin:0; }
+.toolbox-guide dt { font:600 14px/1.6 var(--font-sans); margin:20px 0 6px; }
+.toolbox-guide dd { margin-left:0; }
+.toolbox-guide #before { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.5fr); column-gap:clamp(32px,6vw,80px); }
+.toolbox-guide #before .small-note { grid-column:2; }
+.toolbox-guide .bring div:first-child dt, .toolbox-guide .guide-inputs div:first-child dt { margin-top:0; }
+.toolbox-guide .worked-example { background:var(--paper-inset); border:1px solid var(--rule); border-radius:4px; }
+.toolbox-guide .worked-example + .worked-example { margin-top:20px; }
+.toolbox-guide summary { cursor:pointer; min-height:54px; padding-block:14px; font:600 15px/1.6 var(--font-sans); }
+.toolbox-guide .worked-example summary { padding:16px 24px; }
+.toolbox-guide .example-body { padding:0 24px 24px; }
+.toolbox-guide .example-body p:last-child { margin-bottom:0; }
+.toolbox-guide .example-body .example-disclaimer, .toolbox-guide .example-body .example-explanation { font-size:14px; color:var(--ink-muted); line-height:1.6; }
+.toolbox-guide .suggested-join { font-style:italic; }
+.toolbox-guide .method-details { border-block:1px solid var(--rule); margin-top:28px; }
+.toolbox-guide .workflow-steps { padding-left:24px; }
+.toolbox-guide .workflow-steps li { padding-left:8px; margin-block:24px; }
+.toolbox-guide .workflow-steps h3 { margin-top:0; }
+.toolbox-guide .review-checklist { list-style:none; padding:0; margin:0; }
+.toolbox-guide .review-checklist li { padding-block:20px; border-top:1px solid var(--rule); }
+.toolbox-guide .review-checklist li:first-child { padding-top:0; border-top:0; }
+.toolbox-guide .review-checklist label { display:flex; align-items:center; gap:14px; min-height:44px; font-weight:600; cursor:pointer; }
+.toolbox-guide .review-checklist input { flex:0 0 20px; width:20px; height:20px; accent-color:var(--action-ink); }
+.toolbox-guide .review-checklist p { margin:6px 0 0 34px; }
+.toolbox-guide .review-alternative { padding:24px; background:var(--paper-inset); margin-block:24px; }
+.toolbox-guide .review-alternative h3 { margin-top:0; }
+.toolbox-guide .review-alternative p { margin-bottom:0; }
+.toolbox-guide textarea { width:100%; min-height:270px; max-height:480px; resize:vertical; border:1px solid var(--rule); border-radius:4px; padding:20px; color:var(--ink); background:var(--paper-inset); font:400 16px/1.7 var(--font-sans); }
+.toolbox-guide .prompt-controls { display:flex; flex-wrap:wrap; align-items:center; gap:12px 20px; margin-top:16px; }
+.toolbox-guide .prompt-controls .copy-status { font-size:14px; color:var(--ink-muted); margin:0; }
+.toolbox-guide .downloads { list-style:none; padding:0; margin:0 0 20px; }
+.toolbox-guide .downloads li { border-bottom:1px solid var(--rule); padding-block:20px; }
+.toolbox-guide .downloads p { font-size:15px; margin:4px 0 0; }
+.toolbox-guide .file-format { font-size:13px; color:var(--ink-muted); margin-left:12px; }
+.toolbox-guide .closing-links { display:flex; flex-wrap:wrap; gap:12px 24px; margin-bottom:20px; }
+.toolbox-guide .download-references a, .toolbox-guide .setup-body a { display:inline-flex; align-items:center; min-height:44px; font-size:14px; }
+.toolbox-guide .skill-setups { border-block:1px solid var(--rule); margin-block:20px; }
+.toolbox-guide .skill-setups details + details { border-top:1px solid var(--rule); }
+.toolbox-guide .setup-body { padding-bottom:20px; }
+.toolbox-guide .setup-body code { display:block; overflow-wrap:anywhere; font-size:14px; padding:16px; background:var(--paper-inset); }
+.toolbox-guide .setup-body blockquote { margin:20px 0; padding-left:16px; border-left:1px solid var(--rule); font-size:15px; line-height:1.7; overflow-wrap:anywhere; }
+.toolbox-guide > section[aria-labelledby="limits-heading"] { max-width:75ch; }
+.toolbox-guide .guide-closing p { max-width:65ch; }
+@media(max-width:1000px) {
+ .toolbox-guide > #examples, .toolbox-guide > #example, .toolbox-guide > #workflow, .toolbox-guide > #checklist, .toolbox-guide > #prompt, .toolbox-guide > #downloads, .toolbox-guide > #before { grid-template-columns:minmax(0,1fr); gap:28px; }
+ .toolbox-guide .section-lead { max-width:70ch; }
+ .toolbox-guide #before .small-note { grid-column:auto; }
+}
+@media(max-width:600px) {
+ .toolbox-guide > section:not(.guide-outcomes) { padding-block:32px; }
+ .toolbox-guide .guide-contents { gap:0 20px; }
+ .toolbox-guide .worked-example summary { padding-inline:20px; }
+ .toolbox-guide .example-body { padding-inline:20px; }
+ .toolbox-guide textarea { padding:16px; }
+ .toolbox-guide .file-format { display:block; margin-left:0; }
+}
