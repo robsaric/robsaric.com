@@ -1,9 +1,16 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Arrow from '../../components/Arrow.astro';
+import ToolboxSample from '../../components/ToolboxSample.astro';
+import { COLLECTION as C } from '../../data/toolbox-presentation';
 import { TOOLBOX_INSTALLATION as S } from '../../data/toolbox-installation';
 import { TOOLBOX as T } from '../../data/toolbox';
 import { VALUE_STREAM as V } from '../../data/value-stream-mapping';
+const guides = [
+  { title: T.feature.title, category: T.feature.category, formats: T.feature.kind, description: T.feature.description, href: T.feature.href, ...C.entries[0] },
+  { title: T.dashboard.title, category: T.dashboard.category, formats: T.dashboard.kind, description: T.dashboard.description, href: T.dashboard.href, ...C.entries[1] },
+  { title: V.title, category: V.category, formats: V.formats, description: V.promise, href: '/toolbox/value-stream-mapping/', ...C.entries[2] },
+];
 ---
 
 <BaseLayout title={T.title} description={T.description}>
@@ -22,30 +29,18 @@ import { VALUE_STREAM as V } from '../../data/value-stream-mapping';
 
     <section id="workflows" aria-labelledby="workflows-heading">
       <h2 id="workflows-heading">{T.workflowHeading}</h2>
-      <article class="workflow-feature">
-        <div class="workflow-description">
-          <h3><a href={T.feature.href}>{T.feature.title}</a></h3>
-          <p class="resource-category">{T.feature.category}</p>
-          <p class="resource-kind">{T.feature.kind}</p>
-          <p class="feature-description">{T.feature.description}</p>
-          <p class="feature-detail">{T.feature.detail}</p>
-          <div class="feature-actions">
-            <a class="action" href={T.feature.href}>{T.feature.action}<Arrow /></a>
-            <a class="text-link" href={T.feature.downloadHref} download>{T.feature.download}<Arrow /></a>
+      <div class="guide-collection">
+        {guides.map(guide => <article class="collection-entry">
+          <div class="entry-intro">
+            <h3><a href={guide.href}>{guide.title}</a></h3>
+            <p class="resource-category">{guide.category}</p>
+            <p class="entry-description">{guide.description}</p>
+            <p class="entry-bring"><strong>{C.bring}:</strong> {guide.bring}</p>
           </div>
-        </div>
-        <ol class="workflow-sequence" aria-label={T.feature.sequenceLabel}>
-          {T.feature.sequence.map(step => <li><h4>{step.title}</h4><p>{step.body}</p></li>)}
-        </ol>
-      </article>
-      <article class="dashboard-resource">
-        <div><h3><a href={T.dashboard.href}>{T.dashboard.title}</a></h3><p class="resource-category">{T.dashboard.category}</p><p class="resource-kind">{T.dashboard.kind}</p></div>
-        <div><p class="feature-description">{T.dashboard.description}</p><p class="feature-detail">{T.dashboard.detail}</p><p class="resource-kind">{T.dashboard.inputs}</p><div class="feature-actions"><a class="action" href={T.dashboard.href}>{T.dashboard.action}<Arrow /></a></div></div>
-      </article>
-      <article class="dashboard-resource">
-        <div><h3><a href="/toolbox/value-stream-mapping/">{V.title}</a></h3><p class="resource-category">{V.category}</p><p class="resource-kind">{V.formats}</p></div>
-        <div><p class="feature-description">{V.promise}</p><p class="feature-detail">{V.intro}</p><div class="feature-actions"><a class="action" href="/toolbox/value-stream-mapping/">{V.start}<Arrow /></a></div></div>
-      </article>
+          <ToolboxSample kind={guide.kind} />
+          <div class="entry-footer"><p class="resource-kind">{guide.formats}</p><a class="text-link" href={guide.href}>{C.open}<span class="visually-hidden">: {guide.title}</span><Arrow /></a></div>
+        </article>)}
+      </div>
     </section>
 
     <section id="downloads" aria-labelledby="downloads-heading">
@@ -65,7 +60,7 @@ import { VALUE_STREAM as V } from '../../data/value-stream-mapping';
     <section id="tools" aria-labelledby="tools-heading">
       <div class="section-heading">
         <h2 id="tools-heading">{T.resources.heading}</h2>
-        <div><p>{T.resources.intro}</p><p><a href={S.repo}>{S.collection}</a></p></div>
+        <div><p>{T.resources.intro}</p><p><a class="text-link" href={S.repo}>{S.collection}</a></p></div>
       </div>
       <ul class="resource-list">
         {T.resources.items.map(item => <li>
@@ -155,4 +150,21 @@ import { VALUE_STREAM as V } from '../../data/value-stream-mapping';
   .dashboard-resource h3 { font-size: clamp(1.8rem, 3vw, 2.5rem); }
   .dashboard-resource .feature-description { margin-top: 0; }
   @media (max-width: 767.98px) { .dashboard-resource { grid-template-columns: 1fr; gap: 20px; } }
+
+.guide-collection { display: grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:32px; }
+.collection-entry { min-width:0; display:grid; grid-template-rows:subgrid; grid-row:span 3; gap:20px; }
+.entry-intro h3 { font-size:clamp(1.65rem,2.5vw,2.25rem); line-height:1.15; margin:0; }
+.entry-description { font-size:17px; line-height:1.55; margin:16px 0 12px; }
+.entry-bring { font-size:14px; line-height:1.6; color:var(--ink-muted); margin:0; }
+.entry-bring strong { font-weight:500; color:var(--ink); }
+.entry-footer .resource-kind { margin:0 0 8px; }
+.entry-footer .text-link { min-height:44px; }
+@supports not (grid-template-rows:subgrid) { .collection-entry { grid-template-rows:auto 1fr auto; grid-row:auto; } }
+@media(max-width:1100px) { .guide-collection { gap:24px; } }
+@media(max-width:767.98px) {
+  .guide-collection { grid-template-columns:minmax(0,1fr); gap:32px; }
+  .collection-entry { display:grid; grid-template-rows:auto; grid-row:auto; gap:20px; padding-top:24px; border-top:1px solid var(--rule); }
+  .collection-entry:first-child { border-top:0; padding-top:0; }
+  .entry-intro h3 { font-size:2rem; }
+}
 </style>

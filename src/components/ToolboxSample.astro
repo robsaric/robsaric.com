@@ -1,0 +1,42 @@
+---
+import { COLLECTION as C } from '../data/toolbox-presentation';
+interface Props { kind: 'interview' | 'dashboard' | 'mapping' }
+const { kind } = Astro.props;
+---
+<figure class:list={['sample', kind]}>
+  <figcaption>{C.sample}</figcaption>
+  {kind === 'interview' && <div class="draft">
+    <p class="sample-title">{C.interview.label}</p>
+    <p class="original">{C.interview.before}</p>
+    <p class="annotation">{C.interview.annotation}</p>
+    <p class="revision">{C.interview.after}</p>
+  </div>}
+  {kind === 'dashboard' && <div>
+    <p class="sample-title">{C.dashboard.label}</p>
+    <dl>{[[C.dashboard.verdictLabel,C.dashboard.verdict],[C.dashboard.changeLabel,C.dashboard.change],[C.dashboard.checkLabel,C.dashboard.check]].map(([label,text]) => <div><dt>{label}</dt><dd>{text}</dd></div>)}</dl>
+  </div>}
+  {kind === 'mapping' && <div>
+    <p class="sample-title">{C.mapping.label}</p>
+    <ol class="map">{C.mapping.steps.map((step,i) => <li><span>{step}</span>{i < 2 && <svg aria-hidden="true" viewBox="0 0 20 12"><path d="M1 6h17M13 1l5 5-5 5" /></svg>}</li>)}</ol>
+    <p class="map-note">{C.mapping.note}</p>
+  </div>}
+</figure>
+<style>
+.sample { margin:0; padding:20px; background:var(--paper-inset); border-top:1px solid var(--rule); min-height:240px; }
+figcaption { color:var(--ink-muted); font:12px/1.5 var(--font-sans); margin-bottom:12px; }
+.sample-title { font:600 14px/1.5 var(--font-sans); margin:0 0 16px; }
+.original { font:400 18px/1.3 var(--font-display); margin:0; }
+.annotation { font:italic 14px/1.5 var(--font-display); margin:8px 0; color:var(--ink-muted); }
+.revision { font-size:13px; line-height:1.6; margin:0; padding-top:8px; border-top:1px solid var(--rule); }
+dl { margin:0; }
+dl div { display:grid; grid-template-columns:48px 1fr; gap:8px; margin-top:12px; }
+dt { font:600 12px/1.6 var(--font-sans); }
+dd { margin:0; font:13px/1.6 var(--font-sans); }
+.map { display:flex; list-style:none; padding:20px 0; margin:0; align-items:center; }
+.map li { display:flex; align-items:center; gap:6px; flex:1; font-size:13px; }
+.map li:last-child { flex:0; }
+.map span { border-bottom:1px solid var(--ink-muted); padding-block:8px; }
+.map svg { flex:1; width:20px; min-width:12px; height:12px; stroke:var(--ink-muted); fill:none; stroke-width:1.2; margin-right:6px; }
+.map-note { font-size:13px; line-height:1.6; margin:8px 0 0; }
+@media(max-width:767px) { .sample { min-height:0; } }
+</style>

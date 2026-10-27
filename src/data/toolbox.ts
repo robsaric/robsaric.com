@@ -53,6 +53,7 @@ export const TOOLBOX = {
     intro: 'Start a conversation or work through a checklist yourself. No signup required.',
     action: 'Download',
     items: [
+      { title: 'Value Stream Mapping kit', format: 'ZIP · Guide, worksheets and skill', description: 'Start with your offers, map the work and choose one improvement to test.', href: '/downloads/value-stream-mapping/value-stream-mapping-kit.zip' },
       { title: 'The Dashboard Test', format: 'Markdown checklist', description: 'Review who it serves, what it helps them decide and whether a smaller alternative would do.', href: '/downloads/dashboard-test/checklist.md' },
       { title: 'The interview prompt', format: 'Plain text', description: 'Paste it into a chat, then write or dictate your idea. Nothing to install.', href: promptDownload },
       { title: 'Your writing voice', format: 'Markdown template', description: 'Describe how you write, add a few approved samples and say what to avoid.', href: profileDownload },
