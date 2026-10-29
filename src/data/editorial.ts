@@ -194,22 +194,22 @@ export const EARLIER_WRITING = [
 // is unavailable in this build, including when the chosen essay is a draft.
 export const NEXT_READS: Record<string, readonly { href: string; reason: string }[]> = {
   '/field-notes/2026-10-18-small-teams-deserve-their-time-back/': [
-    { href: '/field-notes/2026-10-18-building-with-ai-and-life-beyond-the-feed/', reason: 'Why giving people time back matters beyond the workday.' },
-    { href: '/archive/treat-contractors-well/', reason: 'Clear handoffs start with how we treat the people doing the work.' },
+    { href: '/field-notes/2026-10-19-are-dashboards-dead/', reason: 'Once you decide what needs attention, how do you learn whether the work helped?' },
+    { href: '/archive/great-systems-need-to-create-flow/', reason: 'An earlier look at designing around the person using the system.' },
   ],
   '/field-notes/2026-10-18-building-with-ai-and-life-beyond-the-feed/': [
-    { href: '/field-notes/2026-10-18-small-teams-deserve-their-time-back/', reason: 'What happens when a prototype becomes a promise to a customer.' },
+    { href: '/field-notes/2026-10-18-small-teams-deserve-their-time-back/', reason: 'Why useful software gives you somewhere to begin.' },
     { href: '/archive/great-systems-need-to-create-flow/', reason: 'An earlier look at designing for flow, and what makes an experience worth having.' },
   ],
   '/field-notes/2026-10-19-are-dashboards-dead/': [
-    { href: '/field-notes/2026-10-18-small-teams-deserve-their-time-back/', reason: 'The work a small team takes on when a prototype becomes a promise.' },
+    { href: '/field-notes/2026-10-18-small-teams-deserve-their-time-back/', reason: 'How an insight helps you reach the next question worth asking.' },
   ],
   '/archive/building-a-startup-requires-self-awareness/': [
-    { href: '/field-notes/2026-10-18-small-teams-deserve-their-time-back/', reason: 'What I want to build next, and the test it has to pass.' },
+    { href: '/field-notes/2026-10-18-small-teams-deserve-their-time-back/', reason: 'What an early Caretrics tool taught me about where people need to start.' },
     { href: '/archive/treat-contractors-well/', reason: 'How the way you work with others shapes what you build.' },
   ],
   '/archive/treat-contractors-well/': [
-    { href: '/field-notes/2026-10-18-small-teams-deserve-their-time-back/', reason: 'Why a clear handoff matters after the customer says yes.' },
+    { href: '/field-notes/2026-10-18-small-teams-deserve-their-time-back/', reason: 'Meeting people where they are when you build for them.' },
     { href: '/archive/great-systems-need-to-create-flow/', reason: 'Designing systems around the people who use them.' },
   ],
   '/archive/great-systems-need-to-create-flow/': [
