@@ -36,7 +36,7 @@ export const PRINCIPLES: Principle[] = [
     body: 'I use AI to build. I also want people to know what it used, check an answer, correct it and decide whether it gets to act.',
     choice: 'I would rather ask for a decision at the right moment than quietly make one on someone’s behalf. Speed is useful when people can trust the work that follows.',
     href: '/field-notes/2026-10-18-small-teams-deserve-their-time-back/',
-    link: 'The responsibility that comes with building',
+    link: 'Helping people ask better questions',
   },
   {
     line: 'Be willing to change your mind.',
