@@ -45,7 +45,7 @@ const B = E.building;
       </div>
       <div class="thinking">
         <h3>{B.caretrics.thinkingHeading}</h3>
-        <p>{B.caretrics.thinking}</p>
+        <div>{B.caretrics.thinking.map(paragraph => <p>{paragraph}</p>)}</div>
       </div>
     </section>
 
@@ -114,7 +114,8 @@ const B = E.building;
   figcaption strong { display: block; margin-bottom: 6px; color: var(--ink); font-weight: 600; }
   .thinking { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.4fr); gap: 56px; padding-top: 32px; margin-top: 40px; border-top: 1px solid var(--rule); }
   .thinking h3 { font-size: 25px; }
-  .thinking p { margin-bottom: 0; font-size: 17px; }
+  .thinking p { margin-bottom: 18px; font-size: 17px; }
+  .thinking p:last-child { margin-bottom: 0; }
   .studio { border-top: 1px solid var(--rule); padding-block: 40px 64px; }
   .studio-intro { max-width: 760px; }
   .studio-intro .project-identity { margin-bottom: 20px; }
