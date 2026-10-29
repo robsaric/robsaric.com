@@ -1,0 +1,34 @@
+.halloween-character { width: 100%; }
+.halloween-stage { position: relative; height: 304px; overflow: hidden; border-bottom: 1px solid var(--rule); pointer-events: none; isolation: isolate; }
+.halloween-wizard { position: absolute; width: 280px; aspect-ratio: 1; bottom: 0; left: -47px; background: url('/illustrations/rob-ink/halloween.webp') no-repeat 100% 50% / 400% 100%; filter: grayscale(1); }
+.halloween-flight { position: absolute; inset: 0; }
+.spell-tile { position: absolute; display: grid; place-items: center; margin: 0; background: var(--paper); border: 1px solid var(--rule); color: var(--ink); }
+.spell-brand { width: 62px; height: 66px; padding: 9px 5px 6px; gap: 4px; }
+.spell-brand img { display: block; width: 28px; height: 28px; object-fit: contain; }
+.spell-brand span { font-size: 9px; line-height: 1; white-space: nowrap; color: var(--ink-muted); }
+.spell-picture { width: 57px; height: 51px; padding: 4px; }
+.spell-picture svg { width: 100%; height: 100%; }
+.spell-tile--0 { left: 60%; top: 14%; transform: rotate(-8deg); }
+.spell-tile--1 { left: 77%; top: 43%; transform: rotate(7deg); }
+.spell-tile--2 { left: 77%; top: 6%; transform: rotate(5deg); }
+.spell-tile--3 { left: 50%; top: 43%; transform: rotate(-12deg); }
+.spell-tile--4 { left: 64%; top: 65%; transform: rotate(8deg); }
+.wand-spark { position: absolute; width: 20px; height: 20px; left: 52%; top: 38%; color: var(--ink-muted); }
+.halloween-controls { display: flex; align-items: center; justify-content: space-between; min-height: 44px; margin-top: 8px; gap: 8px; }
+.halloween-controls > span { font-size: 12px; color: var(--ink-muted); }
+.halloween-toggle { display: grid; place-items: center; flex: none; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 3px; background: transparent; color: var(--ink); cursor: pointer; }
+.halloween-toggle[hidden] { display: none; }
+.halloween-toggle:hover { background: var(--paper-inset); }
+.halloween-toggle:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
+.spell-play, .halloween-toggle[data-paused='true'] .spell-pause { display: none; }
+.halloween-toggle[data-paused='true'] .spell-play { display: block; }
+html[data-appearance='night'] .halloween-wizard { filter: grayscale(1) brightness(.9); }
+html[data-appearance='night'] .spell-brand:first-child img { filter: invert(1); }
+@media (max-width: 767.98px) {
+  .halloween-stage { height: 236px; }
+  .halloween-wizard { width: 230px; left: -42px; }
+  .spell-brand { width: 54px; height: 59px; padding: 7px 3px 5px; }
+  .spell-brand img { width: 25px; height: 25px; }
+  .spell-brand span { font-size: 8px; }
+  .spell-picture { width: 46px; height: 42px; }
+}

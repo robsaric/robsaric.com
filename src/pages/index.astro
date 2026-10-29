@@ -5,6 +5,8 @@ import Arrow from '../components/Arrow.astro';
 import ReadingList from '../components/ReadingList.astro';
 import FeaturedEssay from '../components/FeaturedEssay.astro';
 import EditorialCharacter from '../components/EditorialCharacter.astro';
+import HalloweenCharacter from '../components/HalloweenCharacter.astro';
+import { HERO_SCENE } from '../data/hero-scenes';
 
 import Connect from '../components/Connect.astro';
 import hiking from '../assets/images/rob-hiking.jpg';
@@ -28,7 +30,12 @@ const personJsonLd = { '@context': 'https://schema.org', '@type': 'Person', name
       <p class="hero-lead">{E.hero.lead}</p>
       <div class="hero-actions"><a class="action" href="#start-here">{E.hero.read}<Arrow /></a><a class="text-link" href="/building/">{E.hero.work}<Arrow /></a></div>
     </div>
-    <div class="hero-character"><div class="day-character"><EditorialCharacter variant="runner" /></div><div class="night-character"><EditorialCharacter variant="reader" /></div></div>
+    <div class="hero-character">
+      {HERO_SCENE === 'halloween' ? <HalloweenCharacter /> : <>
+        <div class="day-character"><EditorialCharacter variant="runner" /></div>
+        <div class="night-character"><EditorialCharacter variant="reader" /></div>
+      </>}
+    </div>
   </section>
   <section id="start-here" class="writing wrap" aria-labelledby="writing-title">
     <h2 id="writing-title" class="visually-hidden">{E.writing.pageHeading}</h2>
