@@ -4,7 +4,7 @@ export const HERO_SCENE: 'everyday' | 'halloween' = 'halloween';
 
 export const HALLOWEEN = {
   description: 'Rob in a wizard hat, conjuring small pictures and OpenAI, Claude and Meta Muse symbols with a wand.',
-  caption: 'A little seasonal magic.',
+  caption: 'Happy Halloween',
   pause: 'Pause Halloween animation',
   resume: 'Resume Halloween animation',
   brands: [
