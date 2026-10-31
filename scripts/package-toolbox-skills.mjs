@@ -5,9 +5,9 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 // Explicit public inventory: never scan internal agent folders into a release.
 export const SKILLS = [
-  { name: 'value-stream-mapping', files: ['SKILL.md', 'agents/openai.yaml', 'resources/chat-prompt.txt', 'resources/measurement.md', 'resources/templates.md', 'resources/installation.md'] },
-  { name: 'dashboard-test', files: ['SKILL.md', 'agents/openai.yaml', 'resources/chat-prompt.txt', 'resources/checklist.md'] },
-  { name: 'interview-draft-edit', files: ['SKILL.md', 'resources/chat-prompt.txt', 'resources/voice-profile.md'], aliases: ['interview-your-draft'] },
+  { name: 'value-stream-mapping', files: ['SKILL.md', 'agents/openai.yaml', 'resources/chat-prompt.txt', 'resources/measurement.md', 'resources/templates.md', 'resources/installation.md', 'resources/repair-example.md'] },
+  { name: 'dashboard-test', files: ['SKILL.md', 'agents/openai.yaml', 'resources/chat-prompt.txt', 'resources/checklist.md', 'resources/caretrics-example.md'] },
+  { name: 'interview-draft-edit', files: ['SKILL.md', 'resources/chat-prompt.txt', 'resources/voice-profile.md', 'resources/writing-example.md'], aliases: ['interview-your-draft'] },
 ];
 
 function crc32(bytes) {
@@ -64,9 +64,9 @@ export function expectedDownloads(root = ROOT) {
   const outputs = new Map();
   const license = readSource(root, 'skills/LICENSE');
   const instructions = readSource(root, 'skills/README.md');
-  outputs.set('public/downloads/toolbox-skills.md', Buffer.from(instructions.toString().replaceAll('](dashboard-test/SKILL.md)', '](https://github.com/robsaric/robsaric.com/blob/main/skills/dashboard-test/SKILL.md)').replaceAll('](interview-draft-edit/SKILL.md)', '](https://github.com/robsaric/robsaric.com/blob/main/skills/interview-draft-edit/SKILL.md)').replace('see LICENSE.', 'see https://github.com/robsaric/robsaric.com/blob/main/skills/LICENSE.')));
+  outputs.set('public/downloads/toolbox-skills.md', Buffer.from(instructions.toString().replaceAll('](dashboard-test/README.md)', '](https://github.com/robsaric/robsaric.com/blob/main/skills/dashboard-test/README.md)').replaceAll('](dashboard-test/SKILL.md)', '](https://github.com/robsaric/robsaric.com/blob/main/skills/dashboard-test/SKILL.md)').replaceAll('](interview-draft-edit/README.md)', '](https://github.com/robsaric/robsaric.com/blob/main/skills/interview-draft-edit/README.md)').replaceAll('](interview-draft-edit/SKILL.md)', '](https://github.com/robsaric/robsaric.com/blob/main/skills/interview-draft-edit/SKILL.md)').replace('see LICENSE.', 'see https://github.com/robsaric/robsaric.com/blob/main/skills/LICENSE.')));
   const readme = outputs.get('public/downloads/toolbox-skills.md').toString();
-  outputs.set('public/downloads/toolbox-skills.md', Buffer.from(readme.replaceAll('](value-stream-mapping/SKILL.md)', '](https://github.com/robsaric/robsaric.com/blob/main/skills/value-stream-mapping/SKILL.md)')));
+  outputs.set('public/downloads/toolbox-skills.md', Buffer.from(readme.replaceAll('](value-stream-mapping/README.md)', '](https://github.com/robsaric/robsaric.com/blob/main/skills/value-stream-mapping/README.md)').replaceAll('](value-stream-mapping/SKILL.md)', '](https://github.com/robsaric/robsaric.com/blob/main/skills/value-stream-mapping/SKILL.md)')));
   for (const skill of SKILLS) {
     const source = new Map(skill.files.map(file => [file, readSource(root, `skills/${skill.name}/${file}`)]));
     source.set('LICENSE', license);

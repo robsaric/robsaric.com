@@ -6,9 +6,9 @@ accounts or make changes on your behalf.
 
 | Skill | Bring | Get | Guide |
 | --- | --- | --- | --- |
-| [Value Stream Mapping](https://github.com/robsaric/robsaric.com/blob/main/skills/value-stream-mapping/SKILL.md) | A process description, offers and audiences | A provisional map, evidence gaps and a team-chosen improvement to test. Separate current, next pilot and longer-term ideal views. | [Read the guide](https://robsaric.com/toolbox/value-stream-mapping/) |
-| [The Dashboard Test](https://github.com/robsaric/robsaric.com/blob/main/skills/dashboard-test/SKILL.md) | A redacted screenshot or description, the reader and their question | A provisional verdict, one main gap and one practical improvement. Keeping it or using no dashboard are valid outcomes. | [Read the guide](https://robsaric.com/toolbox/dashboard-test/) |
-| [Interview, Draft, Edit](https://github.com/robsaric/robsaric.com/blob/main/skills/interview-draft-edit/SKILL.md) | An idea, rough draft or spoken concept | Questions before a draft, your answers as the substance, and suggestions marked for your final edit. | [Read the guide](https://robsaric.com/toolbox/interview-draft-edit/) |
+| [Value Stream Mapping](https://github.com/robsaric/robsaric.com/blob/main/skills/value-stream-mapping/README.md) | A process description, offers and audiences | A provisional map, evidence gaps and a team-chosen improvement to test. Separate current, next pilot and longer-term ideal views. | [Read the guide](https://robsaric.com/toolbox/value-stream-mapping/) |
+| [The Dashboard Test](https://github.com/robsaric/robsaric.com/blob/main/skills/dashboard-test/README.md) | A redacted screenshot or description, the reader and their question | A provisional verdict, one main gap and one practical improvement. Keeping it or using no dashboard are valid outcomes. | [Read the guide](https://robsaric.com/toolbox/dashboard-test/) |
+| [Interview, Draft, Edit](https://github.com/robsaric/robsaric.com/blob/main/skills/interview-draft-edit/README.md) | An idea, rough draft or spoken concept | Questions before a draft, your answers as the substance, and suggestions marked for your final edit. | [Read the guide](https://robsaric.com/toolbox/interview-draft-edit/) |
 
 These skills require no other skill, knowledge graph or connected accounts.
 Writing samples and the voice template are optional. For a dashboard review,

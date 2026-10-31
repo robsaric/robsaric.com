@@ -24,12 +24,14 @@ export const GUIDE_PRESENTATION = {
 
 export const COLLECTION = {
   open: 'Open guide',
+  github: 'GitHub',
+  repo: 'https://github.com/robsaric/robsaric.com/tree/main/skills/',
   bring: 'Bring',
   sample: 'Illustrative output',
   entries: [
-    { kind: 'interview', bring: 'An idea, draft or spoken explanation.' },
-    { kind: 'dashboard', bring: 'A screenshot and one decision to review.' },
-    { kind: 'mapping', bring: 'Notes about how a service works.' },
+    { kind: 'interview', slug: 'interview-draft-edit', bring: 'An idea, draft or spoken explanation.' },
+    { kind: 'dashboard', slug: 'dashboard-test', bring: 'A screenshot and one decision to review.' },
+    { kind: 'mapping', slug: 'value-stream-mapping', bring: 'Notes about how a service works.' },
   ],
   interview: {
     label: 'A draft you can question',

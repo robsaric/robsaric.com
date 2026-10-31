@@ -1,6 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Arrow from '../../components/Arrow.astro';
+import ToolboxWorkedExample from '../../components/ToolboxWorkedExample.astro';
+import { Content as RepairExample } from '../../../skills/value-stream-mapping/resources/repair-example.md';
+import ToolboxQuickStart from '../../components/ToolboxQuickStart.astro';
+import { QUICK_START as Q } from '../../data/toolbox-start';
 import { VALUE_STREAM as V } from '../../data/value-stream-mapping';
 ---
 <BaseLayout title={V.title} description={V.description} ogImageAlt={V.promise}>
@@ -12,11 +16,18 @@ import { VALUE_STREAM as V } from '../../data/value-stream-mapping';
       <p class="promise">{V.promise}</p>
       <p class="intro">{V.intro}</p>
       <p class="kind"><strong>{V.category}</strong> · {V.formats}</p>
-      <div class="actions"><a class="action" href="#prompt">{V.start}<Arrow /></a><a class="text-link" href="#downloads">{V.download}<Arrow /></a></div>
+      <div class="actions"><a class="action" href="#prompt">{V.start}<Arrow /></a><a class="text-link" href="/downloads/value-stream-mapping/value-stream-mapping-kit.zip" download>{V.download}<Arrow /></a></div>
       <p class="small">{V.free}</p>
     </header>
-    <nav class="guide-nav" aria-label={V.navLabel}>{V.nav.map(item => <a href={item.href}>{item.label}</a>)}</nav>
-    <section id="outputs">
+
+<ToolboxQuickStart kind="mapping" name="value-stream-mapping" prompt={V.prompt} methodHref="#example" kit />
+
+
+    <section id="example" class="split">
+      <div class="section-lead"><h2>{V.sampleHeading}</h2><p>{V.sampleIntro}</p></div>
+      <ToolboxWorkedExample label={V.sampleLabel}><RepairExample /></ToolboxWorkedExample>
+    </section>
+    <details class="output-details"><summary>{Q.outputs}</summary><section id="outputs">
       <h2>{V.outputHeading}</h2><p class="section-intro">{V.outputIntro}</p>
       <table class="outputs" role="table">
         <thead role="rowgroup"><tr role="row">{V.outputColumns.map(label => <th scope="col" role="columnheader">{label}</th>)}</tr></thead>
@@ -25,16 +36,8 @@ import { VALUE_STREAM as V } from '../../data/value-stream-mapping';
         </tr>)}</tbody>
       </table>
       <p class="small table-note">{V.outputNote}</p>
-    </section>
-    <section id="example" class="split">
-      <div class="section-lead"><h2>{V.sampleHeading}</h2><p>{V.sampleIntro}</p></div>
-      <figure class="sample">
-        <figcaption>{V.sampleLabel}</figcaption><h3>{V.sampleTitle}</h3>
-        <ol>{V.sampleStates.map(state => <li><span class="state-label">{state.label}</span><div><h4>{state.title}</h4><p>{state.text}</p></div></li>)}</ol>
-        <p class="small">{V.sampleNote}</p>
-      </figure>
-    </section>
-    <section id="method" class="split">
+    </section></details>
+<section id="method" class="split">
       <div class="section-lead">
         <div id="meaning"><h2>{V.meaning}</h2><p>{V.explanation}</p></div>
         <h3>{V.fitHeading}</h3><p>{V.fit}</p>
@@ -49,17 +52,8 @@ import { VALUE_STREAM as V } from '../../data/value-stream-mapping';
         </div></details>
       </div>
     </section>
-    <section id="prompt" class="split">
-      <div class="section-lead"><h2>{V.promptHeading}</h2><p>{V.promptIntro}</p></div>
-      <div>
-        <label class="visually-hidden" for="vsm-prompt">{V.promptLabel}</label>
-        <textarea id="vsm-prompt" readonly rows="10" spellcheck="false">{V.prompt}</textarea>
-        <div class="actions"><button class="action" id="copy-vsm" type="button" hidden data-copied={V.copied} data-fallback={V.fallback} data-select={V.select}>{V.copy}</button><p class="small" id="copy-status" role="status" aria-live="polite"></p></div>
-        <noscript><p>{V.noScript}</p></noscript>
-      </div>
-    </section>
     <section id="downloads" class="split">
-      <div class="section-lead"><h2>{V.downloadsHeading}</h2><p>{V.downloadsIntro}</p>
+      <div class="section-lead"><h2>{Q.setup}</h2><p>{V.downloadsIntro}</p>
         <a class="text-link" href="/downloads/value-stream-mapping/value-stream-mapping/SKILL.md">{V.sourceLabel}<Arrow /></a>
       </div>
       <div>
@@ -73,25 +67,7 @@ import { VALUE_STREAM as V } from '../../data/value-stream-mapping';
     <footer class="guide-ending"><p>{V.ending}</p><p class="small">{V.referencesLabel}</p><ul class="references">{V.references.map(ref => <li><a href={ref.href}>{ref.label}</a></li>)}</ul></footer>
   </div>
 </BaseLayout>
-<script>
-  const button = document.querySelector<HTMLButtonElement>('#copy-vsm');
-  const input = document.querySelector<HTMLTextAreaElement>('#vsm-prompt');
-  const status = document.querySelector<HTMLElement>('#copy-status');
-  if (button && input && status) {
-    button.hidden = false;
-    if (!navigator.clipboard?.writeText) button.textContent = button.dataset.select ?? '';
-    button.addEventListener('click', async () => {
-      try {
-        if (!navigator.clipboard?.writeText) throw new Error('clipboard unavailable');
-        await navigator.clipboard.writeText(input.value);
-        status.textContent = button.dataset.copied ?? '';
-      } catch {
-        input.focus(); input.select(); input.setSelectionRange(0,input.value.length);
-        status.textContent = button.dataset.fallback ?? '';
-      }
-    });
-  }
-</script>
+
 <style>
 .guide { padding-block: 24px 64px; }
 .preview { font-size: 13px; color: var(--ink-muted); border-bottom: 1px solid var(--rule); padding-bottom: 12px; }

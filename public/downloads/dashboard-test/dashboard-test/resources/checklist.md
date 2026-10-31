@@ -1,6 +1,6 @@
 # The Dashboard Test
 
-Does this dashboard help you decide what to do?
+Does your dashboard earn its place?
 
 Use these questions on one real decision. Unknown is a useful answer. This is a review aid, not a score or certification.
 
@@ -16,6 +16,8 @@ Use these questions on one real decision. Unknown is a useful answer. This is a 
 
 - [ ] **Will the next review teach them anything?** Check what happened after the decision. What you learn from doing the work should help you improve how the work gets done.
 
+- [ ] **What could we remove without making the job harder?** Consider an unnecessary metric, duplicate report or extra handoff. Keep the comparisons, source limits and records the reader needs. Removal is an option, not a requirement.
+
 ## Does it need to be a dashboard?
 
 Could an existing list, report, alert or conversation do the job with less effort? Reporting, reassurance and deciding not to act can all be valid purposes.
@@ -29,5 +31,5 @@ Could an existing list, report, alert or conversation do the job with less effor
 - One improvement or smaller alternative:
 - What to observe at the next real review:
 
-Version 1.0 · October 27, 2026 · Rob Saric
+Version 1.1 · October 31, 2026 · Rob Saric
 Guide: https://robsaric.com/toolbox/dashboard-test/

@@ -32,7 +32,7 @@ export const VALUE_STREAM = {
   outputNote: 'No workflow chosen yet? The review stops at the overview and helps you make that choice.',
   sampleHeading: 'See what the review could produce.',
   sampleIntro: 'An equipment-repair team wants to know why jobs take so long. Before buying another tool, they need to find out where the time goes.',
-  sampleLabel: 'Illustrative output · Not a client result',
+  sampleLabel: 'See the provisional map and next test',
   sampleTitle: 'Repair request to returned equipment',
   sampleStates: [
     { label: 'Current state', title: 'Approval may be holding up the job.', text: 'The team reports delays while waiting for the customer. The wait has not been measured, so the cause is still unconfirmed.' },
@@ -75,7 +75,7 @@ export const VALUE_STREAM = {
   ],
   viewsNote: 'A future-state map is a proposal. It is not evidence that the work already happens that way.',
   promptHeading: 'Let AI facilitate the questions.',
-  promptIntro: 'Paste the prompt into ChatGPT or Claude and add your context. For the full method and templates in one file, use the chat starter below.',
+  promptIntro: 'Use the prompt for a quick guided conversation. For the full review with editable templates, download the review kit and attach START-HERE.md in your chat.',
   prompt: prompt.trim(),
   promptLabel: 'Value stream review prompt',
   copy: 'Copy the prompt',
