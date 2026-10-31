@@ -1,7 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Arrow from '../../components/Arrow.astro';
-import ToolboxDiagram from '../../components/ToolboxDiagram.astro';
+import { Content as CaretricsExample } from '../../../skills/dashboard-test/resources/caretrics-example.md';
+import ToolboxQuickStart from '../../components/ToolboxQuickStart.astro';
+import { QUICK_START as Q } from '../../data/toolbox-start';
 import ToolboxSkillSource from '../../components/ToolboxSkillSource.astro';
 import { DASHBOARD_TEST as D, DASHBOARD_PROMPT } from '../../data/dashboard-test';
 import ToolboxOutcome from '../../components/ToolboxOutcome.astro';
@@ -17,33 +19,30 @@ import '../../styles/toolbox-guide.css';
       <p class="guide-question">{D.question}</p>
       <p class="guide-intro">{D.intro}</p>
       <p class="guide-kind"><strong>{D.category}</strong><span>{D.formats}</span></p><p class="guide-format">{D.format}</p>
-      <div class="guide-action"><a class="action" href="#checklist">{D.primary}<Arrow /></a><a class="text-link" href="#downloads">{D.secondary}<Arrow /></a></div>
-    </header><nav class="guide-contents" aria-label={D.navLabel}>
- <a href="#outputs">{G.overviewLink}</a><a href="#examples">{G.exampleLink}</a><a href="#checklist">{G.methodLink}</a><a href="#prompt">{G.promptLink}</a><a href="#downloads">{G.downloadsLink}</a>
- </nav>
-<ToolboxOutcome rows={G.dashboardRows} />
-<section id="examples" aria-labelledby="examples-heading"><div class="section-lead"><h2 id="examples-heading">{D.examplesHeading}</h2><p>{D.examplesIntro}</p></div><div class="section-content">{D.examples.map((example, index) => <details class="worked-example" open={index === 0}><summary>{example.title}</summary><div class="example-body"><p>{example.context}</p><dl><dt>{D.verdictLabel}</dt><dd>{example.verdict}</dd><dt>{D.improvementLabel}</dt><dd>{example.improvement}</dd><dt>{D.checkLabel}</dt><dd>{example.check}</dd></dl></div></details>)}</div></section>
-<section id="before" aria-labelledby="before-heading"><h2 id="before-heading">{D.beforeHeading}</h2><dl class="bring">{D.before.map(item => <div><dt>{item.label}</dt><dd>{item.body}</dd></div>)}</dl><p class="small-note">{D.privacy}</p></section>
+      <div class="guide-action"><a class="action" href="#prompt">{D.primary}<Arrow /></a><a class="text-link" href="/downloads/dashboard-test/dashboard-test.zip" download>{D.secondary}<Arrow /></a></div>
+    </header>
+<span id="before" aria-hidden="true"></span>
+<ToolboxQuickStart kind="dashboard" name="dashboard-test" prompt={DASHBOARD_PROMPT} methodHref="#examples"  />
+
+
+<section id="examples" class="equal-examples" aria-labelledby="examples-heading"><div><h2 id="examples-heading">{D.examplesHeading}</h2><p>{D.examplesIntro}</p></div><div class="example-pair">{D.examples.map(example => <article><h3>{example.title}</h3><p>{example.context}</p><dl><dt>{D.verdictLabel}</dt><dd>{example.verdict}</dd><dt>{D.improvementLabel}</dt><dd>{example.improvement}</dd><dt>{D.checkLabel}</dt><dd>{example.check}</dd></dl></article>)}</div></section>
+
+<details id="caretrics-example" class="caretrics-example"><summary>{D.caretricsExample}</summary><div class="example-reading"><CaretricsExample /></div></details>
+
+<details class="output-details"><summary>{Q.outputs}</summary><ToolboxOutcome rows={G.dashboardRows} /></details>
 <section id="checklist" aria-labelledby="checklist-heading">
 
-          <div class="section-lead"><h2 id="checklist-heading">{D.checklistHeading}</h2><p>{D.checklistIntro}</p><ToolboxDiagram kind="dashboard" /></div><div class="section-content">
+          <div class="section-lead"><h2 id="checklist-heading">{D.checklistHeading}</h2><p>{D.checklistIntro}</p></div><div class="section-content">
           <ul class="review-checklist">{D.checklist.map((item,i) => <li><label><input type="checkbox" aria-describedby={`check-help-${i}`} /><span>{item.title}</span></label><p id={`check-help-${i}`}>{item.body}</p></li>)}</ul>
           <p class="small-note">{D.checklistNote}</p>
           <div class="review-alternative"><h3>{D.alternativeHeading}</h3><p>{D.alternative}</p></div>
           <a class="text-link" href="/downloads/dashboard-test/checklist.md" download>{D.checklistDownload}<Arrow /></a>
         </div></section>
-<section id="prompt" aria-labelledby="prompt-heading">
-          <div class="section-lead"><h2 id="prompt-heading">{D.promptHeading}</h2><p>{D.promptIntro}</p></div><div class="section-content">
-          <div data-copy-prompt data-copied={D.copied} data-selected={D.selected} data-failed={D.failed} data-select-label={D.select}>
-            <label class="visually-hidden" for="dashboard-prompt">{D.promptLabel}</label><textarea id="dashboard-prompt" readonly spellcheck="false" rows="12">{DASHBOARD_PROMPT}</textarea>
-            <div class="prompt-controls"><button class="action" type="button" data-copy-button hidden>{D.copy}</button><p class="copy-status" role="status" aria-live="polite" aria-atomic="true" data-copy-status></p></div>
-            <noscript><p>{D.noScript}</p></noscript>
-          </div>
-        </div></section>
 <section id="downloads" aria-labelledby="downloads-heading">
-          <div class="section-lead"><h2 id="downloads-heading">{D.downloadHeading}</h2><p>{D.downloadIntro}</p></div><div class="section-content"><p class="skill-name">{D.skillNameLabel} <code>{D.skillName}</code></p><p class="version">{D.version}</p>
+          <div class="section-lead"><h2 id="downloads-heading">{Q.setup}</h2><p>{D.downloadIntro}</p></div><div class="section-content"><p class="skill-name">{D.skillNameLabel} <code>{D.skillName}</code></p><p class="version">{D.version}</p>
           <div class="closing-links"><a class="action" href="/downloads/dashboard-test/dashboard-test.zip" download>{D.downloadLabel}<Arrow /></a><a class="text-link" href="/downloads/dashboard-test/chat-prompt.txt" download>{D.promptDownload}<Arrow /></a></div>
           <p class="small-note"><a href="/downloads/dashboard-test/dashboard-test/SKILL.md">{D.sourceLabel}</a></p>
+          <p><a class="text-link" href={D.githubHref}>{D.githubLabel}<Arrow /></a></p>
           <ToolboxSkillSource name="dashboard-test" />
           <h3>{D.setupHeading}</h3><div class="skill-setups">{D.setups.map(setup => <details><summary>{setup.name}</summary><div class="setup-body"><p>{setup.body}</p>{setup.path && <code class="setup-path">{setup.path}</code>}<blockquote>{setup.invoke}</blockquote><a href={setup.url} target="_blank" rel="noopener noreferrer">{setup.link}</a></div></details>)}</div><p>{D.setupCheck}</p><p class="small-note">{D.updates}</p>
         </div></section>
@@ -51,34 +50,15 @@ import '../../styles/toolbox-guide.css';
 <section class="guide-closing" aria-labelledby="closing-heading"><h2 id="closing-heading">{D.closingHeading}</h2><p>{D.closing}</p><a class="text-link" href={D.articleHref}>{D.articleLink}<Arrow /></a></section>
 </div>
 </BaseLayout>
-<script>
-  document.querySelectorAll<HTMLElement>('[data-copy-prompt]').forEach(panel => {
-    const input = panel.querySelector<HTMLTextAreaElement>('textarea');
-    const button = panel.querySelector<HTMLButtonElement>('[data-copy-button]');
-    const status = panel.querySelector<HTMLElement>('[data-copy-status]');
-    if (!input || !button || !status) return;
 
-    const selectPrompt = () => {
-      input.focus();
-      input.select();
-      input.setSelectionRange(0, input.value.length);
-    };
-
-    if (!navigator.clipboard?.writeText) button.textContent = panel.dataset.selectLabel ?? button.textContent;
-    button.addEventListener('click', async () => {
-      if (!navigator.clipboard?.writeText) {
-        selectPrompt();
-        status.textContent = panel.dataset.selected ?? '';
-        return;
-      }
-      try {
-        await navigator.clipboard.writeText(input.value);
-        status.textContent = panel.dataset.copied ?? '';
-      } catch {
-        selectPrompt();
-        status.textContent = panel.dataset.failed ?? '';
-      }
-    });
-    button.hidden = false;
-  });
-</script>
+<style>
+.caretrics-example { border-block:1px solid var(--rule); margin-block:24px; scroll-margin-top:24px; }
+.caretrics-example summary { cursor:pointer; min-height:44px; padding-block:16px; font-weight:600; }
+.example-reading { max-width:78ch; padding-block:8px 24px; }
+.example-reading :global(h2) { font:400 30px/1.25 var(--font-display); margin:16px 0; }
+.example-reading :global(h3) { margin:28px 0 12px; font-size:18px; }
+.example-reading :global(p), .example-reading :global(td), .example-reading :global(th) { font-size:16px; line-height:1.65; }
+.example-reading :global(table) { width:100%; border-collapse:collapse; table-layout:fixed; }
+.example-reading :global(td), .example-reading :global(th) { padding:14px; border-bottom:1px solid var(--rule); text-align:left; vertical-align:top; overflow-wrap:anywhere; }
+@media(max-width:600px) { .example-reading :global(td), .example-reading :global(th) { padding:8px; font-size:14px; } }
+</style>

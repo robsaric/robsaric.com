@@ -1,0 +1,16 @@
+---
+interface Props { label: string; open?: boolean }
+const { label, open = false } = Astro.props;
+---
+<details class="worked-example" open={open}><summary>{label}</summary><div class="example-content"><slot /></div></details>
+<style>
+.worked-example { border:1px solid var(--rule); padding:0 22px; }
+summary { cursor:pointer; padding-block:16px; min-height:44px; font:600 15px/1.5 var(--font-sans); }
+.example-content { padding-bottom:18px; max-width:78ch; }
+.example-content :global(h3) { font:400 27px/1.25 var(--font-display); margin:16px 0; }
+.example-content :global(h4) { font-size:17px; margin:24px 0 12px; }
+.example-content :global(p), .example-content :global(li) { font-size:16px; line-height:1.65; }
+.example-content :global(table) { width:100%; table-layout:fixed; border-collapse:collapse; }
+.example-content :global(th), .example-content :global(td) { vertical-align:top; text-align:left; padding:10px 8px; border-bottom:1px solid var(--rule); overflow-wrap:anywhere; font-size:14px; line-height:1.55; }
+@media(max-width:600px) { .worked-example { padding-inline:14px; } .example-content :global(table) { display:block; overflow-x:auto; } .example-content :global(th), .example-content :global(td) { min-width:145px; } }
+</style>

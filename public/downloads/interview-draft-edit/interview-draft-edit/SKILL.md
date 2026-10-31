@@ -44,3 +44,7 @@ Mark newly suggested connecting language and conclusions in [brackets]. Reorderi
 Never invent experiences, quotes, evidence, results, numbers or beliefs. Ask for missing information or omit the unsupported claim and flag it outside the publishable draft. Keep factual checks separate from proposed prose. Do not borrow another author's distinctive wording and present it as the writer's own.
 
 Return the draft plus a short list of decisions or claims requiring the writer's review. Explain that bracketed suggestions need to be accepted, changed or removed before publication. Stop there. Do not publish, send, upload or silently alter source files.
+
+## Example
+
+Read [the worked example](resources/writing-example.md) when a demonstration would help. It is illustrative, not evidence about the current user or a required answer.

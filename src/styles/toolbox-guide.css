@@ -61,10 +61,17 @@
 .toolbox-guide .setup-body blockquote { margin:20px 0; padding-left:16px; border-left:1px solid var(--rule); font-size:15px; line-height:1.7; overflow-wrap:anywhere; }
 .toolbox-guide > section[aria-labelledby="limits-heading"] { max-width:75ch; }
 .toolbox-guide .guide-closing p { max-width:65ch; }
+.toolbox-guide > #prompt.quick-start, .toolbox-guide > #examples.equal-examples { display:block; }
+.toolbox-guide .output-details { border-block:1px solid var(--rule); }
+.toolbox-guide .example-pair { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:32px; }
+.toolbox-guide .example-pair article { border-top:1px solid var(--rule); padding-top:20px; }
+.toolbox-guide .example-pair h3 { margin-top:0; font:400 28px/1.2 var(--font-display); }
+.toolbox-guide .example-pair p, .toolbox-guide .example-pair dd { font-size:15px; }
 @media(max-width:1000px) {
  .toolbox-guide > #examples, .toolbox-guide > #example, .toolbox-guide > #workflow, .toolbox-guide > #checklist, .toolbox-guide > #prompt, .toolbox-guide > #downloads, .toolbox-guide > #before { grid-template-columns:minmax(0,1fr); gap:28px; }
  .toolbox-guide .section-lead { max-width:70ch; }
  .toolbox-guide #before .small-note { grid-column:auto; }
+ .toolbox-guide .example-pair { grid-template-columns:minmax(0,1fr); }
 }
 @media(max-width:600px) {
  .toolbox-guide > section:not(.guide-outcomes) { padding-block:32px; }

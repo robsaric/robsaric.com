@@ -5,11 +5,11 @@ export const DASHBOARD_TEST = {
   "category": "Review & decide",
   "formats": "Checklist · Prompt · Skill",
   "description": "A free dashboard review checklist, chat prompt and AI skill. Find the main gap, choose one improvement, or decide a dashboard is not needed.",
-  "question": "Does this dashboard help you decide what to do?",
-  "intro": "Pick one dashboard you use. Follow what happens after you look at it. This guided review helps you find the main gap and choose one improvement. Sometimes the answer is an existing list, not another screen.",
+  "question": "Does your dashboard earn its place?",
+  "intro": "A free AI skill I created to review a dashboard or report against the job someone needs it to do. Bring a screenshot or description. Find what to keep, one useful change, or a simpler alternative.",
   "format": "Free checklist, copyable prompt and skill for Claude or Codex. No signup required.",
-  "primary": "Start with the checklist",
-  "secondary": "Get the skill",
+  "primary": "Try the prompt",
+  "secondary": "Download skill ZIP",
   "back": "Toolbox",
   "navLabel": "In this guide",
   "nav": [
@@ -76,8 +76,15 @@ export const DASHBOARD_TEST = {
     {
       "title": "Will the next review teach them anything?",
       "body": "Check what happened after the decision. What you learn from doing the work should help you improve how the work gets done."
+    },
+    {
+      "title": "What could we remove without making the job harder?",
+      "body": "Consider an unnecessary metric, duplicate report or extra handoff. Keep the comparisons, source limits and records the reader needs. Removal is an option, not a requirement."
     }
   ],
+  "caretricsExample": "See the full Caretrics demo review",
+  "githubLabel": "Read the GitHub guide",
+  "githubHref": "https://github.com/robsaric/robsaric.com/tree/main/skills/dashboard-test",
   "checklistNote": "These checks stay on this page only. Download the checklist if you want to keep your notes.",
   "alternativeHeading": "Does it need to be a dashboard?",
   "alternative": "Try the same job with an existing list, report, alert or conversation. If that gets you to a sound decision with less work, use it. A dashboard can still earn its place by helping you spot a pattern or confirm that no change is needed.",
@@ -95,7 +102,7 @@ export const DASHBOARD_TEST = {
   "downloadIntro": "A skill saves the review instructions so you can reuse them. This one contains instructions only: no scripts, connectors or automatic changes to your dashboard.",
   "skillNameLabel": "Skill name:",
   "skillName": "dashboard-test",
-  "version": "Version 1.0 · October 27, 2026",
+  "version": "Version 1.1 · October 31, 2026",
   "downloadLabel": "Download the skill ZIP",
   "sourceLabel": "Read SKILL.md before installing",
   "promptDownload": "Download the chat prompt",
