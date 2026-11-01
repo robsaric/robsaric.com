@@ -1,5 +1,6 @@
 ---
 import Arrow from './Arrow.astro';
+import { COLLECTION } from '../data/toolbox-presentation';
 import { QUICK_START as Q, START_CONTEXT } from '../data/toolbox-start';
 interface Props {
   kind: keyof typeof START_CONTEXT;
@@ -40,6 +41,7 @@ const base = `/downloads/${name}`;
       <code>{name}</code>
       <p>{kit ? Q.kit : Q.archive}</p>
       <a class="action" href={`${base}/${name}${kit ? '-kit' : ''}.zip`} download>{kit ? Q.kitZip : Q.skillZip}<Arrow /></a>
+      <a class="text-link" href={COLLECTION.repo + name}>{Q.github}<Arrow /></a>
       <a class="text-link" href="#downloads">{Q.setup}<Arrow /></a>
       <a class="text-link" href={`${base}/${name}/SKILL.md`}>{Q.source}</a>
       <a class="text-link method-link" href={methodHref}>{Q.more}<Arrow /></a>
