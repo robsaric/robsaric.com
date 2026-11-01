@@ -1,6 +1,6 @@
 // Change this one value to restore the runner / evening reader. Seasonal
 // scenes are separate additions; never overwrite earlier character assets.
-export const HERO_SCENE: 'everyday' | 'halloween' = 'halloween';
+export const HERO_SCENE: 'everyday' | 'halloween' = 'everyday';
 
 export const HALLOWEEN = {
   description: 'Rob in a wizard hat, conjuring small pictures and OpenAI, Claude and Meta Muse symbols with a wand.',

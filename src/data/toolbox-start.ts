@@ -16,6 +16,7 @@ export const QUICK_START = {
   kitZip: 'Download review kit',
   setup: 'Installation & files',
   source: 'Read SKILL.md',
+  github: 'View on GitHub',
   more: 'See the method and examples',
   outputs: 'What you bring, get and decide',
   archive: 'Includes SKILL.md and its supporting files for Claude, Claude Code or Codex. No executable scripts or account connections.',
