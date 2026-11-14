@@ -117,9 +117,10 @@ the old posts, never their typos.
 - `board-meetings` — the single-scene personal story done right, Rob cast as the student.
 - `the-humble-rainmaker` — the naming move and the composite portrait in parallel clauses.
 
-The live model note is `2026-08-18-unbooked-at-the-desk`: every noun is front-desk, the cohort is
-disclosed, causation is hedged honestly, a discarded number is shown with the reason, and it
-closes on an action for this week.
+The model note was `2026-08-18-unbooked-at-the-desk`, retired on 2026-10-19 with the clinic notes
+and kept in `docs/retired-notes/` as history, not as a live page: every noun is front-desk, the
+cohort is disclosed, causation is hedged honestly, a discarded number is shown with the reason, and
+it closes on an action for this week. No current note has been named to replace it.
 
 ## Boundary rules the copy law does not state
 

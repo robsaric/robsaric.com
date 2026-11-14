@@ -80,6 +80,36 @@ export const LEGACY_PAGE_REDIRECTS = {
   '/essays': '/archive/',
   '/my-observations': '/archive/',
   '/book': '/archive/',
+
+  /**
+   * Added 2026-11-14. The WordPress category pages. Search Console still
+   * showed /category/entrepreneurship/ (Not found) and /category/amazing-people/
+   * (Crawled, not indexed) in Oct 14 to Nov 10 2026. Each slug below has a 200
+   * capture in the Wayback CDX index for robsaric.com or robertsaric.com, and
+   * each returned 404 in production on 2026-11-14, with and without the slash.
+   * The archive is grouped by year, not category, so they all land on its index.
+   * Explicit keys on purpose: a dynamic /category/[slug] source pointing at a
+   * static page fails the Astro 7 build (InvalidRedirectDestination).
+   */
+  '/category/amazing-people': '/archive/',
+  '/category/business-management': '/archive/',
+  '/category/career-success': '/archive/',
+  '/category/design': '/archive/',
+  '/category/digital-leadership': '/archive/',
+  '/category/entrepreneur': '/archive/',
+  '/category/entrepreneurship': '/archive/',
+  '/category/growth-mindset': '/archive/',
+  '/category/inspire': '/archive/',
+  '/category/leadership': '/archive/',
+  '/category/leadership-insights': '/archive/',
+  '/category/marketing': '/archive/',
+  '/category/motivational': '/archive/',
+  '/category/offbeat': '/archive/',
+  '/category/personal-development': '/archive/',
+  '/category/sales-and-marketing': '/archive/',
+  '/category/systems-thinking': '/archive/',
+  '/category/tech': '/archive/',
+  '/category/tips': '/archive/',
 };
 
 /** Astro `redirects` config object: old path -> { status: 301, destination }. */

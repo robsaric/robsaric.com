@@ -125,10 +125,10 @@ pnpm gate
 Never pipe it. `pnpm gate | tail` hides the exit code. Six steps: `astro check`, `lint-copy`,
 `astro build`, `check-redirects`, `check-notes`, `check-layout`.
 
-The lint baseline is **4 warnings**, all `"dashboard"` (`src/data/copy.ts`, `src/data/principles.ts`,
-`src/content/notes/2026-08-19-i-took-my-own-number-down.md`, `public/llms.txt`), all deliberate: the
-site uses the word critically. **A fifth warning is yours.** Read it, do not wave it through on a
-green exit code.
+The warning count changes as the site grows, so take the baseline yourself: run
+`node scripts/lint-copy.mjs` before you edit and note the count. Most warnings are `"dashboard"` on
+the dashboard essay, the Dashboard Test and the Toolbox, where the word is the subject. **Any
+warning your change adds is yours.** Read it, do not wave it through on a green exit code.
 
 ## 11. Confirm it actually shipped
 
@@ -146,8 +146,8 @@ its href must resolve to a file that exists under `dist/`.
 
 ## Notes
 
-- Six seed notes in `src/content/notes/` still carry `draft: true` with placeholder bodies
-  transcribed from the artboard. Each needs a real body before its flag comes off. They are not
-  examples to copy.
+- The six seed notes transcribed from the artboard were retired on 2026-10-22 at Rob's request
+  (`docs/writing-cleanup-2026-10-22.md`); their files are in `docs/retired-notes/`. Do not restore
+  them, and do not copy them.
 - Section 04 renders a three-column grid. Below three live notes it shows a short row, and below
   two represented tags the filter row does not render at all. That is expected, not a bug.

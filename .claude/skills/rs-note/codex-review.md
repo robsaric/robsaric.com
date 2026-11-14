@@ -1,12 +1,12 @@
 You are reviewing a field note for robsaric.com (repo: current directory). It is written by Rob
-Saric, founder of Caretrics, for allied-health and rehab clinic owners who run on Jane.app.
+Saric, founder of Caretrics, for the readers `PRODUCT.md` names: small-business owners, builders,
+designers and people thinking critically about technology.
 
 READ THESE FIRST, in full:
 
 - `docs/COPY.md` "Copy law", items 1 to 9, and the locked credential in item 7
 - `.claude/skills/rs-voice/SKILL.md`: the ten voice moves, the widths test, the post gate
-- The note under review: `src/content/notes/<SLUG>.md`
-- `src/content/notes/2026-08-18-unbooked-at-the-desk.md`, the model note the others are held to
+- The note under review: `src/content/notes/<SLUG>.md`, or `<SLUG>.mdx` when the note uses components
 
 Check the note's factual claims against the repo itself: git history, `docs/COPY.md`,
 `src/data/copy.ts`, and any page the note refers to. Notes about this site's own history are

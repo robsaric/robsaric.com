@@ -216,4 +216,20 @@ export const NEXT_READS: Record<string, readonly { href: string; reason: string 
     { href: '/field-notes/2026-10-18-building-with-ai-and-life-beyond-the-feed/', reason: 'A question I’m asking now: when should a useful product let us leave?' },
     { href: '/archive/building-a-startup-requires-self-awareness/', reason: 'Looking more closely at our own limits as builders.' },
   ],
+  // Added 2026-11-14 for the archive posts that appear most in search, by
+  // page-level Search Console impressions, Oct 14 to Nov 10 2026: 1,425, 28
+  // and 25 (16, 0 and 0 clicks). None linked to current writing before this.
+  // The Alan Turing post (23) has no next read on purpose: no current essay
+  // connects honestly to a post about persecution and staying true to yourself.
+  '/archive/7-of-the-most-extraordinary-people-you-probably-do-not-know-but-should/': [
+    { href: '/field-notes/2026-10-18-building-with-ai-and-life-beyond-the-feed/', reason: 'What should the tools we build give back to the people who use them?' },
+  ],
+  '/archive/entering-beast-mode/': [
+    { href: '/field-notes/2026-10-18-building-with-ai-and-life-beyond-the-feed/', reason: 'When a team finishes sooner, who decides what happens to the time it saves?' },
+    { href: '/archive/building-a-startup-requires-self-awareness/', reason: 'Looking more closely at our own limits as builders.' },
+  ],
+  '/archive/great-coders-are-artists/': [
+    { href: '/field-notes/2026-10-18-small-teams-deserve-their-time-back/', reason: 'Designing software around where the person using it is starting.' },
+    { href: '/archive/great-systems-need-to-create-flow/', reason: 'Designing systems around the people who use them.' },
+  ],
 };

@@ -2,12 +2,13 @@
 
 > Rob Saric is a founder and dad in Ottawa, writing about useful tools for small teams, building companies and life beyond the screen.
 
-Rob is building Caretrics and developing a broader small-team tools direction through Togetheren. SkillNav is in development as part of that direction, beginning with clearer client and project handoffs. This is not a claim of a launched SkillNav product.
+Rob is building Caretrics and developing a broader small-team tools direction through Togetheren. SkillNav is in development as part of that direction, starting with understanding a customer’s needs, testing an offer and keeping track of what is learned. This is not a claim of a launched SkillNav product.
 
 ## Pages
 
 - [Home](https://robsaric.com/): personal perspective, selected writing, current work and contact.
 - [Writing](https://robsaric.com/writing/): recent field notes and selected earlier essays. Original dates remain visible.
+- [Toolbox](https://robsaric.com/toolbox/): products, GitHub libraries, AI skills and practical workflows, with examples and honest trade-offs.
 - [What I'm building](https://robsaric.com/building/): opportunity, ownership and independence through tools for small teams.
 - [About](https://robsaric.com/about/): background, building companies, parenting, mentoring and the questions behind Rob's work.
 - [Archive](https://robsaric.com/archive/): earlier writing from 2009 to 2019, kept as written.
@@ -18,9 +19,15 @@ Rob is building Caretrics and developing a broader small-team tools direction th
 
 ## Selected writing
 
-- [Small teams still have to answer the phone](https://robsaric.com/field-notes/2026-10-18-small-teams-deserve-their-time-back/): the responsibilities a team takes on after a prototype becomes a promise.
-- [I want my analog life back](https://robsaric.com/field-notes/2026-10-18-building-with-ai-and-life-beyond-the-feed/): useful AI, control of our time and room for life away from screens.
-- [Are dashboards going the way of the dodo?](https://robsaric.com/field-notes/2026-10-19-are-dashboards-dead/): where charts help and why operational software needs to help people act.
+- [Help me know what to ask next.](https://robsaric.com/field-notes/2026-10-18-small-teams-deserve-their-time-back/): what an early Caretrics tool taught Rob about helping people know where to start, and which question to ask next.
+- [I want my analog life back.](https://robsaric.com/field-notes/2026-10-18-building-with-ai-and-life-beyond-the-feed/): useful AI, control of our time and room for life away from screens.
+- [What should a dashboard do?](https://robsaric.com/field-notes/2026-10-19-are-dashboards-dead/): a dashboard should remember what you decided, help you follow through and give you something to learn from at the next review.
+
+## Toolbox
+
+- [Interview, Draft, Edit](https://robsaric.com/toolbox/interview-draft-edit/): start with your idea, let AI interview you and organize your answers into a draft, then make the final edit. A free writing skill for Claude and Codex.
+- [The Dashboard Test](https://robsaric.com/toolbox/dashboard-test/): a free dashboard review checklist, chat prompt and AI skill. Find the main gap, choose one improvement, or decide a dashboard is not needed.
+- [Value Stream Mapping](https://robsaric.com/toolbox/value-stream-mapping/): a guided review for consultants and teams. Map offers, follow the work, and choose an improvement to test. Includes templates, a prompt and an AI skill.
 
 ## Elsewhere
 
