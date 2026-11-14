@@ -11,6 +11,9 @@ of Rob's real writing that exists. The copy law enforces the subtraction; this s
 addition. Applied alone, the law yields a colder writer than Rob actually is. A field note that
 reads coldly clinical is as false to him as one that gushes.
 
+Before drafting from nothing, run the user-level `/interview` skill: it draws the lesson, the
+analogy, the story and the number out of Rob in his own words, and this skill then shapes them.
+
 ## The ten moves, each proven in the archive
 
 1. **Verdict before explanation.** Open on the concrete thing: a person, a scene, a blunt answer.
@@ -37,8 +40,11 @@ reads coldly clinical is as false to him as one that gushes.
 7. **Binary contrast and ranked priority.** Outcomes not activities; on the business versus in the
    business; solvency first, growth third. State the rule, then immediately name its exception if
    one exists. Copy law caps this at one "not X, it's Y" per section, so make the one count.
-8. **One homely metaphor per piece, at most**, drawn from ordinary physical life (a car out of
-   alignment, poker chips), mapped item by item onto the point. Never stack figurative language.
+8. **One homely analogy per idea, at most** (was one per piece until 2026-10-22, when Rob made
+   explaining by analogy the house style; a note usually holds one idea, so one analogy). The
+   method and its five-check test: `I:/My Drive/Caretrics Brain/0-distilled/explain-by-analogy.md`.
+   Drawn from ordinary physical life (a car out of alignment, poker chips), mapped item by item
+   onto the point. Never stack figurative language.
    The metaphor carries what humor exists; he does not tell jokes.
 9. **Close short on something the reader carries out of the room**: an imperative, a portable
    rule, a compressed moral. Never a summary, never trailing off. Some of his best closes are two
