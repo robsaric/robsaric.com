@@ -47,4 +47,9 @@ const { id } = Astro.props;
 .appearance-control:hover .appearance-track { outline: 2px solid var(--control-border); outline-offset: 2px; }
 .appearance-control:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; border-radius: 4px; }
 @media (prefers-reduced-motion: reduce) { .appearance-thumb { transition: none; } }
+@media (forced-colors: active) {
+  .appearance-control { color: CanvasText; }
+  .appearance-track { border: 1px solid CanvasText; padding: 2px; }
+  .appearance-thumb { forced-color-adjust: none; background: CanvasText; }
+}
 </style>

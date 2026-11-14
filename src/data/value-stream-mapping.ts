@@ -2,7 +2,7 @@ import prompt from '../../skills/value-stream-mapping/resources/chat-prompt.txt?
 
 export const VALUE_STREAM = {
   title: 'Value Stream Mapping',
-  description: 'A guided review for consultants and teams. Map offers, follow the work, and choose an improvement to test. Includes templates, a chat prompt and an AI skill.',
+  description: 'A guided review for consultants and teams. Map offers, follow the work, and choose an improvement to test. Includes templates, a prompt and an AI skill.',
   category: 'Understand & improve',
   formats: 'Guide · Templates · Prompt · Skill',
   promise: 'See how work flows. Choose what to improve.',

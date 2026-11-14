@@ -24,6 +24,11 @@ let failures = 0;
 
 if (!base) {
   const cfg = JSON.parse(await readFile(new URL('../.vercel/output/config.json', import.meta.url), 'utf8'));
+  const assetCacheIndex=cfg.routes.findIndex((r)=>r.src==='^/_astro/(.*)$'&&r.headers?.['cache-control']?.includes('immutable'));
+  const fileSystemRouteIndex=cfg.routes.findIndex((r)=>r.handle==='filesystem');
+  assert(assetCacheIndex!==-1,'Immutable /_astro/ cache route must exist');
+  assert(fileSystemRouteIndex!==-1,'Vercel filesystem handle must exist');
+  assert(assetCacheIndex<fileSystemRouteIndex,'The immutable /_astro/ cache route must precede the filesystem handle; rules after the filesystem handle only run on a filesystem miss');
   const routes = cfg.routes.filter((r) => r.src && r.status && r.headers?.Location);
   const resolve = (path, hops = 0) => {
     if (hops > 5) return { error: 'loop' };
