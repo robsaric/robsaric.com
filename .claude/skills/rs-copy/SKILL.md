@@ -83,9 +83,10 @@ pnpm gate
 Bare, never piped. Six steps: `astro check`, `lint-copy`, `astro build`, `check-redirects`,
 `check-notes`, `check-layout`.
 
-The lint baseline is **4 warnings**, all `"dashboard"` (`src/data/copy.ts`, `src/data/principles.ts`,
-`src/content/notes/2026-08-19-i-took-my-own-number-down.md`, `public/llms.txt`), all deliberate: the
-site uses the word critically. A fifth warning is yours.
+The warning count changes as the site grows, so take the baseline yourself: run
+`node scripts/lint-copy.mjs` before you edit and note the count. Most warnings are `"dashboard"` on
+the dashboard essay, the Dashboard Test and the Toolbox, where the word is the subject. Any warning
+your change adds is yours to read.
 
 ## What the lint now covers that it did not
 

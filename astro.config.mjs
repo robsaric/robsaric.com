@@ -42,6 +42,50 @@ function vercelSlashTolerantRedirects() {
   };
 }
 
+/**
+ * The adapter emits its one-year immutable cache route for /_astro/ after
+ * `{ handle: 'filesystem' }`. Vercel's Build Output API: "The handle value
+ * indicates the start of a phase. All following routes are only checked in
+ * that phase", and the filesystem phase is for "matches after the filesystem
+ * misses". Every /_astro/ file exists, so the header never applied: production
+ * served them `max-age=0, must-revalidate` (checked 2026-11-14). Moving the
+ * route ahead of the handle puts it where vercel.json headers go. No-op if the
+ * adapter ever fixes its own ordering. Checked in scripts/check-redirects.mjs.
+ */
+/** @returns {import('astro').AstroIntegration} */
+function vercelAssetCacheBeforeFilesystem() {
+  let assets = '_astro';
+  return {
+    name: 'robsaric:vercel-asset-cache-before-filesystem',
+    hooks: {
+      'astro:config:done': ({ config }) => {
+        assets = config.build.assets || '_astro';
+      },
+      'astro:build:done': async ({ logger }) => {
+        const file = new URL('./.vercel/output/config.json', import.meta.url);
+        let cfg;
+        try {
+          cfg = JSON.parse(await readFile(file, 'utf8'));
+        } catch {
+          return; // not a Vercel build
+        }
+        /** @type {Array<Record<string, any>>} */
+        const routes = cfg.routes ?? [];
+        const assetSrc = `^/${assets}/(.*)$`;
+        const assetRouteIndex = routes.findIndex(
+          (r) => r.src === assetSrc && typeof r.headers?.['cache-control'] === 'string' && r.continue === true,
+        );
+        const fileSystemRouteIndex = routes.findIndex((r) => r.handle === 'filesystem');
+        if (assetRouteIndex < 0 || fileSystemRouteIndex < 0 || assetRouteIndex < fileSystemRouteIndex) return;
+        const [assetRoute] = routes.splice(assetRouteIndex, 1);
+        routes.splice(fileSystemRouteIndex, 0, assetRoute);
+        await writeFile(file, JSON.stringify(cfg, null, 2));
+        logger.info('moved Vercel asset cache route before the filesystem phase');
+      },
+    },
+  };
+}
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://robsaric.com',
@@ -61,6 +105,7 @@ export default defineConfig({
     }),
     mdx(),
     vercelSlashTolerantRedirects(),
+    vercelAssetCacheBeforeFilesystem(),
   ],
   // Self-hosted at build time through the Fonts API (no runtime Google requests).
   // Consumed in BaseLayout via <Font cssVariable="--font-inter" preload /> and
