@@ -1,7 +1,7 @@
 /** Approved personal positioning. Article bodies remain in their content collections. */
 export const EDITORIAL = {
   hero: {
-    identity: 'Founder of',
+    identity: 'Co-founder of',
     identityCompany: 'Caretrics',
     identityContext: 'Writer · Ottawa',
     heading: 'Work is hard enough.',
@@ -40,7 +40,7 @@ export const EDITORIAL = {
   },
   work: {
     heading: 'What I’m building.',
-    intro: 'I’m the founder and CEO of Caretrics. Through Togetheren, I’m exploring how more people can build a business around what they know. SkillNav is one of those experiments.',
+    intro: 'I’m the co-founder and CEO of Caretrics. Through Togetheren, I’m exploring how more people can build a business around what they know. SkillNav is one of those experiments.',
     link: 'See the work and the thinking behind it',
     example: {
       heading: 'They want answers.',
@@ -66,7 +66,7 @@ export const EDITORIAL = {
     },
     caretrics: {
       name: 'Caretrics',
-      status: 'Founder & CEO',
+      status: 'Co-founder & CEO',
       body: 'Software for the people running clinics. It helps teams find missed follow-ups and revenue gaps, with the records behind each finding so someone can check it and act.',
       link: 'Explore Caretrics',
     },
@@ -75,7 +75,7 @@ export const EDITORIAL = {
     title: 'What I’m building',
     description: 'Why Rob Saric is building Caretrics and Togetheren: helping small teams turn their knowledge into work and businesses that support them.',
     heading: 'What I’m building.',
-    lead: 'I’m the founder and CEO of Caretrics. Togetheren is my studio for exploring how small teams can build businesses around what they know, with SkillNav as one of the experiments.',
+    lead: 'I’m the co-founder and CEO of Caretrics. Togetheren is my studio for exploring how small teams can build businesses around what they know, with SkillNav as one of the experiments.',
     whyLink: 'Why this work',
     projectsLink: 'Caretrics',
     studioLink: 'Togetheren & SkillNav',

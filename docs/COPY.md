@@ -275,7 +275,7 @@ Section 8 added 2026-08-24 when the metric returned to the Evidence band (V5). T
 
 | # | Claim | Where | Status |
 |---|---|---|---|
-| V1 | "Founder of Caretrics" (artboard dropped "& CEO") | hero, footer, About | VERIFY |
+| V1 | Rob's Caretrics title: "Co-founder & CEO" (was "Founder of Caretrics"; the artboard dropped "& CEO") | homepage hero and What I'm building; /building/ lead and Caretrics card | **RESOLVED 2026-11-15.** Grill Q60, answered 2026-11-14 and confirmed 2026-11-15. caretrics.com and its /about/ page list Rob as Co-founder & CEO, per CAR-1571 (Rob, 2026-10-02); checked live 2026-11-15. The four role strings in `src/data/editorial.ts` now match. The generic "founder" lines stay, because a co-founder is a founder. If the Caretrics record changes, it changes there first |
 | V2 | "20+ years building software" / "I spent twenty years building software" | About stat row, hero body (2026-08-23) | **CONFIRMED by Rob 2026-08-24** |
 | V3 | systems-architect / Trend Micro, Mitel, Pythian line | /about only | VERIFY |
 | V5 | $127,000 identified, four gaps, one clinic, one year | Evidence, /how-i-counted/ | **RESOLVED 2026-08-24.** Rob confirmed the four gaps and amounts (unbilled claims $52,000, no-shows $37,000, missed re-bookings $24,000, missing re-evaluations $14,000; the caretrics.com breakdown). Metric restored to the Evidence band with the "How I counted this →" link; the breakdown is written down in `/how-i-counted/` section 8. Cohort: one clinic, 25 providers, June 2025 through May 2026 |
