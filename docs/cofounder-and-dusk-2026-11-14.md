@@ -8,7 +8,9 @@ Remove `sitemap_index.xml` from Search Console before the site is imported into 
 
 ## Q59. The dashboard essay points to the Dashboard Test
 
-One sentence in Rob's words goes before the closing line of *What should a dashboard do?* (`src/content/notes/2026-10-19-are-dashboards-dead.mdx`), pointing readers to the Dashboard Test. Read next stays. The sentence comes from a short `/interview`, then the `rs-note` Codex review and a new `updated` date, on a branch with a PR. Pending the interview.
+One sentence in Rob's words goes before the closing line of *What should a dashboard do?* (`src/content/notes/2026-10-19-are-dashboards-dead.mdx`), pointing readers to the Dashboard Test. Read next stays. The sentence comes from a short `/interview`, then the `rs-note` Codex review and a new `updated` date, on a branch with a PR.
+
+Done on 2026-11-15, without the interview. Rob wrote: “for q59 go with what you have the most confidence around.” The sentence reuses the Dashboard Test page's approved wording in `src/data/dashboard-test.ts`: free, “a redacted screenshot or a description”, and “what to keep, one useful change, or a simpler alternative”. The `rs-note` Codex review asked for “redacted”, matching the page's privacy line. `updated` is 2026-11-15.
 
 ## Q60. Co-founder and CEO of Caretrics
 
@@ -30,4 +32,4 @@ These three are approved for a local preview only. Publishing is a separate yes,
 
 ## Also decided on 2026-11-14, outside the Grill numbering
 
-Vercel Web Analytics, base tier: page views only, no Plus, no custom events. PR #34 adds it and amends `AGENTS.md` rule 7, `PRODUCT.md` and `docs/AUDIENCE-AND-PUBLISHING.md`. The LinkedIn click count in CAR-1171's October 18 record waits until the Vercel team's plan is known, because custom events need Pro.
+Vercel Web Analytics, base tier: page views only, no Plus, no custom events. PR #34 adds it and amends `AGENTS.md` rule 7, `PRODUCT.md` and `docs/AUDIENCE-AND-PUBLISHING.md`. The LinkedIn click count in CAR-1171's October 18 record needs custom events, which need Pro. On 2026-11-15 Rob confirmed the team is on Pro, so the count is possible. It still needs its own decision, because this approval excludes custom events.
