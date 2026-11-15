@@ -1,5 +1,22 @@
 # The audience this site should earn
 
+## November 15 plan (Grill Q64–69)
+
+Rob agreed Q64–Q69 on 2026-11-15. CAR-1171 carries the full record.
+
+- **Toolbox signup (Q64).** The Toolbox index and its three guides end with the existing email signup. Downloads stay free.
+- **Who gets the first email (Q65).** Only people who asked for Rob's writing: everyone confirmed since 2026-10-20, plus whichever of the 182 older contacts Rob identifies as having signed up for it. Nobody is emailed to reconfirm.
+- **Cadence (Q66).** “Help me know what to ask next.” goes first, then one email per new essay, about every two weeks.
+- **LinkedIn newsletter (Q67).** “Digital days. Analog nights.” launches monthly, with the first email's essay as its first edition.
+- **Freeze (Q68).** No site design changes for eight weeks from 2026-11-16, except Q59, Q60 and Q64.
+- **Calendar (Q69).** Weeks run from Monday 2026-11-16:
+  - week 0: send “Help me know what to ask next.”;
+  - week 3: Rob's own Dashboard Test run on one real report he may show, redacted;
+  - week 5: “What Caretrics removed after watching a biller or coordinator use it”;
+  - week 7: an essay drawn from the first conversation that gave permission.
+
+Sending waits until the value the email offers readers is settled. Rob opened that question on 2026-11-15: “Before we do an email, let's make sure we're clear on value we're creating.”
+
 October 19 publication update: Rob approved both proposed essays and the dashboard replacement. The three current essays now lead on the production homepage. The three retired clinic notes are preserved outside the public collection. Draft boundaries and launch references below record the earlier review; see `publishing-2026-10-19.md` for current decisions.
 
 The through-line is Rob championing small teams and caring about what technology does to people's time. Togetheren, SkillNav and Caretrics give that view somewhere to become real. A reader should benefit from the writing even if they never become a customer.
