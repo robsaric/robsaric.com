@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Arrow from '../../components/Arrow.astro';
 import ToolboxSample from '../../components/ToolboxSample.astro';
+import ToolboxNewsletter from '../../components/ToolboxNewsletter.astro';
 import { COLLECTION as C } from '../../data/toolbox-presentation';
 import { TOOLBOX_INSTALLATION as S } from '../../data/toolbox-installation';
 import { TOOLBOX as T } from '../../data/toolbox';
@@ -73,6 +74,7 @@ const guides = [
         </li>)}
       </ul>
     </section>
+    <ToolboxNewsletter id="toolbox-newsletter" />
   </div>
 </BaseLayout>
 
