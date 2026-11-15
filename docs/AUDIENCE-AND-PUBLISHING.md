@@ -79,7 +79,7 @@ I want the work finished and the afternoon back.
 
 Record a starting point in LinkedIn's own reporting, then review weekly: followers, profile visits, substantive comments and relevant conversations. Note which subject each post addressed. Separate a website click from an actual follow; a change in followers does not prove that this site caused it.
 
-After four weeks, decide which ideas generated worthwhile conversations and which felt forced. Do more of the former. No tracking service has been added to the website.
+After four weeks, decide which ideas generated worthwhile conversations and which felt forced. Do more of the former. On 2026-11-14 Rob approved Vercel Web Analytics for page views. A page view shows what someone opened, not whether the idea started a conversation.
 
 ## Before release
 

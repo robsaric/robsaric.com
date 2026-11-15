@@ -74,6 +74,8 @@ Only `PUBLIC_NEWSLETTER_ENDPOINT` uses the `PUBLIC_` prefix. The Resend key and 
 
 When `PUBLIC_NEWSLETTER_ENDPOINT` is unset, the homepage hides the form and shows the contact fallback link.
 
+Vercel Web Analytics needs no variable. Production builds load `/_vercel/insights/script.js` and remove the query string and fragment from each page URL before sending. A referrer from another site is sent as the visitor's browser reports it, usually the origin only. Enable Analytics in the Vercel project before deploying such a build; until then that script returns 404 on every page.
+
 ## Newsletter
 
 The shared form posts to `/api/subscribe/`, which sends a confirmation email from `Rob Saric <rob@robsaric.com>`, with replies directed to Rob's monitored inbox. It does not create contacts or change subscriptions. Email copy lives in `src/data/newsletter.ts`; the HTML and plain-text versions share that copy.

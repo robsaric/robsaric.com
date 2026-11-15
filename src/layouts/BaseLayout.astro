@@ -2,6 +2,7 @@
 import { Font } from 'astro:assets';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import WebAnalytics from '../components/WebAnalytics.astro';
 import { SITE } from '../data/site';
 import { UI } from '../data/ui';
 import { clampDescription } from '../lib/seo';
@@ -60,6 +61,7 @@ const serializedJsonLd = jsonLd
   <head>
     <meta charset="UTF-8" />
     <script is:inline set:html={appearanceBootstrap}></script>
+    <WebAnalytics />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{documentTitle}</title>
     <meta name="description" content={metaDescription} />
