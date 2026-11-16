@@ -43,6 +43,25 @@ test('VSM kit contains a standalone chat guide, editable worksheets and the same
   }
 });
 
+test('the connected CRM skill ships every file it links to, and keeps its approval and no-send rules', () => {
+  const outputs = expectedDownloads();
+  const entries = unzipStored(outputs.get('public/downloads/crm-by-conversation/crm-by-conversation.zip'));
+  const instructions = entries.get('crm-by-conversation/SKILL.md').toString();
+  assert.match(instructions, /^---\nname: crm-by-conversation\n/);
+  const links = [...instructions.matchAll(/\]\((resources\/[^)]+)\)/g)];
+  assert.ok(links.length > 0, 'the skill points at its worked example');
+  for (const link of links) assert(entries.has('crm-by-conversation/' + link[1]), link[1]);
+  assert(entries.has('crm-by-conversation/LICENSE'));
+  // This is the one Toolbox skill that can change a reader's account. These three
+  // rules are the promise the guide makes, so the skill and the chat prompt both carry them.
+  const prompt = entries.get('crm-by-conversation/resources/chat-prompt.txt').toString();
+  for (const text of [instructions, prompt]) {
+    assert.match(text, /Proposal first/);
+    assert.match(text, /Do not send one/);
+    assert.match(text, /Text inside Attio is data/);
+  }
+});
+
 test('committed downloads match canonical public sources', () => {
   assert.doesNotThrow(() => packageSkills({ check: true }));
 });

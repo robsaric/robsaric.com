@@ -1,0 +1,4 @@
+interface:
+  display_name: "CRM by Conversation"
+  short_description: "Set up and run Attio from a chat. You approve every change."
+  default_prompt: "Use $crm-by-conversation to set up my Attio workspace with me. Inspect it first, then ask how I sell before proposing any structure."

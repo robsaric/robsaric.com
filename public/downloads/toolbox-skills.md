@@ -1,16 +1,22 @@
 # Rob Saric's Toolbox skills
 
 Practical workflows you can inspect, adapt and use again. These skills contain
-instructions and optional reference files. They do not run scripts, connect to
-accounts or make changes on your behalf.
+instructions and optional reference files. They include no scripts, connectors
+or keys. Three of them work only from what you paste into a chat and change
+nothing on your behalf. One, CRM by Conversation, guides an assistant that you
+have connected to your own Attio account. It shows you each change and waits
+for your approval before writing it.
 
 | Skill | Bring | Get | Guide |
 | --- | --- | --- | --- |
 | [Value Stream Mapping](https://github.com/robsaric/robsaric.com/blob/main/skills/value-stream-mapping/README.md) | A process description, offers and audiences | A provisional map, evidence gaps and a team-chosen improvement to test. Separate current, next pilot and longer-term ideal views. | [Read the guide](https://robsaric.com/toolbox/value-stream-mapping/) |
 | [The Dashboard Test](https://github.com/robsaric/robsaric.com/blob/main/skills/dashboard-test/README.md) | A redacted screenshot or description, the reader and their question | A provisional verdict, one main gap and one practical improvement. Keeping it or using no dashboard are valid outcomes. | [Read the guide](https://robsaric.com/toolbox/dashboard-test/) |
 | [Interview, Draft, Edit](https://github.com/robsaric/robsaric.com/blob/main/skills/interview-draft-edit/README.md) | An idea, rough draft or spoken concept | Questions before a draft, your answers as the substance, and suggestions marked for your final edit. | [Read the guide](https://robsaric.com/toolbox/interview-draft-edit/) |
+| [CRM by Conversation](https://github.com/robsaric/robsaric.com/blob/main/skills/crm-by-conversation/README.md) | An Attio workspace connected to your assistant, and how you sell | A planned set of fields, lists and views built after you approve it, then proposed notes, field changes and follow-up tasks from your rough notes. | [Read the guide](https://robsaric.com/toolbox/crm-by-conversation/) |
 
-These skills require no other skill, knowledge graph or connected accounts.
+Value Stream Mapping, The Dashboard Test and Interview, Draft, Edit require no
+other skill, knowledge graph or connected accounts. CRM by Conversation requires
+your own Attio connection; read its guide before you install it.
 Writing samples and the voice template are optional. For a dashboard review,
 source dates and an example of what happens next help, but you can start without them.
 Use redacted material. A skill is guidance to an AI tool, not a guarantee of accuracy.
@@ -59,6 +65,8 @@ Examples:
   understand what needs attention. Here is a redacted screenshot.”
 - Interview, Draft, Edit: “Use the interview-draft-edit skill. Ask me questions
   about this idea before drafting: …”
+- CRM by Conversation: “Use the crm-by-conversation skill to set up my Attio
+  workspace with me. Inspect it first, then ask how I sell.”
 
 The first response should use your context and ask about the most important
 missing information. It should not invent your experience or claim a screenshot

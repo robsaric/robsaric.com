@@ -1,7 +1,9 @@
 ---
 import { COLLECTION as C } from '../data/toolbox-presentation';
-interface Props { kind: 'interview' | 'dashboard' | 'mapping' }
+interface Props { kind: 'interview' | 'dashboard' | 'mapping' | 'crm' }
 const { kind } = Astro.props;
+// Mapping and CRM share one three-step shape; only the labels differ.
+const flow = kind === 'mapping' ? C.mapping : kind === 'crm' ? C.crm : null;
 ---
 <figure class:list={['sample', kind]}>
   <figcaption>{C.sample}</figcaption>
@@ -15,10 +17,10 @@ const { kind } = Astro.props;
     <p class="sample-title">{C.dashboard.label}</p>
     <dl>{[[C.dashboard.verdictLabel,C.dashboard.verdict],[C.dashboard.changeLabel,C.dashboard.change],[C.dashboard.checkLabel,C.dashboard.check]].map(([label,text]) => <div><dt>{label}</dt><dd>{text}</dd></div>)}</dl>
   </div>}
-  {kind === 'mapping' && <div>
-    <p class="sample-title">{C.mapping.label}</p>
-    <ol class="map">{C.mapping.steps.map((step,i) => <li><span>{step}</span>{i < 2 && <svg aria-hidden="true" viewBox="0 0 20 12"><path d="M1 6h17M13 1l5 5-5 5" /></svg>}</li>)}</ol>
-    <p class="map-note">{C.mapping.note}</p>
+  {flow && <div>
+    <p class="sample-title">{flow.label}</p>
+    <ol class="map">{flow.steps.map((step,i) => <li><span>{step}</span>{i < 2 && <svg aria-hidden="true" viewBox="0 0 20 12"><path d="M1 6h17M13 1l5 5-5 5" /></svg>}</li>)}</ol>
+    <p class="map-note">{flow.note}</p>
   </div>}
 </figure>
 <style>

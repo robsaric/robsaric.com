@@ -20,6 +20,11 @@ export const GUIDE_PRESENTATION = {
     { input: 'One recent decision and what happened next', output: 'A provisional verdict and the main gap, with missing evidence visible.', decision: 'Keep it, improve it, use a simpler alternative or investigate further.' },
     { input: 'The constraints and evidence you can check', output: 'One practical improvement and a way to check whether it helps.', decision: 'What to change and whether the result helped the reader.' },
   ],
+  crmRows: [
+    { input: 'A connected Attio workspace and how you sell', output: 'A proposed set of fields, lists and views in one table.', decision: 'What gets built, and what is left out.' },
+    { input: 'Companies or people to load', output: 'A column mapping and the first five rows, then counts of what was created, matched and skipped.', decision: 'Whether the mapping is right before the rest is loaded.' },
+    { input: 'Rough notes after a call', output: 'A proposed note, field changes and one follow-up task.', decision: 'Whether each change is saved, edited or dropped.' },
+  ],
 } as const;
 
 export const COLLECTION = {
@@ -32,6 +37,7 @@ export const COLLECTION = {
     { kind: 'interview', slug: 'interview-draft-edit', bring: 'An idea, draft or spoken explanation.' },
     { kind: 'dashboard', slug: 'dashboard-test', bring: 'A screenshot and one decision to review.' },
     { kind: 'mapping', slug: 'value-stream-mapping', bring: 'Notes about how a service works.' },
+    { kind: 'crm', slug: 'crm-by-conversation', bring: 'An Attio workspace connected to your assistant.' },
   ],
   interview: {
     label: 'A draft you can question',
@@ -52,5 +58,10 @@ export const COLLECTION = {
     label: 'Where does the work wait?',
     steps: ['Request', 'Approval', 'Repair'],
     note: 'Approval wait: not yet measured.',
+  },
+  crm: {
+    label: 'Nothing is saved until you say yes.',
+    steps: ['Notes', 'Proposal', 'Yes'],
+    note: 'Then it reads the record back.',
   },
 } as const;

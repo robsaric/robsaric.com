@@ -4,7 +4,7 @@ import {readFileSync} from 'node:fs';
 import {assemblePrompt} from '../src/lib/toolbox-prompt.ts';
 import {START_CONTEXT} from '../src/data/toolbox-start.ts';
 
-for (const [kind, name] of [['dashboard','dashboard-test'],['interview','interview-draft-edit'],['mapping','value-stream-mapping']]) {
+for (const [kind, name] of [['dashboard','dashboard-test'],['interview','interview-draft-edit'],['mapping','value-stream-mapping'],['crm','crm-by-conversation']]) {
   test(`${name}: blank fields retain the downloadable prompt and its context template`, () => {
     const source=readFileSync(new URL(`../skills/${name}/resources/chat-prompt.txt`,import.meta.url),'utf8').replace(/\r\n/g,'\n').trim();
     const config=START_CONTEXT[kind];

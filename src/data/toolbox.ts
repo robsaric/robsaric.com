@@ -56,6 +56,7 @@ export const TOOLBOX = {
       { title: 'Interview, Draft, Edit', format: 'ZIP · Skill, prompt, voice template and example', description: 'Questions before drafting, your answers as the substance, your final edit.', href: skillDownload },
       { title: 'The Dashboard Test', format: 'ZIP · Skill, prompt, checklist and example', description: 'Find what to keep, one useful change, or a simpler alternative.', href: '/downloads/dashboard-test/dashboard-test.zip' },
       { title: 'Value Stream Mapping', format: 'ZIP · Chat starter, worksheets and skill', description: 'The complete review kit. Use the smaller skill ZIP inside it for installation.', href: '/downloads/value-stream-mapping/value-stream-mapping-kit.zip' },
+      { title: 'CRM by Conversation', format: 'ZIP · Skill, prompt and example', description: 'Plan an Attio workspace, then keep it current from your notes. Needs your own Attio connection.', href: '/downloads/crm-by-conversation/crm-by-conversation.zip' },
     ],
   },
   resources: {

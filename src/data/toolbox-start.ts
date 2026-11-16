@@ -2,6 +2,7 @@ export const QUICK_START = {
   heading: 'Try it now.',
   intro: 'Copy into ChatGPT, Claude or Codex to begin. You can add context below first, or answer the questions in your chat.',
   kitIntro: 'Copy the prompt for a quick guided conversation. For the full review with editable templates, download the review kit and attach START-HERE.md in your chat.',
+  connectedIntro: 'Connect Attio to Claude or ChatGPT first, then copy this into a chat there. It reads your workspace and shows you each change before it writes one. You can add context below first, or answer the questions in your chat.',
   context: 'Your starting context (optional)',
   privacy: 'These fields are not saved or sent from this page. Leave out personal and confidential records. Review what you share with your AI service.',
   copy: 'Copy prompt + context',
@@ -21,6 +22,7 @@ export const QUICK_START = {
   outputs: 'What you bring, get and decide',
   archive: 'Includes SKILL.md and its supporting files for Claude, Claude Code or Codex. No executable scripts or account connections.',
   kit: 'Includes a chat starter, editable worksheets and the Claude / Codex skill ZIP. Keep your client notes separate.',
+  connectedArchive: 'Includes SKILL.md and its supporting files for Claude, Claude Code or Codex. No scripts, connectors or keys are included. It works through the Attio connection you set up.',
 } as const;
 
 export const START_CONTEXT = {
@@ -49,6 +51,16 @@ export const START_CONTEXT = {
       { label: 'Who receives the value', key: 'Who we serve and what they need', hint: 'Who is this service for, and what do they need?' },
       { label: 'Where the work starts and ends', key: 'What starts the work and what counts as finished', hint: 'A request through to a finished result, for example.' },
       { label: 'Notes or constraints', key: 'Notes, constraints or redacted examples', hint: 'Bring what you know. Missing information can stay unknown.' },
+    ],
+  },
+  crm: {
+    marker: 'My starting context:',
+    result: 'Plan your Attio workspace in an interview, approve the structure before it is built, then keep it current from your notes.',
+    fields: [
+      { label: 'What you sell and who buys it', key: 'What I sell and who buys it', hint: 'One or two sentences is enough.' },
+      { label: 'The motion to set up first', key: 'The motion to set up first (new customers or existing ones)', hint: 'Winning new customers, or looking after the ones you have.' },
+      { label: 'How you reach people', key: 'How I reach people and how often', hint: 'Email, phone, post or LinkedIn, and the days between touches.' },
+      { label: 'Who else works in the workspace', key: 'Who else works in this workspace', hint: 'Names or roles, or just you.' },
     ],
   },
 } as const;
