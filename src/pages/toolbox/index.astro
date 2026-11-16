@@ -7,10 +7,12 @@ import { COLLECTION as C } from '../../data/toolbox-presentation';
 import { TOOLBOX_INSTALLATION as S } from '../../data/toolbox-installation';
 import { TOOLBOX as T } from '../../data/toolbox';
 import { VALUE_STREAM as V } from '../../data/value-stream-mapping';
+import { CRM } from '../../data/crm-by-conversation';
 const guides = [
   { title: T.feature.title, category: T.feature.category, formats: T.feature.kind, description: T.feature.description, href: T.feature.href, ...C.entries[0] },
   { title: T.dashboard.title, category: T.dashboard.category, formats: T.dashboard.kind, description: T.dashboard.description, href: T.dashboard.href, ...C.entries[1] },
   { title: V.title, category: V.category, formats: V.formats, description: V.promise, href: '/toolbox/value-stream-mapping/', ...C.entries[2] },
+  { title: CRM.title, category: CRM.category, formats: CRM.formats, description: CRM.promise, href: '/toolbox/crm-by-conversation/', ...C.entries[3] },
 ];
 ---
 

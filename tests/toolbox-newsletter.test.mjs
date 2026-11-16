@@ -7,6 +7,7 @@ const pages = [
   ['dashboard-test.astro', 'dashboard-test-newsletter'],
   ['interview-draft-edit.astro', 'interview-draft-edit-newsletter'],
   ['value-stream-mapping.astro', 'value-stream-newsletter'],
+  ['crm-by-conversation.astro', 'crm-by-conversation-newsletter'],
 ];
 
 for (const [file, id] of pages) {

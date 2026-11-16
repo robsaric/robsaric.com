@@ -28,6 +28,7 @@ Rob is building Caretrics and developing a broader small-team tools direction th
 - [Interview, Draft, Edit](https://robsaric.com/toolbox/interview-draft-edit/): start with your idea, let AI interview you and organize your answers into a draft, then make the final edit. A free writing skill for Claude and Codex.
 - [The Dashboard Test](https://robsaric.com/toolbox/dashboard-test/): a free dashboard review checklist, chat prompt and AI skill. Find the main gap, choose one improvement, or decide a dashboard is not needed.
 - [Value Stream Mapping](https://robsaric.com/toolbox/value-stream-mapping/): a guided review for consultants and teams. Map offers, follow the work, and choose an improvement to test. Includes templates, a prompt and an AI skill.
+- [CRM by Conversation](https://robsaric.com/toolbox/crm-by-conversation/): a free prompt and AI skill for running an Attio CRM from a chat. Plan the workspace in an interview, build it after you approve, then keep it current from your notes. Needs your own Attio connection.
 
 ## Elsewhere
 
