@@ -16,6 +16,28 @@ const enabled = import.meta.env.PROD;
           return { ...event, url: location.origin + location.pathname };
         }
       });
+      // Three counted actions. An event carries the page path and, for a download,
+      // the file path. Nothing a reader types is read. scripts/check-analytics.mjs
+      // holds this to those two keys.
+      (() => {
+        const send = (name, data) => window.va('event', { name, data });
+        document.addEventListener('click', (event) => {
+          const target = event.target instanceof Element ? event.target : null;
+          if (!target) return;
+          if (target.closest('[data-copy-quick]')) {
+            send('Prompt copied', { page: location.pathname });
+            return;
+          }
+          const link = target.closest('a[href^="/downloads/"]');
+          if (link) send('Download', { page: location.pathname, file: link.getAttribute('href') });
+        });
+        document.addEventListener('submit', (event) => {
+          const form = event.target instanceof Element ? event.target : null;
+          if (form && form.matches('[data-newsletter-form]') && !event.defaultPrevented) {
+            send('Signup requested', { page: location.pathname });
+          }
+        });
+      })();
     </script>
     <script is:inline defer src="/_vercel/insights/script.js"></script>
   </>
