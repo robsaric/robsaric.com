@@ -22,6 +22,41 @@ const URL_CASES = [
   ['http://[', 'https://robsaric.com/confirm/'],
 ];
 
+/**
+ * The three counted actions. Each selector is the hook the page's own markup
+ * carries, so the source checks below fail if one is renamed. An event may
+ * carry the page path and, for a download, the file path. Nothing else.
+ */
+const COPY_SELECTOR = '[data-copy-quick]';
+const DOWNLOAD_SELECTOR = 'a[href^="/downloads/"]';
+const SIGNUP_SELECTOR = '[data-newsletter-form]';
+const DOWNLOAD_HREF = '/downloads/dashboard-test/dashboard-test.zip';
+const ALLOWED_EVENT_KEYS = ['page', 'file'];
+const SOURCE_HOOKS = [
+  ['src/components/ToolboxQuickStart.astro', 'data-copy-quick'],
+  ['src/components/Newsletter.astro', 'data-newsletter-form'],
+];
+
+/** A stand-in element that answers only the selectors it was given. */
+class FakeElement {
+  /**
+   * @param {string[]} selectors
+   * @param {Record<string, string>} [attributes]
+   */
+  constructor(selectors, attributes = {}) {
+    this.selectors = selectors;
+    this.attributes = attributes;
+    // A reader's typing. The analytics script must never read it.
+    this.value = 'private text typed by a reader';
+  }
+  /** @param {string} selector */
+  matches(selector) { return this.selectors.includes(selector); }
+  /** @param {string} selector */
+  closest(selector) { return this.matches(selector) ? this : null; }
+  /** @param {string} name */
+  getAttribute(name) { return this.attributes[name] ?? null; }
+}
+
 /** @typedef {{ attributes: string, text: string, start: number, end: number }} ScriptElement */
 
 /**
@@ -89,9 +124,19 @@ function errorMessage(error) {
  * @returns {string | null}
  */
 function checkFilterBehaviour(source, where) {
+  /** @type {Record<string, Array<(event: unknown) => void>>} */
+  const listeners = {};
   const context = createContext({
     URL,
+    Element: FakeElement,
     location: { ...TEST_LOCATION },
+    document: {
+      /**
+       * @param {string} type
+       * @param {(event: unknown) => void} listener
+       */
+      addEventListener(type, listener) { (listeners[type] ??= []).push(listener); },
+    },
   });
   runInContext('globalThis.window = globalThis', context);
 
@@ -141,6 +186,58 @@ function checkFilterBehaviour(source, where) {
     }
   }
 
+  return checkEventBehaviour(context, listeners);
+}
+
+/**
+ * @param {{ vaq: unknown[] }} context
+ * @param {Record<string, Array<(event: unknown) => void>>} listeners
+ * @returns {string | null}
+ */
+function checkEventBehaviour(context, listeners) {
+  /**
+   * @param {string} type
+   * @param {unknown} event
+   * @returns {unknown[] | string}
+   */
+  const dispatch = (type, event) => {
+    const before = context.vaq.length;
+    try {
+      for (const listener of listeners[type] ?? []) listener(event);
+    } catch (error) {
+      return `${type} listener threw: ${errorMessage(error)}`;
+    }
+    return context.vaq.slice(before).map((entry) => Array.from(/** @type {ArrayLike<unknown>} */ (entry)));
+  };
+  const page = TEST_LOCATION.pathname;
+  /** @type {Array<[string, string, unknown, Array<[string, Record<string, string>]>]>} */
+  const cases = [
+    ['a prompt copy', 'click', { target: new FakeElement([COPY_SELECTOR]) }, [['Prompt copied', { page }]]],
+    ['a download', 'click', { target: new FakeElement([DOWNLOAD_SELECTOR], { href: DOWNLOAD_HREF }) }, [['Download', { page, file: DOWNLOAD_HREF }]]],
+    ['a click elsewhere', 'click', { target: new FakeElement([]) }, []],
+    ['a click with no element target', 'click', { target: null }, []],
+    ['a signup request', 'submit', { target: new FakeElement([SIGNUP_SELECTOR]), defaultPrevented: false }, [['Signup requested', { page }]]],
+    ['a signup stopped for an invalid email', 'submit', { target: new FakeElement([SIGNUP_SELECTOR]), defaultPrevented: true }, []],
+    ['another form', 'submit', { target: new FakeElement([]), defaultPrevented: false }, []],
+  ];
+
+  for (const [label, type, event, expected] of cases) {
+    const sent = dispatch(type, event);
+    if (typeof sent === 'string') return sent;
+    const wanted = expected.map(([name, data]) => ['event', { name, data }]);
+    if (JSON.stringify(sent) !== JSON.stringify(wanted)) {
+      return `${label}: expected ${JSON.stringify(wanted)}, sent ${JSON.stringify(sent)}`;
+    }
+    for (const [, payload] of /** @type {Array<[string, { data: Record<string, unknown> }]>} */ (sent)) {
+      for (const [key, value] of Object.entries(payload.data)) {
+        if (!ALLOWED_EVENT_KEYS.includes(key)) return `${label}: event carries an unexpected key ${JSON.stringify(key)}`;
+        if (typeof value !== 'string' || !value.startsWith('/') || /[?#]/u.test(value)) {
+          return `${label}: ${key} must be a path with no query or fragment, got ${JSON.stringify(value)}`;
+        }
+      }
+    }
+  }
+
   return null;
 }
 
@@ -152,12 +249,19 @@ if (!existsSync(DIST)) {
 /** @type {string[]} */
 const errors = [];
 let pages = 0;
+let downloadLinks = 0;
+
+for (const [file, hook] of SOURCE_HOOKS) {
+  const source = readFileSync(fileURLToPath(new URL(`../${file}`, import.meta.url)), 'utf8');
+  if (!source.includes(hook)) errors.push(`${file}: ${hook} is gone, so its action is no longer counted`);
+}
 
 for (const file of htmlFiles(DIST)) {
   const html = readFileSync(file, 'utf8');
   if (!BASE_LAYOUT.test(html)) continue;
 
   pages++;
+  downloadLinks += html.split('href="/downloads/').length - 1;
   const where = relative(DIST, file).replaceAll('\\', '/');
   const scripts = scriptElements(html);
   const loaders = scripts.filter(
@@ -194,6 +298,10 @@ if (pages === 0) {
   errors.push('dist/client: found zero BaseLayout pages');
 }
 
+if (downloadLinks === 0) {
+  errors.push('dist/client: found no link to /downloads/, so downloads are no longer counted');
+}
+
 if (errors.length > 0) {
   console.error(`check-analytics: ${errors.length} problem(s)\n`);
   for (const error of errors) console.error(`  ${error}`);
@@ -201,4 +309,4 @@ if (errors.length > 0) {
   process.exit(1);
 }
 
-console.log(`check-analytics: ${pages} BaseLayout page(s); each runs the URL filter before one Web Analytics loader`);
+console.log(`check-analytics: ${pages} BaseLayout page(s); each runs the URL filter before one Web Analytics loader and counts copies, downloads and signup requests with paths only`);

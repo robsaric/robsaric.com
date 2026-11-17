@@ -89,7 +89,7 @@ Only `PUBLIC_NEWSLETTER_ENDPOINT` uses the `PUBLIC_` prefix. The Resend key and 
 
 When `PUBLIC_NEWSLETTER_ENDPOINT` is unset, the homepage hides the form and shows the contact fallback link.
 
-Vercel Web Analytics needs no variable. Production builds load `/_vercel/insights/script.js` and remove the query string and fragment from each page URL before sending. A referrer from another site is sent as the visitor's browser reports it, usually the origin only. Enable Analytics in the Vercel project before deploying such a build; until then that script returns 404 on every page.
+Vercel Web Analytics needs no variable. Production builds load `/_vercel/insights/script.js` and remove the query string and fragment from each page URL before sending. A referrer from another site is sent as the visitor's browser reports it, usually the origin only. The same script counts three actions as custom events: `Prompt copied`, `Download` and `Signup requested`. Each carries the page path, and a download also carries the file path. They appear in the Events panel of the project's Web Analytics page and need a Pro team. Enable Analytics in the Vercel project before deploying such a build; until then that script returns 404 on every page.
 
 ## Newsletter
 
