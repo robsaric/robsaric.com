@@ -26,6 +26,21 @@ export const OG_SITE_CARD = {
   site: 'robsaric.com',
 };
 
+/**
+ * Toolbox share cards. The promise is each built page's own og:image:alt, the
+ * guide name is its <title>, and the output panel is the page's entry in
+ * toolbox-collection.mjs, so a card cannot say something its page does not.
+ * `availability` restates the guides' own "No signup required" lines; the CRM
+ * guide needs the reader's Attio connection, so its card names Attio.
+ */
+export const OG_TOOLBOX = {
+  index: '/toolbox/',
+  section: 'Toolbox',
+  listLabel: 'Guides & skills',
+  availability: 'Free. No signup.',
+  availabilityByKind: { crm: 'Free. For Attio. No signup.' },
+};
+
 /** Card-only editorial strings. Page titles come from the built page's own heading. */
 export const OG_EDITORIAL = {
   dashboardSlug: '2026-10-19-are-dashboards-dead',

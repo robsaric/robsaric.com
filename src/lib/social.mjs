@@ -6,5 +6,8 @@ export function socialImagePath(pathname) {
   return `/og/pages/${path.replaceAll('/', '--')}.png`;
 }
 
-/** New URLs let crawlers distinguish this editorial card family from the old blue cards. */
-export const SOCIAL_IMAGE_VERSION = 'editorial-20261022-wordmark';
+/**
+ * New URLs let crawlers see a replaced card family instead of a cached one.
+ * 2026-11-16: the Toolbox cards gained their promise and an output panel.
+ */
+export const SOCIAL_IMAGE_VERSION = 'editorial-20261116-toolbox';

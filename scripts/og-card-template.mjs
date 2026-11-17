@@ -33,10 +33,42 @@ export function renderCard({title,section,author,site,fontCss,kind,year}) {
  return frame({title,section,author,site,fontCss,aside,styles,foot:year??''});
 }
 
-/** One clear promise for a link preview; the method itself gets a portrait edition. */
-export function renderInterviewCard({author,site,fontCss}) {
- return frame({author,site,fontCss,title:I.headline,section:I.label,foot:I.name,
-  styles:'.title{font-size:78px;max-width:24ch}.section{font-size:20px}.foot{font-size:21px}'});
+const flowArrow='<svg aria-hidden="true" viewBox="0 0 20 12"><path d="M1 6h17M13 1l5 5-5 5"/></svg>';
+const TOOLBOX_CARD_CSS=`
+.title{font-size:60px;flex:1}
+.sample{width:452px;flex:none;margin:0;padding:26px 30px 28px;background:var(--white);border:1px solid var(--rule);border-radius:10px}
+.sample figcaption{font:400 16px/1.4 var(--font-sans);color:var(--ink-muted);margin-bottom:12px}
+.sample-title{font:600 22px/1.35 var(--font-sans);letter-spacing:-.01em;margin-bottom:18px}
+.original{font:400 30px/1.22 var(--font-display)}
+.annotation{font:italic 400 22px/1.4 var(--font-display);color:var(--ink-muted);margin:12px 0}
+.revision{font:400 20px/1.45 var(--font-sans);padding-top:14px;border-top:1px solid var(--rule)}
+.sample dl div{display:grid;grid-template-columns:86px 1fr;gap:12px;padding:13px 0;border-top:1px solid var(--rule)}
+.sample dt{font:600 18px/1.45 var(--font-sans)}
+.sample dd{font:400 20px/1.45 var(--font-sans)}
+.map{display:flex;align-items:center;list-style:none;padding:22px 0 26px}
+.map li{display:flex;align-items:center;gap:10px;flex:1;font:500 22px/1.3 var(--font-sans)}
+.map li:last-child{flex:0}
+.map span{border-bottom:1px solid var(--ink-muted);padding-block:10px}
+.map svg{flex:1;min-width:18px;height:14px;stroke:var(--ink-muted);fill:none;stroke-width:1.2;margin-right:10px}
+.map-note{font:400 20px/1.45 var(--font-sans);padding-top:16px;border-top:1px solid var(--rule)}
+.guides{list-style:none;padding:0}
+.guides li{padding:14px 0;border-top:1px solid var(--rule);font:500 25px/1.3 var(--font-sans);letter-spacing:-.015em}
+`;
+
+/**
+ * A Toolbox link preview: the page's promise, a glimpse of what the skill
+ * produces, and that it is free. `sample` is the guide's COLLECTION entry;
+ * the Toolbox index passes `guides` (the guide names) instead.
+ */
+export function renderToolboxCard({promise,name,section,availability,separator,kind,sample,sampleLabel,guides,listLabel,author,site,fontCss}) {
+ let panel;
+ if(guides) panel=`<p class="sample-title">${esc(listLabel)}</p><ul class="guides">${guides.map(guide=>`<li>${esc(guide)}</li>`).join('')}</ul>`;
+ else if(kind==='interview') panel=`<figcaption>${esc(sampleLabel)}</figcaption><p class="sample-title">${esc(sample.label)}</p><p class="original">${esc(sample.before)}</p><p class="annotation">${esc(sample.annotation)}</p><p class="revision">${esc(sample.after)}</p>`;
+ else if(kind==='dashboard') panel=`<figcaption>${esc(sampleLabel)}</figcaption><p class="sample-title">${esc(sample.label)}</p><dl>${[[sample.verdictLabel,sample.verdict],[sample.changeLabel,sample.change],[sample.checkLabel,sample.check]].map(([label,text])=>`<div><dt>${esc(label)}</dt><dd>${esc(text)}</dd></div>`).join('')}</dl>`;
+ else if(sample?.steps) panel=`<figcaption>${esc(sampleLabel)}</figcaption><p class="sample-title">${esc(sample.label)}</p><ol class="map">${sample.steps.map((step,i)=>`<li><span>${esc(step)}</span>${i<sample.steps.length-1?flowArrow:''}</li>`).join('')}</ol><p class="map-note">${esc(sample.note)}</p>`;
+ else throw new Error('No Toolbox card panel for '+name);
+ return frame({author,site,fontCss,title:promise,section,foot:[name,availability].filter(Boolean).join(separator),
+  aside:`<figure class="sample">${panel}</figure>`,styles:TOOLBOX_CARD_CSS});
 }
 
 export function renderInterviewMethodCard({author,site,fontCss}) {
