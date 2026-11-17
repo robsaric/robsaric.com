@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { socialImagePath, SOCIAL_IMAGE_VERSION } from '../src/lib/social.mjs';
+import { OG_CARD, OG_TOOLBOX } from '../src/data/og-card.mjs';
 
 const root = 'dist/client';
 const urls = [...readFileSync(root + '/sitemap-0.xml', 'utf8').matchAll(/<loc>(.*?)<\/loc>/g)].map(match => match[1]);
@@ -17,6 +18,8 @@ for (const url of urls) {
   assert.equal(meta('twitter:description'), meta('og:description'), path);
   assert.equal(meta('twitter:image'), meta('og:image'), path);
   assert.equal(meta('twitter:image:alt'), meta('og:image:alt'), path);
+  // A Toolbox card prints this text as its promise, so the page must set one of its own.
+  if (path.startsWith(OG_TOOLBOX.index)) assert(!meta('og:image:alt').endsWith(OG_CARD.separator + OG_CARD.author), path + ' needs ogImageAlt: its share card prints it as the promise');
   assert.equal(meta('twitter:card'), 'summary_large_image', path);
   assert.equal(meta('og:image:type'), 'image/png', path);
   const image = new URL(meta('og:image'));

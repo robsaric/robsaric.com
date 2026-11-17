@@ -10,9 +10,10 @@ import { resolve, join, extname, dirname, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 import { MIME, launchChrome } from './lib/chrome.mjs';
-import { renderCard, renderSiteCard, renderReviewLoopCard, renderInterviewCard, renderInterviewMethodCard } from './og-card-template.mjs';
+import { renderCard, renderSiteCard, renderReviewLoopCard, renderToolboxCard, renderInterviewMethodCard } from './og-card-template.mjs';
 import { INTERVIEW_METHOD } from '../src/data/interview-method.mjs';
-import { OG_CARD, OG_SITE_CARD, OG_EDITORIAL } from '../src/data/og-card.mjs';
+import { OG_CARD, OG_SITE_CARD, OG_EDITORIAL, OG_TOOLBOX } from '../src/data/og-card.mjs';
+import { COLLECTION } from '../src/data/toolbox-collection.mjs';
 import { socialImagePath } from '../src/lib/social.mjs';
 import { renderToolboxSocial } from './toolbox-social-template.mjs';
 import { renderNextQuestion } from './next-question-social.mjs';
@@ -23,18 +24,36 @@ const built=readFileSync(join(DIST,'index.html'),'utf8');
 const fontCss=[...(built.match(/@font-face\{[^}]*\}/gu)??[]),...(built.match(/:root\{--font-[^}]*\}/gu)??[])].join('');
 if(!fontCss)throw new Error('Build first: self-hosted font CSS is missing.');
 const decode=(s)=>s.replace(/<[^>]*>/g,' ').replace(/&#(?:x([0-9a-f]+)|(\d+));/gi,(_,hex,n)=>String.fromCodePoint(parseInt(hex??n,hex?16:10))).replace(/&(amp|quot|apos|lt|gt|nbsp|rsquo|lsquo|rdquo|ldquo|ndash|mdash);/g,(_,e)=>({amp:'&',quot:'"',apos:"'",lt:'<',gt:'>',nbsp:' ',rsquo:'’',lsquo:'‘',rdquo:'”',ldquo:'“',ndash:'–',mdash:'—'}[e])).replace(/\s+/g,' ').trim();
+const builtPage=path=>readFileSync(join(DIST,path,'index.html'),'utf8');
+/** The share text a built page declares for its own image. */
+const sharePromise=html=>decode(html.match(/<meta property="og:image:alt" content="([^"]*)"/)?.[1]??'');
+/** A built page's name: its <title> without the site suffix. */
+const pageName=html=>decode(html.match(/<title>([\s\S]*?)<\/title>/i)?.[1]??'').replace(OG_CARD.separator+OG_CARD.author,'');
+const guidePath=entry=>OG_TOOLBOX.index+entry.slug+'/';
+function toolboxCard(path,html){
+ const entry=COLLECTION.entries.find(e=>guidePath(e)===path);
+ if(!entry&&path!==OG_TOOLBOX.index){
+  if(path.startsWith(OG_TOOLBOX.index))throw new Error('Add '+path+' to COLLECTION.entries (src/data/toolbox-collection.mjs) so it gets a Toolbox card.');
+  return null;
+ }
+ const promise=sharePromise(html);
+ if(!promise||promise.endsWith(OG_CARD.separator+OG_CARD.author))throw new Error('No share promise for '+path+': give the page its own ogImageAlt, then build again.');
+ const shared={...OG_CARD,promise,section:OG_TOOLBOX.section,fontCss};
+ if(!entry)return renderToolboxCard({...shared,availability:OG_TOOLBOX.availability,listLabel:OG_TOOLBOX.listLabel,guides:COLLECTION.entries.map(e=>pageName(builtPage(guidePath(e))))});
+ return renderToolboxCard({...shared,name:pageName(html),kind:entry.kind,sample:COLLECTION[entry.kind],sampleLabel:COLLECTION.sample,availability:OG_TOOLBOX.availabilityByKind[entry.kind]??OG_TOOLBOX.availability});
+}
 const urls=[...readFileSync(join(DIST,'sitemap-0.xml'),'utf8').matchAll(/<loc>(.*?)<\/loc>/g)].map(m=>m[1]);
 const selectedRoutes=process.argv.slice(2);
 const cards=urls.filter(url=>!selectedRoutes.length||selectedRoutes.includes(new URL(url).pathname)).map(url=>{
  const path=new URL(url).pathname;
- const html=readFileSync(join(DIST,path,'index.html'),'utf8');
+ const html=builtPage(path);
  const title=decode(html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1]??'');
  if(!title)throw new Error('No heading for '+path);
  const isArchive=path.startsWith('/archive/')&&path!='/archive/';
  const section=isArchive?OG_EDITORIAL.archiveSection:path.startsWith('/field-notes/')?OG_EDITORIAL.essaySection:'';
  const year=isArchive?html.match(/datetime="(\d{4})-/)?.[1]:undefined;
  const kind=path.includes(OG_EDITORIAL.dashboardSlug)?'dashboard':path.includes(OG_EDITORIAL.analogSlug)?'analog':path==='/about/'?'about':'type';
- return {path,out:join(ROOT,'public',socialImagePath(path)),html:path==='/'?renderSiteCard({...OG_SITE_CARD,fontCss}):path===INTERVIEW_METHOD.path?renderInterviewCard({...OG_CARD,fontCss}):renderCard({title,section: path==='/writing/'?OG_EDITORIAL.writingSection:section,...OG_CARD,fontCss,kind,year})};
+ return {path,out:join(ROOT,'public',socialImagePath(path)),html:path==='/'?renderSiteCard({...OG_SITE_CARD,fontCss}):toolboxCard(path,html)??renderCard({title,section: path==='/writing/'?OG_EDITORIAL.writingSection:section,...OG_CARD,fontCss,kind,year})};
 });
 if (!selectedRoutes.length) cards.push({
  path:'/social/dashboard-review-loop.png',

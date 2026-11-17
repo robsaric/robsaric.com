@@ -1,6 +1,27 @@
 # robsaric.com
 
-Rob Saric's personal site and field notes. Astro 7, static output with on-demand newsletter routes, deployed on Vercel.
+Two things live in this repository: Rob Saric's free Toolbox skills for AI assistants, and the source of [robsaric.com](https://robsaric.com), his personal site and writing.
+
+## Toolbox skills
+
+Four workflows you can read, adapt and use again. Each one has a guide, a prompt to paste into a chat and a skill to install. Free. No signup.
+
+| Skill | What it is for | Guide |
+| --- | --- | --- |
+| [Interview, Draft, Edit](skills/interview-draft-edit/README.md) | Use AI to organize your thoughts. Keep your voice. | [Read the guide](https://robsaric.com/toolbox/interview-draft-edit/) |
+| [The Dashboard Test](skills/dashboard-test/README.md) | Does your dashboard earn its place? | [Read the guide](https://robsaric.com/toolbox/dashboard-test/) |
+| [Value Stream Mapping](skills/value-stream-mapping/README.md) | See how work flows. Choose what to improve. | [Read the guide](https://robsaric.com/toolbox/value-stream-mapping/) |
+| [CRM by Conversation](skills/crm-by-conversation/README.md) | Keep your CRM current without opening it. Needs your own Attio connection. | [Read the guide](https://robsaric.com/toolbox/crm-by-conversation/) |
+
+**Try one in a chat.** Open its guide and copy the prompt. There is nothing to install.
+
+**Install one.** Download the skill ZIP from its guide, or copy its folder from `skills/` into `.claude/skills/` (Claude Code) or `.agents/skills/` (Codex). [skills/README.md](skills/README.md) has the setup for each tool, what each skill needs from you, and how to update or send feedback.
+
+The skills contain instructions and reference files only: no scripts, connectors or keys. The skill instructions and resources are MIT licensed ([skills/LICENSE](skills/LICENSE)). The site's essays, photography and illustrations are outside that licence.
+
+## The site
+
+Astro 7, static output with on-demand newsletter routes, deployed on Vercel.
 
 - Product and audience: `PRODUCT.md`
 - Design: `DESIGN.md`, `.impeccable/design.json`, and `docs/personal-site-direction.md`
@@ -10,13 +31,7 @@ Rob Saric's personal site and field notes. Astro 7, static output with on-demand
 - Old site and redirects: `docs/MIGRATION.md`
 - Agent rules: `AGENTS.md`
 
-## Public Toolbox skills
-
-The reusable public workflows live in [skills/](skills/README.md). Edit those
-sources, then run `pnpm skills:build`. The website downloads are generated,
-including compatibility downloads at older URLs. `pnpm skills:check` detects drift.
-Only the skill instructions and resources are MIT licensed; other site materials
-are outside that licence.
+To change a skill, edit its source in [skills/](skills/README.md), then run `pnpm skills:build`. The website downloads are generated, including compatibility downloads at older URLs. `pnpm skills:check` detects drift.
 
 ## Run
 
@@ -38,7 +53,7 @@ Serve `.impeccable/review/site/client` locally. This output has a visible previe
 
 After Rob approves an essay's wording and publication, change its `draft` flag to `false`, run `pnpm generate:og` after a build, then run the gate again. Do not treat approval of the redesign as approval to publish the proposed essays.
 
-Every sitemap page has its own warm 1200x630 share image, including archive entries. After changing a heading or adding a public page, run `pnpm build`, `pnpm generate:og`, then `pnpm gate`; commit the generated PNGs. The renderer uses each built page's actual heading and the site's self-hosted fonts. The homepage, dashboard essay and analog-life essay have their own compositions. `pnpm check:social` verifies every public URL's metadata and image. When replacing an existing card family, update `SOCIAL_IMAGE_VERSION` in `src/lib/social.mjs` so crawlers see a new image URL. Existing platform caches may still need a refresh through LinkedIn's Post Inspector.
+Every sitemap page has its own warm 1200x630 share image, including archive entries. After changing a heading or adding a public page, run `pnpm build`, `pnpm generate:og`, then `pnpm gate`; commit the generated PNGs. The renderer uses each built page's actual heading and the site's self-hosted fonts. The homepage, dashboard essay and analog-life essay have their own compositions. Each Toolbox page has a card with its promise, a panel of illustrative output and the line that it is free. The promise is the page's own `ogImageAlt` and the panel is its entry in `src/data/toolbox-collection.mjs`, so a new guide needs both; `pnpm check:social` fails without the first and `pnpm generate:og` fails without the second. `pnpm check:social` verifies every public URL's metadata and image. When replacing an existing card family, update `SOCIAL_IMAGE_VERSION` in `src/lib/social.mjs` so crawlers see a new image URL. Existing platform caches may still need a refresh through LinkedIn's Post Inspector.
 
 Rob approved publication of both October 18 essays and the dashboard replacement on October 19. The three retired clinic notes are kept outside the content collection in `docs/retired-notes/`; their old URLs return 404, and they are absent from navigation, RSS and the sitemap. See `docs/publishing-2026-10-19.md` for the research and publication decisions.
 

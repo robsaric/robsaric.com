@@ -62,7 +62,7 @@ src/
   pages/                index, building, field-notes/{index,[slug]}, principles, about, how-i-counted, archive/{index,[slug]}, contact, 404, rss.xml.ts
   content/notes/        field notes (md/mdx)
   content/archive/      imported legacy posts
-  data/                 editorial.ts ui.ts site.ts evidence-steps.ts stages.ts principles.ts filters.ts now.ts legacy-redirects.mjs og-card.mjs
+  data/                 editorial.ts ui.ts site.ts evidence-steps.ts stages.ts principles.ts filters.ts now.ts legacy-redirects.mjs og-card.mjs toolbox-collection.mjs
   styles/               tokens.css global.css prose.css
 scripts/                lint-copy.mjs import-legacy.mjs check-redirects.mjs check-notes.mjs check-layout.mjs generate-og.mjs og-card-template.mjs lib/{chrome,frontmatter}.mjs
 docs/                   personal-site-direction.md AUDIENCE-AND-PUBLISHING.md REDESIGN-HANDOFF.md COPY.md MIGRATION.md; historical design references
