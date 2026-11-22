@@ -9,7 +9,7 @@ export const SITE = {
   name: 'Rob Saric',
   title: `Rob Saric · ${OG_SITE_CARD.heading}`,
   description:
-    'Rob Saric, co-founder of Caretrics in Ottawa, writes about building software for small teams, running a business and spending time away from screens.',
+    'Rob Saric is a founder and dad in Ottawa. Read his essays on work and life away from screens, and follow his work on Caretrics, Togetheren and SkillNav.',
   url: 'https://robsaric.com',
   locale: 'en',
   author: {
@@ -29,7 +29,8 @@ export const SITE = {
    * 2026-08-24. Nav, footer, and the 02 section button keep the root.
    */
   caretricsProductUrl: 'https://caretrics.com/product',
-  togetherenUrl: 'https://togetheren.com',
+  togetherenUrl: 'https://www.togetheren.com/',
+  skillnavUrl: 'https://www.skillnav.com/',
   unpluggedCanadaUrl: 'https://www.unpluggedcanada.com/',
   email: 'rob@caretrics.com',
   links: {

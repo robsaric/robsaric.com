@@ -2,14 +2,14 @@
 
 > Rob Saric is a founder and dad in Ottawa, writing about useful tools for small teams, building companies and life beyond the screen.
 
-Rob is building Caretrics and developing a broader small-team tools direction through Togetheren. SkillNav is in development as part of that direction, starting with understanding a customer’s needs, testing an offer and keeping track of what is learned. This is not a claim of a launched SkillNav product.
+Rob co-founded Caretrics, which helps clinic teams track missed follow-ups and unpaid claims. Togetheren offers early access for hosts of in-person communities. SkillNav is in development, with a founder-assisted pilot for consultants preparing for client meetings and reviewing follow-up drafts.
 
 ## Pages
 
 - [Home](https://robsaric.com/): personal perspective, selected writing, current work and contact.
 - [Writing](https://robsaric.com/writing/): recent field notes and selected earlier essays. Original dates remain visible.
 - [Toolbox](https://robsaric.com/toolbox/): four guides to drafting in your own voice, reviewing dashboards, finding delays in a service and updating Attio from meeting notes.
-- [What I'm building](https://robsaric.com/building/): opportunity, ownership and independence through tools for small teams.
+- [What I'm building](https://robsaric.com/building/): the people and work behind Caretrics, Togetheren and SkillNav.
 - [About](https://robsaric.com/about/): background, building companies, parenting, mentoring and the questions behind Rob's work.
 - [Archive](https://robsaric.com/archive/): earlier writing from 2009 to 2019, kept as written.
 - [Contact](https://robsaric.com/contact/): rob@caretrics.com
@@ -34,4 +34,6 @@ Rob is building Caretrics and developing a broader small-team tools direction th
 
 - [LinkedIn](https://www.linkedin.com/in/robertsaric/)
 - [Caretrics](https://caretrics.com)
+- [Togetheren](https://www.togetheren.com/)
+- [SkillNav](https://www.skillnav.com/)
 - [Site source](https://github.com/robsaric/robsaric.com)
