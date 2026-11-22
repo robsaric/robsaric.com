@@ -1,6 +1,6 @@
 /**
  * The Toolbox collection: one entry per guide, and the illustrative output shown
- * on its index card and on its share card. Plain .mjs, like og-card.mjs, because
+ * on its share card. Plain .mjs, like og-card.mjs, because
  * scripts/generate-og.mjs runs in Node and cannot import TypeScript.
  * src/data/toolbox-presentation.ts re-exports it for the pages.
  */
@@ -11,10 +11,10 @@ export const COLLECTION = /** @type {const} */ ({
   bring: 'Bring',
   sample: 'Illustrative output',
   entries: [
-    { kind: 'interview', slug: 'interview-draft-edit', bring: 'An idea, draft or spoken explanation.' },
-    { kind: 'dashboard', slug: 'dashboard-test', bring: 'A screenshot and one decision to review.' },
-    { kind: 'mapping', slug: 'value-stream-mapping', bring: 'Notes about how a service works.' },
-    { kind: 'crm', slug: 'crm-by-conversation', bring: 'An Attio workspace connected to your assistant.' },
+    { kind: 'interview', slug: 'interview-draft-edit', job: 'Talk through a rough idea and turn your own words into a draft.' },
+    { kind: 'dashboard', slug: 'dashboard-test', job: 'Take a weekly report and see whether it helps anyone decide what to do next.' },
+    { kind: 'mapping', slug: 'value-stream-mapping', job: 'Follow one job from start to finish to find where it gets held up.' },
+    { kind: 'crm', slug: 'crm-by-conversation', job: 'Turn meeting notes into updates you can review before saving them in Attio.' },
   ],
   interview: {
     label: 'A draft you can question',

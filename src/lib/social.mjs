@@ -8,6 +8,6 @@ export function socialImagePath(pathname) {
 
 /**
  * New URLs let crawlers see a replaced card family instead of a cached one.
- * 2026-11-16: the Toolbox cards gained their promise and an output panel.
+ * The homepage headline and Toolbox introduction changed on November 22.
  */
-export const SOCIAL_IMAGE_VERSION = 'editorial-20261116-toolbox';
+export const SOCIAL_IMAGE_VERSION = 'editorial-20261122';

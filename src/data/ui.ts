@@ -1,8 +1,10 @@
+import { OG_SITE_CARD } from './og-card.mjs';
+
 export const UI = {
   editorialReview: 'Design preview · Local review copy.',
   meta: {
     titleSeparator: ' · ',
-    ogImageAlt: 'Rob Saric: Work is hard enough. More effort isn’t always the answer.',
+    ogImageAlt: `${OG_SITE_CARD.author}: ${OG_SITE_CARD.heading}`,
     pageOgImageAlt: (title: string) => `${title} · Rob Saric`,
     /** Alt for a note's generated share card; type is the note's own. */
     noteOgImageAlt: (type: string, title: string) => `${type}: ${title}`,

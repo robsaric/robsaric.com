@@ -11,9 +11,8 @@ const profileDownload = `${downloadBase}/voice-profile.md`;
 /** Public workflow copy. Examples are illustrative, not claims about client work. */
 export const TOOLBOX = {
   title: 'Toolbox',
-  description: 'Products, GitHub libraries, AI skills and practical workflows, with useful examples and honest trade-offs. A growing Toolbox from Rob Saric.',
-  intro: 'Useful tools, and practical ways to use them.',
-  explanation: 'Workflows to try, files to make your own, and tools worth understanding. Start with the job you want to do.',
+  description: 'Four guides from Rob Saric for drafting in your own voice, reviewing a dashboard, finding delays in your work and updating Attio after a meeting.',
+  intro: 'Each guide includes a prompt you can try and files you can keep.',
   navigationLabel: 'Browse the Toolbox',
   sections: [
     { href: '#workflows', label: 'Guides & skills' },

@@ -1,3 +1,5 @@
+import { OG_SITE_CARD } from './og-card.mjs';
+
 /**
  * Site-wide configuration. Values marked TODO are unset on purpose:
  * components render nothing for an unset link rather than a dead one.
@@ -5,9 +7,9 @@
  */
 export const SITE = {
   name: 'Rob Saric',
-  title: 'Rob Saric · Work is hard enough. More effort isn’t always the answer.',
+  title: `Rob Saric · ${OG_SITE_CARD.heading}`,
   description:
-    'Rob Saric on decisions behind building a business: what’s worth building, where AI helps, and how to leave room for life outside work. Founder in Ottawa.',
+    'Rob Saric, co-founder of Caretrics in Ottawa, writes about building software for small teams, running a business and spending time away from screens.',
   url: 'https://robsaric.com',
   locale: 'en',
   author: {
