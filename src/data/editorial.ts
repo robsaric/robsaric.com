@@ -1,16 +1,14 @@
+import { OG_SITE_CARD } from './og-card.mjs';
+
 /** Approved personal positioning. Article bodies remain in their content collections. */
 export const EDITORIAL = {
   hero: {
-    identity: 'Co-founder of',
+    identity: 'Rob Saric · Ottawa · Co-founder of',
     identityCompany: 'Caretrics',
-    identityContext: 'Writer · Ottawa',
-    heading: 'Work is hard enough.',
-    emphasis: 'More effort isn’t always the',
-    markedWord: 'answer.',
-    lead: 'I’m building Caretrics to help small clinic teams understand what needs attention and what to do next. I write about building a business, where AI can take repetitive work off your hands, and making time for the people in our lives.',
+    heading: OG_SITE_CARD.heading,
+    lead: 'I built an early version of Caretrics so clinic owners could ask questions about their numbers. I thought that would help. They still had to figure out what to ask.',
+    essayHref: '/field-notes/2026-10-18-small-teams-deserve-their-time-back/',
     portraitAlt: 'Rob Saric in a blue blazer',
-    read: 'Read my writing',
-    work: 'What I’m building',
   },
   writing: {
     title: 'Start here.',

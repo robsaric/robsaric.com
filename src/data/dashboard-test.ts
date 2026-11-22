@@ -6,7 +6,7 @@ export const DASHBOARD_TEST = {
   "formats": "Checklist · Prompt · Skill",
   "description": "A free dashboard review checklist, chat prompt and AI skill. Find the main gap, choose one improvement, or decide a dashboard is not needed.",
   "question": "Does your dashboard earn its place?",
-  "intro": "A free AI skill I created to review a dashboard or report against the job someone needs it to do. Bring a screenshot or description. Find what to keep, one useful change, or a simpler alternative.",
+  "intro": "Pick a report you review regularly. Think about the last decision you made with it, then walk through the checklist.",
   "format": "Free checklist, copyable prompt and skill for Claude or Codex. No signup required.",
   "primary": "Try the prompt",
   "secondary": "Download skill ZIP",
@@ -50,8 +50,12 @@ export const DASHBOARD_TEST = {
     }
   ],
   "privacy": "Use a redacted screenshot or a description. Leave out patient details, customer names and confidential records.",
-  "checklistHeading": "Follow the work, not just the chart.",
-  "checklistIntro": "Use these questions yourself or let the prompt guide the conversation. Check a question after you have considered it, even if your answer is “I don’t know.” This is not a score.",
+  "checklistHeading": "The dashboard review checklist",
+  "checklistIntro": "Work through these questions with the person who uses the report. Check each one as you go.",
+  "shareQuestion": "Know someone who prepares the weekly report?",
+  "shareLabel": "Send them the checklist.",
+  "shareSubject": "The Dashboard Test",
+  "shareBody": "Thought of you when I saw this dashboard review checklist.",
   "checklist": [
     {
       "title": "Who is looking, and why?",
@@ -99,6 +103,7 @@ export const DASHBOARD_TEST = {
   "select": "Select the prompt",
   "noScript": "Select the text and copy it into your chat. The checklist and downloads work without JavaScript.",
   "downloadHeading": "Use it again as a skill.",
+  "kitHeading": "Download the kit",
   "downloadIntro": "A skill saves the review instructions so you can reuse them. This one contains instructions only: no scripts, connectors or automatic changes to your dashboard.",
   "skillNameLabel": "Skill name:",
   "skillName": "dashboard-test",
@@ -135,24 +140,19 @@ export const DASHBOARD_TEST = {
   ],
   "setupCheck": "Check the first response: it should use the context you provided and ask about any missing decision or reader. If you only provided a screenshot, it should not claim to know how your team works.",
   "updates": "Downloads are local copies. To update, download again and review the changes before replacing your copy.",
-  "examplesHeading": "Two possible outcomes.",
-  "examplesIntro": "These are illustrative reviews, not measured customer results.",
-  "examples": [
-    {
+  "exampleLabel": "Illustrative example",
+  "workshopExample": {
+    "title": "What’s holding up the workshop?",
+    "context": "A team planning a workshop already has a task list. Someone proposes a dashboard showing the percentage of work complete. At the next check-in, the organizer needs to know which tasks are stuck and who can move them along.",
+    "decision": "Keep the list. Put blocked tasks at the top with an owner, a next step and a due date. At the next check-in, see whether the organizer can find the blocker."
+  },
+  "attendanceExample": {
       "title": "Keep the dashboard. Make the pattern clearer.",
       "context": "An owner reviews attendance over several months and wants to know what deserves attention. The chart and its source dates are available, but the pattern is buried in the report.",
       "verdict": "Change the presentation. The recurring comparison gives the dashboard a purpose.",
       "improvement": "Bring the supported pattern and its time period together above the chart. Keep the counts, limits and existing priority visible.",
       "check": "At the next review, ask the owner what changed and what they would investigate. Check whether they can answer without reconstructing the report."
-    },
-    {
-      "title": "Skip the dashboard. Surface the blocker.",
-      "context": "A team preparing a workshop already has a shared task list. A proposed dashboard shows percent complete, but the owner needs to know what is blocked and who will handle it.",
-      "verdict": "Do not build a dashboard for this job. Keep the existing list.",
-      "improvement": "Put blocked tasks first, with the owner, next step and due date on the same line.",
-      "check": "At the next check-in, see whether the owner can identify the blocker and next action from that list."
-    }
-  ],
+  },
   "verdictLabel": "Verdict",
   "improvementLabel": "One improvement",
   "checkLabel": "How to check it",

@@ -22,7 +22,6 @@ p { text-wrap: pretty; }
 }
 
 html {
-  min-width: 320px;
   background: var(--bg-page);
   color: var(--fg-default);
   font-family: var(--font-sans);
