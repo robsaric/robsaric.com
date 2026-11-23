@@ -10,4 +10,4 @@ export function socialImagePath(pathname) {
  * New URLs let crawlers see a replaced card family instead of a cached one.
  * The homepage headline and Toolbox introduction changed on November 22.
  */
-export const SOCIAL_IMAGE_VERSION = 'editorial-20261122';
+export const SOCIAL_IMAGE_VERSION = 'editorial-20261122b';

@@ -63,11 +63,5 @@ const mark = await sharp(letters).resize({ width: 154, height: 142, fit: 'inside
 const m = await sharp(mark).metadata();
 const icon = await sharp({ create: { width: 192, height: 192, channels: 4, background: '#faf8f2' } })
   .composite([{ input: mark, left: Math.round((192-m.width)/2), top: Math.round((192-m.height)/2) }]).png().toBuffer();
-await sharp(icon).resize(32,32).png().toFile('public/favicon-32.png');
-await sharp(icon).resize(180,180).png().toFile('public/apple-touch-icon.png');
-const png = await sharp(icon).resize(32,32).png().toBuffer();
-const header = Buffer.alloc(22); header.writeUInt16LE(1,2); header.writeUInt16LE(1,4);
-header[6]=32; header[7]=32; header.writeUInt16LE(1,10); header.writeUInt16LE(32,12);
-header.writeUInt32LE(png.length,14); header.writeUInt32LE(22,18);
-await writeFile('public/favicon.ico',Buffer.concat([header,png]));
 await writeFile(resolve(root,'favicon-preview.png'),icon);
+await import('./generate-favicon.mjs');

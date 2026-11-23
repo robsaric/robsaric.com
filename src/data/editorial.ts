@@ -155,7 +155,8 @@ export const EDITORIAL = {
     email: 'Or write to me',
   },
   newsletter: {
-    heading: 'Digital days. Analog nights.',
+    heading: 'Digital days.',
+    headingAccent: 'Analog nights.',
     body: 'What I’m learning about building small companies, making sense of AI, and making time for the people in our lives. Get new essays by email.',
     action: 'Send me the next essay',
     cadence: 'Confirm your email, then hear from me when I have something worth sharing. Unsubscribe whenever you like.',
