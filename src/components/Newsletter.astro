@@ -20,7 +20,9 @@ const Heading = headingLevel === 3 ? 'h3' : 'h2';
 ---
 {endpoint && <section class:list={['newsletter', { prominent, split }]} aria-labelledby={`${id}-title`} data-write-to-me data-invalid-email={UI.newsletter.invalidEmail}>
   <div class="newsletter-copy">
-  <Heading id={`${id}-title`} class:list={{ 'visually-hidden': recovery }}>{recovery ? N.retry : E.newsletter.heading}</Heading>
+  <Heading id={`${id}-title`} class:list={{ 'visually-hidden': recovery }}>{recovery ? N.retry : (
+    <>{E.newsletter.heading}{' '}<span class:list={{ 'ink-underline': prominent }}>{E.newsletter.headingAccent}</span></>
+  )}</Heading>
   {!recovery && <p class="newsletter-intro">{E.newsletter.body}</p>}
   </div>
   <div class="newsletter-signup">

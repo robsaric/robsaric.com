@@ -4,9 +4,9 @@ import { SITE } from './site';
 /** Approved personal positioning. Article bodies remain in their content collections. */
 export const EDITORIAL = {
   hero: {
-    identity: 'Rob Saric · Founder and dad in Ottawa',
+    identity: 'Co-founder & CEO of Caretrics · Ottawa',
     heading: OG_SITE_CARD.heading,
-    lead: 'I’ve built training tools for coaches and software that helps clinic teams track unpaid claims. I write about what it takes to make a little company go.',
+    lead: 'At Caretrics, we help clinic teams see which claims are still unpaid and who’s already followed up. Here I write about the decisions behind my projects, including the ones I’d make differently.',
     portraitAlt: 'Rob Saric in a blue blazer',
   },
   writing: {
@@ -142,7 +142,8 @@ export const EDITORIAL = {
     email: 'Or write to me',
   },
   newsletter: {
-    heading: 'Digital days. Analog nights.',
+    heading: 'Digital days.',
+    headingAccent: 'Analog nights.',
     body: 'What I’m learning about building small companies, making sense of AI, and making time for the people in our lives. Get new essays by email.',
     action: 'Send me the next essay',
     cadence: 'Confirm your email, then hear from me when I have something worth sharing. Unsubscribe whenever you like.',

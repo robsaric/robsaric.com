@@ -9,7 +9,7 @@ export const SITE = {
   name: 'Rob Saric',
   title: `Rob Saric · ${OG_SITE_CARD.heading}`,
   description:
-    'Rob Saric is a founder and dad in Ottawa. Read his essays on work and life away from screens, and follow his work on Caretrics, Togetheren and SkillNav.',
+    'Rob Saric is the co-founder and CEO of Caretrics in Ottawa. Read about his work on Caretrics, Togetheren and SkillNav and the decisions behind those projects.',
   url: 'https://robsaric.com',
   locale: 'en',
   author: {
@@ -35,6 +35,7 @@ export const SITE = {
   email: 'rob@caretrics.com',
   links: {
     linkedin: 'https://www.linkedin.com/in/robertsaric/',
+    instagram: 'https://www.instagram.com/rob_saric/',
     /** Undecided whether to keep X. Empty string hides the link. */
     x: '',
     github: 'https://github.com/robsaric',
