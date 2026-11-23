@@ -95,6 +95,7 @@ export const UI = {
     /** Joined the row 2026-08-24 when Principles left the nav. */
     principles: 'Principles',
     linkedin: 'LinkedIn',
+    instagram: 'Instagram',
     x: 'X',
     github: 'GitHub',
     source: 'View source ↗',

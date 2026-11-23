@@ -168,7 +168,7 @@ components:
     backgroundColor: "{colors.action-hover}"
     textColor: "{colors.white}"
   text-link:
-    textColor: "{colors.home-ink}"
+    textColor: "{colors.blue}"
   navigation:
     backgroundColor: "{colors.home-paper}"
     textColor: "{colors.home-ink}"
@@ -305,13 +305,13 @@ The current contract is [Shared editorial design and simpler homepage](docs/edit
 Warm paper is the current page baseline. The original cool primitives remain as root fallbacks, while BaseLayout defaults to the warm theme. Reading routes are warm.
 
 ### Primary
-- **Working Blue, blue:** small brand details, keyboard focus, navigation/title feedback, and existing article links or drawn accents. Ordinary text actions use ink.
+- **Working Blue, blue:** the wordmark period, underlined editorial text links, keyboard focus, and navigation/title feedback.
 - **Deep Blue, blue-deep:** retained root compatibility token; the current shared action hover uses Action Hover.
 - **Action Ink, action-ink:** shared action-button fill throughout public pages.
 - **Action Hover, action-hover:** shared action hover and focus fill.
 
 ### Secondary
-- **Sketch Yellow, yellow:** selection, dark-surface focus, retained article/process accents, and the small runner start mark. It does not fill the homepage newsletter, review loop, or headline decoration.
+- **Sketch Yellow, yellow:** selection, dark-surface focus, article/process accents, the small runner start mark, and the pencil stroke under “Analog nights.” in the homepage newsletter heading.
 
 ### Neutral
 - **Warm Paper, home-paper:** current pages and navigation throughout the site, including the quiet footer.
@@ -454,7 +454,7 @@ Standalone Connect retains a pale supporting section with the shared charcoal ac
 
 ### Drawn editorial accent and article sketch
 
-The homepage no longer applies the shared yellow ink-underline treatment to its heading. That retained utility remains available to the existing article commitment sketch; it is not a reason to restore the rejected homepage accent.
+The homepage uses the shared yellow pencil stroke under “Analog nights.” in the newsletter. The hero headline stays plain.
 
 The small-team essay includes a semantic `figure` comparing a prototype with the commitment to look after it. Two open text columns are joined by a blue drawn arrow; below 600px they stack and the arrow points down. Thin top and bottom rules separate the sketch from prose. A 14px caption keeps the example legible, and the diagram remains ordinary selectable text without JavaScript. It contains no measured outcome.
 
