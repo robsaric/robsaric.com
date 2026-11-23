@@ -6,7 +6,7 @@ export const EDITORIAL = {
   hero: {
     identity: 'Rob Saric · Founder and dad in Ottawa',
     heading: OG_SITE_CARD.heading,
-    lead: 'I want AI to take work off people’s plates. I want the time back, including my own.',
+    lead: 'If I promise a customer I’ll call on Friday, my software should remember. I still want to be the one who asks how things went.',
     portraitAlt: 'Rob Saric in a blue blazer',
   },
   writing: {
