@@ -1,13 +1,12 @@
 import { OG_SITE_CARD } from './og-card.mjs';
+import { SITE } from './site';
 
 /** Approved personal positioning. Article bodies remain in their content collections. */
 export const EDITORIAL = {
   hero: {
-    identity: 'Rob Saric · Ottawa · Co-founder of',
-    identityCompany: 'Caretrics',
+    identity: 'Co-founder & CEO of Caretrics · Ottawa',
     heading: OG_SITE_CARD.heading,
-    lead: 'I built an early version of Caretrics so clinic owners could ask questions about their numbers. I thought that would help. They still had to figure out what to ask.',
-    essayHref: '/field-notes/2026-10-18-small-teams-deserve-their-time-back/',
+    lead: 'At Caretrics, we help clinic teams see which claims are still unpaid and who’s already followed up. Here I write about the decisions behind my projects, including the ones I’d make differently.',
     portraitAlt: 'Rob Saric in a blue blazer',
   },
   writing: {
@@ -16,6 +15,7 @@ export const EDITORIAL = {
     pageTitle: 'Writing',
     pageDescription: 'Essays by Rob Saric on small teams, useful AI, building companies and making room for life beyond the screen.',
     featuredHref: '/field-notes/2026-10-19-are-dashboards-dead/',
+    supportingHref: '/field-notes/2026-10-18-small-teams-deserve-their-time-back/',
     readEssay: 'Read the essay',
     pageHeading: 'Writing',
     pageIntro: 'Essays on building companies, making sense of AI, and life outside work.',
@@ -37,46 +37,34 @@ export const EDITORIAL = {
     ],
   },
   work: {
-    heading: 'What I’m building.',
-    intro: 'I’m the co-founder and CEO of Caretrics. Through Togetheren, I’m exploring how more people can build a business around what they know. SkillNav is one of those experiments.',
-    link: 'See the work and the thinking behind it',
-    example: {
-      heading: 'They want answers.',
-      story: 'Caretrics started with the problem of manual reporting. But do people want another dashboard? Do people want more reports? They want to be able to answer questions about how their business is doing.',
-      lesson: 'Understanding that changed our perspective on Caretrics. How do we help small teams accomplish more? How do we support their current bottlenecks and help incrementally move their business forward?',
-      caption: 'How our thinking changed at Caretrics',
-      steps: [
-        { label: 'Understand the data', body: 'Start with the problem of manual reporting.' },
-        { label: 'Find what needs attention', body: 'Give insights and recommendations on specific actions.' },
-        { label: 'Help someone act', body: 'Build workflows around the problems identified in the data.' },
-      ],
-      nextLabel: 'Where we’re going:',
-      next: 'Supportive agents for repetitive work, with a person reviewing the result and deciding what happens next.',
-    },
-    togetheren: {
-      name: 'Togetheren',
-      status: 'The studio',
-      body: 'Togetheren is the studio where I explore tools for small teams, starting with the work people need to do and the processes behind it.',
-      child: 'SkillNav',
-      childStatus: 'Experiment · In development',
-      childBody: 'SkillNav is an experiment within Togetheren, starting with understanding a customer’s needs, testing an offer and keeping track of what we learn.',
-      link: 'Talk with me about it',
-    },
     caretrics: {
       name: 'Caretrics',
       status: 'Co-founder & CEO',
-      body: 'Software for the people running clinics. It helps teams find missed follow-ups and revenue gaps, with the records behind each finding so someone can check it and act.',
+      body: 'For clinic teams. See which claims need a call, who followed up last and what’s still open.',
       link: 'Explore Caretrics',
+      href: SITE.caretricsUrl,
+    },
+    togetheren: {
+      name: 'Togetheren',
+      status: 'Early access',
+      body: 'For people who host a group in person. Pick a time and place, send one invitation and see who’s coming.',
+      link: 'Visit Togetheren',
+      href: SITE.togetherenUrl,
+    },
+    skillnav: {
+      name: 'SkillNav',
+      status: 'In development · Founder-assisted pilot',
+      body: 'For consultants. Turn client meeting notes into a follow-up you can review before the next call.',
+      link: 'See the SkillNav pilot',
+      href: SITE.skillnavUrl,
     },
   },
   building: {
     title: 'What I’m building',
-    description: 'Why Rob Saric is building Caretrics and Togetheren: helping small teams turn their knowledge into work and businesses that support them.',
+    description: 'Rob Saric’s current projects include Caretrics for clinic teams, Togetheren for in-person groups and the SkillNav pilot for consultants.',
     heading: 'What I’m building.',
-    lead: 'I’m the co-founder and CEO of Caretrics. Togetheren is my studio for exploring how small teams can build businesses around what they know, with SkillNav as one of the experiments.',
+    lead: 'Caretrics is for people who run clinics. Togetheren is for people who bring a group together in person. With SkillNav, the work starts with a client meeting.',
     whyLink: 'Why this work',
-    projectsLink: 'Caretrics',
-    studioLink: 'Togetheren & SkillNav',
     caretrics: {
       heading: 'What happens after you spot the problem?',
       problem: 'An unpaid claim on a report is a starting point. Someone still needs to find out what happened, record the conversation and decide when to follow up.',
@@ -99,13 +87,12 @@ export const EDITORIAL = {
     ],
     storyLink: 'What I learned from my dad',
     togetheren: {
-      status: 'The studio',
-      heading: 'More people should get to build something of their own.',
-      body: 'I want the capability AI puts within reach to lead to more ownership and independence. Togetheren is my studio for working on that: helping small teams turn what they know into services and products people will pay for. It starts with a problem someone actually has, a way to test the idea and a process the team can sustain. Caretrics grounds that thinking in the daily work of running a clinic.',
-      skillnavHeading: 'A good agent needs a process worth following.',
-      skillnavBody: 'SkillNav is an experiment within Togetheren. I’m starting with understanding a customer’s needs, testing an offer and keeping track of what we learn.',
-      skillnavAim: 'I’m exploring how AI can help with the research and preparation, while we decide what to test and what to change.',
-      skillnavLink: 'Talk with me about SkillNav',
+      heading: 'When’s the next walk?',
+      body: 'Say you’re getting a few people together for a Sunday walk. You pick a time and a trailhead, share an invitation and see who can make it. After the walk, you can keep a private note about what worked and set a date for the next one.',
+    },
+    skillnav: {
+      heading: 'What did we agree to on that call?',
+      body: 'In the pilot, a consultant brings notes from a client meeting. SkillNav helps draft what was agreed, what’s still open and what to bring up next time. The consultant reviews the draft before anything is shared.',
     },
     closingHeading: 'Building something of your own?',
     closingBody: 'I share the work as it develops: decisions, mistakes, useful discoveries. Follow along, or tell me about a problem your team knows too well.',
@@ -130,7 +117,7 @@ export const EDITORIAL = {
     missionHeading: 'Small teams deserve good tools.',
     mission: [
       'A small business can hold an extraordinary amount of knowledge in a few people’s heads. I’m interested in helping those people put it to work without adding another layer of administration.',
-      'That’s the direction I’m pursuing with Togetheren and SkillNav. I want the tools we build to make people more capable, and leave them in control.',
+      'I want the tools we build to make people more capable, and leave them in control.',
     ],
     lifeHeading: 'And life deserves more than a screen.',
     life: [

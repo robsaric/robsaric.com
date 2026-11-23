@@ -19,7 +19,7 @@ export const OG_CARD = {
  */
 export const OG_SITE_CARD = {
   eyebrow: 'Founder. Dad. Builder.',
-  heading: 'I help small teams run smarter with AI and data.',
+  heading: 'I build software that helps good people run better businesses.',
   author: 'Rob Saric',
   site: 'robsaric.com',
 };
