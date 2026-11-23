@@ -6,7 +6,7 @@ export const EDITORIAL = {
   hero: {
     identity: 'Rob Saric · Founder and dad in Ottawa',
     heading: OG_SITE_CARD.heading,
-    lead: 'If I promise a customer I’ll call on Friday, my software should remember. I still want to be the one who asks how things went.',
+    lead: 'I’ve built training tools for coaches and software that helps clinic teams track unpaid claims. I write about what it takes to make a little company go.',
     portraitAlt: 'Rob Saric in a blue blazer',
   },
   writing: {
